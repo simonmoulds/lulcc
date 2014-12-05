@@ -32,7 +32,7 @@ setClassUnion("RasterLayerOrNULL", c("RasterLayer", "NULL"))
 #' @rdname class-ModelInput
 #'
 #' @export
-#' @exportClass ModelInput
+#' @exportClass ModelInput CluesModelInput OrderedModelInput
 
 setClass("ModelInput",
          slots = c(map0 = "RasterLayerOrNULL",           

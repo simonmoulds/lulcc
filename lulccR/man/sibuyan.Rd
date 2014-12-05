@@ -5,29 +5,29 @@
 \title{Land use change dataset for Sibuyan Island}
 \format{A list containing the following components:
 \describe{
-  \item{lu_sib_1997}(RasterLayer with land use in 1997 (forest, coconut,
-  grassland, rice, other))
-  \item{pred_001}(RasterLayer showing distance to sea)
-  \item{pred_002}(RasterLayer showing mean population density)
-  \item{pred_003}(RasterLayer showing occurrence of diorite rock)
-  \item{pred_004}(RasterLayer showing occurrence of ultramafic rock)
-  \item{pred_005}(RasterLayer showing occurrence of sediments)
-  \item{pred_006}(RasterLayer showing areas with no erosion)
-  \item{pred_007}(RasterLayer showing areas with moderate erosion)
-  \item{pred_008}(RasterLayer showing elevation)
-  \item{pred_009}(RasterLayer showing slope)
-  \item{pred_010}(RasterLayer showing aspect)
-  \item{pred_011}(RasterLayer showing distance to roads in 1997)
-  \item{pred_012}(RasterLayer showing distance to urban areas in 1997)
-  \item{pred_013}(RasterLayer showing distance to streams)
-  \item{restr1}(RasterLayer showing location of current national park)
-  \item{restr2}(RasterLayer showing location of proposed national park)
-  \item{demand1}(data.frame with demand scenario representing slow growth
-  scenario)
-  \item{demand2}(data.frame with demand scenario representing fast growth
-  scenario)
-  \item{demand3}(data.frame with demand scenario representing land use
-  change primarily for food production)
+\item{lu_sib_1997}(RasterLayer with land use in 1997 (forest, coconut,
+grassland, rice, other))
+\item{pred_001}(RasterLayer showing distance to sea)
+\item{pred_002}(RasterLayer showing mean population density)
+\item{pred_003}(RasterLayer showing occurrence of diorite rock)
+\item{pred_004}(RasterLayer showing occurrence of ultramafic rock)
+\item{pred_005}(RasterLayer showing occurrence of sediments)
+\item{pred_006}(RasterLayer showing areas with no erosion)
+\item{pred_007}(RasterLayer showing areas with moderate erosion)
+\item{pred_008}(RasterLayer showing elevation)
+\item{pred_009}(RasterLayer showing slope)
+\item{pred_010}(RasterLayer showing aspect)
+\item{pred_011}(RasterLayer showing distance to roads in 1997)
+\item{pred_012}(RasterLayer showing distance to urban areas in 1997)
+\item{pred_013}(RasterLayer showing distance to streams)
+\item{restr1}(RasterLayer showing location of current national park)
+\item{restr2}(RasterLayer showing location of proposed national park)
+\item{demand1}(data.frame with demand scenario representing slow growth
+scenario)
+\item{demand2}(data.frame with demand scenario representing fast growth
+scenario)
+\item{demand3}(data.frame with demand scenario representing land use
+change primarily for food production)
 }}
 \usage{
 sibuyan

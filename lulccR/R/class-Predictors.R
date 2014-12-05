@@ -15,7 +15,7 @@
 #' @rdname class-Predictors
 #'
 #' @export
-#' @exportClass Predictors-class
+#' @exportClass Predictors
         
 setClass("Predictors",
          slots = c(maps = "list",
