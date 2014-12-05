@@ -9,6 +9,8 @@
 \alias{ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,missing,matrix-method}
 \alias{ModelInput,ObservedMaps,Predictors,StatModels,numeric,SpatialPoints,matrix-method}
 \alias{ModelInput,ObservedMaps,Predictors,StatModels,numeric,matrix-method}
+\alias{OrderedModelInput,ModelInput-method}
+\alias{OrderedModelInput,ObservedMaps-method}
 \title{Create a ModelInput object}
 \usage{
 \S4method{ModelInput}{ModelInput,ANY,ANY,ANY,ANY}(x, pred, models, time, demand,
@@ -22,6 +24,12 @@
 
 \S4method{CluesModelInput}{ObservedMaps,numeric}(x, elas, rules = NULL,
   nb.rules = NULL, params, ...)
+
+\S4method{OrderedModelInput}{ModelInput}(x, rules = NULL, nb.rules = NULL,
+  params, ...)
+
+\S4method{OrderedModelInput}{ObservedMaps}(x, rules = NULL, nb.rules = NULL,
+  params, ...)
 }
 \arguments{
 \item{pred}{a Predictors object}

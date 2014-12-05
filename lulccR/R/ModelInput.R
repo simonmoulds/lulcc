@@ -195,8 +195,8 @@ setMethod("CluesModelInput", signature(x = "ObservedMaps", elas = "numeric"),
     params <- params[c("jitter.f","scale.f","max.iter","max.diff","ave.diff")]
 }
 
-#' @rdname ModelInput-methods
-#' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY,ANY,numeric-methods
+#' @rdname ModelInput
+#' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY,ANY,numeric-method
 setMethod("OrderedModelInput", signature(x = "ModelInput"),
           function(x, rules=NULL, nb.rules=NULL, params, ...) {
 
@@ -227,8 +227,8 @@ setMethod("OrderedModelInput", signature(x = "ModelInput"),
           }
 )
 
-#' @rdname ModelInput-methods
-#' @aliases ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,missing,matrix-methods
+#' @rdname ModelInput
+#' @aliases ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,missing,matrix-method
 setMethod("OrderedModelInput", signature(x = "ObservedMaps"),
           function(x, rules=NULL, nb.rules=NULL, params, ...) {
               input <- ModelInput(x=x, ...)

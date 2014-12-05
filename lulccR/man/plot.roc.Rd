@@ -8,7 +8,7 @@
 \S4method{plot.roc}{PerformanceMulti}(perf, type, ...)
 
 \S4method{plot.roc}{list}(perf, multipanel = TRUE, type = "l",
-  abline = list(c(0, 1), col = "grey"), col = RColotBrewer::brewer.pal(9,
+  abline = list(c(0, 1), col = "grey"), col = RColorBrewer::brewer.pal(9,
   "Set1"), key.args = NULL, ...)
 }
 \arguments{
