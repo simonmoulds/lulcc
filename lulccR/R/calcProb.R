@@ -49,8 +49,8 @@ setMethod("calcProb", signature(object = "randomForest"),
           }
 )
 
-#' @rdname calcProb-methods
-#' @aliases calcProb,StatModels-methods
+#' @rdname calcProb
+#' @aliases calcProb,StatModels-method
 setMethod("calcProb", signature(object = "StatModels"),
           function(object, newdata, df=FALSE, ...) {
               out <- list()
