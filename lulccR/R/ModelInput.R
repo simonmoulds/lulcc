@@ -58,10 +58,10 @@ if (!isGeneric("OrderedModelInput")) {
 #'
 #' @rdname ModelInput
 #'
-#' @export
+#' @export ModelInput 
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY,ANY-method
+#' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY-method
 setMethod("ModelInput", signature(x ="ModelInput", pred = "ANY", models = "ANY", time = "ANY", demand = "ANY"),
           function(x, pred, models, time, demand, ...) {
               out <- x
@@ -69,7 +69,7 @@ setMethod("ModelInput", signature(x ="ModelInput", pred = "ANY", models = "ANY",
 )
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ObservedMaps,Predictors,StatModels,numeric,SpatialPoints,matrix-method
+#' @aliases ModelInput,ObservedMaps,Predictors,StatModels,numeric,matrix-method
 setMethod("ModelInput", signature(x = "ObservedMaps", pred = "Predictors", models = "StatModels", time = "numeric", demand = "matrix"),
            function(x, pred, models, time, demand, hist, mask, neighb=NULL, ...) {
                map0 <- x@maps[[1]] ## initial map
@@ -135,7 +135,8 @@ setMethod("ModelInput", signature(x = "ObservedMaps", pred = "Predictors", model
 
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY,ANY,numeric-method
+#' @aliases CluesModelInput,ModelInput,numeric-method
+#' @exportMethod CluesModelInput
 setMethod("CluesModelInput", signature(x = "ModelInput", elas = "numeric"),
           function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
 
@@ -171,7 +172,8 @@ setMethod("CluesModelInput", signature(x = "ModelInput", elas = "numeric"),
 )
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,missing,matrix-method
+#' @aliases CluesModelInput,ObservedMaps,numeric-method
+#' @exportMethod CluesModelInput
 setMethod("CluesModelInput", signature(x = "ObservedMaps", elas = "numeric"),
           function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
               input <- ModelInput(x=x, ...)
@@ -196,7 +198,8 @@ setMethod("CluesModelInput", signature(x = "ObservedMaps", elas = "numeric"),
 }
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY,ANY,numeric-method
+#' @aliases OrderedModelInput,ModelInput-method
+#' @exportMethod OrderedModelInput
 setMethod("OrderedModelInput", signature(x = "ModelInput"),
           function(x, rules=NULL, nb.rules=NULL, params, ...) {
 
@@ -228,7 +231,8 @@ setMethod("OrderedModelInput", signature(x = "ModelInput"),
 )
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,missing,matrix-method
+#' @aliases OrderedModelInput,ObservedMaps-method
+#' @exportMethod OrderedModelInput
 setMethod("OrderedModelInput", signature(x = "ObservedMaps"),
           function(x, rules=NULL, nb.rules=NULL, params, ...) {
               input <- ModelInput(x=x, ...)

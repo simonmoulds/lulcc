@@ -3,11 +3,7 @@
 \name{ModelInput,ModelInput,ANY,ANY,ANY,ANY-method}
 \alias{CluesModelInput,ModelInput,numeric-method}
 \alias{CluesModelInput,ObservedMaps,numeric-method}
-\alias{ModelInput,ModelInput,ANY,ANY,ANY,ANY,ANY,numeric-method}
-\alias{ModelInput,ModelInput,ANY,ANY,ANY,ANY,ANY-method}
 \alias{ModelInput,ModelInput,ANY,ANY,ANY,ANY-method}
-\alias{ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,missing,matrix-method}
-\alias{ModelInput,ObservedMaps,Predictors,StatModels,numeric,SpatialPoints,matrix-method}
 \alias{ModelInput,ObservedMaps,Predictors,StatModels,numeric,matrix-method}
 \alias{OrderedModelInput,ModelInput-method}
 \alias{OrderedModelInput,ObservedMaps-method}

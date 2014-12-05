@@ -103,7 +103,7 @@ setMethod("crossTabulate", signature(x = "ObservedMaps", y = "ANY"),
                                  y=x@maps[[ix2]],
                                  categories=x@categories,
                                  labels=x@labels)
-              
+              m              
           }
 )
 

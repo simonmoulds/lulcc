@@ -1,10 +1,7 @@
 lulccR (R package)
 =============================================
 
-lulccR provides a framework for spatially explicit land use change modelling in R. It has been designed so that users can carry out every stage of the modelling process in the same environment. It includes two example datasets: Sibuyan Island (Phillipines) (Verburg et al., 2002) and the Plum Island Ecosystem (USA) (Pontius et al., 2014). Two allocation methods are provided: one based on the Change in Land Use and its Effects at Small regional extent (CLUE-S) model (Verburg et al., 2002) and a novel stochastic procedure. Predictive models form the basis of many land use change models by relating observed land use to biophysical and socioeconomic predictor variables. We provide support for binary logistic regression, recursive partitioning and regression trees and random forest models. These models can be validated with the receiver operator characteristic or any other metric provided by the [ROCR](http://cran.r-project.org/web/packages/ROCR/index.html) package. Finally, the package provides a validation method for the output of land use change models that was originally developed by Pontius et al. (2011). 
-
-### Basics
-The development version of lulccR is available on github and can be installed using devtools:
+lulccR provides a framework for spatially explicit land use change modelling in R. The development version of lulccR is available on github and can be installed using devtools:
 
 ```R
 library(devtools)
@@ -13,9 +10,10 @@ library(lulccR)
 ```
 # Data and functions
 
-A complete working example for the Plum Island Ecosystem dataset is presented here.
+The package includes two example datasets: one for Sibuyan Island in the Phillipines and one for the Plum Island Ecosystem Dataset in Massachusetts, United States. Here we present a complete working example for the Plum Island Ecosystem dataset.
 
-First, load observed data into an `ObservedMaps` object:
+## Input maps
+Land use change modelling requires a large amount of input data. The most important input is at least one map of observed land use. In lulccR, this data is represented by the `ObservedMaps` class:
 
 ```R
 obs <- ObservedMaps(x=pie,
@@ -25,13 +23,22 @@ obs <- ObservedMaps(x=pie,
                     t=c(0,6,14)) 
 ```
 
-Two types of predictor variables are allowed. The first type are usually biophysical or socioeconomic variables that can be related to land use, such as elevation (biophysical) or population density (socioeconomic). These are loaded as follows:
+A useful starting point in land use change modelling is to obtain a transition matrix for two observed land use maps to identify the main transition. This can be achieved with the `crossTabulate` function:
+
+```R
+# obtain a transition matrix from land use maps for 1985 and 1991
+crossTabulate(obs, index=c(1,2))
+```
+
+This reveals for the Plum Island Ecosystem site that the main transition was from forest to built areas.
+
+The next stage is to relate observed land use or observed land use transitions to spatially explicit biophysical or socioeconomic predictor variables. These are loaded as follows:
 
 ```R
 pred.maps <- predictorMaps(x=pie, pattern="pred")
 ```
 
-The second type of predictor variable is based on the observed pattern of land use itself, such as neighbourhood maps or maps showing the distance to a certain land use category. The `PredictorCall` class represents this type of predictor variable. Here, we create a variable based on distance to forested cells:
+Another type of predictor variable is based on the observed pattern of land use, such as neighbourhood maps or maps showing the distance to a specific land use category. These variables are represented by the `PredictorCall` class. Here, we create a variable based on distance to forested cells:
 
 ```R
 # function to calculate distance to land use category
@@ -49,17 +56,15 @@ dist2forest <- PredictorCall(call=call("myfun", x=obs@maps[[1]], category=1),
 			     name="dist2forest")
 ```
 
-These two types of predictor variable are combined into a `Predictors` object:
+All predictor variables are combined into an object belonging to the `Predictors` class:
 
 ```R
-# example Predictors object with both maps and calls
 pred <- Predictors(maps=pred.maps, calls=list(dist2forest))
 
 # for the current application we do not use dist2forest, so only use maps
 pred <- Predictors(maps=pred.maps)
 ```
-
-To fit the predictive models we first divide the study region into training and testing partitions. The `partition` function returns a list with cell numbers for each partition:
+To fit predictive models we first divide the study region into training and testing partitions. The `partition` function returns a list with cell numbers for each partition:
 
 ```R
 part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
@@ -97,7 +102,7 @@ built.rf <- randomForest::randomForest(formula=built.formula, data=train.data)
 other.rf <- randomForest::randomForest(formula=other.formula, data=train.data)
 ```
 
-The predictive models are represented by the `StatModels` class. For comparison, we create a `StatModels` object for each type of predictive model: 
+Predictive models are represented by the `StatModels` class. For comparison, we create a `StatModels` object for each type of predictive model: 
 
 ```R
 # create StatModels objects
@@ -106,7 +111,7 @@ rpart.models <- StatModels(models=list(built.rpart, other.rpart), categories=obs
 rf.models <- StatModels(models=list(built.rf, other.rf), categories=obs@categories[2:3], labels=obs@labels[2:3])
 ```
 
-Model performance is assessed using the receiver operator characteristic provided by the [ROCR](http://cran.r-project.org/web/packages/ROCR/index.html) package. lulccR contains the classes `PredictionMulti` and `PerformanceMulti` which are designed to represent multiple `prediction` and `performance` objects. The procedure to obtain these objects and assess performance is as follows:
+Model performance is assessed using the receiver operator characteristic provided by the [ROCR](http://cran.r-project.org/web/packages/ROCR/index.html) package. lulccR includes classes `PredictionMulti` and `PerformanceMulti` which are designed to represent multiple `prediction` and `performance` objects. The procedure to obtain these objects and assess performance is as follows:
 
 ```R
 # extract cell values for the testing partition
@@ -138,10 +143,16 @@ p <- plot.roc(list(glm=glm.perf, rpart=rpart.perf, rf=rf.perf))
 print(p)
 ```
 
+Spatially explicit land use change models are usually driven by non-spatial estimates of land use area for each timestep in the simulation. While many complex methods have been devised, in lulccR we simply provide a method for linear extrapolation of land use change, which relies on there being at least two observed land use maps:
+
 ```R
 # obtain demand scenario
 dmd <- approxExtrapDemand(obs=obs, tout=0:14)
+```
 
+The culmination of the modelling process is to simulate the location of land use change. lulccR provides a routine based on the CLUE-S model (Verburg et al., 2002) and a novel stochastic allocation procedure. The first step is to combine the various model inputs to ensure they are compatible:
+
+```R
 # prepare model input
 input <- ModelInput(x=obs,
                     pred=pred,
@@ -165,11 +176,17 @@ clues.input <- CluesModelInput(x=input,
                                params=clues.parms)
 
 ordered.input <- OrderedModelInput(x=input)
+```
 
-# allocate land use change using two methods
+Then, finally, we can perform allocation:
+
+```R
 clues.maps <- allocate(clues.input)
 ordered.maps <- allocate(ordered.input)
+```
+An important yet frequently overlooked aspect of land use change modelling is model validation. lulccR provides a recent validation method developed by Pontius et al. (2011), which simultaneously compares a reference (observed) map for time 1, a reference map for time 2 and a simulated map for time 2. The first step in this method is to calculate three dimensional contingency tables:
 
+```R
 # evaluate CLUE-S model output
 clues.tabs <- ThreeMapComparison(rt1=obs@maps[[1]],
                                  rt2=obs@maps[[2]],
@@ -177,14 +194,20 @@ clues.tabs <- ThreeMapComparison(rt1=obs@maps[[1]],
                                  categories=obs@categories,
                                  labels=obs@labels,
                                  factors=2^(1:10))
+```
 
+From these tables we can easily extract information about different types of agreement and disagreement as well as compute summary statistics such as the figure of merit:
+
+```R
 # calculate agreement budget and plot
 clues.agr <- AgreementBudget(x=clues.tabs,from=1,to=2)
 p <- plot.agreement(clues.agr)
+print(p)
 
 # calculate Figure of Merit and plot
 clues.fom <- FigureOfMerit(x=clues.tabs)
 p <- plot.fom(clues.fom)
+print(p)
 ```
 
 ## Warnings
