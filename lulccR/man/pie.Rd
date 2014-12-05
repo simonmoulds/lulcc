@@ -5,12 +5,13 @@
 \title{Land use change dataset for Plum Island Ecosystem}
 \format{A list containing the following elements:
 \describe{
-\item{lu_pie_1985}(RasterLayer showing land use in 1985 (forest, built, other))
-\item{lu_pie_1991}(RasterLayer showing land use in 1991)
-\item{lu_pie_1999}(RasterLayer showing land use in 1999)
-\item{pred_001}(RasterLayer showing elevation)
-\item{pred_002}(RasterLayer showing slope)
-\item{pred_003}(RasterLayer showing distance to built land in 1985)
+  \item{lu_pie_1985}{RasterLayer showing land use in 1985 (forest, built,
+  other)}
+  \item{lu_pie_1991}{RasterLayer showing land use in 1991}
+  \item{lu_pie_1999}{RasterLayer showing land use in 1999}
+  \item{pred_001}{RasterLayer showing elevation}
+  \item{pred_002}{RasterLayer showing slope}
+  \item{pred_003}{RasterLayer showing distance to built land in 1985}
 }}
 \usage{
 pie

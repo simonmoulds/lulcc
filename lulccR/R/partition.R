@@ -14,10 +14,10 @@
 #' @author Simon Moulds
 #' @return a list containing the following components:
 #' \describe{
-#'   \item{\code{train}:} a SpatialPoints object or numeric vector indicating the
-#'   cells in the training partition
-#'   \item{\code{test}:} a SpatialPoints object or numeric vector indicating the
-#'   cells in the testing partition
+#'   \item{\code{train}}{a SpatialPoints object or numeric vector indicating the
+#'   cells in the training partition}
+#'   \item{\code{test}}{a SpatialPoints object or numeric vector indicating the
+#'   cells in the testing partition}
 #' }
 #' 
 #' @export
