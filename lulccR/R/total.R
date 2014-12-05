@@ -8,9 +8,9 @@
 #'
 #' @return A list containing the following components:
 #' \describe{
-#' \item{\code{total}:} a matrix containing the total number of cells belonging
-#' to each category. Rows represent layers in the input Raster* object
-#' \item{\code{categories}:} the categories included in the calculation
+#'   \item{\code{total}}{a matrix containing the total number of cells belonging
+#'     to each category. Rows represent layers in the input Raster* object}
+#'   \item{\code{categories}}{the categories included in the calculation}
 #' }
 #'
 #' @author Simon Moulds
@@ -20,7 +20,6 @@
 #' @export
 #'
 #' @examples
-#'
 #' # RasterLayer
 #' total(x=sib$lu_sib_1997)
 #'
