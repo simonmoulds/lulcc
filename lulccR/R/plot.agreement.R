@@ -103,7 +103,7 @@ setMethod("plot.agreement", signature(x = "AgreementBudget"),
                              key=key,
                              polygon.cols=cols,
                              panel=function(x,y,polygon.cols,...) {
-                                 lattice::panel.superpose(x, y, panel.groups='.my.panel.polygon',col=polygon.cols,...)
+                                 lattice::panel.superpose(x, y, panel.groups=.my.panel.polygon,col=polygon.cols,...)
                              },
                              scales=scales,
                              xlab=xlab,
