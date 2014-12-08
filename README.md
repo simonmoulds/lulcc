@@ -10,7 +10,7 @@ library(lulccR)
 ```
 # Data and functions
 
-The package includes two example datasets: one for Sibuyan Island in the Phillipines and one for the Plum Island Ecosystem Dataset in Massachusetts, United States. Here we present a complete working example for the Plum Island Ecosystem dataset.
+The package includes two example datasets: one for Sibuyan Island in the Phillipines and one for the Plum Island Ecosystem in Massachusetts, United States. Here we present a complete working example for the Plum Island Ecosystem dataset.
 
 ## Input maps
 Land use change modelling requires a large amount of input data. The most important input is at least one map of observed land use. In lulccR, this data is represented by the `ObservedMaps` class:
@@ -23,14 +23,14 @@ obs <- ObservedMaps(x=pie,
                     t=c(0,6,14)) 
 ```
 
-A useful starting point in land use change modelling is to obtain a transition matrix for two observed land use maps to identify the main transition. This can be achieved with the `crossTabulate` function:
+A useful starting point in land use change modelling is to obtain a transition matrix for two observed land use maps to identify the main transitions. This can be achieved with the `crossTabulate` function:
 
 ```R
 # obtain a transition matrix from land use maps for 1985 and 1991
 crossTabulate(obs, index=c(1,2))
 ```
 
-This reveals for the Plum Island Ecosystem site that the main transition was from forest to built areas.
+For the Plum Island Ecosystem site this reveals that the main transition was from forest to built areas.
 
 The next stage is to relate observed land use or observed land use transitions to spatially explicit biophysical or socioeconomic predictor variables. These are loaded as follows:
 
@@ -38,7 +38,7 @@ The next stage is to relate observed land use or observed land use transitions t
 pred.maps <- predictorMaps(x=pie, pattern="pred")
 ```
 
-Another type of predictor variable is based on the observed pattern of land use, such as neighbourhood maps or maps showing the distance to a specific land use category. These variables are represented by the `PredictorCall` class. Here, we create a variable based on distance to forested cells:
+Predictor variables may also be derived from observed pattern of land use. For example, previous studies have used neighbourhood maps and maps showing the distance to a specific land use category. In lulccR these variables are represented by the `PredictorCall` class. Here, we create a variable based on distance to forested cells:
 
 ```R
 # function to calculate distance to land use category
@@ -64,6 +64,7 @@ pred <- Predictors(maps=pred.maps, calls=list(dist2forest))
 # for the current application we do not use dist2forest, so only use maps
 pred <- Predictors(maps=pred.maps)
 ```
+
 To fit predictive models we first divide the study region into training and testing partitions. The `partition` function returns a list with cell numbers for each partition:
 
 ```R
