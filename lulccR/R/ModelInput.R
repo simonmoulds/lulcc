@@ -27,6 +27,27 @@ if (!isGeneric("OrderedModelInput")) {
 #' in time and space for a model simulation. If they are, a ModelInput object is
 #' created which may be supplied to \code{\link{allocate}}.
 #'
+#' The \code{params} argument is a list of parameter values. For
+#' \code{CluesModelInput} it should contain the following components:
+#' \describe{
+#'   \item{\code{jitter.f}}{Parameter controlling the amount of perturbation
+#'     applied to the probability surface prior to running the CLUE-S iterative
+#'     algorithm. Higher values result in more perturbation. Default is 0.0001}
+#'   \item{\code{scale.f}}{In CLUE-S the suitability of land use types that do
+#'     not meet demand is increased by an amount obtained by multiplying this
+#'     parameter by the difference between allocated and demanded area. Default
+#'     is 0.0005}
+#'   \item{\code{max.iter}}{The maximum number of iterations in the simulation}
+#'   \item{\code{max.diff}}{The maximum allowed difference between allocated and
+#'     demanded area of any land use type. Default is 5}
+#'   \item{\code{ave.diff}}{The average allowed difference between allocated and
+#'     demanded area. Default is 5}
+#' }
+#'
+#' When \code{params} is passed to \code{OrderedModelInput} it should only
+#' contain \code{max.diff}, which has the same meaning as for
+#' \code{CluesModelInput}.
+#'
 #' @param obs an ObservedMaps object
 #' @param pred a Predictors object
 #' @param models a StatModels object
