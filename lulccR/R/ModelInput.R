@@ -61,12 +61,18 @@ NULL
 #' @export
 #' @rdname ModelInput
 
+#' @rdname ModelInput
+#' @exportMethod ModelInput
 setGeneric("ModelInput", function(x, pred, models, time, demand, ...)
            standardGeneric("ModelInput"))
 
+#' @rdname ModelInput
+#' @exportMethod CluesModelInput
 setGeneric("CluesModelInput", function(x, elas, ...)
            standardGeneric("CluesModelInput"))
 
+#' @rdname ModelInput
+#' @exportMethod OrderedModelInput
 setGeneric("OrderedModelInput", function(x, ...)
            standardGeneric("OrderedModelInput"))
 
