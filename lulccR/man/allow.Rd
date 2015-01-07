@@ -70,7 +70,7 @@ obs <- ObservedMaps(x=pie,
 # create arbitrary land use history raster
 hist <- raster(obs@maps[[1]])
 vals <- sample(1:10, ncell(hist))
-hist <- setValues(hist, vals[which(!is.na(getValues(obs@maps[[1]])))]
+hist <- setValues(hist, vals[which(!is.na(getValues(obs@maps[[1]])))])
 
 # calculate demand and get change direction for first timestep
 dmd <- approxExtrapDemand(obs=obs, tout=0:14)

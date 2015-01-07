@@ -12,7 +12,7 @@ the results of multiple model evaluations.
 \describe{
 \item{\code{performance}}{list of \code{performance} objects. Each object is
 calculated for the corresponding \code{prediction} object held in the
-\code{\link{class-PredictionMulti}} object supplied to the constructor
+\code{\linkS4class{PredictionMulti}} object supplied to the constructor
 function}
 
 \item{\code{auc}}{numeric vector containing the area under the ROC curve for each

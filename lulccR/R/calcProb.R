@@ -1,11 +1,6 @@
 setOldClass("rpart")
 setOldClass(c("randomForest.formula","randomForest"))
 
-if (!isGeneric("calcProb")) {
-    setGeneric("calcProb", function(object, ...)
-               standardGeneric("calcProb"))
-}
-
 #' Estimate location suitability
 #'
 #' Estimate location suitability with predictive models.
@@ -15,15 +10,21 @@ if (!isGeneric("calcProb")) {
 #'   \code{rpart::\link[rpart]{rpart}} and
 #'   \code{randomForest::\link[randomForest]{randomForest}}
 #' @param newdata data.frame containing new data
+#' @param df logical indicating whether the function should return a data.frame
+#'   or matrix (default)
 #' @param ... additional arguments to \code{predict}
 #'
 #' @seealso \code{\link{StatModels}}, \code{\link{predict}}
 #' @author Simon Moulds
-#' @return a data.frame
-#'
-#' @rdname calcProb
+#' @return a data.frame or matrix
 #'
 #' @export
+#' @rdname calcProb
+
+#if (!isGeneric("calcProb")) {
+setGeneric("calcProb", function(object, ...)
+           standardGeneric("calcProb"))
+#}
 
 #' @rdname calcProb
 #' @aliases calcProb,glm-method

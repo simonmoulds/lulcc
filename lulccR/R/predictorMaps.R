@@ -1,7 +1,7 @@
-if (!isGeneric("predictorMaps")) {
-    setGeneric("predictorMaps", function(x, pattern, ...)
-               standardGeneric("predictorMaps"))
-}
+## if (!isGeneric("predictorMaps")) {
+##     setGeneric("predictorMaps", function(x, pattern, ...)
+##                standardGeneric("predictorMaps"))
+## }
 
 #' Load predictor variables
 #'
@@ -40,9 +40,8 @@ if (!isGeneric("predictorMaps")) {
 #' @author Simon Moulds
 #' @return a predictorMaps object
 #'
-#' @rdname predictorMaps
-#'
 #' @export
+#' @rdname predictorMaps
 #'
 #' @examples
 #'
@@ -51,6 +50,11 @@ if (!isGeneric("predictorMaps")) {
 #'
 #' ## Sibuyan
 #' pred.maps <- PredictorMaps(x=sibuyan, pattern="pred")
+
+#if (!isGeneric("predictorMaps")) {
+setGeneric("predictorMaps", function(x, pattern, ...)
+           standardGeneric("predictorMaps"))
+#}
 
 #' @rdname predictorMaps
 #' @aliases predictorMaps,missing,character-method

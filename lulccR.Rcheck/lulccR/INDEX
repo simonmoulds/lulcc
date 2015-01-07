@@ -1,0 +1,60 @@
+AgreementBudget         Create an AgreementBudget object
+AgreementBudget-class   Class AgreementBudget
+AgreementBudget.plot    Plot method for AgreementBudget objects
+FigureOfMerit           Create a FigureOfMerit object
+FigureOfMerit-class     Class FigureOfMerit
+FigureOfMerit.plot      Plot method for FigureOfMerit objects
+ModelInput              Create a ModelInput object
+ModelInput-class        Class ModelInput
+NeighbMaps              Create a NeighbMaps object
+NeighbMaps-class        Class NeighbMaps
+ObservedMaps            Create an ObservedMaps object
+ObservedMaps-class      Class ObservedMaps
+PerformanceMulti        Create a PerformanceMulti object
+PerformanceMulti-class
+                        Class PerformanceMulti
+PerformanceMulti.plot   Plot methods for PerformanceMulti objects
+PredictionMulti         Create a PredictionMulti object
+PredictionMulti-class   Class PredictionMulti
+PredictorCall           Create a PredictorCall object
+PredictorCall-class     Class PredictorCall
+Predictors              Create a Predictors object
+Predictors-class        Class Predictors
+StatModels              Create a StatModels object
+StatModels-class        Class StatModels
+ThreeMapComparison      Evaluate allocation performance with three maps
+ThreeMapComparison-class
+                        Class ThreeMapComparison
+allocate                Allocate land use change spatially Perform
+                        spatially explicit allocation of land use
+                        change using different methods. Currently the
+                        function provides an algorithm based on the
+                        CLUE-S model (Verburg et al., 2002) and a novel
+                        stochastic procedure. 'allocate' is designed to
+                        be easily extensible. To write a new allocation
+                        method (apart from writing the algorithm
+                        itself) one simply needs to create a new class
+                        inheriting from 'ModelInput' and an 'allocate'
+                        method for this class.
+allow                   Implement decision rules for land use change
+allowNeighb             Implement neighbourhood decision rules
+approxExtrapDemand      Extrapolate land use area
+as.data.frame,Predictors-method
+                        Coerce 'Predictors' object to data.frame
+autoConvert             Automatic land use transitions
+calcProb                Estimate location suitability
+compareAUC              Compare the area under the ROC curve (AUC) for
+                        different models
+crossTabulate           Cross tabulate land use transitions
+lulccR-package          lulccR: land use change modelling in R
+partition               Partition raster data
+performance             Create 'performance' objects
+pie                     Land use change dataset for Plum Island
+                        Ecosystem
+predictorMaps           Load predictor variables
+resample,Predictors,Raster-method
+                        Resample maps in Predictors object or list
+roundSum                Round elements in matrix or data.frame rows
+sibuyan                 Land use change dataset for Sibuyan Island
+total                   Total number of cells in a categorical Raster*
+                        object

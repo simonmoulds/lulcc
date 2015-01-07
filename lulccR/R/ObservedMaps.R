@@ -1,11 +1,6 @@
 #' @include class-ObservedMaps.R
 NULL
 
-if (!isGeneric("ObservedMaps")) {
-    setGeneric("ObservedMaps", function(x, pattern, ...)
-               standardGeneric("ObservedMaps"))
-}
-
 #' Create an ObservedMaps object
 #'
 #' Methods to create an ObservedMaps object, which may be created from file, an
@@ -30,9 +25,8 @@ if (!isGeneric("ObservedMaps")) {
 #' @author Simon Moulds
 #' @return an ObservedMaps object
 #'
-#' @rdname ObservedMaps
-#'
 #' @export
+#' @rdname ObservedMaps
 #'
 #' @examples
 #'
@@ -49,6 +43,11 @@ if (!isGeneric("ObservedMaps")) {
 #'                     categories=c(1,2,3,4,5),
 #'                     labels=c("forest","coconut","grass","rice","other"),
 #'                     t=c(0))
+
+#if (!isGeneric("ObservedMaps")) {
+setGeneric("ObservedMaps", function(x, pattern, ...)
+           standardGeneric("ObservedMaps"))
+#}
 
 #' @rdname ObservedMaps
 #' @aliases ObservedMaps,missing,character-method

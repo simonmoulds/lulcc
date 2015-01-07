@@ -12,6 +12,11 @@ ThreeMapComparison(rt1, rt2, st2, categories, labels, factors, ...)
 
 \item{st2}{RasterLayer. Simulated land use map at time 2}
 
+\item{categories}{numeric vector of land use categories in observed maps}
+
+\item{labels}{character vector (optional) with labels corresponding to
+\code{categories}}
+
 \item{factors}{numeric vector of aggregation factors (equivalent to the 'fact'
 argument to \code{raster::\link[raster]{aggregate}} representing the
 resolutions at which model performance should be tested}

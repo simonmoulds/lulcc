@@ -1,10 +1,10 @@
 #' @include class-PredictorCall.R
 NULL
 
-if (!isGeneric("PredictorCall")) {
-    setGeneric("PredictorCall", function(call, update.arg, name, ...)
-               standardGeneric("PredictorCall"))
-}
+## if (!isGeneric("PredictorCall")) {
+##     setGeneric("PredictorCall", function(call, update.arg, name, ...)
+##                standardGeneric("PredictorCall"))
+## }
 
 #' Create a PredictorCall object 
 #'
@@ -20,9 +20,8 @@ if (!isGeneric("PredictorCall")) {
 #' @author Simon Moulds
 #' @return PredictorCall object
 #'
-#' @rdname PredictorCall
-#'
 #' @export
+#' @rdname PredictorCall
 #'
 #' @examples
 #' 
@@ -45,6 +44,11 @@ if (!isGeneric("PredictorCall")) {
 #' dist2forest <- PredictorCall(call=call("myfun", x=obs@@maps[[1]], category=1),
 #'                              update.arg="x",
 #'                              name="dist2forest")
+
+#if (!isGeneric("PredictorCall")) {
+setGeneric("PredictorCall", function(call, update.arg, name, ...)
+           standardGeneric("PredictorCall"))
+#}
 
 #' @rdname PredictorCall
 #' @aliases PredictorCall,call,character,character-method

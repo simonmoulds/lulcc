@@ -1,11 +1,6 @@
 #' @include class-AgreementBudget.R
 NULL
 
-if (!isGeneric("plot.agreement")) {
-    setGeneric("plot.agreement", function(x, ...)
-               standardGeneric("plot.agreement"))
-}
-
 #' Plot method for AgreementBudget objects
 #'
 #' Plot sources of agreement and disagreement between three maps at multiple
@@ -15,28 +10,35 @@ if (!isGeneric("plot.agreement")) {
 #'
 #' @param x object of class \code{AgreementBudget}
 #' @param pal character. A colour palette. Default is 'Set2' from RColorBrewer
-#' @param ... additional arguments to \code{xyplot}
+#' @param key list. See \code{lattice::\link[lattice]{xyplot}}
+#' @param scales list. See \code{lattice::\link[lattice]{xyplot}}
+#' @param xlab character or expression. See \code{lattice::\link[lattice]{xyplot}} 
+#' @param ylab character or expression. See \code{lattice::\link[lattice]{xyplot}}
+#' @param ... additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
-#' @seealso \code{\link{AgreementBudget}}
+#' @seealso \code{\link{AgreementBudget}}, \code{lattice::\link[lattice]{xyplot}}
 #' @author Simon Moulds
 #' @return a trellis object
 #'
-#' @rdname plot.agreement
-#'
 #' @export
+#' @rdname AgreementBudget.plot
 #'
 #' @references Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
 #' Comparison of three maps at multiple resolutions: a case study of land change
 #' simulation in Cho Don District, Vietnam. Annals of the Association of American
 #' Geographers 101(1): 45-62.
 
-#' @rdname plot.agreement
-#' @aliases plot.agreement,AgreementBudget-method
-setMethod("plot.agreement", signature(x = "AgreementBudget"),
-          function(x, pal="Set2", key, scales, xlab, ylab, ...) {
+setGeneric("AgreementBudget.plot", function(x, ...)
+           standardGeneric("AgreementBudget.plot"))
+
+#' @rdname AgreementBudget.plot
+#' @aliases AgreementBudget.plot,AgreementBudget-method
+setMethod("AgreementBudget.plot", signature(x = "AgreementBudget"),
+          function(x, col=RColorBrewer::brewer.pal(5, "Set2"), key, scales, xlab, ylab, ...) {
             
-              cols <- RColorBrewer::brewer.pal(5, pal)
-              border.cols <- rep("black", 5)
+              dots <- list(...)
+              #cols <- pal #RColorBrewer::brewer.pal(5, pal)
+              border.col <- rep("black", 5)
               labels <- c("change simulated as persistence",
                           "change simulated correctly",
                           "change simulated as change to wrong category",
@@ -48,8 +50,8 @@ setMethod("plot.agreement", signature(x = "AgreementBudget"),
                    n <- 5
                } else {
                    n <- 4
-                   cols <- c(cols[1:n], "transparent")
-                   border.cols <- c(border.cols[1:n], "transparent")
+                   col <- c(col[1:n], "transparent")
+                   border.col <- c(border.col[1:n], "transparent")
                    labels <- c(labels[1:n], "")
                }
 
@@ -67,7 +69,7 @@ setMethod("plot.agreement", signature(x = "AgreementBudget"),
                }
                data <- do.call(rbind, data.list)
 
-               default.key <- list(space="bottom", rectangles=list(col=cols, border=border.cols), text=list(labels), reverse.rows=TRUE)
+               default.key <- list(space="bottom", rectangles=list(col=col, border=border.col), text=list(labels), reverse.rows=TRUE)
                if (missing(key)) {
                    key <- default.key
                } else if (!is.null(key)) {
@@ -101,9 +103,9 @@ setMethod("plot.agreement", signature(x = "AgreementBudget"),
                              data=data,
                              groups=var,
                              key=key,
-                             polygon.cols=cols,
-                             panel=function(x,y,polygon.cols,...) {
-                                 lattice::panel.superpose(x, y, panel.groups=.my.panel.polygon,col=polygon.cols,...)
+                             polygon.col=col,
+                             panel=function(x,y,polygon.col,...) {
+                                 lattice::panel.superpose(x, y, panel.groups=.my.panel.polygon,col=polygon.col,...)
                              },
                              scales=scales,
                              xlab=xlab,

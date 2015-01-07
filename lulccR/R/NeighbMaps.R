@@ -1,10 +1,10 @@
 #' @include class-NeighbMaps.R
 NULL
 
-if (!isGeneric("NeighbMaps")) {
-    setGeneric("NeighbMaps", function(x, categories, weights, neighb, ...)
-               standardGeneric("NeighbMaps"))
-}
+## if (!isGeneric("NeighbMaps")) {
+##     setGeneric("NeighbMaps", function(x, categories, weights, neighb, ...)
+##                standardGeneric("NeighbMaps"))
+## }
 
 #' Create a NeighbMaps object
 #'
@@ -38,9 +38,8 @@ if (!isGeneric("NeighbMaps")) {
 #' @author Simon Moulds
 #' @return a NeighbMaps object
 #'
-#' @rdname NeighbMaps
-#'
 #' @export
+#' @rdname NeighbMaps
 #'
 #' @examples
 #'
@@ -75,6 +74,11 @@ if (!isGeneric("NeighbMaps")) {
 #' ## update nb2 for 1991
 #' nb2 <- NeighbMaps(x=obs@@maps[[2]],
 #'                   neighb=nb2)
+
+#if (!isGeneric("NeighbMaps")) {
+setGeneric("NeighbMaps", function(x, categories, weights, neighb, ...)
+           standardGeneric("NeighbMaps"))
+#}
 
 #' @rdname NeighbMaps
 #' @aliases NeighbMaps,RasterLayer,numeric,list,ANY-method

@@ -10,6 +10,9 @@
 #' @param rt1 RasterLayer. Observed land use map at time 1
 #' @param rt2 RasterLayer. Observed land use map at time 2
 #' @param st2 RasterLayer. Simulated land use map at time 2 
+#' @param categories numeric vector of land use categories in observed maps
+#' @param labels character vector (optional) with labels corresponding to
+#'   \code{categories}
 #' @param factors numeric vector of aggregation factors (equivalent to the 'fact'
 #'   argument to \code{raster::\link[raster]{aggregate}} representing the
 #'   resolutions at which model performance should be tested

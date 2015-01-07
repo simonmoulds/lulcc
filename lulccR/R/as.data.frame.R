@@ -1,3 +1,6 @@
+#' @include class-Predictors.R
+NULL
+
 #' Coerce \code{Predictors} object to data.frame
 #'
 #' This function extracts data from all rasters in a \code{\link{Predictors}}
@@ -20,35 +23,25 @@
 #' @return data.frame
 #'
 #' @export
+#' @rdname as.data.frame
 
-as.data.frame.Predictors <- function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...) {
-    ix <- timestep + 1
-    maps <- c(.getPredictorMaps(x@maps, timestep), lapply(x@calls, function(x) x@map))
-    s <- raster::stack(maps, ...) ## this will fail if map characteristics do not agree
-    df <- as.data.frame(s[cells], row.names=row.names, optional=optional)
-    names(df) <- c(x@map.names, x@call.names)
-    df
-}
+## setGeneric("as.data.frame", function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...)
+##            standardGeneric("as.data.frame"))
 
-#' Update data.frame
-#'
-#' Update a data.frame of predictor variables if dynamic variables or variables
-#' from PredictorCall objects are present.
-#'
-#' @param x data.frame to be updated
-#' @param y object of class Predictors
-#' @param map RasterLayer to be supplied to \code{\link{PredictorCall}} objects
-#' @param cells index of cells to be extracted. Number of elements must equal the
-#'   the number of rows in \code{x}
-#' @param timestep numeric indicating the timestep under consideration
-#' @param ... additional arguments (none)
-#'
-#' @seealso \code{\link{as.data.frame}}
-#' @author Simon Moulds
-#' @return a data.frame
-#'
-#' @export
-update.data.frame <- function(x, y, map, cells, timestep, ...) {
+#' @rdname as.data.frame
+#' @aliases as.data.frame,Predictors-method
+setMethod("as.data.frame", signature(x = "Predictors"),
+          function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...) {
+              ix <- timestep + 1
+              maps <- c(.getPredictorMaps(x@maps, timestep), lapply(x@calls, function(x) x@map))
+              s <- raster::stack(maps, ...) ## this will fail if map characteristics do not agree
+              df <- as.data.frame(s[cells], row.names=row.names, optional=optional)
+              names(df) <- c(x@map.names, x@call.names)
+              df
+          }
+)
+
+.update.data.frame <- function(x, y, map, cells, timestep, ...) {
     ix <- timestep + 1
     nms <- names(x)
     if (length(y@maps) > 0) {
@@ -86,5 +79,33 @@ update.data.frame <- function(x, y, map, cells, timestep, ...) {
     maps
 }
 
+## as.data.frame.Predictors <- function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...) {
+##     ix <- timestep + 1
+##     maps <- c(.getPredictorMaps(x@maps, timestep), lapply(x@calls, function(x) x@map))
+##     s <- raster::stack(maps, ...) ## this will fail if map characteristics do not agree
+##     df <- as.data.frame(s[cells], row.names=row.names, optional=optional)
+##     names(df) <- c(x@map.names, x@call.names)
+##     df
+## }
+
+## ' Update data.frame
+## '
+## ' Update a data.frame of predictor variables if dynamic variables or variables
+## ' from PredictorCall objects are present.
+## '
+## ' @param x data.frame to be updated
+## ' @param y object of class Predictors
+## ' @param map RasterLayer to be supplied to \code{\link{PredictorCall}} objects
+## ' @param cells index of cells to be extracted. Number of elements must equal the
+## '   the number of rows in \code{x}
+## ' @param timestep numeric indicating the timestep under consideration
+## ' @param ... additional arguments (none)
+## '
+## ' @name update
+## ' @seealso \code{\link{as.data.frame}}
+## ' @author Simon Moulds
+## ' @return a data.frame
+## '
+## ' @export
 
     

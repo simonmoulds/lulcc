@@ -1,11 +1,6 @@
 #' @include class-PerformanceMulti.R
 NULL
 
-if (!isGeneric("plot.roc")) {
-    setGeneric("plot.roc", function(perf, ...)
-               standardGeneric("plot.roc"))
-}
-
 #' Plot methods for PerformanceMulti objects
 #'
 #' Plot the the ROC curve for each \code{performance} object in a
@@ -14,57 +9,57 @@ if (!isGeneric("plot.roc")) {
 #' of mathematical model, ROC curves for different models are included on the
 #' same plot for model comparison
 #'
-#' @param perf either a single \code{PerformanceMulti} object or a list of these.
+#' @param x either a single \code{PerformanceMulti} object or a list of these.
 #'   If a list is provided it must be named.
 #' @param multipanel logical. If \code{TRUE}, create a trellis plot where the
 #'   number of panels equals the number of \code{PerformanceMulti} objects.
 #'   Otherwise, create a single plot for each \code{PerformanceMulti} object
-#' @param ... additional arguments to \code{xyplot}
+#' @param type character. See \code{lattice::\link[lattice]{panel.xyplot}}
+#' @param abline list. See \code{lattice::\link[lattice]{panel.xyplot}}
+#' @param col character. Plotting colour
+#' @param key.args list. TODO
+#' @param ... additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
 #' @seealso \code{\link{PerformanceMulti}}
 #' @author Simon Moulds
 #' @return a single plot (if \code{multipanel=FALSE}) or a list of plots.
 #'
-#' @rdname plot.roc
-#'
 #' @export
+#' @rdname PerformanceMulti.plot
 
-#' @rdname plot.roc
-#' @aliases plot.roc,PerformanceMulti-method
-setMethod("plot.roc", signature(perf = "PerformanceMulti"),
-          function(perf, type, ...) {
-            l <- list(perf)
+setGeneric("PerformanceMulti.plot", function(x, ...)
+           standardGeneric("PerformanceMulti.plot"))
+
+#' @rdname PerformanceMulti.plot
+#' @aliases PerformanceMulti.plot,PerformanceMulti-method
+setMethod("PerformanceMulti.plot", signature(x = "PerformanceMulti"),
+          function(x, type, ...) {
+            l <- list(x)
             names(l) <- type
-            out <- plot.roc(l, ...)
+            out <- PerformanceMulti.plot(l, ...)
           }
 )
 
-#' @rdname plot.roc
-#' @aliases plot.roc,list-method
-setMethod("plot.roc", signature(perf = "list"),
-          function(perf, multipanel=TRUE, type="l", abline=list(c(0,1), col="grey"), col=RColorBrewer::brewer.pal(9, "Set1"), key.args=NULL, ...) {
+#' @rdname PerformanceMulti.plot
+#' @aliases PerformanceMulti.plot,list-method
+setMethod("PerformanceMulti.plot", signature(x = "list"),
+          function(x, multipanel=TRUE, type="l", abline=list(c(0,1), col="grey"), col=RColorBrewer::brewer.pal(9, "Set1"), key.args=list(), ..) {
 
-          ## function(perf, multipanel=TRUE, type="l", abline=list(c(0,1), col="grey"),
-          ##          col=brewer.pal(9,"Set1"), aspect="iso",
-          ##          ##xlab="False positive rate (1-specificity)",
-          ##          ##ylab="True positive rate (sensitivity)",
-          ##          key.args=list(cex=0.8, size=2), ...) {
-
-              c1 <- all(sapply(perf, function(x) is(x, "PerformanceMulti")))
+              c1 <- all(sapply(x, function(x) is(x, "PerformanceMulti")))
               if (!c1) stop("all objects in list should have class 'PerformanceMulti'")
 
-              categories <- sort(unique(unlist(lapply(perf, function(x) x@categories))))
+              categories <- sort(unique(unlist(lapply(x, function(x) x@categories))))
               out <- list()
               rocdata <- list()
               aucdata <- list()
               
               for (i in 1:length(categories)) {
-                  ix <- sapply(perf, function(x) categories[i] %in% x@categories)              
+                  ix <- sapply(x, function(x) categories[i] %in% x@categories)              
                   roc <- list()
                   stats <- list()
                   for (j in 1:length(ix)) {
                       if (ix[j]) {
-                          p <- perf[[j]]
+                          p <- x[[j]]
                           ixx <- which(p@categories %in% categories[i])
                           ixxx <- length(roc) + 1
                           roc[[ixxx]] <- data.frame(x=p@performance[[ixx]]@x.values[[1]],
@@ -74,8 +69,8 @@ setMethod("plot.roc", signature(perf = "list"),
                       }
                   }
                 
-                  names(roc) <- names(perf)[ix]
-                  names(stats) <- names(perf)[ix]
+                  names(roc) <- names(x)[ix]
+                  names(stats) <- names(x)[ix]
 
                   aucdata[[i]] <- plyr::ldply(stats)
                   rocdata[[i]] <- plyr::ldply(roc)
@@ -83,7 +78,7 @@ setMethod("plot.roc", signature(perf = "list"),
               }
 
               plotdata <- do.call(rbind, rocdata)
-              plotdata$.id <- factor(plotdata$.id, levels=names(perf), order=TRUE)
+              plotdata$.id <- factor(plotdata$.id, levels=names(x), order=TRUE)
               
               p <- lattice::xyplot(y ~ x|lab,
                                    data=plotdata,

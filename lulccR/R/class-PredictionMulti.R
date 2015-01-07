@@ -12,10 +12,9 @@
 #'
 #' @author Simon Moulds
 #'
-#' @rdname class-PredictionMulti
-#'
 #' @export
 #' @exportClass PredictionMulti
+#' @rdname class-PredictionMulti
 
 setClass("PredictionMulti",
          representation(

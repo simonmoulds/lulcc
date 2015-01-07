@@ -8,8 +8,12 @@ NULL
 #' \code{\link{PredictionMulti}} object.
 #'
 #' @param pred an object of class \code{PredictionMulti}
+#' @param measure performance measure to use for the evaluation. See
+#'   \code{ROCR::\link[ROCR]{performance}}
+#' @param x.measure a second performance measure. See
+#'   \code{ROCR::\link[ROCR]{performance}}
 #' @param ... additional arguments to \code{\link{performance}}
-#'
+#' 
 #' @seealso \code{\link{performance}}, \code{\link{PredictionMulti}}
 #' @author Simon Moulds
 #' @return a \code{PerformanceMulti} object

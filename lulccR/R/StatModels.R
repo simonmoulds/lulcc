@@ -1,10 +1,10 @@
 #' @include class-StatModels.R
 NULL
 
-if (!isGeneric("StatModels")) {
-    setGeneric("StatModels", function(models, obs, categories, labels, ...)
-               standardGeneric("StatModels"))
-}
+## if (!isGeneric("StatModels")) {
+##     setGeneric("StatModels", function(models, obs, categories, labels, ...)
+##                standardGeneric("StatModels"))
+## }
 
 #' Create a StatModels object
 #'
@@ -21,9 +21,13 @@ if (!isGeneric("StatModels")) {
 #' @author Simon Moulds
 #' @return an object of class \code{\link{StatModels}}
 #'
-#' @rdname StatModels
-#'
 #' @export
+#' @rdname StatModels
+
+#if (!isGeneric("StatModels")) {
+setGeneric("StatModels", function(models, obs, categories, labels, ...)
+           standardGeneric("StatModels"))
+#}
 
 #' @rdname StatModels
 #' @aliases StatModels,list,ObservedMaps,ANY,ANY-method

@@ -5,7 +5,7 @@
 #'
 #' @slot performance list of \code{performance} objects. Each object is
 #'   calculated for the corresponding \code{prediction} object held in the
-#'   \code{\link{class-PredictionMulti}} object supplied to the constructor
+#'   \code{\linkS4class{PredictionMulti}} object supplied to the constructor
 #'   function
 #' @slot auc numeric vector containing the area under the ROC curve for each
 #'   performance object
@@ -14,10 +14,9 @@
 #'
 #' @author Simon Moulds
 #'
-#' @rdname class-PerformanceMulti
-#'
 #' @export
 #' @exportClass PerformanceMulti
+#' @rdname class-PerformanceMulti
 
 setClass("PerformanceMulti",
          slots = c(performance = "list",

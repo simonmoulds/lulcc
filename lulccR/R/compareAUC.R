@@ -1,7 +1,7 @@
-if (!isGeneric("compareAUC")) {
-    setGeneric("compareAUC", function(pred, ...)
-               standardGeneric("compareAUC"))
-}
+## if (!isGeneric("compareAUC")) {
+##     setGeneric("compareAUC", function(pred, ...)
+##                standardGeneric("compareAUC"))
+## }
 
 #' Compare the area under the ROC curve (AUC) for different models
 #'
@@ -22,15 +22,18 @@ if (!isGeneric("compareAUC")) {
 #' @seealso \code{\link{PredictionMulti}}, \code{ROCR::\link[ROCR]{performance}}
 #' @author Simon Moulds
 #' @return data.frame containing AUC values
-#'
-#' @rdname compareAUC
-#'
 #' @export
+#' @rdname compareAUC
 #'
 #' @references Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).
 #' ROCR: visualizing classifier performance in R. Bioinformatics
 #' 21(20):3940-3941.
-   
+
+#if (!isGeneric("compareAUC")) {
+setGeneric("compareAUC", function(pred, ...)
+           standardGeneric("compareAUC"))
+#}
+
 #' @rdname compareAUC
 #' @aliases compareAUC,PredictionMulti-method
 setMethod("compareAUC", signature(pred = "PredictionMulti"),

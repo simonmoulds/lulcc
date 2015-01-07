@@ -30,7 +30,7 @@ statistical model in a \code{StatModels} object. It should be used with
 \code{\link{PerformanceMulti}} to evaluate multiple models with exactly the
 same criteria while keeping track of which model corresponds to which land use
 category. This makes it easier to write functions that compare different model
-types for the same land use category, such as \code{\link{plot.roc}}.
+types for the same land use category, such as \code{\link{PerformanceMulti.plot}}.
 }
 \author{
 Simon Moulds

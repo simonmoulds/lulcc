@@ -8,6 +8,12 @@ PerformanceMulti(pred, measure, x.measure = "cutoff", ...)
 \arguments{
 \item{pred}{an object of class \code{PredictionMulti}}
 
+\item{measure}{performance measure to use for the evaluation. See
+\code{ROCR::\link[ROCR]{performance}}}
+
+\item{x.measure}{a second performance measure. See
+\code{ROCR::\link[ROCR]{performance}}}
+
 \item{...}{additional arguments to \code{\link{performance}}}
 }
 \value{

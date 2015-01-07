@@ -1,11 +1,6 @@
 #' @include class-FigureOfMerit.R
 NULL
 
-if (!isGeneric("plot.fom")) {
-    setGeneric("plot.fom", function(x, ...)
-               standardGeneric("plot.fom"))
-}
-
 #' Plot method for FigureOfMerit objects
 #'
 #' Plot the overall, category-specific or transition-specific figure of merit at
@@ -26,13 +21,15 @@ if (!isGeneric("plot.fom")) {
 #' @author Simon Moulds
 #' @return a trellis object
 #'
-#' @rdname plot.fom
-#'
 #' @export
+#' @rdname FigureOfMerit.plot
 
-#' @rdname plot.fom
-#' @aliases plot.fom,FigureOfMerit-method
-setMethod("plot.fom", signature(x = "FigureOfMerit"),
+setGeneric("FigureOfMerit.plot", function(x, ...)
+           standardGeneric("FigureOfMerit.plot"))
+
+#' @rdname FigureOfMerit.plot
+#' @aliases FigureOfMerit.plot,FigureOfMerit-method
+setMethod("FigureOfMerit.plot", signature(x = "FigureOfMerit"),
           function(x, from, to, type="b", key, scales, xlab, ylab, ...) {
 
               if (!missing(from) && missing(to)) fom <- "category"

@@ -1,7 +1,7 @@
-if ( !isGeneric("crossTabulate")) {
-    setGeneric("crossTabulate", function(x, y, ...)
-               standardGeneric("crossTabulate"))
-}
+## if ( !isGeneric("crossTabulate")) {
+##     setGeneric("crossTabulate", function(x, y, ...)
+##                standardGeneric("crossTabulate"))
+## }
 
 #' Cross tabulate land use transitions
 #'
@@ -27,9 +27,8 @@ if ( !isGeneric("crossTabulate")) {
 #' @author Simon Moulds
 #' @return a data.frame
 #'
-#' @rdname crossTabulate
-#'
 #' @export
+#' @rdname crossTabulate
 #' 
 #' @references Pontius Jr, R.G., Shusas, E., McEachern, M. (2004). Detecting
 #' important categorical land changes while accounting for persistence.
@@ -51,6 +50,11 @@ if ( !isGeneric("crossTabulate")) {
 #'                     t=c(0,6,14))
 #'
 #' crossTabulate(x=obs, index=c(1,3))
+
+#if ( !isGeneric("crossTabulate")) {
+setGeneric("crossTabulate", function(x, y, ...)
+           standardGeneric("crossTabulate"))
+#}
 
 #' @rdname crossTabulate
 #' @aliases crossTabulate,RasterLayer,RasterLayer-method

@@ -1,10 +1,10 @@
 #' @include class-Predictors.R
 NULL
 
-if (!isGeneric("Predictors")) {
-    setGeneric("Predictors", function(maps, calls, ...)
-               standardGeneric("Predictors"))
-}
+## if (!isGeneric("Predictors")) {
+##     setGeneric("Predictors", function(maps, calls, ...)
+##                standardGeneric("Predictors"))
+## }
 
 #' Create a Predictors object
 #'
@@ -19,9 +19,8 @@ if (!isGeneric("Predictors")) {
 #' @author Simon Moulds
 #' @return Predictors object
 #'
-#' @rdname Predictors
-#'
 #' @export
+#' @rdname Predictors
 #'
 #' @examples
 #'
@@ -41,6 +40,11 @@ if (!isGeneric("Predictors")) {
 #'
 #' maps <- predictorMaps(x=pie, pattern="pred")
 #' pred <- Predictors(maps=maps, calls=list(call))
+
+#if (!isGeneric("Predictors")) {
+setGeneric("Predictors", function(maps, calls, ...)
+           standardGeneric("Predictors"))
+#}
 
 #' @rdname Predictors
 #' @aliases Predictors,missing,list-method

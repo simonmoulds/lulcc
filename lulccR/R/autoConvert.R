@@ -12,6 +12,7 @@
 #' @param mask numeric vector containing binary values where 0 indicates cells
 #'   that are not allowed to change. These are automatically assigned the same
 #'   land use category for every timestep
+#' @param prob matrix. TODO
 #' @param categories numeric vector containing land use categories 
 #' @param ... additional arguments (none)
 #'

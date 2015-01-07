@@ -1,7 +1,8 @@
 Package: lulccR
 Title: Land use change modelling in R
 Version: 0.0.0.9000
-Authors@R: "Simon Moulds <simonmdev@riseup.net> [aut, cre]"
+Author: Simon Moulds <simonm@riseup.net>
+Maintainer: Simon Moulds <simonm@riseup.net>
 Description: Functions for land use change modelling in R
 Depends:
     methods,
@@ -9,10 +10,8 @@ Depends:
 License: GPL-3
 LazyData: true
 Imports:
-    randomForest,
     raster,
     ROCR,
-    rpart
 Suggests:
     caret,
     gsubfn,
@@ -24,7 +23,11 @@ Suggests:
 VignetteBuilder: knitr
 Collate:
     'AgreementBudget.R'
+    'class-AgreementBudget.R'
+    'AgreementBudget.plot.R'
     'FigureOfMerit.R'
+    'class-FigureOfMerit.R'
+    'FigureOfMerit.plot.R'
     'class-StatModels.R'
     'class-Predictors.R'
     'class-ObservedMaps.R'
@@ -35,6 +38,7 @@ Collate:
     'ObservedMaps.R'
     'class-PerformanceMulti.R'
     'PerformanceMulti.R'
+    'PerformanceMulti.plot.R'
     'class-PredictionMulti.R'
     'PredictionMulti.R'
     'class-PredictorCall.R'
@@ -49,8 +53,6 @@ Collate:
     'as.data.frame.R'
     'autoConvert.R'
     'calcProb.R'
-    'class-AgreementBudget.R'
-    'class-FigureOfMerit.R'
     'class-ThreeMapComparison.R'
     'compareAUC.R'
     'crossTabulate.R'
@@ -58,9 +60,6 @@ Collate:
     'lulccR-package.R'
     'partition.R'
     'performance.R'
-    'plot.agreement.R'
-    'plot.fom.R'
-    'plot.roc.R'
     'predictorMaps.R'
     'resample.R'
     'total.R'

@@ -13,6 +13,8 @@ timestep}
 that are not allowed to change. These are automatically assigned the same
 land use category for every timestep}
 
+\item{prob}{matrix. TODO}
+
 \item{categories}{numeric vector containing land use categories}
 
 \item{...}{additional arguments (none)}

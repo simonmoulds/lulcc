@@ -5,21 +5,6 @@
 #' @include class-StatModels.R
 NULL
 
-if (!isGeneric("ModelInput")) {
-    setGeneric("ModelInput", function(x, pred, models, time, demand, ...)
-               standardGeneric("ModelInput"))
-}
-
-if (!isGeneric("CluesModelInput")) {
-    setGeneric("CluesModelInput", function(x, elas, ...)
-               standardGeneric("CluesModelInput"))
-}
-
-if (!isGeneric("OrderedModelInput")) {
-    setGeneric("OrderedModelInput", function(x, ...)
-               standardGeneric("OrderedModelInput"))
-}
-
 #' Create a ModelInput object
 #'
 #' Methods to combine several object classes that are useful for land use change
@@ -48,13 +33,11 @@ if (!isGeneric("OrderedModelInput")) {
 #' contain \code{max.diff}, which has the same meaning as for
 #' \code{CluesModelInput}.
 #'
-#' @param obs an ObservedMaps object
+#' @param x an ObservedMaps object or a ModelInput object
 #' @param pred a Predictors object
 #' @param models a StatModels object
 #' @param time numeric vector containing timesteps over which simulation will
 #'   occur  
-#' @param points SpatialPoints* object defining the points over which simulation
-#'   will occur
 #' @param demand matrix with demand for each land use category in terms of number
 #'   of cells to be allocated. The first row should be the number of cells
 #'   allocated to the initial observed land use map (i.e. the land use map for
@@ -64,8 +47,6 @@ if (!isGeneric("OrderedModelInput")) {
 #' @param mask RasterLayer containing binary values where 0 indicates cells
 #'   that are not allowed to change
 #' @param neighb an object of class NeighbMaps
-#' @param checkExtent logical. Should the input maps be checked for NA values
-#'   in the study region defined by \code{points}?
 #' @param rules matrix with land use change decision rules
 #' @param nb.rules numeric with neighbourhood decision rules
 #' @param elas numeric indicating elasticity of each land use category to change
@@ -77,13 +58,21 @@ if (!isGeneric("OrderedModelInput")) {
 #' @author Simon Moulds
 #' @return a ModelInput object
 #'
+#' @export
 #' @rdname ModelInput
-#'
-#' @export ModelInput 
+
+setGeneric("ModelInput", function(x, pred, models, time, demand, ...)
+           standardGeneric("ModelInput"))
+
+setGeneric("CluesModelInput", function(x, elas, ...)
+           standardGeneric("CluesModelInput"))
+
+setGeneric("OrderedModelInput", function(x, ...)
+           standardGeneric("OrderedModelInput"))
 
 #' @rdname ModelInput
 #' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY-method
-setMethod("ModelInput", signature(x ="ModelInput", pred = "ANY", models = "ANY", time = "ANY", demand = "ANY"),
+setMethod("ModelInput", signature(x = "ModelInput", pred = "ANY", models = "ANY", time = "ANY", demand = "ANY"),
           function(x, pred, models, time, demand, ...) {
               out <- x
           }
@@ -154,10 +143,8 @@ setMethod("ModelInput", signature(x = "ObservedMaps", pred = "Predictors", model
            }
 )
 
-
 #' @rdname ModelInput
 #' @aliases CluesModelInput,ModelInput,numeric-method
-#' @exportMethod CluesModelInput
 setMethod("CluesModelInput", signature(x = "ModelInput", elas = "numeric"),
           function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
 
@@ -194,7 +181,6 @@ setMethod("CluesModelInput", signature(x = "ModelInput", elas = "numeric"),
 
 #' @rdname ModelInput
 #' @aliases CluesModelInput,ObservedMaps,numeric-method
-#' @exportMethod CluesModelInput
 setMethod("CluesModelInput", signature(x = "ObservedMaps", elas = "numeric"),
           function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
               input <- ModelInput(x=x, ...)
@@ -220,7 +206,6 @@ setMethod("CluesModelInput", signature(x = "ObservedMaps", elas = "numeric"),
 
 #' @rdname ModelInput
 #' @aliases OrderedModelInput,ModelInput-method
-#' @exportMethod OrderedModelInput
 setMethod("OrderedModelInput", signature(x = "ModelInput"),
           function(x, rules=NULL, nb.rules=NULL, params, ...) {
 
@@ -253,7 +238,6 @@ setMethod("OrderedModelInput", signature(x = "ModelInput"),
 
 #' @rdname ModelInput
 #' @aliases OrderedModelInput,ObservedMaps-method
-#' @exportMethod OrderedModelInput
 setMethod("OrderedModelInput", signature(x = "ObservedMaps"),
           function(x, rules=NULL, nb.rules=NULL, params, ...) {
               input <- ModelInput(x=x, ...)

@@ -1,10 +1,10 @@
 #' @include class-ModelInput.R
 NULL
 
-if (!isGeneric("allocate")) {
-    setGeneric("allocate", function(input, ...)
-               standardGeneric("allocate"))
-}
+## if (!isGeneric("allocate")) {
+##     setGeneric("allocate", function(input, ...)
+##                standardGeneric("allocate"))
+## }
 
 #' @title Allocate land use change spatially
 #'
@@ -23,13 +23,17 @@ if (!isGeneric("allocate")) {
 #' @seealso \code{link{ModelInput}}
 #' @author Simon Moulds
 #'
-#' @rdname allocate
-#' 
 #' @export
+#' @rdname allocate
 #'
 #' @references Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,
 #' V., Mastura, S.S. (2002). Modeling the spatial dynamics of regional land use:
 #' the CLUE-S model. Environmental management, 30(3):391-405.
+
+#if (!isGeneric("allocate")) {
+setGeneric("allocate", function(input, ...)
+           standardGeneric("allocate"))
+#}
 
 #' @rdname allocate
 #' @aliases allocate,CluesModelInput-method
@@ -53,7 +57,7 @@ setMethod("allocate", signature(input = "OrderedModelInput"),
     map0.vals <- raster::extract(input@map0, cells)
     hist.vals <- raster::extract(input@hist, cells)
     mask.vals <- raster::extract(input@mask, cells)
-    newdata <- as.data.frame(x=pred, cells=cells)
+    newdata <- as.data.frame(x=input@pred, cells=cells)
     prob <- calcProb(object=input@models, newdata=newdata)
     maps <- raster::stack(input@map0)
               
@@ -61,7 +65,7 @@ setMethod("allocate", signature(input = "OrderedModelInput"),
          print(i)                                    
          d <- input@demand[(i+1),] ## demand for current timestep
          if (input@pred@dynamic && i > 1) {
-             newdata <- update.data.frame(x=newdata, y=input@pred, map=input@map0, cells=cells, timestep=(i-1))
+             newdata <- .update.data.frame(x=newdata, y=input@pred, map=input@map0, cells=cells, timestep=(i-1))
              prob <- calcProb(object=input@models, newdata=newdata)
          }
          tprob <- prob
