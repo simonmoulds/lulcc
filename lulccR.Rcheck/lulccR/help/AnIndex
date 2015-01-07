@@ -10,7 +10,6 @@ allow	allow
 allowNeighb	allowNeighb
 approxExtrapDemand	approxExtrapDemand
 as.data.frame,PredictorMaps-method	as.data.frame
-autoConvert	autoConvert
 calcProb	calcProb
 calcProb,glm-method	calcProb
 calcProb,randomForest-method	calcProb
@@ -57,7 +56,6 @@ PerformanceMulti	PerformanceMulti
 PerformanceMulti-class	PerformanceMulti-class
 PerformanceMulti.plot	PerformanceMulti.plot
 PerformanceMulti.plot,list-method	PerformanceMulti.plot
-PerformanceMulti.plot,PerformanceMulti-method	PerformanceMulti.plot
 pie	pie
 PredictionMulti	PredictionMulti
 PredictionMulti-class	PredictionMulti-class
@@ -67,7 +65,6 @@ PredictorMaps,list,character-method	PredictorMaps
 PredictorMaps,missing,character-method	PredictorMaps
 PredictorMaps,RasterStack,character-method	PredictorMaps
 PredictorMaps-class	PredictorMaps-class
-resample	resample
 resample,list,Raster-method	resample
 resample,PredictorMaps,Raster-method	resample
 roundSum	roundSum

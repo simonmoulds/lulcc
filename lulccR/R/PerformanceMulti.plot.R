@@ -30,15 +30,15 @@ NULL
 setGeneric("PerformanceMulti.plot", function(x, ...)
            standardGeneric("PerformanceMulti.plot"))
 
-#' @rdname PerformanceMulti.plot
-#' @aliases PerformanceMulti.plot,PerformanceMulti-method
-setMethod("PerformanceMulti.plot", signature(x = "PerformanceMulti"),
-          function(x, type, ...) {
-            l <- list(x)
-            names(l) <- type
-            out <- PerformanceMulti.plot(l, ...)
-          }
-)
+## @rdname PerformanceMulti.plot
+## @aliases PerformanceMulti.plot,PerformanceMulti-method
+## setMethod("PerformanceMulti.plot", signature(x = "PerformanceMulti"),
+##           function(x, type, ...) {
+##               l <- list(x)
+##               names(l) <- type
+##               out <- PerformanceMulti.plot(l, ...)
+##           }
+## )
 
 #' @rdname PerformanceMulti.plot
 #' @aliases PerformanceMulti.plot,list-method

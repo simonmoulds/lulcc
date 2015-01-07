@@ -30,10 +30,8 @@ NULL
 #' V., Mastura, S.S. (2002). Modeling the spatial dynamics of regional land use:
 #' the CLUE-S model. Environmental management, 30(3):391-405.
 
-#if (!isGeneric("allocate")) {
 setGeneric("allocate", function(input, ...)
            standardGeneric("allocate"))
-#}
 
 #' @rdname allocate
 #' @aliases allocate,CluesModelInput-method
@@ -91,7 +89,7 @@ setMethod("allocate", signature(input = "OrderedModelInput"),
          }
 
          ## make automatic conversions if necessary
-         auto <- autoConvert(x=map0.vals, mask=mask.vals, prob=tprob, categories=input@categories)
+         auto <- .autoConvert(x=map0.vals, mask=mask.vals, prob=tprob, categories=input@categories)
          map0.vals[auto$ix] <- auto$vals
          tprob[auto$ix,] <- NA
                   
@@ -188,6 +186,8 @@ setMethod("allocate", signature(input = "OrderedModelInput"),
 
 }
 
+## helper functions
+
 #' @useDynLib lulccR
 .updatehist <- function(lu0, lu1, hist) {
     hist <- .Call("updatehist", lu0, lu1, hist)
@@ -200,5 +200,15 @@ setMethod("allocate", signature(input = "OrderedModelInput"),
         out <- NA
     }
 }
+
+#' @useDynLib lulccR
+.autoConvert <- function(x, mask, prob, categories, ...) {
+    if (length(x) != length(mask)) stop("mask does not correspond with x")
+    vals <- .Call("autoconvert", x, mask, prob, categories)
+    ix <- which(!is.na(vals))
+    vals <- vals[ix]
+    out <- list(ix=ix, vals=vals)
+}
+
 
 

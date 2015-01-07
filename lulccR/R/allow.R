@@ -95,22 +95,3 @@ allow <- function(x, hist, categories, cd, rules, ...) {
     allow[allow == 0] <- NA
     allow
 }
-
-## if ( !isGeneric("allow")) {
-##     setGeneric("allow", function(lu, hist, categories, cd, rules, ...)
-##                    standardGeneric("allow"))
-## }
-
-## setMethod("allow", signature(lu = "numeric", hist = "numeric", categories = "numeric", cd = "numeric", rules = "matrix"),
-##           function(lu, hist, categories, cd, rules, ...) {
-##               if (!all(dim(rules) %in% length(categories))) stop("rules matrix should be a square matrix with dimension equal to number of land use categories")
-##               if (length(cd) != length(categories)) stop("cd must have the same length as categories")
-##               if (length(lu) != length(hist)) stop("hist cells do not correspond with lu cells")
-##               if (length(lu) == 0) stop("lu contains no values")
-##               rules <- t(rules)
-##               allow <- matrix(data=NA, nrow=length(lu), ncol=length(categories))
-##               allow[] <- .Call("allow", lu, hist, categories, cd, rules)
-##               allow[allow == 0] <- NA
-##               return(allow)
-##           }
-## )

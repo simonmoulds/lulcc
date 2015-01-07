@@ -49,7 +49,6 @@ Collate:
     'allowNeighb.R'
     'approxExtrapDemand.R'
     'as.data.frame.R'
-    'autoConvert.R'
     'calcProb.R'
     'class-ThreeMapComparison.R'
     'compareAUC.R'
