@@ -9,6 +9,7 @@ allocate,OrderedModelInput-method	allocate
 allow	allow
 allowNeighb	allowNeighb
 approxExtrapDemand	approxExtrapDemand
+as.data.frame	as.data.frame
 as.data.frame,PredictorMaps-method	as.data.frame
 calcProb	calcProb
 calcProb,glm-method	calcProb
@@ -65,6 +66,7 @@ PredictorMaps,list,character-method	PredictorMaps
 PredictorMaps,missing,character-method	PredictorMaps
 PredictorMaps,RasterStack,character-method	PredictorMaps
 PredictorMaps-class	PredictorMaps-class
+resample	resample
 resample,list,Raster-method	resample
 resample,PredictorMaps,Raster-method	resample
 roundSum	roundSum

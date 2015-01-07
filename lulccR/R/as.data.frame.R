@@ -23,6 +23,7 @@ NULL
 #' @export
 #' @rdname as.data.frame
 
+setGeneric("as.data.frame")
 ## setGeneric("as.data.frame", function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...)
 ##            standardGeneric("as.data.frame"))
 

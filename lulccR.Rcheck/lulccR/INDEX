@@ -37,8 +37,7 @@ allocate                Allocate land use change spatially Perform
 allow                   Implement decision rules for land use change
 allowNeighb             Implement neighbourhood decision rules
 approxExtrapDemand      Extrapolate land use area
-as.data.frame,PredictorMaps-method
-                        Coerce 'PredictorMaps' object to data.frame
+as.data.frame           Coerce 'PredictorMaps' object to data.frame
 calcProb                Estimate location suitability
 compareAUC              Compare the area under the ROC curve (AUC) for
                         different models
@@ -48,8 +47,7 @@ partition               Partition raster data
 performance             Create 'performance' objects
 pie                     Land use change dataset for Plum Island
                         Ecosystem
-resample,PredictorMaps,Raster-method
-                        Resample maps in PredictorMaps object or list
+resample                Resample maps in PredictorMaps object or list
 roundSum                Round elements in matrix or data.frame rows
 sibuyan                 Land use change dataset for Sibuyan Island
 total                   Total number of cells in a categorical Raster*

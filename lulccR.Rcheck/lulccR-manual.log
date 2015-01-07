@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.9)  7 JAN 2015 18:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.9)  7 JAN 2015 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -772,7 +772,7 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 
-Overfull \hbox (34.46725pt too wide) in paragraph at lines 628--633
+Overfull \hbox (34.46725pt too wide) in paragraph at lines 631--636
 []\T1/ptm/m/n/10 The user can com-pare the per-for-mance of dif-fer-ent sta-tis
 -ti-cal mod-els by pro-vid-ing a list of \T1/fi4/m/n/10 PredictionMulti
  []
@@ -785,7 +785,7 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 
-Overfull \hbox (15.48746pt too wide) in paragraph at lines 679--682
+Overfull \hbox (15.48746pt too wide) in paragraph at lines 682--685
 []\T1/ptm/m/n/10 RasterLayer rep-re-sent-ing land use map from an ear-lier time
 step or an Ob-servedMaps
  []
@@ -849,7 +849,7 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1229--1233
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1232--1236
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
@@ -864,7 +864,7 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-Overfull \hbox (8.86827pt too wide) in paragraph at lines 1368--1370
+Overfull \hbox (8.86827pt too wide) in paragraph at lines 1371--1373
 []\T1/ptm/m/n/10 A wrap-per func-tion for \T1/fi4/m/n/10 ROCR::[][]performance[
 ][][] \T1/ptm/m/n/10 to cre-ate \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-je
 cts from a list of \T1/fi4/m/n/10 prediction
@@ -879,7 +879,7 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-Overfull \hbox (15.79823pt too wide) in paragraph at lines 1472--1476
+Overfull \hbox (15.79823pt too wide) in paragraph at lines 1475--1479
 []\T1/ptm/m/n/10 list of \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-jects. Ea
 ch ob-ject is cal-cu-lated for the cor-re-spond-ing \T1/fi4/m/n/10 prediction
  []
@@ -911,7 +911,7 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1696--1700
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1699--1703
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
@@ -948,7 +948,7 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-Overfull \hbox (59.41827pt too wide) in paragraph at lines 2015--2018
+Overfull \hbox (59.41827pt too wide) in paragraph at lines 2021--2024
 []\T1/ptm/m/n/10 numeric vec-tor of ag-gre-ga-tion fac-tors (equiv-a-lent to th
 e 'fact' ar-gu-ment to \T1/fi4/m/n/10 raster::[][]aggregate[][][]
  []
@@ -973,112 +973,106 @@ Overfull \hbox (25.8567pt too wide) in paragraph at lines 16--18
  []
 
 
-Overfull \hbox (15.8567pt too wide) in paragraph at lines 46--48
+Overfull \hbox (15.8567pt too wide) in paragraph at lines 48--50
 []\T1/fi4/m/it/10 CluesModelInput,ModelInput,numeric-method 
  []
 
 
-Overfull \hbox (25.8567pt too wide) in paragraph at lines 48--50
+Overfull \hbox (25.8567pt too wide) in paragraph at lines 50--52
 []\T1/fi4/m/it/10 CluesModelInput,ObservedMaps,numeric-method 
  []
 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 61--63
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 63--65
 []\T1/fi4/m/it/10 crossTabulate,RasterLayer,RasterLayer-method 
  []
 
 
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 71--73
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 73--75
 []\T1/fi4/m/it/10 FigureOfMerit.plot,FigureOfMerit-method 
  []
 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 83--85
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 85--87
 []\T1/fi4/m/it/10 ModelInput,ModelInput,ANY,ANY,ANY,ANY-method 
  []
 
 
-Overfull \hbox (160.8567pt too wide) in paragraph at lines 85--87
+Overfull \hbox (160.8567pt too wide) in paragraph at lines 87--89
 []\T1/fi4/m/it/10 ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matr
 ix-method 
  []
 
 
-Overfull \hbox (50.8567pt too wide) in paragraph at lines 93--95
+Overfull \hbox (50.8567pt too wide) in paragraph at lines 95--97
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,ANY,ANY,NeighbMaps-method 
  []
 
 
-Overfull \hbox (40.8567pt too wide) in paragraph at lines 95--97
+Overfull \hbox (40.8567pt too wide) in paragraph at lines 97--99
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,numeric,list,ANY-method 
  []
 
 
-Overfull \hbox (55.8567pt too wide) in paragraph at lines 97--99
+Overfull \hbox (55.8567pt too wide) in paragraph at lines 99--101
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,numeric,numeric,ANY-method 
  []
 
 
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 105--107
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 107--109
 []\T1/fi4/m/it/10 ObservedMaps,character,character-method 
  []
 
 [37
 
 ]
-Overfull \hbox (10.8567pt too wide) in paragraph at lines 152--154
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 154--156
 []\T1/fi4/m/it/10 PredictorMaps,character,character-method 
  []
 
 
-Overfull \hbox (0.8567pt too wide) in paragraph at lines 156--158
+Overfull \hbox (0.8567pt too wide) in paragraph at lines 158--160
 []\T1/fi4/m/it/10 PredictorMaps,missing,character-method 
  []
 
 
-Overfull \hbox (20.8567pt too wide) in paragraph at lines 158--160
+Overfull \hbox (20.8567pt too wide) in paragraph at lines 160--162
 []\T1/fi4/m/it/10 PredictorMaps,RasterStack,character-method 
  []
 
 
-Overfull \hbox (40.01662pt too wide) in paragraph at lines 169--171
-\T1/ptm/m/it/10 (\T1/fi4/m/it/10 resample,PredictorMaps,Raster-method\T1/ptm/m/
-it/10 )\T1/ptm/m/n/10 , 
- []
-
-
-Overfull \hbox (50.8567pt too wide) in paragraph at lines 183--185
+Overfull \hbox (50.8567pt too wide) in paragraph at lines 187--189
 []\T1/fi4/m/it/10 StatModels,list,ANY,ANY,numeric,character-method 
  []
 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 185--187
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 189--191
 []\T1/fi4/m/it/10 StatModels,list,ANY,numeric,character-method 
  []
 
 
-Overfull \hbox (25.8567pt too wide) in paragraph at lines 187--189
+Overfull \hbox (25.8567pt too wide) in paragraph at lines 191--193
 []\T1/fi4/m/it/10 StatModels,list,ObservedMaps,ANY,ANY-method 
  []
 
 [38])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2117.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2117.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2123.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2123.
  (./Rd2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2117.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2117.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2123.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2123.
 
 Package rerunfilecheck Info: File `Rd2.out' has not changed.
-(rerunfilecheck)             Checksum: 7FA5C50007D9BA87517112B1C35582D8;2561.
+(rerunfilecheck)             Checksum: 3D3C95F470391634C64F120399D73A69;2451.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2117.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2123.
  ) 
 Here is how much of TeX's memory you used:
- 6817 strings out of 495035
- 101317 string characters out of 6181702
+ 6818 strings out of 495035
+ 101212 string characters out of 6181702
  168549 words of memory out of 5000000
  9446 multiletter control sequences out of 15000+600000
  41287 words of font info for 51 fonts, out of 8000000 for 9000
@@ -1086,9 +1080,6 @@ Here is how much of TeX's memory you used:
  38i,6n,34p,563b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Rfn.aggregate} has been referenced but does not e
 xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Rfn.resample} has been referenced but does not exis
-t, replaced by a fixed one
 
 pdfTeX warning (dest): name{Rfn.prediction.Rdash.class} has been referenced but
  does not exist, replaced by a fixed one
@@ -1137,10 +1128,10 @@ t/fonts/type1/public/inconsolata/Inconsolata.pfb></usr/share/texlive/texmf-dist
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (38 pages, 159648 bytes).
+Output written on Rd2.pdf (38 pages, 158991 bytes).
 PDF statistics:
- 1031 PDF objects out of 1200 (max. 8388607)
- 974 compressed objects within 10 object streams
- 400 named destinations out of 1000 (max. 500000)
+ 1034 PDF objects out of 1200 (max. 8388607)
+ 977 compressed objects within 10 object streams
+ 401 named destinations out of 1000 (max. 500000)
  321 words of extra memory for PDF output out of 10000 (max. 10000000)
 
