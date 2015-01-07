@@ -16,6 +16,7 @@ calcProb,glm-method	calcProb
 calcProb,randomForest-method	calcProb
 calcProb,rpart-method	calcProb
 calcProb,StatModels-method	calcProb
+CluesModelInput	ModelInput
 CluesModelInput,ModelInput,numeric-method	ModelInput
 CluesModelInput,ObservedMaps,numeric-method	ModelInput
 CluesModelInput-class	class-ModelInput
@@ -45,6 +46,7 @@ ObservedMaps,missing,character-method	ObservedMaps
 ObservedMaps,RasterLayer,ANY-method	ObservedMaps
 ObservedMaps,RasterStack,ANY-method	ObservedMaps
 ObservedMaps-class	class-ObservedMaps
+OrderedModelInput	ModelInput
 OrderedModelInput,ModelInput-method	ModelInput
 OrderedModelInput,ObservedMaps-method	ModelInput
 OrderedModelInput-class	class-ModelInput

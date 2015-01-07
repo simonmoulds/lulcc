@@ -26,4 +26,4 @@ Collate: 'AgreementBudget.R' 'class-AgreementBudget.R'
         'compareAUC.R' 'crossTabulate.R' 'data.R' 'lulccR-package.R'
         'partition.R' 'performance.R' 'predictorMaps.R' 'resample.R'
         'total.R'
-Built: R 3.1.0; x86_64-unknown-linux-gnu; 2015-01-07 11:50:45 UTC; unix
+Built: R 3.1.0; x86_64-unknown-linux-gnu; 2015-01-07 14:32:35 UTC; unix

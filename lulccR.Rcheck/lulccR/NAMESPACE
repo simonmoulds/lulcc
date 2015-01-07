@@ -2,11 +2,13 @@
 
 export(AgreementBudget)
 export(AgreementBudget.plot)
+export(CluesModelInput)
 export(FigureOfMerit)
 export(FigureOfMerit.plot)
 export(ModelInput)
 export(NeighbMaps)
 export(ObservedMaps)
+export(OrderedModelInput)
 export(PerformanceMulti)
 export(PerformanceMulti.plot)
 export(PredictionMulti)

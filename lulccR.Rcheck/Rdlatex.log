@@ -97,48 +97,48 @@ step or an Ob-servedMaps
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18] [19]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1264--1268
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1270--1274
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
+[21] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [22]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (8.86827pt too wide) in paragraph at lines 1403--1405
+Overfull \hbox (8.86827pt too wide) in paragraph at lines 1409--1411
 []\T1/ptm/m/n/10 A wrap-per func-tion for \T1/fi4/m/n/10 ROCR::[][]performance[
 ][][] \T1/ptm/m/n/10 to cre-ate \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-je
 cts from a list of \T1/fi4/m/n/10 prediction
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
+[23] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [24]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (15.79823pt too wide) in paragraph at lines 1507--1511
+Overfull \hbox (15.79823pt too wide) in paragraph at lines 1513--1517
 []\T1/ptm/m/n/10 list of \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-jects. Ea
 ch ob-ject is cal-cu-lated for the cor-re-spond-ing \T1/fi4/m/n/10 prediction
-[24] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [25]
+[25] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [27]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [27] [28]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28] [29]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [29]
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1833--1837
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30]
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1839--1843
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30] [31]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31] [32]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [34]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [35]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [36]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (59.41827pt too wide) in paragraph at lines 2228--2231
+Overfull \hbox (59.41827pt too wide) in paragraph at lines 2234--2237
 []\T1/ptm/m/n/10 numeric vec-tor of ag-gre-ga-tion fac-tors (equiv-a-lent to th
 e 'fact' ar-gu-ment to \T1/fi4/m/n/10 raster::[][]aggregate[][][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [36]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [37]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [38]
 No file Rd2.ind.
-[38] (./Rd2.aux)
+[39] (./Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -198,12 +198,12 @@ t/fonts/type1/public/inconsolata/Inconsolata.pfb></usr/share/texlive/texmf-dist
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (38 pages, 144610 bytes).
+Output written on Rd2.pdf (39 pages, 144739 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (178 entries accepted, 3 rejected).
-Sorting entries....done (1396 comparisons).
-Generating output file Rd2.ind....done (220 lines written, 4 warnings).
+Scanning input file Rd2.idx....done (180 entries accepted, 3 rejected).
+Sorting entries....done (1470 comparisons).
+Generating output file Rd2.ind....done (224 lines written, 4 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013)
@@ -303,47 +303,47 @@ step or an Ob-servedMaps
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19] [20]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1264--1268
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1270--1274
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [22]
+[22] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (8.86827pt too wide) in paragraph at lines 1403--1405
+Overfull \hbox (8.86827pt too wide) in paragraph at lines 1409--1411
 []\T1/ptm/m/n/10 A wrap-per func-tion for \T1/fi4/m/n/10 ROCR::[][]performance[
 ][][] \T1/ptm/m/n/10 to cre-ate \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-je
 cts from a list of \T1/fi4/m/n/10 prediction
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [24]
+[24] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [25]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (15.79823pt too wide) in paragraph at lines 1507--1511
+Overfull \hbox (15.79823pt too wide) in paragraph at lines 1513--1517
 []\T1/ptm/m/n/10 list of \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-jects. Ea
 ch ob-ject is cal-cu-lated for the cor-re-spond-ing \T1/fi4/m/n/10 prediction
-[25] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
+[26] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [27]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [27]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28] [29]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [29] [30]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30]
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1833--1837
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31]
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1839--1843
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31] [32]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [32] [33]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [35]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [36]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [37]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (59.41827pt too wide) in paragraph at lines 2228--2231
+Overfull \hbox (59.41827pt too wide) in paragraph at lines 2234--2237
 []\T1/ptm/m/n/10 numeric vec-tor of ag-gre-ga-tion fac-tors (equiv-a-lent to th
 e 'fact' ar-gu-ment to \T1/fi4/m/n/10 raster::[][]aggregate[][][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [37]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [38] (./Rd2.ind
-[39]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [38]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [39] (./Rd2.ind
+[40]
 
 LaTeX Font Warning: Font shape `T1/fi4/m/it' undefined
 (Font)              using `T1/fi4/m/n' instead on input line 16.
@@ -352,68 +352,68 @@ LaTeX Font Warning: Font shape `T1/fi4/m/it' undefined
 Overfull \hbox (25.8567pt too wide) in paragraph at lines 16--18
 []\T1/fi4/m/n/10 AgreementBudget.plot,AgreementBudget-method 
 
-Overfull \hbox (15.8567pt too wide) in paragraph at lines 44--46
+Overfull \hbox (15.8567pt too wide) in paragraph at lines 46--48
 []\T1/fi4/m/it/10 CluesModelInput,ModelInput,numeric-method 
 
-Overfull \hbox (25.8567pt too wide) in paragraph at lines 46--48
+Overfull \hbox (25.8567pt too wide) in paragraph at lines 48--50
 []\T1/fi4/m/it/10 CluesModelInput,ObservedMaps,numeric-method 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 59--61
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 61--63
 []\T1/fi4/m/it/10 crossTabulate,RasterLayer,RasterLayer-method 
 
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 69--71
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 71--73
 []\T1/fi4/m/it/10 FigureOfMerit.plot,FigureOfMerit-method 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 81--83
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 83--85
 []\T1/fi4/m/it/10 ModelInput,ModelInput,ANY,ANY,ANY,ANY-method 
 
-Overfull \hbox (145.8567pt too wide) in paragraph at lines 83--85
+Overfull \hbox (145.8567pt too wide) in paragraph at lines 85--87
 []\T1/fi4/m/it/10 ModelInput,ObservedMaps,Predictors,StatModels,numeric,matrix-
 method 
 
-Overfull \hbox (50.8567pt too wide) in paragraph at lines 91--93
+Overfull \hbox (50.8567pt too wide) in paragraph at lines 93--95
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,ANY,ANY,NeighbMaps-method 
 
-Overfull \hbox (40.8567pt too wide) in paragraph at lines 93--95
+Overfull \hbox (40.8567pt too wide) in paragraph at lines 95--97
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,numeric,list,ANY-method 
 
-Overfull \hbox (55.8567pt too wide) in paragraph at lines 95--97
+Overfull \hbox (55.8567pt too wide) in paragraph at lines 97--99
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,numeric,numeric,ANY-method 
 
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 103--105
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 105--107
 []\T1/fi4/m/it/10 ObservedMaps,character,character-method 
-[40]
-Overfull \hbox (35.8567pt too wide) in paragraph at lines 138--140
+[41]
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 142--144
 []\T1/fi4/m/it/10 PerformanceMulti.plot,PerformanceMulti-method 
 
-Overfull \hbox (35.8567pt too wide) in paragraph at lines 150--152
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 154--156
 []\T1/fi4/m/it/10 PredictorCall,call,character,character-method 
 
-Overfull \hbox (60.8567pt too wide) in paragraph at lines 152--154
+Overfull \hbox (60.8567pt too wide) in paragraph at lines 156--158
 []\T1/fi4/m/it/10 PredictorCall,PredictorCall,RasterLayer,ANY-method 
 
-Overfull \hbox (10.8567pt too wide) in paragraph at lines 157--159
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 161--163
 []\T1/fi4/m/it/10 predictorMaps,character,character-method 
 
-Overfull \hbox (0.8567pt too wide) in paragraph at lines 161--163
+Overfull \hbox (0.8567pt too wide) in paragraph at lines 165--167
 []\T1/fi4/m/it/10 predictorMaps,missing,character-method 
 
-Overfull \hbox (20.8567pt too wide) in paragraph at lines 163--165
+Overfull \hbox (20.8567pt too wide) in paragraph at lines 167--169
 []\T1/fi4/m/it/10 predictorMaps,RasterStack,character-method 
 
-Overfull \hbox (25.01662pt too wide) in paragraph at lines 184--186
+Overfull \hbox (25.01662pt too wide) in paragraph at lines 188--190
 \T1/ptm/m/it/10 (\T1/fi4/m/it/10 resample,Predictors,Raster-method\T1/ptm/m/it/
 10 )\T1/ptm/m/n/10 , 
 
-Overfull \hbox (50.8567pt too wide) in paragraph at lines 198--200
+Overfull \hbox (50.8567pt too wide) in paragraph at lines 202--204
 []\T1/fi4/m/it/10 StatModels,list,ANY,ANY,numeric,character-method 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 200--202
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 204--206
 []\T1/fi4/m/it/10 StatModels,list,ANY,numeric,character-method 
 
-Overfull \hbox (25.8567pt too wide) in paragraph at lines 202--204
+Overfull \hbox (25.8567pt too wide) in paragraph at lines 206--208
 []\T1/fi4/m/it/10 StatModels,list,ObservedMaps,ANY,ANY-method 
-[41]) (./Rd2.aux)
+[42]) (./Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -477,12 +477,12 @@ t/fonts/type1/public/inconsolata/Inconsolata.pfb></usr/share/texlive/texmf-dist
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (41 pages, 166127 bytes).
+Output written on Rd2.pdf (42 pages, 166261 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (178 entries accepted, 3 rejected).
-Sorting entries....done (1405 comparisons).
-Generating output file Rd2.ind....done (220 lines written, 4 warnings).
+Scanning input file Rd2.idx....done (180 entries accepted, 3 rejected).
+Sorting entries....done (1479 comparisons).
+Generating output file Rd2.ind....done (224 lines written, 4 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013)
@@ -582,47 +582,47 @@ step or an Ob-servedMaps
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19] [20]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1264--1268
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1270--1274
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [22]
+[22] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (8.86827pt too wide) in paragraph at lines 1403--1405
+Overfull \hbox (8.86827pt too wide) in paragraph at lines 1409--1411
 []\T1/ptm/m/n/10 A wrap-per func-tion for \T1/fi4/m/n/10 ROCR::[][]performance[
 ][][] \T1/ptm/m/n/10 to cre-ate \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-je
 cts from a list of \T1/fi4/m/n/10 prediction
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [24]
+[24] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [25]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (15.79823pt too wide) in paragraph at lines 1507--1511
+Overfull \hbox (15.79823pt too wide) in paragraph at lines 1513--1517
 []\T1/ptm/m/n/10 list of \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-jects. Ea
 ch ob-ject is cal-cu-lated for the cor-re-spond-ing \T1/fi4/m/n/10 prediction
-[25] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
+[26] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [27]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [27]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28] [29]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [29] [30]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30]
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1833--1837
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31]
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1839--1843
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31] [32]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [32] [33]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [35]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [36]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [37]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (59.41827pt too wide) in paragraph at lines 2228--2231
+Overfull \hbox (59.41827pt too wide) in paragraph at lines 2234--2237
 []\T1/ptm/m/n/10 numeric vec-tor of ag-gre-ga-tion fac-tors (equiv-a-lent to th
 e 'fact' ar-gu-ment to \T1/fi4/m/n/10 raster::[][]aggregate[][][]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [37]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [38] (./Rd2.ind
-[39]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [38]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [39] (./Rd2.ind
+[40]
 
 LaTeX Font Warning: Font shape `T1/fi4/m/it' undefined
 (Font)              using `T1/fi4/m/n' instead on input line 16.
@@ -631,68 +631,68 @@ LaTeX Font Warning: Font shape `T1/fi4/m/it' undefined
 Overfull \hbox (25.8567pt too wide) in paragraph at lines 16--18
 []\T1/fi4/m/n/10 AgreementBudget.plot,AgreementBudget-method 
 
-Overfull \hbox (15.8567pt too wide) in paragraph at lines 44--46
+Overfull \hbox (15.8567pt too wide) in paragraph at lines 46--48
 []\T1/fi4/m/it/10 CluesModelInput,ModelInput,numeric-method 
 
-Overfull \hbox (25.8567pt too wide) in paragraph at lines 46--48
+Overfull \hbox (25.8567pt too wide) in paragraph at lines 48--50
 []\T1/fi4/m/it/10 CluesModelInput,ObservedMaps,numeric-method 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 59--61
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 61--63
 []\T1/fi4/m/it/10 crossTabulate,RasterLayer,RasterLayer-method 
 
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 69--71
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 71--73
 []\T1/fi4/m/it/10 FigureOfMerit.plot,FigureOfMerit-method 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 81--83
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 83--85
 []\T1/fi4/m/it/10 ModelInput,ModelInput,ANY,ANY,ANY,ANY-method 
 
-Overfull \hbox (145.8567pt too wide) in paragraph at lines 83--85
+Overfull \hbox (145.8567pt too wide) in paragraph at lines 85--87
 []\T1/fi4/m/it/10 ModelInput,ObservedMaps,Predictors,StatModels,numeric,matrix-
 method 
 
-Overfull \hbox (50.8567pt too wide) in paragraph at lines 91--93
+Overfull \hbox (50.8567pt too wide) in paragraph at lines 93--95
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,ANY,ANY,NeighbMaps-method 
 
-Overfull \hbox (40.8567pt too wide) in paragraph at lines 93--95
+Overfull \hbox (40.8567pt too wide) in paragraph at lines 95--97
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,numeric,list,ANY-method 
 
-Overfull \hbox (55.8567pt too wide) in paragraph at lines 95--97
+Overfull \hbox (55.8567pt too wide) in paragraph at lines 97--99
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,numeric,numeric,ANY-method 
 
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 103--105
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 105--107
 []\T1/fi4/m/it/10 ObservedMaps,character,character-method 
-[40]
-Overfull \hbox (35.8567pt too wide) in paragraph at lines 138--140
+[41]
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 142--144
 []\T1/fi4/m/it/10 PerformanceMulti.plot,PerformanceMulti-method 
 
-Overfull \hbox (35.8567pt too wide) in paragraph at lines 150--152
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 154--156
 []\T1/fi4/m/it/10 PredictorCall,call,character,character-method 
 
-Overfull \hbox (60.8567pt too wide) in paragraph at lines 152--154
+Overfull \hbox (60.8567pt too wide) in paragraph at lines 156--158
 []\T1/fi4/m/it/10 PredictorCall,PredictorCall,RasterLayer,ANY-method 
 
-Overfull \hbox (10.8567pt too wide) in paragraph at lines 157--159
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 161--163
 []\T1/fi4/m/it/10 predictorMaps,character,character-method 
 
-Overfull \hbox (0.8567pt too wide) in paragraph at lines 161--163
+Overfull \hbox (0.8567pt too wide) in paragraph at lines 165--167
 []\T1/fi4/m/it/10 predictorMaps,missing,character-method 
 
-Overfull \hbox (20.8567pt too wide) in paragraph at lines 163--165
+Overfull \hbox (20.8567pt too wide) in paragraph at lines 167--169
 []\T1/fi4/m/it/10 predictorMaps,RasterStack,character-method 
 
-Overfull \hbox (25.01662pt too wide) in paragraph at lines 184--186
+Overfull \hbox (25.01662pt too wide) in paragraph at lines 188--190
 \T1/ptm/m/it/10 (\T1/fi4/m/it/10 resample,Predictors,Raster-method\T1/ptm/m/it/
 10 )\T1/ptm/m/n/10 , 
 
-Overfull \hbox (50.8567pt too wide) in paragraph at lines 198--200
+Overfull \hbox (50.8567pt too wide) in paragraph at lines 202--204
 []\T1/fi4/m/it/10 StatModels,list,ANY,ANY,numeric,character-method 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 200--202
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 204--206
 []\T1/fi4/m/it/10 StatModels,list,ANY,numeric,character-method 
 
-Overfull \hbox (25.8567pt too wide) in paragraph at lines 202--204
+Overfull \hbox (25.8567pt too wide) in paragraph at lines 206--208
 []\T1/fi4/m/it/10 StatModels,list,ObservedMaps,ANY,ANY-method 
-[41]) (./Rd2.aux)
+[42]) (./Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -751,8 +751,8 @@ t/fonts/type1/public/inconsolata/Inconsolata.pfb></usr/share/texlive/texmf-dist
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (41 pages, 165826 bytes).
+Output written on Rd2.pdf (42 pages, 166201 bytes).
 Transcript written on Rd2.log.
 Saving output to 'lulccR-manual.pdf' ...
 Done
-You may want to clean up by 'rm -rf /tmp/Rtmp6RUNrh/Rd2pdf38c6305afa0'
+You may want to clean up by 'rm -rf /tmp/RtmpG5pWEM/Rd2pdf1e5a2a2ba894'
