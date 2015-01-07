@@ -15,10 +15,9 @@
 #'
 #' @author Simon Moulds
 #'
-#' @rdname class-NeighbMaps
-#'
 #' @export
 #' @exportClass NeighbMaps
+#' @rdname NeighbMaps-class
 
 setClass("NeighbMaps",
          representation(

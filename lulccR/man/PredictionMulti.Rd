@@ -10,7 +10,7 @@ PredictionMulti(models, obs, pred, timestep = 0, partition, ...)
 
 \item{obs}{an \code{ObservedMaps} object}
 
-\item{pred}{a \code{Predictors} object}
+\item{pred}{a \code{PredictorMaps} object}
 
 \item{timestep}{numeric indicating the timestep of the observed map in
 \code{obs} against which the observed map should be tested}

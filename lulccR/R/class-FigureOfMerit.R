@@ -11,11 +11,10 @@
 #' @slot labels character vector corresponding to \code{categories}
 #'
 #' @author Simon Moulds
-#'
-#' @rdname class-FigureOfMerit
 #' 
 #' @export
 #' @exportClass FigureOfMerit
+#' @rdname FigureOfMerit-class
 
 setClass("FigureOfMerit",
          slots = c(overall = "list",

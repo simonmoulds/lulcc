@@ -16,7 +16,7 @@
 #'
 #' @export
 #' @exportClass PerformanceMulti
-#' @rdname class-PerformanceMulti
+#' @rdname PerformanceMulti-class
 
 setClass("PerformanceMulti",
          slots = c(performance = "list",

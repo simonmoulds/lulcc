@@ -1,26 +1,21 @@
-#' @include class-Predictors.R
+#' @include class-PredictorMaps.R
 NULL
 
-if (!isGeneric("resample")) {
-    setGeneric("resample", function(x, y, ...)
-               standardGeneric("resample"))
-}
-
-#' Resample maps in Predictors object or list 
+#' Resample maps in PredictorMaps object or list 
 #'
 #' A wrapper function for \code{raster::\link[raster]{resample}} to resample
-#' raster objects in a \link{Predictors-class} object or list.
+#' raster objects in a \link{PredictorMaps-class} object or list.
 #'
-#' @param x a Predictors object or list of Raster* maps to be resampled
+#' @param x a PredictorMaps object or list of Raster* maps to be resampled
 #' @param y Raster* object with parameters that \code{x} should be resampled to
 #' @param method method used to compute values for the new RasterLayer, should be
 #'   \code{"bilinear"} for bilinear interpolation, or \code{"ngb"} for nearest
 #'   neighbour
 #' @param ... additional arguments to \code{raster::\link[raster]{resample}}
 #'
-#' @seealso \code{\link{Predictors}}
+#' @seealso \code{\link{PredictorMaps}}
 #' @author Simon Moulds
-#' @return Predictors object or list, depending on \code{x}
+#' @return PredictorMaps object or list, depending on \code{x}
 #'
 #' @rdname resample
 #'
@@ -28,19 +23,22 @@ if (!isGeneric("resample")) {
 #'
 #' @examples
 #'
-#' ## create Predictors object
+#' ## create PredictorMaps object
 #' pred <- predictorMaps(x=pie, pattern="pred")
-#' pred <- Predictors(maps=pred)
+#' pred <- PredictorMaps(maps=pred)
 #'
 #' ## resample to ensure maps have same characteristics as observed maps
 #' pred <- resample(x=pred, y=pie$lu_pie_1985, method="ngb")
- 
+
+setGeneric("resample", function(x, y, ...)
+           standardGeneric("resample"))
+
 #' @rdname resample
-#' @aliases resample,Predictors,Raster-method
-setMethod("resample", signature(x = "Predictors", y = "Raster"),
+#' @aliases resample,PredictorMaps,Raster-method
+setMethod("resample", signature(x = "PredictorMaps", y = "Raster"),
           function(x, y, method="ngb", ...) {
               maps <- x@maps
-              calls <- x@calls
+              ##calls <- x@calls
               resamp.maps <- list()
               if (length(maps) > 0) {
                   for (i in 1:length(maps)) {
@@ -50,16 +48,16 @@ setMethod("resample", signature(x = "Predictors", y = "Raster"),
                   resamp.maps <- maps
               }
 
-              if (length(calls) > 0) {
-                  for (i in 1:length(calls)) {
-                      resamp.calls[[i]] <- PredictorCall(call=calls[[i]], update.arg=y)
-                  }
-              } else {
-                  resamp.calls <- calls
-              }
+              ## if (length(calls) > 0) {
+              ##     for (i in 1:length(calls)) {
+              ##         resamp.calls[[i]] <- PredictorCall(call=calls[[i]], update.arg=y)
+              ##     }
+              ## } else {
+              ##     resamp.calls <- calls
+              ## }
               
               x@maps <- resamp.maps
-              x@calls <- resamp.calls
+              ## x@calls <- resamp.calls
               x
           }
 )

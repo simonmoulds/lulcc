@@ -1,7 +1,7 @@
 #' @include class-ModelInput.R
 #' @include class-NeighbMaps.R
 #' @include class-ObservedMaps.R
-#' @include class-Predictors.R
+#' @include class-PredictorMaps.R
 #' @include class-StatModels.R
 NULL
 
@@ -34,7 +34,7 @@ NULL
 #' \code{CluesModelInput}.
 #'
 #' @param x an ObservedMaps object or a ModelInput object
-#' @param pred a Predictors object
+#' @param pred a PredictorMaps object
 #' @param models a StatModels object
 #' @param time numeric vector containing timesteps over which simulation will
 #'   occur  
@@ -85,8 +85,8 @@ setMethod("ModelInput", signature(x = "ModelInput", pred = "ANY", models = "ANY"
 )
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ObservedMaps,Predictors,StatModels,numeric,matrix-method
-setMethod("ModelInput", signature(x = "ObservedMaps", pred = "Predictors", models = "StatModels", time = "numeric", demand = "matrix"),
+#' @aliases ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matrix-method
+setMethod("ModelInput", signature(x = "ObservedMaps", pred = "PredictorMaps", models = "StatModels", time = "numeric", demand = "matrix"),
            function(x, pred, models, time, demand, hist, mask, neighb=NULL, ...) {
                map0 <- x@maps[[1]] ## initial map
                categories <- x@categories

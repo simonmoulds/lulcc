@@ -1,4 +1,4 @@
-#' @include class-NeighbMaps.R class-Predictors.R class-StatModels.R class-ObservedMaps.R
+#' @include class-NeighbMaps.R class-PredictorMaps.R class-StatModels.R class-ObservedMaps.R
 NULL
 
 setClassUnion("NeighbMapsOrNULL", c("NeighbMaps", "NULL"))
@@ -29,16 +29,15 @@ setClassUnion("RasterLayerOrNULL", c("RasterLayer", "NULL"))
 #'
 #' @author Simon Moulds
 #'
-#' @rdname class-ModelInput
-#'
 #' @export
 #' @exportClass ModelInput CluesModelInput OrderedModelInput
+#' @rdname ModelInput-class
 
 setClass("ModelInput",
          slots = c(map0 = "RasterLayerOrNULL",           
                    categories = "numeric",
                    labels = "character",
-                   pred = "Predictors",
+                   pred = "PredictorMaps",
                    models = "StatModels",
                    time = "numeric",
                    demand = "matrixOrNULL",
@@ -51,7 +50,7 @@ setClass("ModelInput",
          }
 )
 
-#' @rdname class-ModelInput
+#' @rdname ModelInput-class
 setClass("CluesModelInput",
          contains = "ModelInput",
          slots = c(rules = "matrixOrNULL",
@@ -64,7 +63,7 @@ setClass("CluesModelInput",
          }
 )
 
-#' @rdname class-ModelInput
+#' @rdname ModelInput-class
 setClass("OrderedModelInput",
          contains = "ModelInput",
          slots = c(rules = "matrixOrNULL",

@@ -11,11 +11,10 @@
 #' @slot labels character vector corresponding to \code{categories}
 #'
 #' @author Simon Moulds
-#'
-#' @rdname class-ObservedMaps
 #' 
 #' @export
 #' @exportClass ObservedMaps
+#' @rdname ObservedMaps-class
 
 setClass("ObservedMaps",
          slots = c(maps = "RasterStack",

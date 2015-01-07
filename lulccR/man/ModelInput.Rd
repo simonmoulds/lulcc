@@ -6,7 +6,7 @@
 \alias{CluesModelInput,ObservedMaps,numeric-method}
 \alias{ModelInput}
 \alias{ModelInput,ModelInput,ANY,ANY,ANY,ANY-method}
-\alias{ModelInput,ObservedMaps,Predictors,StatModels,numeric,matrix-method}
+\alias{ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matrix-method}
 \alias{OrderedModelInput}
 \alias{OrderedModelInput,ModelInput-method}
 \alias{OrderedModelInput,ObservedMaps-method}
@@ -21,7 +21,7 @@ OrderedModelInput(x, ...)
 \S4method{ModelInput}{ModelInput,ANY,ANY,ANY,ANY}(x, pred, models, time, demand,
   ...)
 
-\S4method{ModelInput}{ObservedMaps,Predictors,StatModels,numeric,matrix}(x,
+\S4method{ModelInput}{ObservedMaps,PredictorMaps,StatModels,numeric,matrix}(x,
   pred, models, time, demand, hist, mask, neighb = NULL, ...)
 
 \S4method{CluesModelInput}{ModelInput,numeric}(x, elas, rules = NULL,
@@ -39,7 +39,7 @@ OrderedModelInput(x, ...)
 \arguments{
 \item{x}{an ObservedMaps object or a ModelInput object}
 
-\item{pred}{a Predictors object}
+\item{pred}{a PredictorMaps object}
 
 \item{models}{a StatModels object}
 

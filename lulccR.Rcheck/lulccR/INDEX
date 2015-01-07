@@ -16,10 +16,8 @@ PerformanceMulti-class
 PerformanceMulti.plot   Plot methods for PerformanceMulti objects
 PredictionMulti         Create a PredictionMulti object
 PredictionMulti-class   Class PredictionMulti
-PredictorCall           Create a PredictorCall object
-PredictorCall-class     Class PredictorCall
-Predictors              Create a Predictors object
-Predictors-class        Class Predictors
+PredictorMaps           Create a PredictorMaps object
+PredictorMaps-class     Class PredictorMaps
 StatModels              Create a StatModels object
 StatModels-class        Class StatModels
 ThreeMapComparison      Evaluate allocation performance with three maps
@@ -39,8 +37,8 @@ allocate                Allocate land use change spatially Perform
 allow                   Implement decision rules for land use change
 allowNeighb             Implement neighbourhood decision rules
 approxExtrapDemand      Extrapolate land use area
-as.data.frame,Predictors-method
-                        Coerce 'Predictors' object to data.frame
+as.data.frame,PredictorMaps-method
+                        Coerce 'PredictorMaps' object to data.frame
 autoConvert             Automatic land use transitions
 calcProb                Estimate location suitability
 compareAUC              Compare the area under the ROC curve (AUC) for
@@ -51,9 +49,7 @@ partition               Partition raster data
 performance             Create 'performance' objects
 pie                     Land use change dataset for Plum Island
                         Ecosystem
-predictorMaps           Load predictor variables
-resample,Predictors,Raster-method
-                        Resample maps in Predictors object or list
+resample                Resample maps in PredictorMaps object or list
 roundSum                Round elements in matrix or data.frame rows
 sibuyan                 Land use change dataset for Sibuyan Island
 total                   Total number of cells in a categorical Raster*

@@ -14,7 +14,7 @@
 #'
 #' @export
 #' @exportClass PredictionMulti
-#' @rdname class-PredictionMulti
+#' @rdname PredictionMulti-class
 
 setClass("PredictionMulti",
          representation(

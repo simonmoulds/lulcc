@@ -12,7 +12,7 @@ NULL
 #'
 #' @param models a \code{StatModels} object
 #' @param obs an \code{ObservedMaps} object
-#' @param pred a \code{Predictors} object
+#' @param pred a \code{PredictorMaps} object
 #' @param timestep numeric indicating the timestep of the observed map in
 #'   \code{obs} against which the observed map should be tested
 #' @param partition character. Either 'train', 'test' or 'none', indicating

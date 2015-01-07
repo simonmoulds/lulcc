@@ -18,10 +18,10 @@
 #'
 #' @author Simon Moulds
 #'
-#' @rdname class-AgreementBudget
 #'
 #' @export
 #' @exportClass AgreementBudget
+#' @rdname AgreementBudget-class
 
 setClass("AgreementBudget",
          slots = c(agreement = "data.frame",

@@ -1,13 +1,12 @@
-#' @include class-Predictors.R
+#' @include class-PredictorMaps.R
 NULL
 
-#' Coerce \code{Predictors} object to data.frame
+#' Coerce \code{PredictorMaps} object to data.frame
 #'
-#' This function extracts data from all rasters in a \code{\link{Predictors}}
-#' object for a specified timestep (if dynamic or \code{\link{PredictorCall}}
-#' objects are present).
+#' This function extracts data from all rasters in a \code{\link{PredictorMaps}}
+#' object for a specified timestep (if dynamic variables are present).
 #'
-#' @param x an object of class \code{\link{Predictors}}
+#' @param x an object of class \code{\link{PredictorMaps}}
 #' @param row.names NULL or a character vector giving the row.names for the
 #'   data.frame. Missing values are not allowed
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -17,8 +16,7 @@ NULL
 #'  relevant if x@@maps contains dynamic predictor variables
 #' @param ... additional arguments (none)
 #'
-#' @seealso \code{\link{Predictors}}, \code{\link{predictorMaps}},
-#' \code{\link{PredictorCall}}, \code{\link{partition}}
+#' @seealso \code{\link{PredictorMaps}}, \code{\link{partition}}
 #' @author Simon Moulds
 #' @return data.frame
 #'
@@ -29,14 +27,16 @@ NULL
 ##            standardGeneric("as.data.frame"))
 
 #' @rdname as.data.frame
-#' @aliases as.data.frame,Predictors-method
-setMethod("as.data.frame", signature(x = "Predictors"),
+#' @aliases as.data.frame,PredictorMaps-method
+setMethod("as.data.frame", signature(x = "PredictorMaps"),
           function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...) {
               ix <- timestep + 1
-              maps <- c(.getPredictorMaps(x@maps, timestep), lapply(x@calls, function(x) x@map))
+              ##maps <- c(.getPredictorMaps(x@maps, timestep), lapply(x@calls, function(x) x@map))
+              maps <- .getPredictorMaps(x@maps, timestep)
               s <- raster::stack(maps, ...) ## this will fail if map characteristics do not agree
               df <- as.data.frame(s[cells], row.names=row.names, optional=optional)
-              names(df) <- c(x@map.names, x@call.names)
+              ##names(df) <- c(x@map.names, x@call.names)
+              names(df) <- x@map.names
               df
           }
 )
@@ -52,13 +52,13 @@ setMethod("as.data.frame", signature(x = "Predictors"),
             x[,dynamic.ix] <- update.vals
         }
     }
-    if (length(y@calls) > 0) {
-        call.ix <- which(names(x) %in% y@call.names)
-        calls <- lapply(y@calls, function(x) PredictorCall(x, update.arg=map))
-        s <- raster::stack(lapply(calls, function(x) x@map))
-        update.vals <- s[cells]
-        x[,call.ix] <- update.vals
-    }
+    ## if (length(y@calls) > 0) {
+    ##     call.ix <- which(names(x) %in% y@call.names)
+    ##     calls <- lapply(y@calls, function(x) PredictorCall(x, update.arg=map))
+    ##     s <- raster::stack(lapply(calls, function(x) x@map))
+    ##     update.vals <- s[cells]
+    ##     x[,call.ix] <- update.vals
+    ## }
     names(x) <- nms
     x
 }
@@ -78,34 +78,4 @@ setMethod("as.data.frame", signature(x = "Predictors"),
     }
     maps
 }
-
-## as.data.frame.Predictors <- function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...) {
-##     ix <- timestep + 1
-##     maps <- c(.getPredictorMaps(x@maps, timestep), lapply(x@calls, function(x) x@map))
-##     s <- raster::stack(maps, ...) ## this will fail if map characteristics do not agree
-##     df <- as.data.frame(s[cells], row.names=row.names, optional=optional)
-##     names(df) <- c(x@map.names, x@call.names)
-##     df
-## }
-
-## ' Update data.frame
-## '
-## ' Update a data.frame of predictor variables if dynamic variables or variables
-## ' from PredictorCall objects are present.
-## '
-## ' @param x data.frame to be updated
-## ' @param y object of class Predictors
-## ' @param map RasterLayer to be supplied to \code{\link{PredictorCall}} objects
-## ' @param cells index of cells to be extracted. Number of elements must equal the
-## '   the number of rows in \code{x}
-## ' @param timestep numeric indicating the timestep under consideration
-## ' @param ... additional arguments (none)
-## '
-## ' @name update
-## ' @seealso \code{\link{as.data.frame}}
-## ' @author Simon Moulds
-## ' @return a data.frame
-## '
-## ' @export
-
     

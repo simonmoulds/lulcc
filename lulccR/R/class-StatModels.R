@@ -9,10 +9,9 @@
 #'
 #' @author Simon Moulds
 #'
-#' @rdname class-StatModels
-#'
 #' @export
 #' @exportClass StatModels
+#' @rdname StatModels-class
 
 setClass("StatModels",
          slots = c(models = "list",

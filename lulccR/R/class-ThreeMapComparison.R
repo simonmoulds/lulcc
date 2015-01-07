@@ -12,9 +12,9 @@
 #'
 #' @author Simon Moulds
 #'
-#' @rdname class-ThreeMapComparison
 #' @export
 #' @exportClass ThreeMapComparison
+#' @rdname ThreeMapComparison-class
 
 setClass("ThreeMapComparison",
          representation(
