@@ -55,7 +55,7 @@ Practically, this makes it easier to compare different models because common
 inputs are clearly defined.
 }
 \seealso{
-\code{\link{CluesModelInput}},\code{\link{OrderedModelInput}},
+\code{\link{CluesModel}},\code{\link{OrderedModelInput}},
   \code{\link{allocate}}
 }
 

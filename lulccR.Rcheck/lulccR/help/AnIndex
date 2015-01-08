@@ -4,7 +4,7 @@ AgreementBudget-class	AgreementBudget-class
 AgreementBudget.plot	AgreementBudget.plot
 AgreementBudget.plot,AgreementBudget-method	AgreementBudget.plot
 allocate	allocate
-allocate,CluesModelInput-method	allocate
+allocate,CluesModel-method	allocate
 allocate,OrderedModelInput-method	allocate
 allow	allow
 allowNeighb	allowNeighb
@@ -16,10 +16,9 @@ calcProb,glm-method	calcProb
 calcProb,randomForest-method	calcProb
 calcProb,rpart-method	calcProb
 calcProb,StatModels-method	calcProb
-CluesModelInput	CluesModelInput
-CluesModelInput,ModelInput-method	CluesModelInput
-CluesModelInput,ObservedMaps-method	CluesModelInput
-CluesModelInput-class	CluesModelInput-class
+CluesModel	CluesModel
+CluesModel,ModelInput-method	CluesModel
+CluesModel-class	CluesModel-class
 compareAUC	compareAUC
 compareAUC,list-method	compareAUC
 compareAUC,PredictionMulti-method	compareAUC

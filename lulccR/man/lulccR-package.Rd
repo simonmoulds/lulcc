@@ -26,7 +26,7 @@ by all models, while specific models are represented by subclasses of
 \code{ModelInput}. Currently the package includes two inductive land use
 change models. The first is an implementation of the Change in Land Use and
 its Effects at Small Regional extent (CLUE-S) model (Verburg et al., 2002)
-(subclass \code{CluesModelInput}), while the second is a novel stocastic
+(subclass \code{CluesModel}), while the second is a novel stocastic
 procedure that aims to represent the uncertainty associated with the
 allocation of change (subclass \code{OrderedModelInput}).
 

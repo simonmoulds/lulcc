@@ -33,7 +33,7 @@ NULL
 #' @param neighb an object of class NeighbMaps
 #' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{CluesModelInput}},\code{\link{OrderedModelInput}},
+#' @seealso \code{\link{CluesModel}},\code{\link{OrderedModelInput}},
 #'   \code{\link{allocate}}
 #' @return A ModelInput object.
 #'
@@ -116,9 +116,9 @@ setMethod("ModelInput", signature(x = "ObservedMaps", pred = "PredictorMaps", mo
            }
 )
 
-#' Create a CluesModelInput object
+#' Create a CluesModel object
 #'
-#' Methods to create a \code{CluesModelInput} object to supply to
+#' Methods to create a \code{CluesModel} object to supply to
 #' \code{\link{allocate}}.
 #'
 #' The \code{params} argument is a list of parameter values which should contain
@@ -139,26 +139,35 @@ setMethod("ModelInput", signature(x = "ObservedMaps", pred = "PredictorMaps", mo
 #'
 #' TODO
 #' 
-#' @param x an ObservedMaps object or a ModelInput object
+#' @param x a ModelInput object
 #' @param rules matrix with land use change decision rules
 #' @param nb.rules numeric with neighbourhood decision rules
 #' @param elas numeric indicating elasticity of each land use category to change
 #' @param params list with model parameters
-#' @param \dots additional arguments to \code{\link{ModelInput}}
+#' @param output either a RasterStack containing output maps or NULL
+#' @param \dots additional arguments (none)
 #'
 #' @seealso \code{link{ModelInput}},\code{\link{allocate}}
-#' @return A CluesModelInput object.
+#' @return A CluesModel object.
 #'
 #' @export
-#' @rdname CluesModelInput
+#' @rdname CluesModel
 
-setGeneric("CluesModelInput", function(x, ...)
-           standardGeneric("CluesModelInput"))
+setGeneric("CluesModel", function(x, ...)
+           standardGeneric("CluesModel"))
 
-#' @rdname CluesModelInput
-#' @aliases CluesModelInput,ModelInput-method
-setMethod("CluesModelInput", signature(x = "ModelInput"),
-          function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
+##  @rdname CluesModel
+##  @aliases CluesModel,CluesModel-method
+## setMethod("CluesModel", signature(x = "CluesModel"),
+##           function(x, output, ...) {
+##               out <- new("CluesModel", x, elas=elas, rules=rules, nb.rules=nb.rules, params=params, output=output)
+##           }
+## )
+
+#' @rdname CluesModel
+#' @aliases CluesModel,ModelInput-method
+setMethod("CluesModel", signature(x = "ModelInput"),
+          function(x, elas, rules=NULL, nb.rules=NULL, params, output=NULL, ...) {
 
               if (!is.null(rules)) {
                   if (!all(dim(rules) %in% length(x@categories))) {
@@ -186,20 +195,20 @@ setMethod("CluesModelInput", signature(x = "ModelInput"),
                   params <- .checkCluesParams(params)
               }
                   
-              out <- new("CluesModelInput", x, elas=elas, rules=rules, nb.rules=nb.rules, params=params)
+              out <- new("CluesModel", x, elas=elas, rules=rules, nb.rules=nb.rules, params=params, output=output)
              
           }
 )
 
-#' @rdname CluesModelInput
-#' @aliases CluesModelInput,ObservedMaps-method
-setMethod("CluesModelInput", signature(x = "ObservedMaps"),
-          function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
-              input <- ModelInput(x=x, ...)
-              if (missing(params)) params <- list()
-              out <- CluesModelInput(input, elas, rules, nb.rules, params)
-          }
-)
+##  @rdname CluesModelInput
+##  @aliases CluesModelInput,ObservedMaps-method
+## setMethod("CluesModelInput", signature(x = "ObservedMaps"),
+##           function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
+##               input <- ModelInput(x=x, ...)
+##               if (missing(params)) params <- list()
+##               out <- CluesModelInput(input, elas, rules, nb.rules, params)
+##           }
+## )
 
 .checkCluesParams <- function(params) {
     if (missing(params) || length(params) == 0) {

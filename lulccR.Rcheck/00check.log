@@ -7,10 +7,7 @@
 * this is package ‘lulccR’ version ‘0.0.0.9000’
 * checking package namespace information ... OK
 * checking package dependencies ... OK
-* checking if this is a source package ... WARNING
-Subdirectory ‘lulccR/src’ contains apparent object files/libraries
-  allocateclues.o allow.o autoconvert.o lulccR.so total.o updatehist.o
-Object files/libraries should not be included in a source package.
+* checking if this is a source package ... OK
 * checking if there is a namespace ... OK
 * checking for executable files ... OK
 * checking for hidden files and directories ... NOTE
@@ -64,5 +61,5 @@ structure’ in the ‘Writing R Extensions’ manual.
 * checking examples ... SKIPPED
 * checking PDF version of manual ... OK
 * DONE
-WARNING: There were 2 warnings.
+WARNING: There was 1 warning.
 NOTE: There was 1 note.

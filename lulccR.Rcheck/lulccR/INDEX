@@ -1,8 +1,8 @@
 AgreementBudget         Create an AgreementBudget object
 AgreementBudget-class   Class AgreementBudget
 AgreementBudget.plot    Plot method for AgreementBudget objects
-CluesModelInput         Create a CluesModelInput object
-CluesModelInput-class   Class CluesModelInput
+CluesModel              Create a CluesModel object
+CluesModel-class        Class CluesModel
 FigureOfMerit           Create a FigureOfMerit object
 FigureOfMerit-class     Class FigureOfMerit
 FigureOfMerit.plot      Plot method for FigureOfMerit objects

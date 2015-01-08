@@ -2,18 +2,18 @@
 \docType{methods}
 \name{allocate}
 \alias{allocate}
-\alias{allocate,CluesModelInput-method}
+\alias{allocate,CluesModel-method}
 \alias{allocate,OrderedModelInput-method}
 \title{Allocate land use change spatially}
 \usage{
-allocate(input, ...)
+allocate(model, ...)
 
-\S4method{allocate}{CluesModelInput}(input, ...)
+\S4method{allocate}{CluesModel}(model, ...)
 
-\S4method{allocate}{OrderedModelInput}(input, ...)
+\S4method{allocate}{OrderedModelInput}(model, ...)
 }
 \arguments{
-\item{input}{an object inheriting from class \code{ModelInput}}
+\item{model}{an object inheriting from class \code{ModelInput}}
 
 \item{\dots}{additional arguments for specific methods}
 }

@@ -5,6 +5,7 @@ setClassUnion("NeighbMapsOrNULL", c("NeighbMaps", "NULL"))
 setClassUnion("matrixOrNULL", c("matrix", "NULL"))
 setClassUnion("numericOrNULL", c("numeric", "NULL"))
 setClassUnion("RasterLayerOrNULL", c("RasterLayer", "NULL"))
+setClassUnion("RasterStackOrNULL", c("RasterStack", "NULL"))
 
 #' Class ModelInput
 #'
@@ -44,7 +45,7 @@ setClass("ModelInput",
          }
 )
 
-#' Class CluesModelInput
+#' Class CluesModel
 #'
 #' An S4 class to represent inputs to the CLUE-S land use change model.
 #'
@@ -65,16 +66,18 @@ setClass("ModelInput",
 #' @slot nb.rules numeric with neighbourhood decision rules
 #' @slot elas numeric indicating elasticity to change (only required for
 #' @slot params list with model parameters
+#' @slot output RasterStack with output maps or NULL
 #'
 #' @export
-#' @exportClass CluesModelInput
-#' @rdname CluesModelInput-class
-setClass("CluesModelInput",
+#' @exportClass CluesModel
+#' @rdname CluesModel-class
+setClass("CluesModel",
          contains = "ModelInput",
          slots = c(rules = "matrixOrNULL",
                    nb.rules = "numericOrNULL",
                    elas = "numeric",
-                   params = "list"),
+                   params = "list",
+                   output = "RasterStackOrNULL"),
          validity = function(object) {
              ## TODO
              return(TRUE)

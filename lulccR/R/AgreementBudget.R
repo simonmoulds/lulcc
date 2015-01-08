@@ -34,7 +34,10 @@
 #' Comparison of three maps at multiple resolutions: a case study of land change
 #' simulation in Cho Don District, Vietnam. Annals of the Association of American
 #' Geographers 101(1): 45-62.
-
+#'
+#' @examples
+#'
+#' # Example for Sibuyan Island 
 AgreementBudget <- function(x, from, to, ...) {
 
     categories <- x@categories

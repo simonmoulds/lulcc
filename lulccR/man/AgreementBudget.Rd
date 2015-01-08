@@ -38,6 +38,9 @@ Pontius et al. (2011):
   \item Change simulated as persistence (disagreement)
 }
 }
+\examples{
+# Example for Sibuyan Island
+}
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
 Comparison of three maps at multiple resolutions: a case study of land change

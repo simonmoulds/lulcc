@@ -9,7 +9,7 @@ NULL
 #' al., 2002) and a novel stochastic procedure that aims to represent the
 #' uncertainty associated with the allocation of change.  
 #'
-#' @param input an object inheriting from class \code{ModelInput}
+#' @param model an object inheriting from class \code{ModelInput}
 #' @param \dots additional arguments for specific methods
 #'
 #' @seealso \code{\link{ModelInput}}
@@ -21,81 +21,82 @@ NULL
 #' V., Mastura, S.S. (2002). Modeling the spatial dynamics of regional land use:
 #' the CLUE-S model. Environmental management, 30(3):391-405.
 
-setGeneric("allocate", function(input, ...)
+setGeneric("allocate", function(model, ...)
            standardGeneric("allocate"))
 
 #' @rdname allocate
-#' @aliases allocate,CluesModelInput-method
-setMethod("allocate", signature(input = "CluesModelInput"),
-          function(input, ...) {
-              maps <- .allocate(input=input, fun=.clues)
+#' @aliases allocate,CluesModel-method
+setMethod("allocate", signature(model = "CluesModel"),
+          function(model, ...) {
+              model@output <- .allocate(model=model, fun=.clues)
+              model
           }
 )
 
 #' @rdname allocate
 #' @aliases allocate,OrderedModelInput-method
-setMethod("allocate", signature(input = "OrderedModelInput"),
-          function(input, ...) {
-              maps <- .allocate(input=input, fun=.ordered)
+setMethod("allocate", signature(model = "OrderedModelInput"),
+          function(model, ...) {
+              maps <- .allocate(model=model, fun=.ordered)
           }
 )
 
-.allocate <- function(input, fun, ...) {              
+.allocate <- function(model, fun, ...) {              
 
-    cells <- which(!is.na(raster::getValues(input@map0)))
-    map0.vals <- raster::extract(input@map0, cells)
-    hist.vals <- raster::extract(input@hist, cells)
-    mask.vals <- raster::extract(input@mask, cells)
-    newdata <- as.data.frame(x=input@pred, cells=cells)
-    prob <- calcProb(object=input@models, newdata=newdata)
-    maps <- raster::stack(input@map0)
+    cells <- which(!is.na(raster::getValues(model@map0)))
+    map0.vals <- raster::extract(model@map0, cells)
+    hist.vals <- raster::extract(model@hist, cells)
+    mask.vals <- raster::extract(model@mask, cells)
+    newdata <- as.data.frame(x=model@pred, cells=cells)
+    prob <- calcProb(object=model@models, newdata=newdata)
+    maps <- raster::stack(model@map0)
               
-    for (i in 1:(nrow(input@demand) - 1)) {
+    for (i in 1:(nrow(model@demand) - 1)) {
          print(i)                                    
-         d <- input@demand[(i+1),] ## demand for current timestep
-         if (input@pred@dynamic && i > 1) {
-             newdata <- .update.data.frame(x=newdata, y=input@pred, map=input@map0, cells=cells, timestep=(i-1))
-             prob <- calcProb(object=input@models, newdata=newdata)
+         d <- model@demand[(i+1),] ## demand for current timestep
+         if (model@pred@dynamic && i > 1) {
+             newdata <- .update.data.frame(x=newdata, y=model@pred, map=model@map0, cells=cells, timestep=(i-1))
+             prob <- calcProb(object=model@models, newdata=newdata)
          }
          tprob <- prob
 
-         ## elas only included in some models, so check whether model input has slot
-         if (.hasSlot(input, "elas")) { 
-             for (j in 1:length(input@categories)) {
-                 ix <- map0.vals %in% input@categories[j]
-                 tprob[ix,j] <- tprob[ix,j] + input@elas[j] ## add elasticity
+         ## elas only included in some models, so check whether model model has slot
+         if (.hasSlot(model, "elas")) { 
+             for (j in 1:length(model@categories)) {
+                 ix <- map0.vals %in% model@categories[j]
+                 tprob[ix,j] <- tprob[ix,j] + model@elas[j] ## add elasticity
              }
          }
                   
-         if (!is.null(input@neighb)) {
-             nb.allow <- allowNeighb(x=input@neighb, cells=cells, categories=input@categories, rules=input@nb.rules)
+         if (!is.null(model@neighb)) {
+             nb.allow <- allowNeighb(x=model@neighb, cells=cells, categories=model@categories, rules=model@nb.rules)
              tprob <- tprob * nb.allow ## neighbourhood decision rules
          }
                   
          ## implement other decision rules
-         if (!is.null(input@rules)) {
-             cd <- d - input@demand[i,] ## change direction
-             allow <- allow(x=map0.vals, hist=hist.vals, categories=input@categories, cd=cd,rules=input@rules)
+         if (!is.null(model@rules)) {
+             cd <- d - model@demand[i,] ## change direction
+             allow <- allow(x=map0.vals, hist=hist.vals, categories=model@categories, cd=cd,rules=model@rules)
              tprob <- tprob * allow
          }
 
          ## make automatic conversions if necessary
-         auto <- .autoConvert(x=map0.vals, mask=mask.vals, prob=tprob, categories=input@categories)
+         auto <- .autoConvert(x=map0.vals, mask=mask.vals, prob=tprob, categories=model@categories)
          map0.vals[auto$ix] <- auto$vals
          tprob[auto$ix,] <- NA
                   
          ## allocation
-         args <- c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=input@categories), input@params)
+         args <- c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories), model@params)
          map1.vals <- do.call(fun, args)
-         map1 <- raster::raster(input@map0, ...) 
+         map1 <- raster::raster(model@map0, ...) 
          map1[cells] <- map1.vals
          maps <- raster::stack(maps, map1)
     
-         ## prepare input for next timestep
-         if (i < nrow(input@demand)) {
+         ## prepare model for next timestep
+         if (i < nrow(model@demand)) {
              hist.vals <- .updatehist(map0.vals, map1.vals, hist.vals) ## update
              map0.vals <- map1.vals 
-             if (!is.null(input@neighb)) input@neighb <- NeighbMaps(x=map1, neighb=input@neighb)
+             if (!is.null(model@neighb)) model@neighb <- NeighbMaps(x=map1, neighb=model@neighb)
          }
      }    
      out <- maps              
