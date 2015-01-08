@@ -3,27 +3,26 @@
 \alias{roundSum}
 \title{Round elements in matrix or data.frame rows}
 \usage{
-roundSum(x, ncell)
+roundSum(x, ncell, ...)
 }
 \arguments{
 \item{x}{matrix or data.frame}
 
 \item{ncell}{numeric specifying the target sum for each row in \code{x}}
+
+\item{\dots}{additional arguments (none)}
 }
 \value{
-a matrix
+A matrix.
 }
 \description{
 Round all numbers in a matrix or data.frame while ensuring that all rows sum
-to the same value
+to the same value.
 }
 \details{
 The main application of \code{roundSum} is to ensure that each row in the
 demand matrix specifies exactly the number of cells to be allocated to each
 land use category for the respective timestep. It may also be used to convert
-demand from area to number of cells
-}
-\author{
-Simon Moulds
+the units of demand to number of cells, as required by \code{ModelInput}.
 }
 

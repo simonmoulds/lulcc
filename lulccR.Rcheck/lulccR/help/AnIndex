@@ -16,10 +16,10 @@ calcProb,glm-method	calcProb
 calcProb,randomForest-method	calcProb
 calcProb,rpart-method	calcProb
 calcProb,StatModels-method	calcProb
-CluesModelInput	ModelInput
-CluesModelInput,ModelInput,numeric-method	ModelInput
-CluesModelInput,ObservedMaps,numeric-method	ModelInput
-CluesModelInput-class	ModelInput-class
+CluesModelInput	CluesModelInput
+CluesModelInput,ModelInput-method	CluesModelInput
+CluesModelInput,ObservedMaps-method	CluesModelInput
+CluesModelInput-class	CluesModelInput-class
 compareAUC	compareAUC
 compareAUC,list-method	compareAUC
 compareAUC,PredictionMulti-method	compareAUC
@@ -46,10 +46,10 @@ ObservedMaps,missing,character-method	ObservedMaps
 ObservedMaps,RasterLayer,ANY-method	ObservedMaps
 ObservedMaps,RasterStack,ANY-method	ObservedMaps
 ObservedMaps-class	ObservedMaps-class
-OrderedModelInput	ModelInput
-OrderedModelInput,ModelInput-method	ModelInput
-OrderedModelInput,ObservedMaps-method	ModelInput
-OrderedModelInput-class	ModelInput-class
+OrderedModelInput	OrderedModelInput
+OrderedModelInput,ModelInput-method	OrderedModelInput
+OrderedModelInput,ObservedMaps-method	OrderedModelInput
+OrderedModelInput-class	OrderedModelInput-class
 partition	partition
 performance	performance
 performance,list-method	performance
@@ -57,6 +57,7 @@ PerformanceMulti	PerformanceMulti
 PerformanceMulti-class	PerformanceMulti-class
 PerformanceMulti.plot	PerformanceMulti.plot
 PerformanceMulti.plot,list-method	PerformanceMulti.plot
+PerformanceMulti.plot,PerformanceMulti-method	PerformanceMulti.plot
 pie	pie
 PredictionMulti	PredictionMulti
 PredictionMulti-class	PredictionMulti-class

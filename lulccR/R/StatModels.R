@@ -1,33 +1,27 @@
 #' @include class-StatModels.R
 NULL
 
-## if (!isGeneric("StatModels")) {
-##     setGeneric("StatModels", function(models, obs, categories, labels, ...)
-##                standardGeneric("StatModels"))
-## }
-
 #' Create a StatModels object
 #'
-#' Methods to create a \link{StatModels-class} object.
+#' Methods to create a \code{\link{StatModels-class}} object.
 #'
-#' @param models a list of mathematical models
+#' TODO
+#' 
+#' @param models a list of predictive models
 #' @param obs an ObservedMaps object
 #' @param categories numeric vector of land use categories in observed maps. Only
 #'   required if \code{obs} is not provided
 #' @param labels character vector (optional) with labels corresponding to
 #'   \code{categories}. Only required if \code{obs} is not provided
-#' @param ... additional arguments (none)
+#' @param \dots additional arguments (none)
 #'
-#' @author Simon Moulds
-#' @return an object of class \code{\link{StatModels}}
+#' @return An object of class \code{\link{StatModels}}.
 #'
 #' @export
 #' @rdname StatModels
 
-#if (!isGeneric("StatModels")) {
 setGeneric("StatModels", function(models, obs, categories, labels, ...)
            standardGeneric("StatModels"))
-#}
 
 #' @rdname StatModels
 #' @aliases StatModels,list,ObservedMaps,ANY,ANY-method

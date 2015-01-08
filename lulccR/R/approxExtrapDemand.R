@@ -1,16 +1,22 @@
-#' Extrapolate land use area
+#' Extrapolate land use area in time
 #'
-#' Extrapolate land use area from two observed land maps to provide
+#' Extrapolate land use area from two or more observed land use maps to provide
 #' a valid (although not necessarily realistic) demand scenario.
+#'
+#' Many allocation routines, including the two included with \code{lulccR},
+#' require non-estimates of land use demand for every timestep in the study
+#' period. Some routines are coupled to complex economic models that predict
+#' future or past land use demand based on economic considerations, however,
+#' linear extrapolation of trends remains a useful technique.
 #'
 #' @param obs an \code{ObservedMaps} object containing at least two maps
 #' @param tout numeric vector specifying the timesteps where interpolation is to
 #'   take place. Comparable to the \code{xout} argument of
 #'   \code{Hmisc::\link[Hmisc]{approxExtrap}}
-#' @param ... additional arguments to \code{Hmisc::\link[Hmisc]{approxExtrap}}
+#' @param \dots additional arguments to \code{Hmisc::\link[Hmisc]{approxExtrap}}
 #'
-#' @author Simon Moulds
-#' @return a matrix
+#' @return A matrix where columns correspond to land use categories and rows
+#'   correspond to timesteps.
 #'
 #' @export
 #'
@@ -21,7 +27,7 @@
 #'                     categories=c(1,2,3),
 #'                     labels=c("forest","built","other"),
 #'                     t=c(0,6,14))
-#' dmd1 <- approxExtrapDemand(obs=obs, tout=c(0:14))
+#' dmd <- approxExtrapDemand(obs=obs, tout=c(0:14))
 
 approxExtrapDemand <- function(obs, tout, ...) {
     if (nlayers(obs@maps) > 1) {
@@ -43,22 +49,22 @@ approxExtrapDemand <- function(obs, tout, ...) {
 #' Round elements in matrix or data.frame rows
 #'
 #' Round all numbers in a matrix or data.frame while ensuring that all rows sum
-#' to the same value
+#' to the same value.
 #'
 #' The main application of \code{roundSum} is to ensure that each row in the
 #' demand matrix specifies exactly the number of cells to be allocated to each
 #' land use category for the respective timestep. It may also be used to convert
-#' demand from area to number of cells
+#' the units of demand to number of cells, as required by \code{ModelInput}.
 #'
 #' @param x matrix or data.frame
 #' @param ncell numeric specifying the target sum for each row in \code{x}
+#' @param \dots additional arguments (none)
 #'
-#' @author Simon Moulds
-#' @return a matrix
+#' @return A matrix.
 #'
 #' @export
 
-roundSum <- function(x, ncell) {
+roundSum <- function(x, ncell, ...) {
     
     if (missing(x)) stop("missing 'x'") 
     if (missing(ncell)) stop("missing 'ncell'") 

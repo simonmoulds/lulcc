@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.9)  7 JAN 2015 18:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.9)  8 JAN 2015 15:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -262,7 +262,6 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-LaTeX Info: Redefining \href on input line 4952.
 \c@Hy@tempcnt=\count97
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen105
@@ -299,15 +298,15 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 
 Package hyperref Warning: Option `hyperindex' has already been used,
-(hyperref)                setting the option has no effect on input line 361.
+(hyperref)                setting the option has no effect on input line 366.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 361.
+Package hyperref Info: Option `colorlinks' set `true' on input line 366.
 
 Package hyperref Warning: Option `pagebackref' has already been used,
-(hyperref)                setting the option has no effect on input line 361.
+(hyperref)                setting the option has no effect on input line 366.
 
-Package hyperref Info: Option `linktocpage' set `true' on input line 361.
-Package hyperref Info: Option `plainpages' set `false' on input line 361.
+Package hyperref Info: Option `linktocpage' set `true' on input line 366.
+Package hyperref Info: Option `plainpages' set `false' on input line 366.
 ) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
 )
@@ -710,9 +709,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [2]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
@@ -720,7 +716,10 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-LaTeX Font Info:    Try loading font information for TS1+fi4 on input line 165.
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [4]
+LaTeX Font Info:    Try loading font information for TS1+fi4 on input line 212.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1fi4.fd
@@ -728,15 +727,15 @@ File: ts1fi4.fd 2009/05/28 TS1/Inconsolata
 )
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
- [4]
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
+) [5]
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
- [5]
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [6] [7]
@@ -751,10 +750,10 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
-
+ [10]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [10]
+)
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
@@ -763,6 +762,11 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
+
+Overfull \hbox (14.16737pt too wide) in paragraph at lines 612--614
+[]\T1/ptm/m/n/10 logical in-di-cat-ing whether the func-tion should re-turn a m
+a-trix (de-fault) or data.frame 
+ []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
@@ -772,27 +776,55 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 
-Overfull \hbox (34.46725pt too wide) in paragraph at lines 631--636
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [12]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+ [13]
+Overfull \hbox (34.46725pt too wide) in paragraph at lines 786--791
 []\T1/ptm/m/n/10 The user can com-pare the per-for-mance of dif-fer-ent sta-tis
 -ti-cal mod-els by pro-vid-ing a list of \T1/fi4/m/n/10 PredictionMulti
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [12]
+)
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 
-Overfull \hbox (15.48746pt too wide) in paragraph at lines 682--685
+Overfull \hbox (15.09793pt too wide) in paragraph at lines 833--836
 []\T1/ptm/m/n/10 RasterLayer rep-re-sent-ing land use map from an ear-lier time
-step or an Ob-servedMaps
+step or an \T1/fi4/m/n/10 ObservedMaps
  []
 
-[13] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+[14] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [14]
+) [15]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [16]
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [17]
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+ [18]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
@@ -801,7 +833,14 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
- [15]
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+ [19] [20]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
@@ -809,39 +848,7 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
- [16]
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
- [17]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [18]
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
- [19]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [20]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
+ [21]
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
@@ -849,61 +856,75 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1232--1236
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1290--1294
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
  []
 
-[21] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+[22] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [22]
+)
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+ [23]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-Overfull \hbox (8.86827pt too wide) in paragraph at lines 1371--1373
-[]\T1/ptm/m/n/10 A wrap-per func-tion for \T1/fi4/m/n/10 ROCR::[][]performance[
-][][] \T1/ptm/m/n/10 to cre-ate \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-je
-cts from a list of \T1/fi4/m/n/10 prediction
- []
-
-[23]
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
- (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [24]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-Overfull \hbox (15.79823pt too wide) in paragraph at lines 1475--1479
+Overfull \hbox (8.86827pt too wide) in paragraph at lines 1525--1527
+[]\T1/ptm/m/n/10 A wrap-per func-tion for \T1/fi4/m/n/10 ROCR::[][]performance[
+][][] \T1/ptm/m/n/10 to cre-ate \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-je
+cts from a list of \T1/fi4/m/n/10 prediction
+ []
+
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+[25] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [26]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+Overfull \hbox (15.79823pt too wide) in paragraph at lines 1621--1625
 []\T1/ptm/m/n/10 list of \T1/fi4/m/n/10 performance \T1/ptm/m/n/10 ob-jects. Ea
 ch ob-ject is cal-cu-lated for the cor-re-spond-ing \T1/fi4/m/n/10 prediction
  []
 
-[25] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
- [26]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [27]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
+ [27]
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [28]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [29]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+)
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
+ [30]
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
@@ -911,13 +932,13 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 
-Overfull \hbox (14.3481pt too wide) in paragraph at lines 1699--1703
+Overfull \hbox (14.3481pt too wide) in paragraph at lines 1832--1836
 \T1/ptm/m/n/10 (if \T1/fi4/m/n/10 x \T1/ptm/m/n/10 is a list) match-ing the reg
 -u-lar ex-pres-sion will be re-turned. See \T1/fi4/m/n/10 raster::[][]raster[][
 ][]
  []
 
-[29] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+[31] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -927,39 +948,38 @@ Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
 Missing character: There is no ' in font ts1-inconsolata!
- [30]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [31]
+ [32]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [32]
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-Missing character: There is no ' in font ts1-inconsolata!
-
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 ) [33]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)
-Overfull \hbox (59.41827pt too wide) in paragraph at lines 2021--2024
-[]\T1/ptm/m/n/10 numeric vec-tor of ag-gre-ga-tion fac-tors (equiv-a-lent to th
-e 'fact' ar-gu-ment to \T1/fi4/m/n/10 raster::[][]aggregate[][][]
- []
+) [34]
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
+Missing character: There is no ' in font ts1-inconsolata!
 
-[34] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [35] (./Rd2.ind
-[36]
+) [35]
+Overfull \hbox (59.41827pt too wide) in paragraph at lines 2136--2139
+[]\T1/ptm/m/n/10 numeric vec-tor of ag-gre-ga-tion fac-tors (equiv-a-lent to th
+e 'fact' ar-gu-ment to \T1/fi4/m/n/10 raster::[][]aggregate[][][]
+ []
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) [36]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+) (./Rd2.ind [37]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 3.
 
@@ -973,119 +993,111 @@ Overfull \hbox (25.8567pt too wide) in paragraph at lines 16--18
  []
 
 
-Overfull \hbox (15.8567pt too wide) in paragraph at lines 48--50
-[]\T1/fi4/m/it/10 CluesModelInput,ModelInput,numeric-method 
- []
-
-
-Overfull \hbox (25.8567pt too wide) in paragraph at lines 50--52
-[]\T1/fi4/m/it/10 CluesModelInput,ObservedMaps,numeric-method 
- []
-
-
 Overfull \hbox (30.8567pt too wide) in paragraph at lines 63--65
 []\T1/fi4/m/it/10 crossTabulate,RasterLayer,RasterLayer-method 
  []
 
 
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 73--75
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 74--76
 []\T1/fi4/m/it/10 FigureOfMerit.plot,FigureOfMerit-method 
  []
 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 85--87
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 87--89
 []\T1/fi4/m/it/10 ModelInput,ModelInput,ANY,ANY,ANY,ANY-method 
  []
 
 
-Overfull \hbox (160.8567pt too wide) in paragraph at lines 87--89
+Overfull \hbox (160.8567pt too wide) in paragraph at lines 89--91
 []\T1/fi4/m/it/10 ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matr
 ix-method 
  []
 
 
-Overfull \hbox (50.8567pt too wide) in paragraph at lines 95--97
+Overfull \hbox (50.8567pt too wide) in paragraph at lines 96--98
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,ANY,ANY,NeighbMaps-method 
  []
 
 
-Overfull \hbox (40.8567pt too wide) in paragraph at lines 97--99
+Overfull \hbox (40.8567pt too wide) in paragraph at lines 98--100
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,numeric,list,ANY-method 
  []
 
 
-Overfull \hbox (55.8567pt too wide) in paragraph at lines 99--101
+Overfull \hbox (55.8567pt too wide) in paragraph at lines 100--102
 []\T1/fi4/m/it/10 NeighbMaps,RasterLayer,numeric,numeric,ANY-method 
  []
 
 
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 107--109
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 108--110
 []\T1/fi4/m/it/10 ObservedMaps,character,character-method 
  []
 
-[37
+[38
 
 ]
-Overfull \hbox (10.8567pt too wide) in paragraph at lines 154--156
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 145--147
+[]\T1/fi4/m/it/10 PerformanceMulti.plot,PerformanceMulti-method 
+ []
+
+
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 157--159
 []\T1/fi4/m/it/10 PredictorMaps,character,character-method 
  []
 
 
-Overfull \hbox (0.8567pt too wide) in paragraph at lines 158--160
+Overfull \hbox (0.8567pt too wide) in paragraph at lines 161--163
 []\T1/fi4/m/it/10 PredictorMaps,missing,character-method 
  []
 
 
-Overfull \hbox (20.8567pt too wide) in paragraph at lines 160--162
+Overfull \hbox (20.8567pt too wide) in paragraph at lines 163--165
 []\T1/fi4/m/it/10 PredictorMaps,RasterStack,character-method 
  []
 
 
-Overfull \hbox (50.8567pt too wide) in paragraph at lines 187--189
+Overfull \hbox (50.8567pt too wide) in paragraph at lines 190--192
 []\T1/fi4/m/it/10 StatModels,list,ANY,ANY,numeric,character-method 
  []
 
 
-Overfull \hbox (30.8567pt too wide) in paragraph at lines 189--191
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 192--194
 []\T1/fi4/m/it/10 StatModels,list,ANY,numeric,character-method 
  []
 
 
-Overfull \hbox (25.8567pt too wide) in paragraph at lines 191--193
+Overfull \hbox (25.8567pt too wide) in paragraph at lines 194--196
 []\T1/fi4/m/it/10 StatModels,list,ObservedMaps,ANY,ANY-method 
  []
 
-[38])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2123.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2123.
+[39])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2230.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2230.
  (./Rd2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2123.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2123.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2230.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2230.
 
 Package rerunfilecheck Info: File `Rd2.out' has not changed.
-(rerunfilecheck)             Checksum: 3D3C95F470391634C64F120399D73A69;2451.
+(rerunfilecheck)             Checksum: 609A1581381503BF8CB6AFC39AAE24D7;2747.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2123.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2230.
  ) 
 Here is how much of TeX's memory you used:
- 6818 strings out of 495035
- 101212 string characters out of 6181702
- 168549 words of memory out of 5000000
- 9446 multiletter control sequences out of 15000+600000
+ 6832 strings out of 495035
+ 101836 string characters out of 6181702
+ 168559 words of memory out of 5000000
+ 9451 multiletter control sequences out of 15000+600000
  41287 words of font info for 51 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,6n,34p,563b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,6n,34p,227b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Rfn.aggregate} has been referenced but does not e
 xist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Rfn.prediction.Rdash.class} has been referenced but
  does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Rfn.panel.xyplot} has been referenced but does not 
-exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Rfn.performance.Rdash.class} has been referenced bu
 t does not exist, replaced by a fixed one
@@ -1098,6 +1110,9 @@ pdfTeX warning (dest): name{Rfn.raster} has been referenced but does not exist,
 
 pdfTeX warning (dest): name{Rfn.focal} has been referenced but does not exist, 
 replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.panel.xyplot} has been referenced but does not 
+exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Rfn.crosstab} has been referenced but does not exis
 t, replaced by a fixed one
@@ -1128,10 +1143,10 @@ t/fonts/type1/public/inconsolata/Inconsolata.pfb></usr/share/texlive/texmf-dist
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (38 pages, 158991 bytes).
+Output written on Rd2.pdf (39 pages, 163610 bytes).
 PDF statistics:
- 1034 PDF objects out of 1200 (max. 8388607)
- 977 compressed objects within 10 object streams
+ 1083 PDF objects out of 1200 (max. 8388607)
+ 1024 compressed objects within 11 object streams
  401 named destinations out of 1000 (max. 500000)
- 321 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 353 words of extra memory for PDF output out of 10000 (max. 10000000)
 

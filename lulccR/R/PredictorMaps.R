@@ -29,10 +29,9 @@
 #'   a path) or Raster* objects (if \code{x} is a list) matching the regular
 #'   expression will be returned. See \code{raster::\link{raster}} for more
 #'   information about supported filetypes
-#' @param ... additional arguments to \code{raster::\link[raster]{stack}}
+#' @param \dots additional arguments to \code{raster::\link[raster]{stack}}
 #'
-#' @author Simon Moulds
-#' @return a PredictorMaps object
+#' @return A PredictorMaps object.
 #'
 #' @export
 #' @rdname PredictorMaps

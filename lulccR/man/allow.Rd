@@ -22,7 +22,7 @@ demand and 0 means demand is static}
 
 \item{rules}{matrix. See details}
 
-\item{...}{additional arguments (none)}
+\item{\dots}{additional arguments (none)}
 }
 \value{
 a matrix with values of 1 (change allowed) or NA (change not allowed)
@@ -57,8 +57,8 @@ element should represent a rule from the following list:
 \code{allow} should be called from methods in \code{\link{allocate}}. The
 output is a matrix with the same dimensions as the matrix used internally by
 allocation functions to store land use suitability. Thus, by multiplying the
-two matrices together, disallowed transitions can be removed from the
-allocation procedure.
+two matrices together, disallowed transitions are removed from the allocation
+procedure.
 }
 \examples{
 obs <- ObservedMaps(x=pie,
@@ -89,9 +89,6 @@ allow <- allow(x=obs@maps[[1]],
                rules=rules)
 
 # NB output is only useful when used within an allocation routine
-}
-\author{
-Simon Moulds
 }
 \references{
 Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,

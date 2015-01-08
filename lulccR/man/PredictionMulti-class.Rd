@@ -4,8 +4,8 @@
 \alias{PredictionMulti-class}
 \title{Class PredictionMulti}
 \description{
-An S4 class that extends \code{ROCR::\link[ROCR]{prediction-class}} in order
-to hold the results of multiple model predictions.
+An S4 class that extends \code{ROCR::\link[ROCR]{prediction-class}} to hold
+the results of multiple model predictions.
 }
 \section{Slots}{
 
@@ -19,7 +19,4 @@ These objects are calculated for each statistical model in the
 
 \item{\code{labels}}{character vector with labels corresponding to \code{categories}}
 }}
-\author{
-Simon Moulds
-}
 

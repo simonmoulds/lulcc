@@ -7,6 +7,8 @@
 #' coarse squares, disagreement between coarse squares, disagreement about the
 #' quantity of land use change and agreement.
 #'
+#' TODO
+#'
 #' @param rt1 RasterLayer. Observed land use map at time 1
 #' @param rt2 RasterLayer. Observed land use map at time 2
 #' @param st2 RasterLayer. Simulated land use map at time 2 
@@ -16,11 +18,10 @@
 #' @param factors numeric vector of aggregation factors (equivalent to the 'fact'
 #'   argument to \code{raster::\link[raster]{aggregate}} representing the
 #'   resolutions at which model performance should be tested
-#' @param ... additional arguments to \code{raster::\link[raster]{aggregate}}
+#' @param \dots additional arguments to \code{raster::\link[raster]{aggregate}}
 #'
-#' @seealso \code{\link{AgreementBudget}}, \code{\link{FigureOfMerit}}
-#' @author Simon Moulds
-#' @return a \code{ThreeMapComparison} object
+#' @seealso \code{\link{AgreementBudget}},\code{\link{FigureOfMerit}}
+#' @return A \code{ThreeMapComparison} object.
 #'
 #' @export
 #'
@@ -29,10 +30,9 @@
 #' simulation in Cho Don District, Vietnam. Annals of the Association of American
 #' Geographers 101(1): 45-62.
 
-## NB comments refer to equations as written in Pontius et al. (2011)
-
 ThreeMapComparison <- function(rt1, rt2, st2, categories, labels, factors, ...) {
-
+  
+    ## NB equation numbers refer to those in Pontius et al. (2011)
     cr <- raster::compareRaster(rt1, rt2, st2, extent=FALSE, rowcol=FALSE, res=TRUE, tolerance=0.05, stopiffalse=FALSE)
     if (!cr) { stop("resolution and/or CRS of input maps do not agree") }
 

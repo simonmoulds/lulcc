@@ -2,45 +2,46 @@
 \docType{methods}
 \name{PerformanceMulti.plot}
 \alias{PerformanceMulti.plot}
+\alias{PerformanceMulti.plot,PerformanceMulti-method}
 \alias{PerformanceMulti.plot,list-method}
-\title{Plot methods for PerformanceMulti objects}
+\title{Plot method for PerformanceMulti objects}
 \usage{
 PerformanceMulti.plot(x, ...)
 
+\S4method{PerformanceMulti.plot}{PerformanceMulti}(x, type, ...)
+
 \S4method{PerformanceMulti.plot}{list}(x, multipanel = TRUE, type = "l",
   abline = list(c(0, 1), col = "grey"), col = RColorBrewer::brewer.pal(9,
-  "Set1"), key.args = list(), ...)
+  "Set1"), key.args = NULL, ...)
 }
 \arguments{
 \item{x}{either a single \code{PerformanceMulti} object or a list of these.
 If a list is provided it must be named.}
 
-\item{...}{additional arguments to \code{lattice::\link[lattice]{xyplot}}}
+\item{type}{character. See \code{lattice::\link[lattice]{panel.xyplot}}}
 
 \item{multipanel}{logical. If \code{TRUE}, create a trellis plot where the
 number of panels equals the number of \code{PerformanceMulti} objects.
 Otherwise, create a single plot for each \code{PerformanceMulti} object}
 
-\item{type}{character. See \code{lattice::\link[lattice]{panel.xyplot}}}
-
 \item{abline}{list. See \code{lattice::\link[lattice]{panel.xyplot}}}
 
 \item{col}{character. Plotting colour}
 
-\item{key.args}{list. TODO}
+\item{key.args}{list containing additional \code{key} components (e.g.
+\code{cex})}
+
+\item{\dots}{additional arguments to \code{lattice::\link[lattice]{xyplot}}}
 }
 \value{
-a single plot (if \code{multipanel=FALSE}) or a list of plots.
+A trellis object.
 }
 \description{
 Plot the the ROC curve for each \code{performance} object in a
 \code{\link{PerformanceMulti}} object. If a list of \code{PerformanceMulti}
 objects is provided, with each list element representing a different type
 of mathematical model, ROC curves for different models are included on the
-same plot for model comparison
-}
-\author{
-Simon Moulds
+same plot for model comparison.
 }
 \seealso{
 \code{\link{PerformanceMulti}}

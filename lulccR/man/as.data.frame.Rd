@@ -19,24 +19,22 @@ data.frame. Missing values are not allowed}
 \item{optional}{logical. If TRUE, setting row names and converting column
 names (to syntactic names: see make.names) is optional}
 
-\item{...}{additional arguments (none)}
-
 \item{cells}{index of cells to be extracted}
 
 \item{timestep}{numeric indicating the timestep under consideration. Only
 relevant if x@maps contains dynamic predictor variables}
+
+\item{\dots}{additional arguments (none)}
 }
 \value{
 data.frame
 }
 \description{
-This function extracts data from all rasters in a \code{\link{PredictorMaps}}
-object for a specified timestep (if dynamic variables are present).
-}
-\author{
-Simon Moulds
+This function extracts data from all raster objects in a
+\code{\link{PredictorMaps}} object for a specified timestep (if dynamic
+variables are present).
 }
 \seealso{
-\code{\link{PredictorMaps}}, \code{\link{partition}}
+\code{\link{PredictorMaps}},\code{\link{partition}}
 }
 

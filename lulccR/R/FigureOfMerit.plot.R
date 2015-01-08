@@ -4,27 +4,28 @@ NULL
 #' Plot method for FigureOfMerit objects
 #'
 #' Plot the overall, category-specific or transition-specific figure of merit at
-#' different resolutions
+#' different resolutions.
 #'
 #' @param x a \code{FigureOfMerit} object
-#' @param from numeric (optional). A single value corresponding to a land use
-#'   category. If provided without 'to' the figure of merit for all transitions
-#'   from this category will be plotted
-#' @param to numeric (optional). Similar to 'from'. If provided with a valid
-#'   'from' argument the figure of merit for the transition defined by these two
-#'   arguments (i.e. from -> to) will be plotted. It is possible to include more
-#'   than one category in which case the different transitions will be included
-#'   on the same plot
-#' @param type character. See \code{lattice::\link[lattice]{xyplot}}
+#' @param from optional numeric value representing a land use category. If 
+#'   provided without \code{to} the figure of merit for all transitions from this
+#'   category will be plotted
+#' @param to similar to \code{from}. If provided with a valid \code{from}
+#'   argument the transition defined by these two arguments (i.e. \code{from} ->
+#'   \code{to}) will be plotted. It is possible to include more than one category
+#'   in which case the different transitions will be included on the same plot
+#' @param col character specifying the plotting colour. Default is to use the 'Set2'
+#'   palette from \code{RColorBrewer}
+#' @param type character. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param key list. See \code{lattice::\link[lattice]{xyplot}}
 #' @param scales list. See \code{lattice::\link[lattice]{xyplot}}
 #' @param xlab character or expression. See \code{lattice::\link[lattice]{xyplot}} 
 #' @param ylab character or expression. See \code{lattice::\link[lattice]{xyplot}}
-#' @param ... additional arguments to \code{xyplot}
+#' @param \dots additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
-#' @seealso \code{\link{FigureOfMerit}}
-#' @author Simon Moulds
-#' @return a trellis object
+#' @seealso \code{\link{FigureOfMerit}},\code{lattice::\link[lattice]{xyplot}},
+#'   \code{lattice::\link[lattice]{panel.xyplot}}
+#' @return A trellis object.
 #'
 #' @export
 #' @rdname FigureOfMerit.plot
@@ -35,7 +36,7 @@ setGeneric("FigureOfMerit.plot", function(x, ...)
 #' @rdname FigureOfMerit.plot
 #' @aliases FigureOfMerit.plot,FigureOfMerit-method
 setMethod("FigureOfMerit.plot", signature(x = "FigureOfMerit"),
-          function(x, from, to, type="b", key, scales, xlab, ylab, ...) {
+          function(x, from, to, col=RColorBrewer::brewer.pal(8, "Set2"), type="b", key, scales, xlab, ylab, ...) {
 
               if (!missing(from) && missing(to)) fom <- "category"
 
@@ -59,8 +60,6 @@ setMethod("FigureOfMerit.plot", signature(x = "FigureOfMerit"),
                   if (length(to.ix) == 1 && from.ix == to.ix) stop("'from' cannot equal 'to'")
                   fom <- "transition"        
               }
-
-              cols <- RColorBrewer::brewer.pal(8, "Set2")
 
               ## prepare data.frame
               if (fom == "transition") {
@@ -106,12 +105,12 @@ setMethod("FigureOfMerit.plot", signature(x = "FigureOfMerit"),
 
               if (type == "transition" && length(to.ix) > 1) {
                   default.key <- list(space="bottom",
-                                      lines=list(type=type, pch=1, col=cols[1:length(data.list)], size=5),
+                                      lines=list(type=type, pch=1, col=col[1:length(data.list)], size=5),
                                       text=list(sapply(var.list, function(x) x)),
                                       divide=1)
               } else {
                   default.key <- list(space="bottom",
-                                      lines=list(type=type, pch=1, col=cols[1], size=5),
+                                      lines=list(type=type, pch=1, col=col[1], size=5),
                                       text=list(var),
                                       divide=1)
               }
@@ -148,9 +147,9 @@ setMethod("FigureOfMerit.plot", signature(x = "FigureOfMerit"),
                                    groups=var,
                                    key=key,
                                    #par.settings=list(layout.heights = list(key.top=1.5)), ##,
-                                   line.cols=cols,
-                                   panel=function(x,y,line.cols,...) {
-                                       lattice::panel.xyplot(x,y,type=type,col=line.cols,...)
+                                   line.col=col,
+                                   panel=function(x,y,line.col,...) {
+                                       lattice::panel.xyplot(x,y,type=type,col=line.col,...)
                                    }, 
                                    xlab=xlab,     #"Resolution (multiple of native pixel size)",
                                    ylab=ylab,     #"Figure of merit",

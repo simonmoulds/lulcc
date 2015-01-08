@@ -3,7 +3,7 @@
 #' Identify legitimate transitions for each cell according to neighbourhood
 #' decision rules.
 #'
-#' See \code{\link{allow}}
+#' See \code{\link{allow}}.
 #' 
 #' @param x a \code{NeighbMaps} object
 #' @param cells index of non-NA cells in the study region
@@ -14,10 +14,10 @@
 #' @param rules a numeric vector with neighbourhood decision rules. Each rule
 #'   is a value between 0 and 1 representing the threshold neighbourhood value
 #'   above which change is allowed. Rules should correspond with
-#'   \code{neighb@@categories}
-#' @param ... additional arguments (none)
+#'   \code{x@@categories}
+#' @param \dots additional arguments (none)
 #'
-#' @return a matrix. See \code{\link{allow}}
+#' @return a matrix. See \code{\link{allow}}.
 #' 
 #' @export
 #' @examples

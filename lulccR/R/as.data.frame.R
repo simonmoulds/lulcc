@@ -3,8 +3,9 @@ NULL
 
 #' Coerce \code{PredictorMaps} object to data.frame
 #'
-#' This function extracts data from all rasters in a \code{\link{PredictorMaps}}
-#' object for a specified timestep (if dynamic variables are present).
+#' This function extracts data from all raster objects in a
+#' \code{\link{PredictorMaps}} object for a specified timestep (if dynamic
+#' variables are present).
 #'
 #' @param x an object of class \code{\link{PredictorMaps}}
 #' @param row.names NULL or a character vector giving the row.names for the
@@ -14,18 +15,15 @@ NULL
 #' @param cells index of cells to be extracted
 #' @param timestep numeric indicating the timestep under consideration. Only
 #'  relevant if x@@maps contains dynamic predictor variables
-#' @param ... additional arguments (none)
+#' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{PredictorMaps}}, \code{\link{partition}}
-#' @author Simon Moulds
+#' @seealso \code{\link{PredictorMaps}},\code{\link{partition}}
 #' @return data.frame
 #'
 #' @export
 #' @rdname as.data.frame
 
 setGeneric("as.data.frame")
-## setGeneric("as.data.frame", function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...)
-##            standardGeneric("as.data.frame"))
 
 #' @rdname as.data.frame
 #' @aliases as.data.frame,PredictorMaps-method

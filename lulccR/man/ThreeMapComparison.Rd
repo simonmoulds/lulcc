@@ -21,10 +21,10 @@ ThreeMapComparison(rt1, rt2, st2, categories, labels, factors, ...)
 argument to \code{raster::\link[raster]{aggregate}} representing the
 resolutions at which model performance should be tested}
 
-\item{...}{additional arguments to \code{raster::\link[raster]{aggregate}}}
+\item{\dots}{additional arguments to \code{raster::\link[raster]{aggregate}}}
 }
 \value{
-a \code{ThreeMapComparison} object
+A \code{ThreeMapComparison} object.
 }
 \description{
 An implementation of the method described by Pontius et al. (2011), which
@@ -34,8 +34,8 @@ taking into account persistence. The method quantifies disagreement within
 coarse squares, disagreement between coarse squares, disagreement about the
 quantity of land use change and agreement.
 }
-\author{
-Simon Moulds
+\details{
+TODO
 }
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
@@ -44,6 +44,6 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{AgreementBudget}}, \code{\link{FigureOfMerit}}
+\code{\link{AgreementBudget}},\code{\link{FigureOfMerit}}
 }
 

@@ -13,9 +13,8 @@ AgreementBudget.plot(x, ...)
 \arguments{
 \item{x}{object of class \code{AgreementBudget}}
 
-\item{...}{additional arguments to \code{lattice::\link[lattice]{xyplot}}}
-
-\item{col}{character. A colour palette. Default is 'Set2' from RColorBrewer}
+\item{col}{character specifying the plotting colour. Default is to use the 'Set2'
+palette from \code{RColorBrewer}}
 
 \item{key}{list. See \code{lattice::\link[lattice]{xyplot}}}
 
@@ -24,19 +23,17 @@ AgreementBudget.plot(x, ...)
 \item{xlab}{character or expression. See \code{lattice::\link[lattice]{xyplot}}}
 
 \item{ylab}{character or expression. See \code{lattice::\link[lattice]{xyplot}}}
+
+\item{\dots}{additional arguments to \code{lattice::\link[lattice]{xyplot}}}
 }
 \value{
-a trellis object
+A trellis object.
 }
 \description{
-Plot sources of agreement and disagreement between three maps at multiple
-resolutions
+Plot an \code{\link{AgreementBudget}} object.
 }
 \details{
 The plot layout is based on work presented in Pontius et al. (2011)
-}
-\author{
-Simon Moulds
 }
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
@@ -45,6 +42,6 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{AgreementBudget}}, \code{lattice::\link[lattice]{xyplot}}
+\code{\link{AgreementBudget}},\code{lattice::\link[lattice]{xyplot}}
 }
 

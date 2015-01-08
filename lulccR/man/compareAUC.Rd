@@ -4,7 +4,7 @@
 \alias{compareAUC}
 \alias{compareAUC,PredictionMulti-method}
 \alias{compareAUC,list-method}
-\title{Compare the area under the ROC curve (AUC) for different models}
+\title{Compare the area under the ROC curve (AUC) for different predictive models}
 \usage{
 compareAUC(pred, ...)
 
@@ -15,10 +15,10 @@ compareAUC(pred, ...)
 \arguments{
 \item{pred}{a \code{PredictionMulti} object or a list of these}
 
-\item{...}{additional arguments (none)}
-
 \item{digits}{numeric indicating the number of digits to be displayed after
 the decimal point for AUC values}
+
+\item{\dots}{additional arguments (none)}
 }
 \value{
 data.frame containing AUC values
@@ -33,9 +33,6 @@ providing a list of \code{PredictionMulti} objects. Note that
 \code{compareAUC} should be used in conjunction with other comparison methods
 because the AUC does not contain as much information as, for instance, the ROC
 curve itself
-}
-\author{
-Simon Moulds
 }
 \references{
 Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).

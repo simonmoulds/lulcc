@@ -18,19 +18,19 @@ they're associated with a neighbourhood decision rule}
 \item{rules}{a numeric vector with neighbourhood decision rules. Each rule
 is a value between 0 and 1 representing the threshold neighbourhood value
 above which change is allowed. Rules should correspond with
-\code{neighb@categories}}
+\code{x@categories}}
 
-\item{...}{additional arguments (none)}
+\item{\dots}{additional arguments (none)}
 }
 \value{
-a matrix. See \code{\link{allow}}
+a matrix. See \code{\link{allow}}.
 }
 \description{
 Identify legitimate transitions for each cell according to neighbourhood
 decision rules.
 }
 \details{
-See \code{\link{allow}}
+See \code{\link{allow}}.
 }
 \examples{
 # observed data

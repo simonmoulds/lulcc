@@ -6,8 +6,9 @@ NULL
 #' Methods to create an ObservedMaps object, which may be created from file, an
 #' existing Raster* object or a list of Raster* objects.
 #'
-#' Observed maps should have the same extent and resolution. Note that the study
-#' region is defined by the location of non-NA cells in observed maps.
+#' Observed land use maps should have the same extent and resolution. The
+#' location of non-NA cells in \code{ObservedMaps} objects defines the region for
+#' subsequent analysis.
 #' 
 #' @param x path (character), Raster* object or list of Raster* objects. Default
 #'   behaviour is to search for files in the working directory
@@ -20,10 +21,9 @@ NULL
 #'   \code{categories}
 #' @param t numeric vector containing the timestep of each observed map. The 
 #'   first timestep must be 0
-#' @param ... additional arguments to \code{raster::\link[raster]{stack}}
+#' @param \dots additional arguments to \code{raster::\link[raster]{stack}}
 #'
-#' @author Simon Moulds
-#' @return an ObservedMaps object
+#' @return An ObservedMaps object.
 #'
 #' @export
 #' @rdname ObservedMaps

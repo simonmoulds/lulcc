@@ -1,7 +1,7 @@
 #' Class AgreementBudget
 #'
 #' An S4 class for information about sources of agreement and disagreement
-#' between three maps.
+#' between three categorical raster maps.
 #'
 #' @slot agreement data.frame containing sources of agreement and disagreement.
 #'   Rows represent different resolutions and columns represent the different
@@ -13,11 +13,8 @@
 #' @slot categories numeric vector of land use categories in the three
 #'   maps considered
 #' @slot labels character vector with labels corresponding to \code{categories}
-#' @slot from,to numeric vectors that together define land use transitions
+#' @slot from,to numeric vectors that together define the land use transitions
 #'   for which agreement was calculated
-#'
-#' @author Simon Moulds
-#'
 #'
 #' @export
 #' @exportClass AgreementBudget

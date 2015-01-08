@@ -12,8 +12,6 @@
 #' @slot categories numeric vector of land use categories
 #' @slot labels character vector corresponding to \code{categories}
 #'
-#' @author Simon Moulds
-#'
 #' @export
 #' @exportClass PerformanceMulti
 #' @rdname PerformanceMulti-class

@@ -22,7 +22,4 @@ performance object}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}
 }}
-\author{
-Simon Moulds
-}
 

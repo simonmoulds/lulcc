@@ -17,14 +17,14 @@ resample(x, y, ...)
 
 \item{y}{Raster* object with parameters that \code{x} should be resampled to}
 
-\item{...}{additional arguments to \code{raster::\link[raster]{resample}}}
-
 \item{method}{method used to compute values for the new RasterLayer, should be
 \code{"bilinear"} for bilinear interpolation, or \code{"ngb"} for nearest
 neighbour}
+
+\item{\dots}{additional arguments to \code{raster::\link[raster]{resample}}}
 }
 \value{
-PredictorMaps object or list, depending on \code{x}
+A PredictorMaps object or list, depending on \code{x}.
 }
 \description{
 A wrapper function for \code{raster::\link[raster]{resample}} to resample
@@ -38,10 +38,7 @@ pred <- PredictorMaps(maps=pred)
 ## resample to ensure maps have same characteristics as observed maps
 pred <- resample(x=pred, y=pie$lu_pie_1985, method="ngb")
 }
-\author{
-Simon Moulds
-}
 \seealso{
-\code{\link{PredictorMaps}}
+\code{\link{PredictorMaps}}, \code{raster::\link[raster]{resample}}
 }
 

@@ -9,30 +9,14 @@ NULL
 #'
 #' Methods to combine several object classes that are useful for land use change
 #' modelling and perform a series of checks to ensure the objects are compatible
-#' in time and space for a model simulation. If they are, a ModelInput object is
-#' created which may be supplied to \code{\link{allocate}}.
+#' in time and space for a model simulation.
 #'
-#' The \code{params} argument is a list of parameter values. For
-#' \code{CluesModelInput} it should contain the following components:
-#' \describe{
-#'   \item{\code{jitter.f}}{Parameter controlling the amount of perturbation
-#'     applied to the probability surface prior to running the CLUE-S iterative
-#'     algorithm. Higher values result in more perturbation. Default is 0.0001}
-#'   \item{\code{scale.f}}{In CLUE-S the suitability of land use types that do
-#'     not meet demand is increased by an amount obtained by multiplying this
-#'     parameter by the difference between allocated and demanded area. Default
-#'     is 0.0005}
-#'   \item{\code{max.iter}}{The maximum number of iterations in the simulation}
-#'   \item{\code{max.diff}}{The maximum allowed difference between allocated and
-#'     demanded area of any land use type. Default is 5}
-#'   \item{\code{ave.diff}}{The average allowed difference between allocated and
-#'     demanded area. Default is 5}
-#' }
-#'
-#' When \code{params} is passed to \code{OrderedModelInput} it should only
-#' contain \code{max.diff}, which has the same meaning as for
-#' \code{CluesModelInput}.
-#'
+#' Note that \code{ModelInput} objects cannot be supplied directly to
+#' \code{allocate}. Instead, they should be passed to a constructor function for
+#' \code{ModelInput} subclasses which are particular to a land use change model.
+#' Practically, this makes it easier to compare different models because common
+#' inputs are clearly defined.
+#' 
 #' @param x an ObservedMaps object or a ModelInput object
 #' @param pred a PredictorMaps object
 #' @param models a StatModels object
@@ -47,34 +31,17 @@ NULL
 #' @param mask RasterLayer containing binary values where 0 indicates cells
 #'   that are not allowed to change
 #' @param neighb an object of class NeighbMaps
-#' @param rules matrix with land use change decision rules
-#' @param nb.rules numeric with neighbourhood decision rules
-#' @param elas numeric indicating elasticity of each land use category to change
-#'   (only required for \code{CluesModelInput} objects
-#' @param params list with model parameters
-#' @param ... additional arguments (none)
+#' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{allocate}}
-#' @author Simon Moulds
-#' @return a ModelInput object
+#' @seealso \code{\link{CluesModelInput}},\code{\link{OrderedModelInput}},
+#'   \code{\link{allocate}}
+#' @return A ModelInput object.
 #'
 #' @export
 #' @rdname ModelInput
 
 setGeneric("ModelInput", function(x, pred, models, time, demand, ...)
            standardGeneric("ModelInput"))
-
-#' @rdname ModelInput
-#' @aliases CluesModelInput
-#' @export
-setGeneric("CluesModelInput", function(x, elas, ...)
-           standardGeneric("CluesModelInput"))
-
-#' @rdname ModelInput
-#' @aliases OrderedModelInput
-#' @export
-setGeneric("OrderedModelInput", function(x, ...)
-           standardGeneric("OrderedModelInput"))
 
 #' @rdname ModelInput
 #' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY-method
@@ -149,9 +116,48 @@ setMethod("ModelInput", signature(x = "ObservedMaps", pred = "PredictorMaps", mo
            }
 )
 
-#' @rdname ModelInput
-#' @aliases CluesModelInput,ModelInput,numeric-method
-setMethod("CluesModelInput", signature(x = "ModelInput", elas = "numeric"),
+#' Create a CluesModelInput object
+#'
+#' Methods to create a \code{CluesModelInput} object to supply to
+#' \code{\link{allocate}}.
+#'
+#' The \code{params} argument is a list of parameter values which should contain
+#' the following components:
+#' 
+#' \describe{
+#'   \item{\code{jitter.f}}{Parameter controlling the amount of perturbation
+#'     applied to the probability surface prior to running the CLUE-S iterative
+#'     algorithm. Higher values result in more perturbation. Default is 0.0001}
+#'   \item{\code{scale.f}}{Scale factor which controls the amount by which
+#'     suitability is increased if demand is not met. Default is 0.0005}
+#'   \item{\code{max.iter}}{The maximum number of iterations in the simulation}
+#'   \item{\code{max.diff}}{The maximum allowed difference between allocated and
+#'     demanded area of any land use type. Default is 5}
+#'   \item{\code{ave.diff}}{The average allowed difference between allocated and
+#'     demanded area. Default is 5}
+#' }
+#'
+#' TODO
+#' 
+#' @param x an ObservedMaps object or a ModelInput object
+#' @param rules matrix with land use change decision rules
+#' @param nb.rules numeric with neighbourhood decision rules
+#' @param elas numeric indicating elasticity of each land use category to change
+#' @param params list with model parameters
+#' @param \dots additional arguments to \code{\link{ModelInput}}
+#'
+#' @seealso \code{link{ModelInput}},\code{\link{allocate}}
+#' @return A CluesModelInput object.
+#'
+#' @export
+#' @rdname CluesModelInput
+
+setGeneric("CluesModelInput", function(x, ...)
+           standardGeneric("CluesModelInput"))
+
+#' @rdname CluesModelInput
+#' @aliases CluesModelInput,ModelInput-method
+setMethod("CluesModelInput", signature(x = "ModelInput"),
           function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
 
               if (!is.null(rules)) {
@@ -185,9 +191,9 @@ setMethod("CluesModelInput", signature(x = "ModelInput", elas = "numeric"),
           }
 )
 
-#' @rdname ModelInput
-#' @aliases CluesModelInput,ObservedMaps,numeric-method
-setMethod("CluesModelInput", signature(x = "ObservedMaps", elas = "numeric"),
+#' @rdname CluesModelInput
+#' @aliases CluesModelInput,ObservedMaps-method
+setMethod("CluesModelInput", signature(x = "ObservedMaps"),
           function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
               input <- ModelInput(x=x, ...)
               if (missing(params)) params <- list()
@@ -210,7 +216,37 @@ setMethod("CluesModelInput", signature(x = "ObservedMaps", elas = "numeric"),
     params <- params[c("jitter.f","scale.f","max.iter","max.diff","ave.diff")]
 }
 
-#' @rdname ModelInput
+#' Create an OrderedModelInput object
+#'
+#' Methods to create a \code{OrderedModelInput} object to supply to
+#' \code{\link{allocate}}.
+#'
+#' The \code{params} argument is a list of parameter values which should contain
+#' the following components:
+#' 
+#' \describe{
+#'   \item{\code{max.diff}}{The maximum allowed difference between allocated and
+#'     demanded area of any land use type. Default is 5}
+#' }
+#'
+#' TODO
+#' 
+#' @param x an ObservedMaps object or a ModelInput object
+#' @param rules matrix with land use change decision rules
+#' @param nb.rules numeric with neighbourhood decision rules
+#' @param params list with model parameters
+#' @param \dots additional arguments to \code{\link{ModelInput}}
+#'
+#' @seealso \code{link{ModelInput}},\code{\link{allocate}}
+#' @return An OrderedModelInput object.
+#'
+#' @export
+#' @rdname OrderedModelInput
+
+setGeneric("OrderedModelInput", function(x, ...)
+           standardGeneric("OrderedModelInput"))
+
+#' @rdname OrderedModelInput
 #' @aliases OrderedModelInput,ModelInput-method
 setMethod("OrderedModelInput", signature(x = "ModelInput"),
           function(x, rules=NULL, nb.rules=NULL, params, ...) {
@@ -242,7 +278,7 @@ setMethod("OrderedModelInput", signature(x = "ModelInput"),
           }
 )
 
-#' @rdname ModelInput
+#' @rdname OrderedModelInput
 #' @aliases OrderedModelInput,ObservedMaps-method
 setMethod("OrderedModelInput", signature(x = "ObservedMaps"),
           function(x, rules=NULL, nb.rules=NULL, params, ...) {

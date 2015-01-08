@@ -30,8 +30,6 @@ a path) or Raster* objects (if \code{x} is a list) matching the regular
 expression will be returned. See \code{raster::\link[raster]{raster}} for
 more information about supported filetypes}
 
-\item{...}{additional arguments to \code{raster::\link[raster]{stack}}}
-
 \item{categories}{numeric vector of land use categories in observed maps}
 
 \item{labels}{character vector (optional) with labels corresponding to
@@ -39,17 +37,20 @@ more information about supported filetypes}
 
 \item{t}{numeric vector containing the timestep of each observed map. The
 first timestep must be 0}
+
+\item{\dots}{additional arguments to \code{raster::\link[raster]{stack}}}
 }
 \value{
-an ObservedMaps object
+An ObservedMaps object.
 }
 \description{
 Methods to create an ObservedMaps object, which may be created from file, an
 existing Raster* object or a list of Raster* objects.
 }
 \details{
-Observed maps should have the same extent and resolution. Note that the study
-region is defined by the location of non-NA cells in observed maps.
+Observed land use maps should have the same extent and resolution. The
+location of non-NA cells in \code{ObservedMaps} objects defines the region for
+subsequent analysis.
 }
 \examples{
 ## Plum Islands Ecosystem
@@ -65,8 +66,5 @@ obs <- ObservedMaps(x=sibuyan,
                     categories=c(1,2,3,4,5),
                     labels=c("forest","coconut","grass","rice","other"),
                     t=c(0))
-}
-\author{
-Simon Moulds
 }
 

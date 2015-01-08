@@ -3,14 +3,12 @@
 #' An S4 class for different figure of merit scores.
 #'
 #' @slot overall list containing the overall figure of merit score for each
-#'   resolution
+#'   aggregation factor
 #' @slot category list of numeric vectors containing category specific scores
 #' @slot transition list of matrices containing transition specific scores
 #' @slot factors numeric vector of aggregation factors
 #' @slot categories numeric vector of land use categories
 #' @slot labels character vector corresponding to \code{categories}
-#'
-#' @author Simon Moulds
 #' 
 #' @export
 #' @exportClass FigureOfMerit

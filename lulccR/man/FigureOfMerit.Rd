@@ -8,10 +8,10 @@ FigureOfMerit(x, ...)
 \arguments{
 \item{x}{a \code{ThreeMapComparison} object}
 
-\item{...}{additional arguments (none)}
+\item{\dots}{additional arguments (none)}
 }
 \value{
-a \code{FigureOfMerit} object
+A \code{FigureOfMerit} object.
 }
 \description{
 Calculate the figure of merit at different levels and at different resolutions
@@ -27,9 +27,6 @@ transitions from all land use categories, (2) considering all transitions from
 specific land use categories and (3) considering a specific transition from
 one land use category to another.
 }
-\author{
-Simon Moulds
-}
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
 Comparison of three maps at multiple resolutions: a case study of land change
@@ -37,6 +34,6 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{ThreeMapComparison}}, \code{\link{AgreementBudget}}
+\code{\link{ThreeMapComparison}},\code{\link{FigureOfMerit.plot}}
 }
 

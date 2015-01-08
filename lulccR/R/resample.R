@@ -11,11 +11,10 @@ NULL
 #' @param method method used to compute values for the new RasterLayer, should be
 #'   \code{"bilinear"} for bilinear interpolation, or \code{"ngb"} for nearest
 #'   neighbour
-#' @param ... additional arguments to \code{raster::\link[raster]{resample}}
+#' @param \dots additional arguments to \code{raster::\link[raster]{resample}}
 #'
-#' @seealso \code{\link{PredictorMaps}}
-#' @author Simon Moulds
-#' @return PredictorMaps object or list, depending on \code{x}
+#' @seealso \code{\link{PredictorMaps}}, \code{raster::\link[raster]{resample}}
+#' @return A PredictorMaps object or list, depending on \code{x}.
 #'
 #' @rdname resample
 #'
@@ -31,8 +30,6 @@ NULL
 #' pred <- resample(x=pred, y=pie$lu_pie_1985, method="ngb")
 
 setGeneric("resample")
-##setGeneric("resample", function(x, y, ...)
-##           standardGeneric("resample"))
 
 #' @rdname resample
 #' @aliases resample,PredictorMaps,Raster-method

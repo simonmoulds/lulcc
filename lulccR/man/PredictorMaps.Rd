@@ -27,10 +27,10 @@ a path) or Raster* objects (if \code{x} is a list) matching the regular
 expression will be returned. See \code{raster::\link{raster}} for more
 information about supported filetypes}
 
-\item{...}{additional arguments to \code{raster::\link[raster]{stack}}}
+\item{\dots}{additional arguments to \code{raster::\link[raster]{stack}}}
 }
 \value{
-a PredictorMaps object
+A PredictorMaps object.
 }
 \description{
 Methods to load maps of predictor variables, which may be created from file, an
@@ -63,8 +63,5 @@ pred.maps <- PredictorMaps(x=pie, pattern="pred")
 
 ## Sibuyan
 pred.maps <- PredictorMaps(x=sibuyan, pattern="pred")
-}
-\author{
-Simon Moulds
 }
 

@@ -1,9 +1,7 @@
-## if (!isGeneric("compareAUC")) {
-##     setGeneric("compareAUC", function(pred, ...)
-##                standardGeneric("compareAUC"))
-## }
+#' @include class-PredictionMulti.R
+NULL
 
-#' Compare the area under the ROC curve (AUC) for different models
+#' Compare the area under the ROC curve (AUC) for different predictive models
 #'
 #' Estimate the AUC for each \code{ROCR::\link[ROCR]{prediction}} object in a
 #' \code{\link{PredictionMulti}} object.
@@ -17,10 +15,9 @@
 #' @param pred a \code{PredictionMulti} object or a list of these
 #' @param digits numeric indicating the number of digits to be displayed after
 #'   the decimal point for AUC values
-#' @param ... additional arguments (none) 
+#' @param \dots additional arguments (none) 
 #'
 #' @seealso \code{\link{PredictionMulti}}, \code{ROCR::\link[ROCR]{performance}}
-#' @author Simon Moulds
 #' @return data.frame containing AUC values
 #' @export
 #' @rdname compareAUC
@@ -29,10 +26,8 @@
 #' ROCR: visualizing classifier performance in R. Bioinformatics
 #' 21(20):3940-3941.
 
-#if (!isGeneric("compareAUC")) {
 setGeneric("compareAUC", function(pred, ...)
            standardGeneric("compareAUC"))
-#}
 
 #' @rdname compareAUC
 #' @aliases compareAUC,PredictionMulti-method

@@ -24,23 +24,28 @@ for which a predict method exists (currently, \code{glm},
 \code{rpart::\link[rpart]{rpart}} and
 \code{randomForest::\link[randomForest]{randomForest}}}
 
-\item{...}{additional arguments to \code{predict}}
-
 \item{newdata}{data.frame containing new data}
 
-\item{df}{logical indicating whether the function should return a data.frame
-or matrix (default)}
+\item{df}{logical indicating whether the function should return a matrix
+(default) or data.frame}
+
+\item{\dots}{additional arguments to the \code{predict}}
 }
 \value{
-a data.frame or matrix
+A matrix or data.frame.
 }
 \description{
 Estimate location suitability with predictive models.
+}
+\details{
+This function is usually called from \code{allocate} to calculate land use
+suitability at each timestep. However, it may also be used to produce
+suitability maps (see examples).
 }
 \author{
 Simon Moulds
 }
 \seealso{
-\code{\link{StatModels}}, \code{\link{predict}}
+\code{\link{StatModels}},\code{\link{allocate}},\code{\link{predict}}
 }
 

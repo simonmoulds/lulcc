@@ -5,7 +5,7 @@
 \title{Class AgreementBudget}
 \description{
 An S4 class for information about sources of agreement and disagreement
-between three maps.
+between three categorical raster maps.
 }
 \section{Slots}{
 
@@ -25,10 +25,7 @@ maps considered}
 
 \item{\code{labels}}{character vector with labels corresponding to \code{categories}}
 
-\item{\code{from,to}}{numeric vectors that together define land use transitions
+\item{\code{from,to}}{numeric vectors that together define the land use transitions
   for which agreement was calculated}
 }}
-\author{
-Simon Moulds
-}
 

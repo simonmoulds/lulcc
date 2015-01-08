@@ -14,18 +14,15 @@ PerformanceMulti(pred, measure, x.measure = "cutoff", ...)
 \item{x.measure}{a second performance measure. See
 \code{ROCR::\link[ROCR]{performance}}}
 
-\item{...}{additional arguments to \code{\link{performance}}}
+\item{\dots}{additional arguments to \code{ROCR::\link[ROCR]{performance}}}
 }
 \value{
-a \code{PerformanceMulti} object
+A \code{PerformanceMulti} object.
 }
 \description{
 This function uses different measures to evaluate multiple
 \code{ROCR::\link[ROCR]{prediction}} objects stored in a
 \code{\link{PredictionMulti}} object.
-}
-\author{
-Simon Moulds
 }
 \references{
 Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).

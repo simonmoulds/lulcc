@@ -1,27 +1,18 @@
 #' @include class-ModelInput.R
 NULL
 
-## if (!isGeneric("allocate")) {
-##     setGeneric("allocate", function(input, ...)
-##                standardGeneric("allocate"))
-## }
-
-#' @title Allocate land use change spatially
+#' Allocate land use change spatially
 #'
 #' Perform spatially explicit allocation of land use change using different
-#' methods. Currently the function provides an algorithm based on the CLUE-S
-#' model (Verburg et al., 2002) and a novel stochastic procedure. 
-#'
-#' \code{allocate} is designed to be easily extensible. To write a new allocation
-#' method (apart from writing the algorithm itself) one simply needs to create a
-#' new class inheriting from \code{ModelInput} and an \code{allocate} method for
-#' this class.
+#' methods. Currently the function provides an algorithm based on the Change in
+#' Land Use and its Effects at Small regional extent (CLUE-S) model(Verburg et
+#' al., 2002) and a novel stochastic procedure that aims to represent the
+#' uncertainty associated with the allocation of change.  
 #'
 #' @param input an object inheriting from class \code{ModelInput}
-#' @param ... additional arguments for specific methods
+#' @param \dots additional arguments for specific methods
 #'
-#' @seealso \code{link{ModelInput}}
-#' @author Simon Moulds
+#' @seealso \code{\link{ModelInput}}
 #'
 #' @export
 #' @rdname allocate

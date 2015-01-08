@@ -16,7 +16,4 @@ categories belonging to the same map.
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}
 }}
-\author{
-Simon Moulds
-}
 

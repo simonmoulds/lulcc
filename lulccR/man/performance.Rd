@@ -13,23 +13,20 @@ performance(prediction.obj, ...)
 \arguments{
 \item{prediction.obj}{a list of \code{prediction} objects}
 
-\item{...}{additional arguments to \code{ROCR::\link[ROCR]{performance}}}
-
 \item{measure}{performance measure to use for the evaluation. See
 \code{ROCR::\link[ROCR]{performance}}}
 
 \item{x.measure}{a second performance measure. See
 \code{ROCR::\link[ROCR]{performance}}}
+
+\item{\dots}{additional arguments to \code{ROCR::\link[ROCR]{performance}}}
 }
 \value{
-a list of \code{performance} objects
+A list of \code{performance} objects.
 }
 \description{
 A wrapper function for \code{ROCR::\link[ROCR]{performance}} to create
 \code{performance} objects from a list of \code{prediction} objects.
-}
-\author{
-Simon Moulds
 }
 \references{
 Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).

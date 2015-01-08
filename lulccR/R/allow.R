@@ -28,8 +28,8 @@
 #' \code{allow} should be called from methods in \code{\link{allocate}}. The
 #' output is a matrix with the same dimensions as the matrix used internally by
 #' allocation functions to store land use suitability. Thus, by multiplying the
-#' two matrices together, disallowed transitions can be removed from the
-#' allocation procedure.
+#' two matrices together, disallowed transitions are removed from the allocation
+#' procedure.
 #'
 #' @param x numeric vector containing the land use pattern for the current
 #'   timestep
@@ -42,9 +42,8 @@
 #'   of cells belonging to the category must increase), -1 means decreasing
 #'   demand and 0 means demand is static 
 #' @param rules matrix. See details
-#' @param ... additional arguments (none)
+#' @param \dots additional arguments (none)
 #'
-#' @author Simon Moulds
 #' @return a matrix with values of 1 (change allowed) or NA (change not allowed)
 #'
 #' @useDynLib lulccR

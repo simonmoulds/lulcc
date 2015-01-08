@@ -3,15 +3,57 @@ NULL
 
 #' lulccR: land use change modelling in R
 #'
-#' lulccR provides a framework for spatially explicit land use change modelling
-#' in R. The main goal of the package is to allow users to perform every stage of
-#' the modelling process in the same environment. It therefore includes functions
-#' to process and explore model input, fit and evaluate predictive models,
-#' estimate future demand for different land uses, allocate land use change
-#' spatially, calibrate and validate the model, and, finally, visualise model
-#' output.
+#' The lulccR package is an open and extensible framework for land use change
+#' modelling in R. The aims of the package are as follows:
 #'
-#' @author Simon Moulds
+#' \enumerate{
+#'   \item to improve the reproducibility of scientific results and encourage
+#'     reuse of code within the land use change modelling community
+#'   \item to make it easy to directly compare and combine different model
+#'     structures
+#'   \item to allow users to perform every aspect of the modelling process in the same
+#'     environment
+#' }
+#' 
+#' To achieve these aims the package utilises an object-oriented approach based
+#' on the S4 system, providing a formal structure for the modelling framework.
+#'
+#' Models are represented by objects inheriting from the \code{ModelInput}
+#' superclass. This class is designed to represent general information required
+#' by all models, while specific models are represented by subclasses of
+#' \code{ModelInput}. Currently the package includes two inductive land use
+#' change models. The first is an implementation of the Change in Land Use and
+#' its Effects at Small Regional extent (CLUE-S) model (Verburg et al., 2002)
+#' (subclass \code{CluesModelInput}), while the second is a novel stocastic
+#' procedure that aims to represent the uncertainty associated with the
+#' allocation of change (subclass \code{OrderedModelInput}).
+#'
+#' The main input to land use change models is a set of mathematical models that
+#' relate observed land use or land use change to spatially explicit predictor
+#' variables. A mathematical model is usually obtained for each category or
+#' transition, respectively. Collectively, these are represented by the
+#' \code{StatModels} class. Currently lulccR supports binary logistic regression,
+#' provided by base R (\code{glm}), recursive partitioning and regression trees,
+#' provided by package \code{rpart} and random forest, provided by package
+#' \code{randomForest}. To a large extent, the success of the allocation routine
+#' depends on the strength of the mathematical models; for this reason, lulccR
+#' includes methods to evaluate models using package \code{ROCR}. 
+#'
+#' To validate model output lulccR includes a method developed by Pontius et al.
+#' (2011) that simultaneously compares a reference map for time 1, a reference
+#' map for time 2 and a simulated map for time 2 at multiple resolutions. In
+#' lulccR the results of the comparison are represented by the
+#' \code{ThreeMapComparison} class. From objects of this class it is
+#' straightforward to extract information about different sources of agreement
+#' and disagreement, represented by the \code{AgreementBudget} class, which can
+#' then be plotted. The results of the comparison are conveniently summarised by
+#' the figure of merit, which is represented by the \code{FigureOfMerit} class.
+#'
+#' In addition to the core functionality described above, lulccR inludes several
+#' utility functions to assist with the model building process. Two example
+#' datasets are also included. 
+#'
+#' @author Simon Moulds \email{simonm@@riseup.net}
 #' @docType package
 #' @name lulccR-package
 NULL

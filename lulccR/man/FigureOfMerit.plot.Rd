@@ -7,25 +7,26 @@
 \usage{
 FigureOfMerit.plot(x, ...)
 
-\S4method{FigureOfMerit.plot}{FigureOfMerit}(x, from, to, type = "b", key,
-  scales, xlab, ylab, ...)
+\S4method{FigureOfMerit.plot}{FigureOfMerit}(x, from, to,
+  col = RColorBrewer::brewer.pal(8, "Set2"), type = "b", key, scales, xlab,
+  ylab, ...)
 }
 \arguments{
 \item{x}{a \code{FigureOfMerit} object}
 
-\item{...}{additional arguments to \code{xyplot}}
+\item{from}{optional numeric value representing a land use category. If
+provided without \code{to} the figure of merit for all transitions from this
+category will be plotted}
 
-\item{from}{numeric (optional). A single value corresponding to a land use
-category. If provided without 'to' the figure of merit for all transitions
-from this category will be plotted}
+\item{to}{similar to \code{from}. If provided with a valid \code{from}
+argument the transition defined by these two arguments (i.e. \code{from} ->
+\code{to}) will be plotted. It is possible to include more than one category
+in which case the different transitions will be included on the same plot}
 
-\item{to}{numeric (optional). Similar to 'from'. If provided with a valid
-'from' argument the figure of merit for the transition defined by these two
-arguments (i.e. from -> to) will be plotted. It is possible to include more
-than one category in which case the different transitions will be included
-on the same plot}
+\item{col}{character specifying the plotting colour. Default is to use the 'Set2'
+palette from \code{RColorBrewer}}
 
-\item{type}{character. See \code{lattice::\link[lattice]{xyplot}}}
+\item{type}{character. See \code{lattice::\link[lattice]{panel.xyplot}}}
 
 \item{key}{list. See \code{lattice::\link[lattice]{xyplot}}}
 
@@ -34,18 +35,18 @@ on the same plot}
 \item{xlab}{character or expression. See \code{lattice::\link[lattice]{xyplot}}}
 
 \item{ylab}{character or expression. See \code{lattice::\link[lattice]{xyplot}}}
+
+\item{\dots}{additional arguments to \code{lattice::\link[lattice]{xyplot}}}
 }
 \value{
-a trellis object
+A trellis object.
 }
 \description{
 Plot the overall, category-specific or transition-specific figure of merit at
-different resolutions
-}
-\author{
-Simon Moulds
+different resolutions.
 }
 \seealso{
-\code{\link{FigureOfMerit}}
+\code{\link{FigureOfMerit}},\code{lattice::\link[lattice]{xyplot}},
+  \code{lattice::\link[lattice]{panel.xyplot}}
 }
 

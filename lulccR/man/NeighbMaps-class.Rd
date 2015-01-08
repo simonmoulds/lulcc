@@ -4,9 +4,7 @@
 \alias{NeighbMaps-class}
 \title{Class NeighbMaps}
 \description{
-An S4 class for neighbourhood maps. Objects contain all the information
-used in the original call to the constructor function \code{\link{NeighbMaps}}
-so they can easily be updated for a new land use map.
+An S4 class for neighbourhood maps.
 }
 \section{Slots}{
 
@@ -14,17 +12,14 @@ so they can easily be updated for a new land use map.
 \item{\code{maps}}{list of RasterLayers showing neighbourhood values for each land use in
 \code{categories}}
 
+\item{\code{categories}}{numeric vector of land use categories for which neighbourhood
+maps were calculated}
+
 \item{\code{weights}}{list of weights matrices}
 
 \item{\code{fun}}{function used to calculate neighbourhood values}
 
 \item{\code{focal.args}}{list of all other arguments supplied to
-\code{raster::\link[raster]{focal}}}
-
-\item{\code{categories}}{numeric vector of land use categories for which neighbourhood
-  maps were calculated}
+  \code{raster::\link[raster]{focal}}}
 }}
-\author{
-Simon Moulds
-}
 

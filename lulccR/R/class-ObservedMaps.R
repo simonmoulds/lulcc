@@ -5,12 +5,10 @@
 #' @slot maps RasterStack containing observed land use maps
 #' @slot t numeric vector with timesteps corresponding to each observed map
 #' @slot total matrix with number of cells belonging to each land use category in
-#'   the observed maps. Rows represent different maps and columns represent land
-#'   land use categories
+#'   the observed maps. Columns represent land use categories and rows represent
+#'   different maps
 #' @slot categories numeric vector of land use categories
 #' @slot labels character vector corresponding to \code{categories}
-#'
-#' @author Simon Moulds
 #' 
 #' @export
 #' @exportClass ObservedMaps

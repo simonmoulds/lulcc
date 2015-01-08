@@ -20,7 +20,4 @@ described by Pontius et al. (2011) at different resolutions}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}
 }}
-\author{
-Simon Moulds
-}
 

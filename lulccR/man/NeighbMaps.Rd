@@ -19,12 +19,12 @@ NeighbMaps(x, categories, weights, neighb, ...)
   neighb)
 }
 \arguments{
-\item{x}{RasterLayer with categorical data}
+\item{x}{RasterLayer containing categorical data}
 
 \item{categories}{numeric vector containing land use categories for which
 neighbourhood values should be calculated}
 
-\item{weights}{list containing a matrix of weights (the 'w' argument in
+\item{weights}{list containing a matrix of weights (the \code{w} argument in
 \code{focal}) for each land use category or a numeric vector specifying the
  size of each weights matrix. In the latter case only square matrices are
  possible and all weights are given a value of 1. The order of list or
@@ -34,16 +34,14 @@ neighbourhood values should be calculated}
 \item{neighb}{NeighbMaps object. Only used if \code{categories} and
 \code{weights} are not provided. This option can be useful when existing
 NeighbMaps objects need to be updated because a new land use map is
-available, such as during the allocation procedure. In this case
-\code{categories} and \code{weights} are set to \code{neighb@categories}
-and \code{neighb@weights} respectively}
-
-\item{...}{additional arguments to \code{focal}}
+available, such as during the allocation procedure.}
 
 \item{fun}{function. Input argument to \code{focal}. Default is \code{mean}}
+
+\item{\dots}{additional arguments to \code{raster::\link[raster]{focal}}}
 }
 \value{
-a NeighbMaps object
+A NeighbMaps object.
 }
 \description{
 Methods to calculate neighbourhood values for cells in raster maps using
@@ -51,8 +49,7 @@ Methods to calculate neighbourhood values for cells in raster maps using
 within the moving window (i.e. the size of the weights matrix) devoted to each
 land use category is calculated. This behaviour can be changed by altering the
 weights matrix or providing an alternative function. The resulting object can
-be used as the basis of neighbourhood decision rules or as predictor variables
-in statistical models.
+be used as the basis of neighbourhood decision rules.
 }
 \examples{
 ## observed data
@@ -86,9 +83,6 @@ nb2 <- NeighbMaps(x=obs@maps[[1]],
 ## update nb2 for 1991
 nb2 <- NeighbMaps(x=obs@maps[[2]],
                   neighb=nb2)
-}
-\author{
-Simon Moulds
 }
 \seealso{
 \code{\link{allowNeighb}}

@@ -4,7 +4,7 @@ NULL
 #' Create a PredictionMulti object
 #'
 #' This function creates a \code{ROCR::\link[ROCR]{prediction}} object for each
-#' statistical model in a \code{StatModels} object. It should be used with
+#' predictive model in a \code{StatModels} object. It should be used with
 #' \code{\link{PerformanceMulti}} to evaluate multiple models with exactly the
 #' same criteria while keeping track of which model corresponds to which land use
 #' category. This makes it easier to write functions that compare different model
@@ -15,14 +15,11 @@ NULL
 #' @param pred a \code{PredictorMaps} object
 #' @param timestep numeric indicating the timestep of the observed map in
 #'   \code{obs} against which the observed map should be tested
-#' @param partition character. Either 'train', 'test' or 'none', indicating
-#'   whether to use the training or testing partition or the full dataset for
-#'   model evaluation. Default is 'test'
-#' @param ... additional arguments to \code{ROCR::\link[ROCR]{prediction}}
+#' @param partition index of cells for which occurrence should be predicted
+#' @param \dots additional arguments to \code{ROCR::\link[ROCR]{prediction}}
 #'
 #' @seealso \code{ROCR::\link[ROCR]{prediction}} 
-#' @author Simon Moulds
-#' @return a \code{PredictionMulti} object
+#' @return A \code{PredictionMulti} object.
 #'
 #' @export
 #'

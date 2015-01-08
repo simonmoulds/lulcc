@@ -3,21 +3,22 @@
 #' Divide a categorical raster map into training and testing partitions.
 #'
 #' @param x RasterLayer with categorical data
-#' @param size numeric between zero and one indicating the proportion of non-NA
-#'   cells that should be included in the training partition. Default is 0.5,
-#'   which results in equally sized partitions
+#' @param size numeric value between zero and one indicating the proportion of
+#'   non-NA cells that should be included in the training partition. Default is
+#'   0.5, which results in equally sized partitions
 #' @param spatial logical. If TRUE, the function returns a SpatialPoints object
 #'   with the coordinates of cells in each partition. If FALSE, the cell numbers
 #'   are returned
-#' @param ... additional arguments (none)
+#' @param \dots additional arguments (none)
 #'
-#' @author Simon Moulds
-#' @return a list containing the following components:
+#' @return A list containing the following components:
 #' \describe{
 #'   \item{\code{train}}{a SpatialPoints object or numeric vector indicating the
 #'   cells in the training partition}
 #'   \item{\code{test}}{a SpatialPoints object or numeric vector indicating the
 #'   cells in the testing partition}
+#'   \item{\code{all}}{a SpatialPoints object or numeric vector indicating all
+#'   non-NA cells in the study region}
 #' }
 #' 
 #' @export

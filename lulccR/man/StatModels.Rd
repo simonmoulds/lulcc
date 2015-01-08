@@ -16,7 +16,7 @@ StatModels(models, obs, categories, labels, ...)
   labels, ...)
 }
 \arguments{
-\item{models}{a list of mathematical models}
+\item{models}{a list of predictive models}
 
 \item{obs}{an ObservedMaps object}
 
@@ -26,15 +26,15 @@ required if \code{obs} is not provided}
 \item{labels}{character vector (optional) with labels corresponding to
 \code{categories}. Only required if \code{obs} is not provided}
 
-\item{...}{additional arguments (none)}
+\item{\dots}{additional arguments (none)}
 }
 \value{
-an object of class \code{\link{StatModels}}
+An object of class \code{\link{StatModels}}.
 }
 \description{
-Methods to create a \link{StatModels-class} object.
+Methods to create a \code{\link{StatModels-class}} object.
 }
-\author{
-Simon Moulds
+\details{
+TODO
 }
 

@@ -13,8 +13,6 @@
 #'   \item{\code{categories}}{the categories included in the calculation}
 #' }
 #'
-#' @author Simon Moulds
-#'
 #' @useDynLib lulccR
 #'
 #' @export

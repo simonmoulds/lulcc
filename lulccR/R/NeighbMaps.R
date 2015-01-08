@@ -1,11 +1,6 @@
 #' @include class-NeighbMaps.R
 NULL
 
-## if (!isGeneric("NeighbMaps")) {
-##     setGeneric("NeighbMaps", function(x, categories, weights, neighb, ...)
-##                standardGeneric("NeighbMaps"))
-## }
-
 #' Create a NeighbMaps object
 #'
 #' Methods to calculate neighbourhood values for cells in raster maps using
@@ -13,13 +8,12 @@ NULL
 #' within the moving window (i.e. the size of the weights matrix) devoted to each
 #' land use category is calculated. This behaviour can be changed by altering the
 #' weights matrix or providing an alternative function. The resulting object can
-#' be used as the basis of neighbourhood decision rules or as predictor variables
-#' in statistical models.
+#' be used as the basis of neighbourhood decision rules.
 #'
-#' @param x RasterLayer with categorical data
+#' @param x RasterLayer containing categorical data
 #' @param categories numeric vector containing land use categories for which
 #'   neighbourhood values should be calculated
-#' @param weights list containing a matrix of weights (the 'w' argument in
+#' @param weights list containing a matrix of weights (the \code{w} argument in
 #'   \code{focal}) for each land use category or a numeric vector specifying the
 #'    size of each weights matrix. In the latter case only square matrices are
 #'    possible and all weights are given a value of 1. The order of list or
@@ -28,15 +22,12 @@ NULL
 #' @param neighb NeighbMaps object. Only used if \code{categories} and
 #'   \code{weights} are not provided. This option can be useful when existing
 #'   NeighbMaps objects need to be updated because a new land use map is
-#'   available, such as during the allocation procedure. In this case
-#'   \code{categories} and \code{weights} are set to \code{neighb@@categories}
-#'   and \code{neighb@@weights} respectively
+#'   available, such as during the allocation procedure.
 #' @param fun function. Input argument to \code{focal}. Default is \code{mean}
-#' @param ... additional arguments to \code{focal}
+#' @param \dots additional arguments to \code{raster::\link[raster]{focal}}
 #'
 #' @seealso \code{\link{allowNeighb}}
-#' @author Simon Moulds
-#' @return a NeighbMaps object
+#' @return A NeighbMaps object.
 #'
 #' @export
 #' @rdname NeighbMaps

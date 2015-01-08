@@ -10,7 +10,7 @@ An S4 class for different figure of merit scores.
 
 \describe{
 \item{\code{overall}}{list containing the overall figure of merit score for each
-resolution}
+aggregation factor}
 
 \item{\code{category}}{list of numeric vectors containing category specific scores}
 
@@ -22,7 +22,4 @@ resolution}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}
 }}
-\author{
-Simon Moulds
-}
 

@@ -4,27 +4,29 @@ setOldClass(c("randomForest.formula","randomForest"))
 #' Estimate location suitability
 #'
 #' Estimate location suitability with predictive models.
-#' 
+#'
+#' This function is usually called from \code{allocate} to calculate land use
+#' suitability at each timestep. However, it may also be used to produce
+#' suitability maps (see examples).
+#'
 #' @param object a \code{StatModels} object or a model of any class
 #'   for which a predict method exists (currently, \code{glm},
 #'   \code{rpart::\link[rpart]{rpart}} and
 #'   \code{randomForest::\link[randomForest]{randomForest}}
 #' @param newdata data.frame containing new data
-#' @param df logical indicating whether the function should return a data.frame
-#'   or matrix (default)
-#' @param ... additional arguments to \code{predict}
+#' @param df logical indicating whether the function should return a matrix
+#'   (default) or data.frame
+#' @param \dots additional arguments to the \code{predict}
 #'
-#' @seealso \code{\link{StatModels}}, \code{\link{predict}}
+#' @seealso \code{\link{StatModels}},\code{\link{allocate}},\code{\link{predict}}
 #' @author Simon Moulds
-#' @return a data.frame or matrix
+#' @return A matrix or data.frame.
 #'
 #' @export
 #' @rdname calcProb
 
-#if (!isGeneric("calcProb")) {
 setGeneric("calcProb", function(object, ...)
            standardGeneric("calcProb"))
-#}
 
 #' @rdname calcProb
 #' @aliases calcProb,glm-method

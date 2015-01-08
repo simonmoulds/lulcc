@@ -17,7 +17,4 @@ represents time}
 
 \item{\code{dynamic}}{logical indicating whether dynamic variables are present}
 }}
-\author{
-Simon Moulds
-}
 

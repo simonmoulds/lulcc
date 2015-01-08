@@ -1,5 +1,5 @@
 * using log directory ‘/home/simon/projects/r_lulccR/lulccR.Rcheck’
-* using R version 3.1.0 (2014-04-10)
+* using R version 3.1.2 (2014-10-31)
 * using platform: x86_64-unknown-linux-gnu (64-bit)
 * using session charset: UTF-8
 * using option ‘--no-examples’
@@ -7,10 +7,17 @@
 * this is package ‘lulccR’ version ‘0.0.0.9000’
 * checking package namespace information ... OK
 * checking package dependencies ... OK
-* checking if this is a source package ... OK
+* checking if this is a source package ... WARNING
+Subdirectory ‘lulccR/src’ contains apparent object files/libraries
+  allocateclues.o allow.o autoconvert.o lulccR.so total.o updatehist.o
+Object files/libraries should not be included in a source package.
 * checking if there is a namespace ... OK
 * checking for executable files ... OK
-* checking for hidden files and directories ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  R/.Rhistory
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘lulccR’ can be installed ... OK
@@ -49,11 +56,13 @@
         by using R CMD build --resave-data
               old_size new_size compress
   pie.rda        585Kb    327Kb    bzip2
-  sibuyan.rda    158Kb    109Kb       xz
+  sibuyan.rda    158Kb    110Kb       xz
 * checking line endings in C/C++/Fortran sources/headers ... OK
 * checking line endings in Makefiles ... OK
 * checking for portable use of $(BLAS_LIBS) and $(LAPACK_LIBS) ... OK
 * checking compiled code ... OK
 * checking examples ... SKIPPED
 * checking PDF version of manual ... OK
-WARNING: There was 1 warning.
+* DONE
+WARNING: There were 2 warnings.
+NOTE: There was 1 note.

@@ -5,7 +5,8 @@
 #' time 2 to provide meaningful information about the performance of land use
 #' change simulations.
 #'
-#' The types of agreement and disagreement considered are as follows:
+#' The types of agreement and disagreement considered are those descibed in
+#' Pontius et al. (2011):
 #'
 #' \enumerate{
 #'   \item Persistence simulated correctly (agreement)
@@ -16,18 +17,23 @@
 #' }
 #'
 #' @param x a \code{ThreeMapComparison} object
-#' @param from numeric (optional). A single value representing a land use
-#'   category. Results will be restricted to transitions from this category
-#' @param to numeric (optional). Similar to \code{from}. If provided with a valid
-#'   \code{from} argument the result will be restricted to the transition
-#'   defined by these two arguments (i.e. \code{from} -> \code{to})
-#' @param ... additional arguments (none) 
+#' @param from optional numeric value representing a land use category. If 
+#'   provided, results will be restricted to transitions from this category
+#' @param to similar to \code{from}. If provided with a valid \code{from}
+#'   argument the result will be restricted to the transition defined by
+#'   these two arguments (i.e. \code{from} -> \code{to})
+#' @param \dots additional arguments (none) 
 #'
-#' @seealso \code{link{ThreeMapComparison}}, \code{link{FigureOfMerit}}
-#' @author Simon Moulds
-#' @return an \code{AgreementBudget} object
+#' @seealso \code{\link{ThreeMapComparison}},\code{\link{FigureOfMerit}},
+#'   \code{\link{AgreementBudget.plot}}
+#' @return An \code{AgreementBudget} object.
 #'
 #' @export
+#' 
+#' @references Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
+#' Comparison of three maps at multiple resolutions: a case study of land change
+#' simulation in Cho Don District, Vietnam. Annals of the Association of American
+#' Geographers 101(1): 45-62.
 
 AgreementBudget <- function(x, from, to, ...) {
 

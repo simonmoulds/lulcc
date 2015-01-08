@@ -3,22 +3,21 @@ NULL
 
 #' Plot method for AgreementBudget objects
 #'
-#' Plot sources of agreement and disagreement between three maps at multiple
-#' resolutions
+#' Plot an \code{\link{AgreementBudget}} object.
 #'
 #' The plot layout is based on work presented in Pontius et al. (2011)
 #'
 #' @param x object of class \code{AgreementBudget}
-#' @param col character. A colour palette. Default is 'Set2' from RColorBrewer
+#' @param col character specifying the plotting colour. Default is to use the 'Set2'
+#'   palette from \code{RColorBrewer}
 #' @param key list. See \code{lattice::\link[lattice]{xyplot}}
 #' @param scales list. See \code{lattice::\link[lattice]{xyplot}}
 #' @param xlab character or expression. See \code{lattice::\link[lattice]{xyplot}} 
 #' @param ylab character or expression. See \code{lattice::\link[lattice]{xyplot}}
-#' @param ... additional arguments to \code{lattice::\link[lattice]{xyplot}}
+#' @param \dots additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
-#' @seealso \code{\link{AgreementBudget}}, \code{lattice::\link[lattice]{xyplot}}
-#' @author Simon Moulds
-#' @return a trellis object
+#' @seealso \code{\link{AgreementBudget}},\code{lattice::\link[lattice]{xyplot}}
+#' @return A trellis object.
 #'
 #' @export
 #' @rdname AgreementBudget.plot

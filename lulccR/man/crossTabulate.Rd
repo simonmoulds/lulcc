@@ -15,13 +15,11 @@ crossTabulate(x, y, ...)
 }
 \arguments{
 \item{x}{RasterLayer representing land use map from an earlier timestep or an
-ObservedMaps object containing at least two land use maps for different
-points in time}
+\code{ObservedMaps} object containing at least two land use maps for
+different points in time}
 
 \item{y}{RasterLayer representing land use map from a later timestep. Not used
 if \code{x} is an ObservedMaps object}
-
-\item{...}{additional arguments to \code{raster::\link[raster]{crosstab}}}
 
 \item{categories}{numeric vector containing land use categories to consider.
 Not used if \code{x} is an ObservedMaps object}
@@ -31,23 +29,19 @@ Not used if \code{x} is an ObservedMaps object}
 
 \item{index}{numeric vector with index of land use maps from ObservedMaps
 to use in analysis}
+
+\item{\dots}{additional arguments to \code{raster::\link[raster]{crosstab}}}
 }
 \value{
-a data.frame
+A data.frame.
 }
 \description{
 Cross tabulate land use transitions using
-\code{raster::\link[raster]{crosstab}}. This should be the basis for further
-research into the processes driving the most important transitions in the
-study region (Pontius et al., 2004).
+\code{raster::\link[raster]{crosstab}}. According to Pontius et al. (2004),
+this step should be the basis for further research into the processes driving
+the most important transitions in the study region.
 }
 \examples{
-# RasterLayer input
-crossTabulate(x=pie$lu_pie_1985,
-              y=pie$lu_pie_1999,
-              categories=c(1,2,3),
-              labels=c("forest","built","other"))
-
 # ObservedMaps input
 obs <- ObservedMaps(x=pie,
                     pattern="lu",
@@ -56,9 +50,12 @@ obs <- ObservedMaps(x=pie,
                     t=c(0,6,14))
 
 crossTabulate(x=obs, index=c(1,3))
-}
-\author{
-Simon Moulds
+
+# RasterLayer input
+crossTabulate(x=pie$lu_pie_1985,
+              y=pie$lu_pie_1999,
+              categories=c(1,2,3),
+              labels=c("forest","built","other"))
 }
 \references{
 Pontius Jr, R.G., Shusas, E., McEachern, M. (2004). Detecting
@@ -66,6 +63,6 @@ important categorical land changes while accounting for persistence.
 Agriculture, Ecosystems & Environment 101(2):251-268.
 }
 \seealso{
-\code{\link{ObservedMaps}}, \code{raster::\link[raster]{crosstab}}
+\code{\link{ObservedMaps}},\code{raster::\link[raster]{crosstab}}
 }
 

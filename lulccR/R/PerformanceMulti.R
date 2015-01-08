@@ -12,11 +12,10 @@ NULL
 #'   \code{ROCR::\link[ROCR]{performance}}
 #' @param x.measure a second performance measure. See
 #'   \code{ROCR::\link[ROCR]{performance}}
-#' @param ... additional arguments to \code{\link{performance}}
+#' @param \dots additional arguments to \code{ROCR::\link[ROCR]{performance}}
 #' 
 #' @seealso \code{\link{performance}}, \code{\link{PredictionMulti}}
-#' @author Simon Moulds
-#' @return a \code{PerformanceMulti} object
+#' @return A \code{PerformanceMulti} object.
 #'
 #' @export
 #'

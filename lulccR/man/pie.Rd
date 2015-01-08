@@ -17,8 +17,8 @@
 pie
 }
 \description{
-Dataset containing land use maps for X and Y and several predictor variables
-derived from Pontius and Parmentier (2014).
+Dataset containing land use maps for 1985, 1991 and 1999 and several predictor
+variables derived from Pontius and Parmentier (2014).
 }
 \references{
 Pontius, R.G., and Parmentier, B. (2014). Recommendations for
