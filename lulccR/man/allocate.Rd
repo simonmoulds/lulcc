@@ -3,14 +3,14 @@
 \name{allocate}
 \alias{allocate}
 \alias{allocate,CluesModel-method}
-\alias{allocate,OrderedModelInput-method}
+\alias{allocate,OrderedModel-method}
 \title{Allocate land use change spatially}
 \usage{
 allocate(model, ...)
 
 \S4method{allocate}{CluesModel}(model, ...)
 
-\S4method{allocate}{OrderedModelInput}(model, ...)
+\S4method{allocate}{OrderedModel}(model, ...)
 }
 \arguments{
 \item{model}{an object inheriting from class \code{ModelInput}}

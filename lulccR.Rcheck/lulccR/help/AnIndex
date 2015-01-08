@@ -5,7 +5,7 @@ AgreementBudget.plot	AgreementBudget.plot
 AgreementBudget.plot,AgreementBudget-method	AgreementBudget.plot
 allocate	allocate
 allocate,CluesModel-method	allocate
-allocate,OrderedModelInput-method	allocate
+allocate,OrderedModel-method	allocate
 allow	allow
 allowNeighb	allowNeighb
 approxExtrapDemand	approxExtrapDemand
@@ -29,8 +29,8 @@ FigureOfMerit	FigureOfMerit
 FigureOfMerit-class	FigureOfMerit-class
 FigureOfMerit.plot	FigureOfMerit.plot
 FigureOfMerit.plot,FigureOfMerit-method	FigureOfMerit.plot
+Model-class	Model-class
 ModelInput	ModelInput
-ModelInput,ModelInput,ANY,ANY,ANY,ANY-method	ModelInput
 ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matrix-method	ModelInput
 ModelInput-class	ModelInput-class
 NeighbMaps	NeighbMaps
@@ -45,10 +45,9 @@ ObservedMaps,missing,character-method	ObservedMaps
 ObservedMaps,RasterLayer,ANY-method	ObservedMaps
 ObservedMaps,RasterStack,ANY-method	ObservedMaps
 ObservedMaps-class	ObservedMaps-class
-OrderedModelInput	OrderedModelInput
-OrderedModelInput,ModelInput-method	OrderedModelInput
-OrderedModelInput,ObservedMaps-method	OrderedModelInput
-OrderedModelInput-class	OrderedModelInput-class
+OrderedModel	OrderedModel
+OrderedModel,ModelInput-method	OrderedModel
+OrderedModel-class	OrderedModel-class
 partition	partition
 performance	performance
 performance,list-method	performance
@@ -77,5 +76,7 @@ StatModels,list,ANY,numeric,character-method	StatModels
 StatModels,list,ObservedMaps,ANY,ANY-method	StatModels
 StatModels-class	StatModels-class
 ThreeMapComparison	ThreeMapComparison
+ThreeMapComparison,Model,ANY,ANY-method	ThreeMapComparison
+ThreeMapComparison,RasterLayer,RasterLayer,RasterLayer-method	ThreeMapComparison
 ThreeMapComparison-class	ThreeMapComparison-class
 total	total

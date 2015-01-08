@@ -6,15 +6,15 @@ CluesModel-class        Class CluesModel
 FigureOfMerit           Create a FigureOfMerit object
 FigureOfMerit-class     Class FigureOfMerit
 FigureOfMerit.plot      Plot method for FigureOfMerit objects
+Model-class             Virtual class Model
 ModelInput              Create a ModelInput object
 ModelInput-class        Class ModelInput
 NeighbMaps              Create a NeighbMaps object
 NeighbMaps-class        Class NeighbMaps
 ObservedMaps            Create an ObservedMaps object
 ObservedMaps-class      Class ObservedMaps
-OrderedModelInput       Create an OrderedModelInput object
-OrderedModelInput-class
-                        Class OrderedModelInput
+OrderedModel            Create an OrderedModel object
+OrderedModel-class      Class OrderedModel
 PerformanceMulti        Create a PerformanceMulti object
 PerformanceMulti-class
                         Class PerformanceMulti

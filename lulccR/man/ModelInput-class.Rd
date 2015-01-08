@@ -12,11 +12,7 @@ TODO
 \section{Slots}{
 
 \describe{
-\item{\code{map0}}{RasterLayer showing initial land use}
-
-\item{\code{categories}}{numeric vector of land use categories}
-
-\item{\code{labels}}{character vector corresponding to \code{categories}}
+\item{\code{obs}}{an ObservedMaps object}
 
 \item{\code{pred}}{a PredictorMaps object}
 
@@ -32,5 +28,9 @@ occur}
 \item{\code{mask}}{RasterLayer showing masked areas or NULL}
 
 \item{\code{neighb}}{NeighbMaps object or NULL}
+
+\item{\code{categories}}{numeric vector of land use categories}
+
+\item{\code{labels}}{character vector corresponding to \code{categories}}
 }}
 

@@ -2,20 +2,17 @@
 \docType{methods}
 \name{ModelInput}
 \alias{ModelInput}
-\alias{ModelInput,ModelInput,ANY,ANY,ANY,ANY-method}
 \alias{ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matrix-method}
 \title{Create a ModelInput object}
 \usage{
-ModelInput(x, pred, models, time, demand, ...)
+ModelInput(obs, pred, models, time, demand, ...)
 
-\S4method{ModelInput}{ModelInput,ANY,ANY,ANY,ANY}(x, pred, models, time, demand,
-  ...)
 
-\S4method{ModelInput}{ObservedMaps,PredictorMaps,StatModels,numeric,matrix}(x,
+  \S4method{ModelInput}{ObservedMaps,PredictorMaps,StatModels,numeric,matrix}(obs,
   pred, models, time, demand, hist, mask, neighb = NULL, ...)
 }
 \arguments{
-\item{x}{an ObservedMaps object or a ModelInput object}
+\item{obs}{an ObservedMaps object or a ModelInput object}
 
 \item{pred}{a PredictorMaps object}
 
@@ -47,15 +44,8 @@ Methods to combine several object classes that are useful for land use change
 modelling and perform a series of checks to ensure the objects are compatible
 in time and space for a model simulation.
 }
-\details{
-Note that \code{ModelInput} objects cannot be supplied directly to
-\code{allocate}. Instead, they should be passed to a constructor function for
-\code{ModelInput} subclasses which are particular to a land use change model.
-Practically, this makes it easier to compare different models because common
-inputs are clearly defined.
-}
 \seealso{
-\code{\link{CluesModel}},\code{\link{OrderedModelInput}},
+\code{\link{CluesModel}},\code{\link{OrderedModel}},
   \code{\link{allocate}}
 }
 

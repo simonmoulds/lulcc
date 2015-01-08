@@ -10,14 +10,8 @@ NULL
 #' Methods to combine several object classes that are useful for land use change
 #' modelling and perform a series of checks to ensure the objects are compatible
 #' in time and space for a model simulation.
-#'
-#' Note that \code{ModelInput} objects cannot be supplied directly to
-#' \code{allocate}. Instead, they should be passed to a constructor function for
-#' \code{ModelInput} subclasses which are particular to a land use change model.
-#' Practically, this makes it easier to compare different models because common
-#' inputs are clearly defined.
 #' 
-#' @param x an ObservedMaps object or a ModelInput object
+#' @param obs an ObservedMaps object or a ModelInput object
 #' @param pred a PredictorMaps object
 #' @param models a StatModels object
 #' @param time numeric vector containing timesteps over which simulation will
@@ -33,35 +27,23 @@ NULL
 #' @param neighb an object of class NeighbMaps
 #' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{CluesModel}},\code{\link{OrderedModelInput}},
+#' @seealso \code{\link{CluesModel}},\code{\link{OrderedModel}},
 #'   \code{\link{allocate}}
 #' @return A ModelInput object.
 #'
 #' @export
 #' @rdname ModelInput
-
-setGeneric("ModelInput", function(x, pred, models, time, demand, ...)
+setGeneric("ModelInput", function(obs, pred, models, time, demand, ...)
            standardGeneric("ModelInput"))
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ModelInput,ANY,ANY,ANY,ANY-method
-setMethod("ModelInput", signature(x = "ModelInput", pred = "ANY", models = "ANY", time = "ANY", demand = "ANY"),
-          function(x, pred, models, time, demand, ...) {
-              out <- x
-          }
-)
-
-#' @rdname ModelInput
 #' @aliases ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matrix-method
-setMethod("ModelInput", signature(x = "ObservedMaps", pred = "PredictorMaps", models = "StatModels", time = "numeric", demand = "matrix"),
-           function(x, pred, models, time, demand, hist, mask, neighb=NULL, ...) {
-               map0 <- x@maps[[1]] ## initial map
-               categories <- x@categories
-               labels <- x@labels
-               pred <- resample(pred, map0) ## all predictor maps to same resolution as map0
+setMethod("ModelInput", signature(obs = "ObservedMaps", pred = "PredictorMaps", models = "StatModels", time = "numeric", demand = "matrix"),
+           function(obs, pred, models, time, demand, hist, mask, neighb=NULL, ...) {
+               pred <- resample(pred, obs@maps) ## all predictor maps to same resolution as map0
 
                ## check x and models refer to the same categories
-               if (!all(categories == models@categories)) {
+               if (!all(obs@categories == models@categories)) {
                    stop("'models' does not correspond with land use categories in 'obs'")
                }
 
@@ -69,7 +51,7 @@ setMethod("ModelInput", signature(x = "ObservedMaps", pred = "PredictorMaps", mo
                if (time[1] != 0) stop("first timestep in 't' must be 0")
 
                ## check dimensions of demand and time
-               if (ncol(demand) != length(x@categories)) {
+               if (ncol(demand) != length(obs@categories)) {
                    stop("number of columns in 'demand' must equal number of land use categories")
                }              
                if (nrow(demand) != length(time)) {
@@ -78,41 +60,41 @@ setMethod("ModelInput", signature(x = "ObservedMaps", pred = "PredictorMaps", mo
 
                ## check whether hist and mask exist and have correct extent
                if (missing(hist)) {
-                   hist <- raster::getValues(x@maps[[1]])
+                   hist <- raster::getValues(obs@maps[[1]])
                    hist[!is.na(hist)] <- 1
-                   hist <- raster::setValues(x@maps[[1]], hist)
+                   hist <- raster::setValues(obs@maps[[1]], hist)
                } else {
-                   hist <- raster::resample(hist, map0)
+                   hist <- raster::resample(hist, obs@maps)
                    ##if (!checkExtent(points, hist)) stop("'hist' has NAs in study region")
                }
 
                if (missing(mask)) {
-                   mask <- raster::getValues(x@maps[[1]])
+                   mask <- raster::getValues(obs@maps[[1]])
                    mask[!is.na(mask)] <- 1
-                   mask <- raster::setValues(x@maps[[1]], mask)
+                   mask <- raster::setValues(obs@maps[[1]], mask)
                } else {
-                   mask <- raster::resample(mask, map0)
+                   mask <- raster::resample(mask, obs@maps)
                    ##if (!checkExtent(points, mask)) stop("'mask' has NAs in study region")
                }
 
                ## create neighbourhood maps if required and check dimensions of nb.rules
                if (!is.null(neighb)) {
                    if (!is(neighb, "NeighbMaps")) stop("'neighb' should be an object of class 'NeighbMaps'")
-                        neighb <- NeighbMaps(x=map0, neighb=neighb)                  
+                        neighb <- NeighbMaps(x=obs@maps[[1]], neighb=neighb)                  
                }
 
                ## create ModelInput object
                out <- new("ModelInput",
-                          map0=map0,
-                          categories=categories,
-                          labels=labels,
+                          obs=obs,
                           pred=pred,
                           models=models,
                           time=time,
                           demand=demand,
                           hist=hist,
                           mask=mask,
-                          neighb=neighb)
+                          neighb=neighb,
+                          categories=categories,
+                          labels=labels)
            }
 )
 
@@ -152,17 +134,8 @@ setMethod("ModelInput", signature(x = "ObservedMaps", pred = "PredictorMaps", mo
 #'
 #' @export
 #' @rdname CluesModel
-
 setGeneric("CluesModel", function(x, ...)
            standardGeneric("CluesModel"))
-
-##  @rdname CluesModel
-##  @aliases CluesModel,CluesModel-method
-## setMethod("CluesModel", signature(x = "CluesModel"),
-##           function(x, output, ...) {
-##               out <- new("CluesModel", x, elas=elas, rules=rules, nb.rules=nb.rules, params=params, output=output)
-##           }
-## )
 
 #' @rdname CluesModel
 #' @aliases CluesModel,ModelInput-method
@@ -200,16 +173,6 @@ setMethod("CluesModel", signature(x = "ModelInput"),
           }
 )
 
-##  @rdname CluesModelInput
-##  @aliases CluesModelInput,ObservedMaps-method
-## setMethod("CluesModelInput", signature(x = "ObservedMaps"),
-##           function(x, elas, rules=NULL, nb.rules=NULL, params, ...) {
-##               input <- ModelInput(x=x, ...)
-##               if (missing(params)) params <- list()
-##               out <- CluesModelInput(input, elas, rules, nb.rules, params)
-##           }
-## )
-
 .checkCluesParams <- function(params) {
     if (missing(params) || length(params) == 0) {
         params <- list(jitter.f=0.0001, scale.f=0.0005, max.iter=1000, max.diff=5, ave.diff=5)
@@ -225,9 +188,9 @@ setMethod("CluesModel", signature(x = "ModelInput"),
     params <- params[c("jitter.f","scale.f","max.iter","max.diff","ave.diff")]
 }
 
-#' Create an OrderedModelInput object
+#' Create an OrderedModel object
 #'
-#' Methods to create a \code{OrderedModelInput} object to supply to
+#' Methods to create a \code{OrderedModel} object to supply to
 #' \code{\link{allocate}}.
 #'
 #' The \code{params} argument is a list of parameter values which should contain
@@ -244,21 +207,21 @@ setMethod("CluesModel", signature(x = "ModelInput"),
 #' @param rules matrix with land use change decision rules
 #' @param nb.rules numeric with neighbourhood decision rules
 #' @param params list with model parameters
+#' @param output either a RasterStack containing output maps or NULL
 #' @param \dots additional arguments to \code{\link{ModelInput}}
 #'
 #' @seealso \code{link{ModelInput}},\code{\link{allocate}}
-#' @return An OrderedModelInput object.
+#' @return An OrderedModel object.
 #'
 #' @export
-#' @rdname OrderedModelInput
+#' @rdname OrderedModel
+setGeneric("OrderedModel", function(x, ...)
+           standardGeneric("OrderedModel"))
 
-setGeneric("OrderedModelInput", function(x, ...)
-           standardGeneric("OrderedModelInput"))
-
-#' @rdname OrderedModelInput
-#' @aliases OrderedModelInput,ModelInput-method
-setMethod("OrderedModelInput", signature(x = "ModelInput"),
-          function(x, rules=NULL, nb.rules=NULL, params, ...) {
+#' @rdname OrderedModel
+#' @aliases OrderedModel,ModelInput-method
+setMethod("OrderedModel", signature(x = "ModelInput"),
+          function(x, rules=NULL, nb.rules=NULL, params, output=NULL, ...) {
 
               if (!is.null(rules)) {
                   if (!all(dim(rules) %in% length(x@obs@categories))) {
@@ -282,18 +245,8 @@ setMethod("OrderedModelInput", signature(x = "ModelInput"),
                   params <- .checkOrderedParams(params)
               }
               
-              out <- new("OrderedModelInput", x, rules=rules, nb.rules=nb.rules, params=params)
+              out <- new("OrderedModel", x, rules=rules, nb.rules=nb.rules, params=params, output=output)
              
-          }
-)
-
-#' @rdname OrderedModelInput
-#' @aliases OrderedModelInput,ObservedMaps-method
-setMethod("OrderedModelInput", signature(x = "ObservedMaps"),
-          function(x, rules=NULL, nb.rules=NULL, params, ...) {
-              input <- ModelInput(x=x, ...)
-              if (missing(params)) params <- list()
-              out <- OrderedModelInput(input, rules, nb.rules, params)
           }
 )
 

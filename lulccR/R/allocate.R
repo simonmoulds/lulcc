@@ -20,7 +20,6 @@ NULL
 #' @references Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,
 #' V., Mastura, S.S. (2002). Modeling the spatial dynamics of regional land use:
 #' the CLUE-S model. Environmental management, 30(3):391-405.
-
 setGeneric("allocate", function(model, ...)
            standardGeneric("allocate"))
 
@@ -34,28 +33,30 @@ setMethod("allocate", signature(model = "CluesModel"),
 )
 
 #' @rdname allocate
-#' @aliases allocate,OrderedModelInput-method
-setMethod("allocate", signature(model = "OrderedModelInput"),
+#' @aliases allocate,OrderedModel-method
+setMethod("allocate", signature(model = "OrderedModel"),
           function(model, ...) {
-              maps <- .allocate(model=model, fun=.ordered)
+              model@output <- .allocate(model=model, fun=.ordered)
+              model
           }
 )
 
 .allocate <- function(model, fun, ...) {              
 
-    cells <- which(!is.na(raster::getValues(model@map0)))
-    map0.vals <- raster::extract(model@map0, cells)
+    map0 <- model@obs@maps[[1]]
+    cells <- which(!is.na(raster::getValues(map0)))
+    map0.vals <- raster::extract(map0, cells)
     hist.vals <- raster::extract(model@hist, cells)
     mask.vals <- raster::extract(model@mask, cells)
     newdata <- as.data.frame(x=model@pred, cells=cells)
     prob <- calcProb(object=model@models, newdata=newdata)
-    maps <- raster::stack(model@map0)
+    maps <- raster::stack(map0)
               
     for (i in 1:(nrow(model@demand) - 1)) {
          print(i)                                    
          d <- model@demand[(i+1),] ## demand for current timestep
          if (model@pred@dynamic && i > 1) {
-             newdata <- .update.data.frame(x=newdata, y=model@pred, map=model@map0, cells=cells, timestep=(i-1))
+             newdata <- .update.data.frame(x=newdata, y=model@pred, map=map0, cells=cells, timestep=(i-1))
              prob <- calcProb(object=model@models, newdata=newdata)
          }
          tprob <- prob
@@ -88,7 +89,7 @@ setMethod("allocate", signature(model = "OrderedModelInput"),
          ## allocation
          args <- c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories), model@params)
          map1.vals <- do.call(fun, args)
-         map1 <- raster::raster(model@map0, ...) 
+         map1 <- raster::raster(map0, ...) 
          map1[cells] <- map1.vals
          maps <- raster::stack(maps, map1)
     

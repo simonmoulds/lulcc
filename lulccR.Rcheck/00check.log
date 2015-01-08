@@ -10,11 +10,7 @@
 * checking if this is a source package ... OK
 * checking if there is a namespace ... OK
 * checking for executable files ... OK
-* checking for hidden files and directories ... NOTE
-Found the following hidden files and directories:
-  R/.Rhistory
-These were most likely included in error. See section ‘Package
-structure’ in the ‘Writing R Extensions’ manual.
+* checking for hidden files and directories ... OK
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘lulccR’ can be installed ... OK
@@ -32,6 +28,7 @@ structure’ in the ‘Writing R Extensions’ manual.
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
 * checking dependencies in R code ... OK
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
@@ -62,4 +59,3 @@ structure’ in the ‘Writing R Extensions’ manual.
 * checking PDF version of manual ... OK
 * DONE
 WARNING: There was 1 warning.
-NOTE: There was 1 note.
