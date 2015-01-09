@@ -93,8 +93,8 @@ setMethod("ModelInput", signature(obs = "ObservedMaps", pred = "PredictorMaps", 
                           hist=hist,
                           mask=mask,
                           neighb=neighb,
-                          categories=categories,
-                          labels=labels)
+                          categories=obs@categories,
+                          labels=obs@labels)
            }
 )
 
