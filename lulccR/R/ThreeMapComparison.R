@@ -69,13 +69,13 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
               ## ensure maps cover exactly the same region by extracting cells based on coordinates of non-NA cells in x
               pts.x <- raster::rasterToPoints(x, spatial=TRUE)
               x1.vals <- raster::extract(x1, pts.x)
-              y2.vals <- raster::extract(y2, pts.x)
+              y1.vals <- raster::extract(y1, pts.x)
               if (length(x1.vals) != length(pts.x)) stop("x1 contains NA values in study region")
-              if (length(y2.vals) != length(pts.x)) stop("y2 contains NA values in study region")
+              if (length(y1.vals) != length(pts.x)) stop("y1 contains NA values in study region")
               x1 <- x
-              y2 <- x
+              y1 <- x
               x1[!is.na(x1)] <- x1.vals 
-              y2[!is.na(y2)] <- y2.vals 
+              y1[!is.na(y1)] <- y1.vals 
 
               ## prepare map to calculate weights
               ones <- x
@@ -99,7 +99,7 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
                   tab <- matrix(data=NA, nrow=(length(categories) + 1) * (length(categories) + 1), ncol=(length(categories) + 1))
                   x.list <- list()
                   x1.list <- list()
-                  y2.list <- list()
+                  y1.list <- list()
 
                   Qng.list <- list()
                   Rng.list <- list()
@@ -109,28 +109,28 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
                       cat <- categories[j]
                       tmp.x <- (x == cat) ## maps with binary values where 1/0 indicates presence/absence of 'cat'
                       tmp.x1 <- (x1 == cat)
-                      tmp.y2 <- (y2 == cat)
+                      tmp.y1 <- (y1 == cat)
 
                       if (factors[f] > 1) {
                           tmp.x <- raster::aggregate(tmp.x, fact=factors[f], fun=sum, na.rm=TRUE, expand=TRUE, ...)
                           tmp.x1 <- raster::aggregate(tmp.x1, fact=factors[f], fun=sum, na.rm=TRUE, expand=TRUE, ...)
-                          tmp.y2 <- raster::aggregate(tmp.y2, fact=factors[f], fun=sum, na.rm=TRUE, expand=TRUE, ...)
+                          tmp.y1 <- raster::aggregate(tmp.y1, fact=factors[f], fun=sum, na.rm=TRUE, expand=TRUE, ...)
                       }
 
                       tmp.x.vals <- raster::getValues(tmp.x)
                       tmp.x.vals <- tmp.x.vals[!is.na(tmp.x.vals)]           
                       tmp.x1.vals <- raster::getValues(tmp.x1)
                       tmp.x1.vals <- tmp.x1.vals[!is.na(tmp.x1.vals)]
-                      tmp.y2.vals <- raster::getValues(tmp.y2)
-                      tmp.y2.vals <- tmp.y2.vals[!is.na(tmp.y2.vals)]
+                      tmp.y1.vals <- raster::getValues(tmp.y1)
+                      tmp.y1.vals <- tmp.y1.vals[!is.na(tmp.y1.vals)]
 
                       x.list[[j]] <- tmp.x.vals
                       x1.list[[j]] <- tmp.x1.vals
-                      y2.list[[j]] <- tmp.y2.vals
+                      y1.list[[j]] <- tmp.y1.vals
 
                       Qng.list[[j]] <- tmp.x.vals / wt.vals
                       Rng.list[[j]] <- tmp.x1.vals / wt.vals
-                      Sng.list[[j]] <- tmp.y2.vals / wt.vals
+                      Sng.list[[j]] <- tmp.y1.vals / wt.vals
 
                   }
 
