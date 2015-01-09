@@ -41,3 +41,5 @@ setMethod("StatModels", signature(models = "list", obs = "ANY", categories = "nu
               new("StatModels", models=models, categories=categories, labels=labels)
           }
 )
+
+## TODO: add slot to StatModels that describes the type of models in slot 'models'

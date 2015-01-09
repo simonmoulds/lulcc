@@ -48,6 +48,8 @@ setMethod("PerformanceMulti.plot", signature(x = "list"),
               c1 <- all(sapply(x, function(x) is(x, "PerformanceMulti")))
               if (!c1) stop("all objects in list should have class 'PerformanceMulti'")
 
+              if (is.null(names(x)) || any(nchar(names(x)) == 0)) stop("'x' must be a named list")
+
               categories <- sort(unique(unlist(lapply(x, function(x) x@categories))))
               out <- list()
               rocdata <- list()

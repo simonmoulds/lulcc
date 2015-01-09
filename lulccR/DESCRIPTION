@@ -57,5 +57,6 @@ Collate:
     'lulccR-package.R'
     'partition.R'
     'performance.R'
+    'predModelType.R'
     'resample.R'
     'total.R'
