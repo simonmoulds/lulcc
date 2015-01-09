@@ -63,7 +63,7 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
           function(x, x1, y1, factors, categories, labels, ...) {
 
               ## NB equation numbers refer to those in Pontius et al. (2011)
-              cr <- raster::compareRaster(x, x1, y2, extent=FALSE, rowcol=FALSE, res=TRUE, tolerance=0.05, stopiffalse=FALSE)
+              cr <- raster::compareRaster(x, x1, y1, extent=FALSE, rowcol=FALSE, res=TRUE, tolerance=0.05, stopiffalse=FALSE)
               if (!cr) { stop("resolution and/or CRS of input maps do not agree") }
 
               ## ensure maps cover exactly the same region by extracting cells based on coordinates of non-NA cells in x
