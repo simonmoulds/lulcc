@@ -6,6 +6,8 @@
 #' @slot prediction a list of \code{ROCR::\link[ROCR]{prediction-class}} objects.
 #'   These objects are calculated for each statistical model in the
 #'   \code{\link{StatModels}} object supplied to the constructor function
+#' @slot types character vector of model types for which \code{prediction}
+#'   objects were created
 #' @slot categories numeric vector of land use categories for which
 #'   \code{prediction} objects were created
 #' @slot labels character vector with labels corresponding to \code{categories}
@@ -17,6 +19,7 @@
 setClass("PredictionMulti",
          representation(
              prediction = "list",
+             types = "character",
              categories = "numeric",
              labels = "character"),
          validity = function(object) {

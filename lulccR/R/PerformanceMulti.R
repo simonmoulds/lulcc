@@ -31,6 +31,7 @@ PerformanceMulti <- function(pred, measure, x.measure="cutoff", ...) {
     out <- new("PerformanceMulti",
                 performance = perf,
                 auc = auc,
+                types = pred@types,
                 categories = pred@categories,
                 labels = pred@labels)
 }

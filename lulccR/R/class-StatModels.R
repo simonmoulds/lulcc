@@ -3,9 +3,10 @@
 #' An S4 class to hold multiple mathematical models for different land use
 #' categories belonging to the same map.
 #'
-#' @slot models list of mathematical models
+#' @slot models list of predictive models
+#' @slot types character vector of model types
 #' @slot categories numeric vector of land use categories
-#' @slot labels character vector corresponding to \code{categories}
+#' @slot labels character vector with labels corresponding to \code{categories}
 #'
 #' @export
 #' @exportClass StatModels
@@ -13,6 +14,7 @@
 
 setClass("StatModels",
          slots = c(models = "list",
+                   types = "character",
                    categories = "numeric",
                    labels = "character"),
          validity = function(object) {

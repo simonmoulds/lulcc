@@ -2,13 +2,10 @@
 \docType{methods}
 \name{PerformanceMulti.plot}
 \alias{PerformanceMulti.plot}
-\alias{PerformanceMulti.plot,PerformanceMulti-method}
 \alias{PerformanceMulti.plot,list-method}
 \title{Plot method for PerformanceMulti objects}
 \usage{
 PerformanceMulti.plot(x, ...)
-
-\S4method{PerformanceMulti.plot}{PerformanceMulti}(x, type, ...)
 
 \S4method{PerformanceMulti.plot}{list}(x, multipanel = TRUE, type = "l",
   abline = list(c(0, 1), col = "grey"), col = RColorBrewer::brewer.pal(9,
@@ -18,11 +15,11 @@ PerformanceMulti.plot(x, ...)
 \item{x}{either a single \code{PerformanceMulti} object or a list of these.
 If a list is provided it must be named.}
 
-\item{type}{character. See \code{lattice::\link[lattice]{panel.xyplot}}}
-
 \item{multipanel}{logical. If \code{TRUE}, create a trellis plot where the
 number of panels equals the number of \code{PerformanceMulti} objects.
 Otherwise, create a single plot for each \code{PerformanceMulti} object}
+
+\item{type}{character. See \code{lattice::\link[lattice]{panel.xyplot}}}
 
 \item{abline}{list. See \code{lattice::\link[lattice]{panel.xyplot}}}
 
@@ -38,10 +35,10 @@ A trellis object.
 }
 \description{
 Plot the the ROC curve for each \code{performance} object in a
-\code{\link{PerformanceMulti}} object. If a list of \code{PerformanceMulti}
-objects is provided, with each list element representing a different type
-of mathematical model, ROC curves for different models are included on the
-same plot for model comparison.
+\code{\link{PerformanceMulti}} object. If more than one
+\code{PerformanceMulti} objects are provided ROC curves for the same land use
+category from different objects are included on the same plot for model
+comparison.
 }
 \seealso{
 \code{\link{PerformanceMulti}}

@@ -10,10 +10,12 @@ categories belonging to the same map.
 \section{Slots}{
 
 \describe{
-\item{\code{models}}{list of mathematical models}
+\item{\code{models}}{list of predictive models}
+
+\item{\code{types}}{character vector of model types}
 
 \item{\code{categories}}{numeric vector of land use categories}
 
-\item{\code{labels}}{character vector corresponding to \code{categories}}
+\item{\code{labels}}{character vector with labels corresponding to \code{categories}}
 }}
 

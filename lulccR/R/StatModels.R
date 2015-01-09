@@ -1,4 +1,4 @@
-#' @include class-StatModels.R
+#' @include class-StatModels.R predModelType.R
 NULL
 
 #' Create a StatModels object
@@ -19,7 +19,6 @@ NULL
 #'
 #' @export
 #' @rdname StatModels
-
 setGeneric("StatModels", function(models, obs, categories, labels, ...)
            standardGeneric("StatModels"))
 
@@ -28,7 +27,8 @@ setGeneric("StatModels", function(models, obs, categories, labels, ...)
 setMethod("StatModels", signature(models = "list", obs = "ObservedMaps", categories = "ANY", labels = "ANY"),
           function(models, obs, categories, labels, ...) {
               if (length(models) != length(obs@labels)) stop("")
-              new("StatModels", models=models, categories=obs@categories, labels=obs@labels)
+              types <- predModelType(x=models)
+              new("StatModels", models=models, types=types, categories=obs@categories, labels=obs@labels)
           }
 )
 
@@ -38,7 +38,8 @@ setMethod("StatModels", signature(models = "list", obs = "ANY", categories = "nu
           function(models, obs, categories, labels, ...) {
               if (length(models) != length(labels)) stop("")
               if (length(models) != length(categories)) stop("")
-              new("StatModels", models=models, categories=categories, labels=labels)
+              types <- predModelType(x=models)
+              new("StatModels", models=models, types=types, categories=categories, labels=labels)
           }
 )
 

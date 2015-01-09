@@ -41,6 +41,6 @@ PredictionMulti <- function(models, obs, pred, timestep=0, partition, ...) {
         labels <- as.numeric(obs.vals == models@categories[j])
         prediction.list[[j]] <- ROCR::prediction(mod[,j], labels, ...)
     }              
-    out <- new("PredictionMulti", prediction=prediction.list, categories=models@categories, labels=models@labels)
+    out <- new("PredictionMulti", prediction=prediction.list, types=models@types, categories=models@categories, labels=models@labels)
 }      
 

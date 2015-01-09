@@ -4,10 +4,10 @@ NULL
 #' Plot method for PerformanceMulti objects
 #'
 #' Plot the the ROC curve for each \code{performance} object in a
-#' \code{\link{PerformanceMulti}} object. If a list of \code{PerformanceMulti}
-#' objects is provided, with each list element representing a different type
-#' of mathematical model, ROC curves for different models are included on the
-#' same plot for model comparison.
+#' \code{\link{PerformanceMulti}} object. If more than one
+#' \code{PerformanceMulti} objects are provided ROC curves for the same land use
+#' category from different objects are included on the same plot for model
+#' comparison.
 #'
 #' @param x either a single \code{PerformanceMulti} object or a list of these.
 #'   If a list is provided it must be named.
@@ -26,19 +26,17 @@ NULL
 #'
 #' @export
 #' @rdname PerformanceMulti.plot
-
 setGeneric("PerformanceMulti.plot", function(x, ...)
            standardGeneric("PerformanceMulti.plot"))
 
-#' @rdname PerformanceMulti.plot
-#' @aliases PerformanceMulti.plot,PerformanceMulti-method
-setMethod("PerformanceMulti.plot", signature(x = "PerformanceMulti"),
-          function(x, type, ...) {
-              l <- list(x)
-              ##names(l) <- type
-              out <- PerformanceMulti.plot(l, ...)
-          }
-)
+##  @rdname PerformanceMulti.plot
+##  @aliases PerformanceMulti.plot,PerformanceMulti-method
+## setMethod("PerformanceMulti.plot", signature(x = "PerformanceMulti"),
+##           function(x, type, ...) {
+##               l <- list(x)
+##               out <- PerformanceMulti.plot(l, ...)
+##           }
+## )
 
 #' @rdname PerformanceMulti.plot
 #' @aliases PerformanceMulti.plot,list-method

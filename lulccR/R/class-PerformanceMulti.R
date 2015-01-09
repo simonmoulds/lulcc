@@ -9,8 +9,11 @@
 #'   function
 #' @slot auc numeric vector containing the area under the ROC curve for each
 #'   performance object
-#' @slot categories numeric vector of land use categories
-#' @slot labels character vector corresponding to \code{categories}
+#' @slot types character vector of model types for which \code{performance}
+#'   objects were created
+#' @slot categories numeric vector of land use categories for which
+#'   \code{performance} objects were created
+#' @slot labels character vector with labels corresponding to \code{categories}
 #'
 #' @export
 #' @exportClass PerformanceMulti
@@ -19,6 +22,7 @@
 setClass("PerformanceMulti",
          slots = c(performance = "list",
                    auc = "numeric",
+                   types = "character",
                    categories = "numeric",
                    labels = "character"),
          validity = function(object) {

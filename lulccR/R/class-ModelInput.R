@@ -1,11 +1,11 @@
-#' @include class-NeighbMaps.R class-PredictorMaps.R class-StatModels.R class-ObservedMaps.R
-NULL
-
 setClassUnion("NeighbMapsOrNULL", c("NeighbMaps", "NULL"))
 setClassUnion("matrixOrNULL", c("matrix", "NULL"))
 setClassUnion("numericOrNULL", c("numeric", "NULL"))
 setClassUnion("RasterLayerOrNULL", c("RasterLayer", "NULL"))
 setClassUnion("RasterStackOrNULL", c("RasterStack", "NULL"))
+
+#' @include class-NeighbMaps.R class-PredictorMaps.R class-StatModels.R class-ObservedMaps.R
+NULL
 
 #' Class ModelInput
 #'

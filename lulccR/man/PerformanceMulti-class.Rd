@@ -18,8 +18,12 @@ function}
 \item{\code{auc}}{numeric vector containing the area under the ROC curve for each
 performance object}
 
-\item{\code{categories}}{numeric vector of land use categories}
+\item{\code{types}}{character vector of model types for which \code{performance}
+objects were created}
 
-\item{\code{labels}}{character vector corresponding to \code{categories}}
+\item{\code{categories}}{numeric vector of land use categories for which
+\code{performance} objects were created}
+
+\item{\code{labels}}{character vector with labels corresponding to \code{categories}}
 }}
 

@@ -1,12 +1,12 @@
-setOldClass("rpart")
-setOldClass(c("randomForest.formula","randomForest"))
+#' @include calcProb.R
+NULL
 
-#' Get type of predictive model
+#' Get predictive model type
 #'
-#' This function... model type (as opposed to class)
+#' This function returns the type of predictive model in use. 
 #'
 #' @param x a StatModels object, a model or a list of models
-#' @param \dots additional arguments
+#' @param \dots additional arguments (none)
 #'
 #' @return Character.
 #'
