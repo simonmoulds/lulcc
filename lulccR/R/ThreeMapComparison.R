@@ -49,10 +49,13 @@ setMethod("ThreeMapComparison", signature(x = "Model", x1 = "ANY", y1 = "ANY"),
                   stop(paste0("no observed map for timestep ", timestep))
               }
 
+              categories <- x@categories
+              labels <- x@labels
               x1 <- x@obs@maps[[which(x@obs@t %in% timestep)]]
               y1 <- x@output[[which(x@time %in% timestep)]]
               x <- x@obs@maps[[1]]
-              out <- ThreeMapComparison(x=x, x1=x1, y1=y1, factors=factors, categories=x@categories, labels=x@labels, ...)
+              
+              out <- ThreeMapComparison(x=x, x1=x1, y1=y1, factors=factors, categories=categories, labels=labels, ...)
               out
           }
 )
@@ -80,7 +83,7 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
               ## prepare map to calculate weights
               ones <- x
               ones[!is.na(ones)] <- 1
-
+              
               ## create list to hold output
               tables <- list()
               for (f in 1:length(factors)) {
@@ -96,7 +99,7 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
                   wt.vals <- wt.vals[!is.na(wt.vals)]
 
                   ## preallocate three dimensional table
-                  tab <- matrix(data=NA, nrow=(length(categories) + 1) * (length(categories) + 1), ncol=(length(categories) + 1))
+                  tab <- matrix(data=NA, nrow=((length(categories) + 1) * (length(categories) + 1)), ncol=(length(categories) + 1))
                   x.list <- list()
                   x1.list <- list()
                   y1.list <- list()
