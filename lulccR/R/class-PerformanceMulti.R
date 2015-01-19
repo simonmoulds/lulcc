@@ -22,7 +22,7 @@
 setClass("PerformanceMulti",
          slots = c(performance = "list",
                    auc = "numeric",
-                   types = "character"
+                   types = "character",
                    categories = "numeric",
                    labels = "character"),
          validity = function(object) {
