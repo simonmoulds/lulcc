@@ -150,3 +150,40 @@ setClass("OrderedModel",
          }
 )
 
+#' Class OrderedModel2
+#'
+#' An S4 class to represent inputs to [...]
+#'
+#' TODO
+#' 
+#' @slot obs an ObservedMaps object 
+#' @slot pred a PredictorMaps object
+#' @slot models a StatModels object
+#' @slot time numeric vector containing timesteps over which simulation will
+#'   occur
+#' @slot demand matrix containing demand scenario or NULL
+#' @slot hist RasterLayer showing land use history or NULL
+#' @slot mask RasterLayer showing masked areas or NULL
+#' @slot neighb NeighbMaps object or NULL
+#' @slot categories numeric vector of land use categories 
+#' @slot labels character vector corresponding to \code{categories}
+#' @slot rules matrix with land use change decision rules
+#' @slot nb.rules numeric with neighbourhood decision rules
+#' @slot params list with model parameters
+#' @slot output RasterStack containing simulated land use maps or NULL
+#'
+#' @export
+#' @exportClass OrderedModel2
+#' @rdname OrderedModel2-class
+setClass("OrderedModel2",
+         contains = c("Model"),
+         slots = c(rules = "matrixOrNULL",
+                   nb.rules = "numericOrNULL",
+                   order = "numeric",
+                   params = "list"),
+         validity = function(object) {
+             ## TODO
+             ## check order only contains values in categories
+             return(TRUE)
+         }
+}         

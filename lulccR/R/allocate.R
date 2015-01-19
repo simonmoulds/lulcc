@@ -41,6 +41,77 @@ setMethod("allocate", signature(model = "OrderedModel"),
           }
 )
 
+#' @rdname allocate
+#' @aliases allocate,OrderedModel-method
+setMethod("allocate", signature(model = "OrderedModel2"),
+          function(model, ...) {
+              model@output <- .allocate(model=model, fun=.ordered2)
+              model
+          }
+)
+
+.allocate2 <- function(model, fun, ...) {              
+
+    map0 <- model@obs@maps[[1]]
+    cells <- which(!is.na(raster::getValues(map0)))
+    map0.vals <- raster::extract(map0, cells)
+    hist.vals <- raster::extract(model@hist, cells)
+    mask.vals <- raster::extract(model@mask, cells)
+    newdata <- as.data.frame(x=model@pred, cells=cells)
+    prob <- calcProb(object=model@models, newdata=newdata)
+    maps <- raster::stack(map0)
+              
+    for (i in 1:(nrow(model@demand) - 1)) {
+         print(i)                                    
+         d <- model@demand[(i+1),] ## demand for current timestep
+         if (model@pred@dynamic && i > 1) {
+             newdata <- .update.data.frame(x=newdata, y=model@pred, map=map0, cells=cells, timestep=(i-1))
+             prob <- calcProb(object=model@models, newdata=newdata)
+         }
+         tprob <- prob
+
+         ## elas only included in some models, so check whether model model has slot
+         if (.hasSlot(model, "elas")) { 
+             for (j in 1:length(model@categories)) {
+                 ix <- map0.vals %in% model@categories[j]
+                 tprob[ix,j] <- tprob[ix,j] + model@elas[j] ## add elasticity
+             }
+         }
+                  
+         if (!is.null(model@neighb)) {
+             nb.allow <- allowNeighb(x=model@neighb, cells=cells, categories=model@categories, rules=model@nb.rules)
+             tprob <- tprob * nb.allow ## neighbourhood decision rules
+         }
+                  
+         ## implement other decision rules
+         if (!is.null(model@rules)) {
+             cd <- d - model@demand[i,] ## change direction
+             allow <- allow(x=map0.vals, hist=hist.vals, categories=model@categories, cd=cd,rules=model@rules)
+             tprob <- tprob * allow
+         }
+
+         ## make automatic conversions if necessary
+         auto <- .autoConvert(x=map0.vals, mask=mask.vals, prob=tprob, categories=model@categories)
+         map0.vals[auto$ix] <- auto$vals
+         tprob[auto$ix,] <- NA
+                  
+         ## allocation
+         args <- c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories), model@params)
+         map1.vals <- do.call(fun, args)
+         map1 <- raster::raster(map0, ...) 
+         map1[cells] <- map1.vals
+         maps <- raster::stack(maps, map1)
+    
+         ## prepare model for next timestep
+         if (i < nrow(model@demand)) {
+             hist.vals <- .updatehist(map0.vals, map1.vals, hist.vals) ## update
+             map0.vals <- map1.vals 
+             if (!is.null(model@neighb)) model@neighb <- NeighbMaps(x=map1, neighb=model@neighb)
+         }
+     }    
+     out <- maps              
+}
+
 .allocate <- function(model, fun, ...) {              
 
     map0 <- model@obs@maps[[1]]
