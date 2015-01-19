@@ -102,8 +102,7 @@ setClass("Model",
 #' @exportClass CluesModel
 #' @rdname CluesModel-class
 setClass("CluesModel",
-         contains = c("ModelInput",
-                      "Model"),
+         contains = c("Model"),
          slots = c(rules = "matrixOrNULL",
                    nb.rules = "numericOrNULL",
                    elas = "numeric",
@@ -141,8 +140,7 @@ setClass("CluesModel",
 #' @exportClass OrderedModel
 #' @rdname OrderedModel-class
 setClass("OrderedModel",
-         contains = c("ModelInput",
-                      "Model"),
+         contains = c("Model"),
          slots = c(rules = "matrixOrNULL",
                    nb.rules = "numericOrNULL",
                    params = "list"),
