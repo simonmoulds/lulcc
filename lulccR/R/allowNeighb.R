@@ -5,8 +5,9 @@
 #'
 #' See \code{\link{allow}}.
 #' 
-#' @param x a \code{NeighbMaps} object
-#' @param cells index of non-NA cells in the study region
+#' @param neighb a \code{NeighbMaps} object
+#' @param x a categorical RasterLayer to which neighbourhood rules should be
+#'   applied. This map is used to update \code{neighb}
 #' @param categories numeric vector containing land use categories. If
 #'   \code{allowNeighb} is called from an allocation model this argument
 #'   should contain all categories in the simulation, regardless of whether
@@ -48,14 +49,29 @@
 #'
 #' # NB output is only useful when used within an allocation routine
 
-allowNeighb <- function(x, cells, categories, rules, ...) {
-    if (length(rules) != length(x@maps)) stop("rule should be provided for each xourhood map")
-    allow.nb <- matrix(data=1, nrow=length(cells), ncol=length(categories))
-    for (i in 1:length(x@categories)) {
-        ix <- which(categories %in% x@categories[i])
-        nb.vals <- raster::extract(x@maps[[i]], cells)
-        allow.nb[,ix] <- as.numeric(nb.vals >= rules[i])
-    }
-    allow.nb[allow.nb == 0] <- NA
-    allow.nb
+## allowNeighb <- function(x, cells, categories, rules, ...) {
+##     if (length(rules) != length(x@maps)) stop("rule should be provided for each neighbourhood map")
+##     allow.nb <- matrix(data=1, nrow=length(cells), ncol=length(categories))
+##     for (i in 1:length(x@categories)) {
+##         ix <- which(categories %in% x@categories[i])
+##         nb.vals <- raster::extract(x@maps[[i]], cells)
+##         allow.nb[,ix] <- as.numeric(nb.vals >= rules[i])
+##     }
+##     allow.nb[allow.nb == 0] <- NA
+##     allow.nb
+## }
+
+allowNeighb <- function(neighb, x, categories, rules, ...) {
+  cells <- which(!is.na(raster::getValues(x)))
+  neighb <- NeighbMaps(x=x, neighb=neighb) ## update neighbourhood maps
+  allow.nb <- matrix(data=1, nrow=length(cells), ncol=length(categories))
+  for (i in 1:length(neighb@categories)) {
+    ix <- which(model@categories %in% neighb@categories[i])
+    nb.vals <- raster::extract(neighb@maps[[i]], cells)
+    allow.nb[,ix] <- as.numeric(nb.vals >= rules[i])
+  }
+  allow.nb[allow.nb == 0] <- NA
+  allow.nb
 }
+                       
+    
