@@ -62,16 +62,17 @@
 ## }
 
 allowNeighb <- function(neighb, x, categories, rules, ...) {
-  cells <- which(!is.na(raster::getValues(x)))
-  neighb <- NeighbMaps(x=x, neighb=neighb) ## update neighbourhood maps
-  allow.nb <- matrix(data=1, nrow=length(cells), ncol=length(categories))
-  for (i in 1:length(neighb@categories)) {
-    ix <- which(model@categories %in% neighb@categories[i])
-    nb.vals <- raster::extract(neighb@maps[[i]], cells)
-    allow.nb[,ix] <- as.numeric(nb.vals >= rules[i])
-  }
-  allow.nb[allow.nb == 0] <- NA
-  allow.nb
+     if (length(rules) != length(neighb@maps)) stop("rule should be provided for each neighbourhood map")
+    cells <- which(!is.na(raster::getValues(x)))
+    neighb <- NeighbMaps(x=x, neighb=neighb) ## update neighbourhood maps
+    allow.nb <- matrix(data=1, nrow=length(cells), ncol=length(categories))
+    for (i in 1:length(neighb@categories)) {
+        ix <- which(categories %in% neighb@categories[i])
+        nb.vals <- raster::extract(neighb@maps[[i]], cells)
+        allow.nb[,ix] <- as.numeric(nb.vals >= rules[i])
+    }
+    allow.nb[allow.nb == 0] <- NA
+    allow.nb
 }
                        
     

@@ -325,18 +325,18 @@ setMethod("OrderedModel2", signature(x = "ModelInput"),
               }
               
               if (missing(params)) {
-                  params <- .checkOrderedParams()
+                  params <- .checkOrdered2Params()
               } else {
-                  params <- .checkOrderedParams(params)
+                  params <- .checkOrdered2Params(params)
               }
               
-              out <- new("OrderedModel2", x, rules=rules, nb.rules=nb.rules, params=params, output=output)
+              out <- new("OrderedModel2", x, rules=rules, nb.rules=nb.rules, order=order, params=params, output=output)
              
           }
 )
 
 .checkOrdered2Params <- function(params) {
-    params
+    params <- list()
 }
 
 ##     if (missing(params) || length(params) == 0) {

@@ -3,12 +3,13 @@
 \alias{allowNeighb}
 \title{Implement neighbourhood decision rules}
 \usage{
-allowNeighb(x, cells, categories, rules, ...)
+allowNeighb(neighb, x, categories, rules, ...)
 }
 \arguments{
-\item{x}{a \code{NeighbMaps} object}
+\item{neighb}{a \code{NeighbMaps} object}
 
-\item{cells}{index of non-NA cells in the study region}
+\item{x}{a categorical RasterLayer to which neighbourhood rules should be
+applied. This map is used to update \code{neighb}}
 
 \item{categories}{numeric vector containing land use categories. If
 \code{allowNeighb} is called from an allocation model this argument

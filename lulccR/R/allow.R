@@ -33,8 +33,6 @@
 #'
 #' @param x numeric vector containing the land use pattern for the current
 #'   timestep
-#' @param hist numeric vector containing land use history (values represent the
-#'   number of years the cell has contained the current land use category)
 #' @param categories numeric vector containing land use categories in the study
 #'   region
 #' @param cd numeric vector indicating the direction of change for each
@@ -42,6 +40,9 @@
 #'   of cells belonging to the category must increase), -1 means decreasing
 #'   demand and 0 means demand is static 
 #' @param rules matrix. See details
+#' @param hist numeric vector containing land use history (values represent the
+#'   number of years the cell has contained the current land use category). Only
+#'   required for rules 4 and 5
 #' @param \dots additional arguments (none)
 #'
 #' @return a matrix with values of 1 (change allowed) or NA (change not allowed)
@@ -83,12 +84,16 @@
 #'
 #' # NB output is only useful when used within an allocation routine
 
-allow <- function(x, hist, categories, cd, rules, ...) {
+allow <- function(x, categories, cd, rules, hist=NULL, ...) {
     if (!all(dim(rules) %in% length(categories))) stop("rules matrix should be a square matrix with dimension equal to number of categories")
     if (length(cd) != length(categories)) stop("cd must correspond with categories")
-    if (length(x) != length(hist)) stop("hist must correspond with x")
     if (length(x) == 0) stop("x contains no values")
-    rules <- t(rules)
+    if (!is.null(hist) && length(x) != length(hist)) stop("hist must have the same length as x")
+    if (is.null(hist) && any(rules > 99)) stop("a map of land use history is required for these rules")
+    if (is.null(hist)) hist <- rep(1, length(x))
+    ## TODO: change C function so hist is optional
+    
+    rules <- t(rules) ## this makes it easier to handle in C function
     allow <- matrix(data=NA, nrow=length(x), ncol=length(categories))
     allow[] <- .Call("allow", x, hist, categories, cd, rules)
     allow[allow == 0] <- NA

@@ -102,7 +102,8 @@ setClass("Model",
 #' @exportClass CluesModel
 #' @rdname CluesModel-class
 setClass("CluesModel",
-         contains = c("Model"),
+         contains = c("ModelInput",
+                      "Model"),
          slots = c(rules = "matrixOrNULL",
                    nb.rules = "numericOrNULL",
                    elas = "numeric",
@@ -140,7 +141,8 @@ setClass("CluesModel",
 #' @exportClass OrderedModel
 #' @rdname OrderedModel-class
 setClass("OrderedModel",
-         contains = c("Model"),
+         contains = c("ModelInput",
+                      "Model"),
          slots = c(rules = "matrixOrNULL",
                    nb.rules = "numericOrNULL",
                    params = "list"),
@@ -169,6 +171,8 @@ setClass("OrderedModel",
 #' @slot labels character vector corresponding to \code{categories}
 #' @slot rules matrix with land use change decision rules
 #' @slot nb.rules numeric with neighbourhood decision rules
+#' @slot order numeric vector of land use categories in the order that change
+#'   should be allocated
 #' @slot params list with model parameters
 #' @slot output RasterStack containing simulated land use maps or NULL
 #'
@@ -176,7 +180,8 @@ setClass("OrderedModel",
 #' @exportClass OrderedModel2
 #' @rdname OrderedModel2-class
 setClass("OrderedModel2",
-         contains = c("Model"),
+         contains = c("ModelInput",
+                      "Model"),
          slots = c(rules = "matrixOrNULL",
                    nb.rules = "numericOrNULL",
                    order = "numeric",
@@ -186,4 +191,4 @@ setClass("OrderedModel2",
              ## check order only contains values in categories
              return(TRUE)
          }
-}         
+)         

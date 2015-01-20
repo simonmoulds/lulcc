@@ -30,20 +30,26 @@ setMethod("allocate", signature(model = "CluesModel"),
               map0 <- model@obs@maps[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
-              if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells)
+
+              if (!is.null(model@hist)) {
+                hist.vals <- raster::extract(model@hist, cells)
+              } else {
+                hist.vals <- NULL
+              }
+              
               if (!is.null(model@mask)) {
                   mask.vals <- raster::extract(model@mask, cells)
               } else {
-                  mask.vals <- rep(1, length(cells))
+                  mask.vals <- NULL
               }
-              
+                            
               newdata <- as.data.frame(x=model@pred, cells=cells)
               prob <- calcProb(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
 
               for (i in 1:(nrow(model@demand) - 1)) {
                    print(i)                                    
-                   d <- model@demand[(i+1),] ## demand for current timestep
+                   d <- model@demand[(i+1),] 
 
                    ## 1. update land use suitability matrix if dynamic factors exist
                    if (model@pred@dynamic && i > 1) {
@@ -72,7 +78,7 @@ setMethod("allocate", signature(model = "CluesModel"),
                    }
 
                    ## 5. make automatic conversions if necessary
-                   auto <- .autoConvert(x=map0.vals, mask=mask.vals, prob=tprob, categories=model@categories)
+                   auto <- .autoConvert(x=map0.vals, prob=tprob, categories=model@categories, mask=mask.vals)
                    map0.vals[auto$ix] <- auto$vals
                    tprob[auto$ix,] <- NA
 
@@ -90,7 +96,8 @@ setMethod("allocate", signature(model = "CluesModel"),
                        map0.vals <- map1.vals 
                    }
                }    
-               out <- maps              
+               model@output <- maps
+               model     
           }
 )
 
@@ -101,13 +108,19 @@ setMethod("allocate", signature(model = "OrderedModel"),
               map0 <- model@obs@maps[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
-              if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells)
+
+              if (!is.null(model@hist)) {
+                hist.vals <- raster::extract(model@hist, cells)
+              } else {
+                hist.vals <- NULL
+              }
+              
               if (!is.null(model@mask)) {
                   mask.vals <- raster::extract(model@mask, cells)
               } else {
-                  mask.vals <- rep(1, length(cells))
+                  mask.vals <- NULL
               }
-              
+                            
               newdata <- as.data.frame(x=model@pred, cells=cells)
               prob <- calcProb(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
@@ -137,7 +150,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
                    }
 
                    ## 4. make automatic conversions if necessary
-                   auto <- .autoConvert(x=map0.vals, mask=mask.vals, prob=tprob, categories=model@categories)
+                   auto <- .autoConvert(x=map0.vals, prob=tprob, categories=model@categories, mask=mask.vals)
                    map0.vals[auto$ix] <- auto$vals
                    tprob[auto$ix,] <- NA
 
@@ -155,7 +168,8 @@ setMethod("allocate", signature(model = "OrderedModel"),
                        map0.vals <- map1.vals 
                    }
                }    
-               out <- maps              
+               model@output <- maps
+               model     
           }
 )
 
@@ -166,11 +180,17 @@ setMethod("allocate", signature(model = "OrderedModel2"),
               map0 <- model@obs@maps[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
-              if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells)
+
+              if (!is.null(model@hist)) {
+                hist.vals <- raster::extract(model@hist, cells)
+              } else {
+                hist.vals <- NULL
+              }
+              
               if (!is.null(model@mask)) {
                   mask.vals <- raster::extract(model@mask, cells)
               } else {
-                  mask.vals <- rep(1, length(cells))
+                  mask.vals <- NULL
               }
               
               newdata <- as.data.frame(x=model@pred, cells=cells)
@@ -179,7 +199,7 @@ setMethod("allocate", signature(model = "OrderedModel2"),
 
               for (i in 1:(nrow(model@demand) - 1)) {
                    print(i)                                    
-                   d <- model@demand[(i+1),] ## demand for current timestep
+                   d <- model@demand[(i+1),]
 
                    ## 1. update land use suitability matrix if dynamic factors exist
                    if (model@pred@dynamic && i > 1) {
@@ -195,14 +215,14 @@ setMethod("allocate", signature(model = "OrderedModel2"),
                    }
 
                    ## 3. implement other decision rules
-                   if (!is.null(model@hist)) {
+                   if (!is.null(model@rules)) {
                        cd <- d - model@demand[i,] ## change direction
-                       allow <- allow(x=map0.vals, hist=hist.vals, categories=model@categories, cd=cd,rules=model@rules)
+                       allow <- allow(x=map0.vals, hist=hist.vals, categories=model@categories, cd=cd, rules=model@rules)
                        tprob <- tprob * allow
                    }
 
                    ## 4. make automatic conversions if necessary
-                   auto <- .autoConvert(x=map0.vals, mask=mask.vals, prob=tprob, categories=model@categories)
+                   auto <- .autoConvert(x=map0.vals, prob=tprob, categories=model@categories, mask=mask.vals)
                    map0.vals[auto$ix] <- auto$vals
                    tprob[auto$ix,] <- NA
 
@@ -219,8 +239,9 @@ setMethod("allocate", signature(model = "OrderedModel2"),
                        map0 <- map1
                        map0.vals <- map1.vals 
                    }
-               }    
-               out <- maps              
+               }
+               model@output <- maps
+               model     
           }
 )
 
@@ -301,75 +322,72 @@ setMethod("allocate", signature(model = "OrderedModel2"),
 }
 
 #' @useDynLib lulccR
-.ordered2 <- function(tprob, map0.vals, demand, categories, order, max.diff) {
+.ordered2 <- function(tprob, map0.vals, demand, categories, order) {
 
-    map0.area <- .Call("total", map0.vals, categories) ## initial condition
+    map0.area <- .Call("total", map0.vals, categories)        ## initial condition
     diff <- demand - map0.area
-    if (sum(abs(diff)) < max.diff) return(map0.vals)
-
+    if (sum(abs(diff)) == 0) return(map0.vals)                
     map1.vals <- map0.vals
-    map1.area <- map0.area
     
-    repeat {
+    for (i in 1:length(order)) {
+        ix <- which(categories %in% order[i])
+        cat <- categories[ix]
+        n <- demand[ix] - length(which(map1.vals %in% cat))   ## number of cells to convert
+
+        ## static demand
+        if (n == 0) {
+            ixx <- which(map0.vals %in% cat)                  ## index of all cells belonging to lu
+            tprob[ixx,] <- NA                                 ## set suitability of these cells to NA
+        }
         
-        tmp.demand <- demand - map1.area ## number of cells to change
-        decr <- list(ix=which(tmp.demand < 0), lu=categories[which(tmp.demand < 0)]) ## lu types with decreasing demand  
-        incr <- list(ix=which(tmp.demand > 0), lu=categories[which(tmp.demand > 0)]) ## lu types with increasing demand
-        tmp.demand <- abs(tmp.demand)
-       
-        tprob.max <- apply(as.data.frame(tprob[, incr$ix]), 1, .maxtprob)
-        tprob.max.ix <- order(tprob.max, na.last=NA, decreasing=TRUE)
-        tprob.max.x <- tprob.max[tprob.max.ix]
-        
-        ## find index of cells belonging to classes that must decrease area
-        decr.lu.ix <- which(map1.vals %in% decr$lu) 
-        tprob.max.x <- tprob.max.x[tprob.max.ix %in% decr.lu.ix]  
-        tprob.max.ix <- tprob.max.ix[tprob.max.ix %in% decr.lu.ix] ## does this preserve order?
-        decr.lu.vals <- map1.vals[tprob.max.ix]
-        
-        rand.unif <- runif(length(tprob.max.ix))
-
-        ## ## rescale tprob.max.x
-        ## tprob.range <- range(tprob.max.x, na.rm=TRUE)
-        ## tprob.max.x <- ((tprob.max.x - tprob.range[1]) / diff(tprob.range))
-
-        i <- 0
-        repeat {
-            i <- i+1
-            ix <- tprob.max.ix[i]
-            maxt <- tprob.max.x[i]
-
-            if (maxt > rand.unif[i]) {
-                lu0 <- incr$lu[which.max(tprob[ix , incr$ix])]
-                lu0.ix <- incr$ix[which(incr$lu == lu0)]
-                lu1 <- decr.lu.vals[i]
-                lu1.ix <- decr$ix[which(decr$lu == lu1)]
-                map1.vals[ix] <- lu0 ## allocate change
-
-                tmp.demand[lu0.ix] <- tmp.demand[lu0.ix] - 1
-                tmp.demand[lu1.ix] <- tmp.demand[lu1.ix] - 1
-
-                if (tmp.demand[lu0.ix] == 0 | tmp.demand[lu1.ix] == 0) break
-                
+        ## increasing demand
+        if (n > 0) {
+            ixx <- which(!map1.vals %in% cat)                 ## index of all cells not currently belonging to lu
+            p <- tprob[ixx,ix]                                ## suitability of all cells not currently belonging to lu (NB will include NAs)
+            p.ix <- order(p, na.last=TRUE, decreasing=TRUE)   ## index of cells when arranged from high to low
+            p <- p[p.ix]                                      ## suitability arranged from high to low
+            p.ix <- p.ix[which(!is.na(p))]                    ## index with NAs removed
+            p <- p[which(!is.na(p))]                          ## suitability with NAs removed
+            ixx <- ixx[p.ix]                                  ## actual index of cells (as they appear in map1.vals)     
+            #p.range <- range(p, na.rm=TRUE); print(p.range)                   
+            #p <- (p - p.range[1]) / diff(p.range)             ## normalise suitability (0-1)
+            repeat {
+                select.ix <- which(p >= runif(length(p)))     ## compare suitability to numbers drawn from random normal distribution
+                if (length(select.ix) >= abs(n)) break()      ## only exit loop if select.ix includes enough cells to meet demand
             }
-
-            if (i >= length(tprob.max.ix)) break
-            
+            select.ix <- select.ix[1:n]                       ## select cells with the highest suitability
+            ixx <- ixx[select.ix]                             ## index
+            map1.vals[ixx] <- cat                             ## allocate change
+            ixx <- which(map1.vals %in% cat)                  ## index of cells belonging to lu
+            tprob[ixx,] <- NA                                 ## set suitability of these cells to NA
         }
 
-        map1.area <- .Call("total", map1.vals, categories)
-        diff <- demand - map1.area
-            
-        ## condition to break outer repeat loop
-        if (sum(abs(diff)) < max.diff) {
-            break
+        ## decreasing demand
+        if (n < 0) {
+            ixx <- which(map0.vals %in% cat)                  ## index of all cells currently belonging to lu
+            p <- tprob[ixx,ix]                                ## suitability of all cells currently belonging to lu (will include NAs)
+            p.ix <- order(p, na.last=TRUE, increasing=TRUE)   ## index of cells when arranged low to high
+            p <- p[p.ix]                                      ## suitability arranged from low to high
+            p.ix <- p.ix[which(!is.na(p))]                    ## index with NAs removed
+            p <- p[which(!is.na(p))]                          ## suitability with NAs removed
+            ixx <- ixx[p.ix]                                  ## actual index of cells (as they appear in map1.vals)  
+            p.range <- range(p, na.rm=TRUE)                   
+            p <- (p - p.range[1]) / diff(p.range)             ## normalise suitability
+            repeat {
+                select.ix <- which(p < runif(length(p)))      ## compare suitability to numbers drawn from random normal distribution 
+                if (length(select.ix) >= abs(n)) break()      ## only exit loop if select.ix includes enough cells to meet demand
+            }
+            select.ix <- select.ix[1:n]                       ## select cells with lowest suitability
+            ixx <- ixx[select.ix]                             ## index 
+            map1.vals[ixx] <- -1                              ## unclassified
+            ixx <- which(map1.vals %in% cat)                  ## index of cells belonging to lu
+            tprob[ixx,] <- NA                                 ## set suitability of these cells to NA
         }
-        
     }
-    
     map1.vals
-
 }
+
+################################################################################
 
 ## helper functions
 
@@ -387,8 +405,10 @@ setMethod("allocate", signature(model = "OrderedModel2"),
 }
 
 #' @useDynLib lulccR
-.autoConvert <- function(x, mask, prob, categories, ...) {
-    if (length(x) != length(mask)) stop("mask does not correspond with x")
+.autoConvert <- function(x, prob, categories, mask=NULL, ...) {
+    if (!is.null(mask) && length(x) != length(mask)) stop("mask must have same length as x")
+    if (is.null(mask)) mask <- rep(1, length(x))
+    ## TODO: change autoconvert function so mask is optional
     vals <- .Call("autoconvert", x, mask, prob, categories)
     ix <- which(!is.na(vals))
     vals <- vals[ix]

@@ -3,14 +3,11 @@
 \alias{allow}
 \title{Implement decision rules for land use change}
 \usage{
-allow(x, hist, categories, cd, rules, ...)
+allow(x, categories, cd, rules, hist = NULL, ...)
 }
 \arguments{
 \item{x}{numeric vector containing the land use pattern for the current
 timestep}
-
-\item{hist}{numeric vector containing land use history (values represent the
-number of years the cell has contained the current land use category)}
 
 \item{categories}{numeric vector containing land use categories in the study
 region}
@@ -21,6 +18,10 @@ of cells belonging to the category must increase), -1 means decreasing
 demand and 0 means demand is static}
 
 \item{rules}{matrix. See details}
+
+\item{hist}{numeric vector containing land use history (values represent the
+number of years the cell has contained the current land use category). Only
+required for rules 4 and 5}
 
 \item{\dots}{additional arguments (none)}
 }
