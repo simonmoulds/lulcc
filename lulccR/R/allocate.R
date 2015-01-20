@@ -30,19 +30,8 @@ setMethod("allocate", signature(model = "CluesModel"),
               map0 <- model@obs@maps[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
-
-              if (!is.null(model@hist)) {
-                hist.vals <- raster::extract(model@hist, cells)
-              } else {
-                hist.vals <- NULL
-              }
-              
-              if (!is.null(model@mask)) {
-                  mask.vals <- raster::extract(model@mask, cells)
-              } else {
-                  mask.vals <- NULL
-              }
-                            
+              if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
+              if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
               newdata <- as.data.frame(x=model@pred, cells=cells)
               prob <- calcProb(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
@@ -63,28 +52,21 @@ setMethod("allocate", signature(model = "CluesModel"),
                        ix <- map0.vals %in% model@categories[j]
                        tprob[ix,j] <- tprob[ix,j] + model@elas[j]
                    }
-  
+
                    ## 3. implement neighbourhood decision rules
-                   if (!is.null(model@neighb)) {
-                       nb.allow <- allowNeighb(neighb=model@neighb, x=map0, categories=model@categories, rules=model@nb.rules)
-                       tprob <- tprob * nb.allow
-                   }
+                   tprob <- .applyNeighbDecisionRules(model=model, x=map0, tprob=tprob)
 
                    ## 4. implement other decision rules
-                   if (!is.null(model@hist)) {
-                       cd <- d - model@demand[i,] ## change direction
-                       allow <- allow(x=map0.vals, hist=hist.vals, categories=model@categories, cd=cd,rules=model@rules)
-                       tprob <- tprob * allow
-                   }
-
+                   cd <- d - model@demand[i,] ## change direction
+                   tprob <- .applyDecisionRules(model=model, x=map0.vals, hist=hist.vals, cd=cd, tprob=tprob)
+                     
                    ## 5. make automatic conversions if necessary
                    auto <- .autoConvert(x=map0.vals, prob=tprob, categories=model@categories, mask=mask.vals)
                    map0.vals[auto$ix] <- auto$vals
                    tprob[auto$ix,] <- NA
 
                    ## 6. allocation
-                   args <- c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories), model@params)
-                   map1.vals <- do.call(.clues, args)
+                   map1.vals <- do.call(.clues, c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories), model@params))
                    map1 <- raster::raster(map0, ...) 
                    map1[cells] <- map1.vals
                    maps <- raster::stack(maps, map1)
@@ -108,19 +90,8 @@ setMethod("allocate", signature(model = "OrderedModel"),
               map0 <- model@obs@maps[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
-
-              if (!is.null(model@hist)) {
-                hist.vals <- raster::extract(model@hist, cells)
-              } else {
-                hist.vals <- NULL
-              }
-              
-              if (!is.null(model@mask)) {
-                  mask.vals <- raster::extract(model@mask, cells)
-              } else {
-                  mask.vals <- NULL
-              }
-                            
+              if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
+              if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
               newdata <- as.data.frame(x=model@pred, cells=cells)
               prob <- calcProb(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
@@ -136,18 +107,12 @@ setMethod("allocate", signature(model = "OrderedModel"),
                    }
                    tprob <- prob
                    
-                   ## 2. implement neighbourhood decision rules
-                   if (!is.null(model@neighb)) {
-                       nb.allow <- allowNeighb(neighb=model@neighb, x=map0, categories=model@categories, rules=model@nb.rules)
-                       tprob <- tprob * nb.allow
-                   }
+                   ## 3. implement neighbourhood decision rules
+                   tprob <- .applyNeighbDecisionRules(model=model, x=map0, tprob=tprob)
 
-                   ## 3. implement other decision rules
-                   if (!is.null(model@hist)) {
-                       cd <- d - model@demand[i,] ## change direction
-                       allow <- allow(x=map0.vals, hist=hist.vals, categories=model@categories, cd=cd,rules=model@rules)
-                       tprob <- tprob * allow
-                   }
+                   ## 4. implement other decision rules
+                   cd <- d - model@demand[i,] ## change direction
+                   tprob <- .applyDecisionRules(model=model, x=map0.vals, hist=hist.vals, cd=cd, tprob=tprob)
 
                    ## 4. make automatic conversions if necessary
                    auto <- .autoConvert(x=map0.vals, prob=tprob, categories=model@categories, mask=mask.vals)
@@ -155,8 +120,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
                    tprob[auto$ix,] <- NA
 
                    ## 5. allocation
-                   args <- c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories), model@params)
-                   map1.vals <- do.call(.ordered, args)
+                   map1.vals <- do.call(.ordered, c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories), model@params))
                    map1 <- raster::raster(map0, ...) 
                    map1[cells] <- map1.vals
                    maps <- raster::stack(maps, map1)
@@ -180,19 +144,8 @@ setMethod("allocate", signature(model = "OrderedModel2"),
               map0 <- model@obs@maps[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
-
-              if (!is.null(model@hist)) {
-                hist.vals <- raster::extract(model@hist, cells)
-              } else {
-                hist.vals <- NULL
-              }
-              
-              if (!is.null(model@mask)) {
-                  mask.vals <- raster::extract(model@mask, cells)
-              } else {
-                  mask.vals <- NULL
-              }
-              
+              if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
+              if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
               newdata <- as.data.frame(x=model@pred, cells=cells)
               prob <- calcProb(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
@@ -209,17 +162,11 @@ setMethod("allocate", signature(model = "OrderedModel2"),
                    tprob <- prob
                    
                    ## 2. implement neighbourhood decision rules
-                   if (!is.null(model@neighb)) {
-                       nb.allow <- allowNeighb(neighb=model@neighb, x=map0, categories=model@categories, rules=model@nb.rules)
-                       tprob <- tprob * nb.allow
-                   }
+                   tprob <- .applyNeighbDecisionRules(model=model, x=map0, tprob=tprob)
 
                    ## 3. implement other decision rules
-                   if (!is.null(model@rules)) {
-                       cd <- d - model@demand[i,] ## change direction
-                       allow <- allow(x=map0.vals, hist=hist.vals, categories=model@categories, cd=cd, rules=model@rules)
-                       tprob <- tprob * allow
-                   }
+                   cd <- d - model@demand[i,] ## change direction
+                   tprob <- .applyDecisionRules(model=model, x=map0.vals, hist=hist.vals, cd=cd, tprob=tprob)
 
                    ## 4. make automatic conversions if necessary
                    auto <- .autoConvert(x=map0.vals, prob=tprob, categories=model@categories, mask=mask.vals)
@@ -227,8 +174,7 @@ setMethod("allocate", signature(model = "OrderedModel2"),
                    tprob[auto$ix,] <- NA
 
                    ## 5. allocation
-                   args <- c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories, order=model@order), model@params)
-                   map1.vals <- do.call(.ordered2, args)
+                   map1.vals <- do.call(.ordered2, c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories, order=model@order), model@params))
                    map1 <- raster::raster(map0, ...) 
                    map1[cells] <- map1.vals
                    maps <- raster::stack(maps, map1)
@@ -390,6 +336,22 @@ setMethod("allocate", signature(model = "OrderedModel2"),
 ################################################################################
 
 ## helper functions
+
+.applyNeighbDecisionRules <- function(model, x, tprob) {
+    if (!is.null(model@neighb) && !is.null(model@nb.rules)) {
+        nb.allow <- allowNeighb(neighb=model@neighb, x=x, categories=model@categories, rules=model@nb.rules)
+        tprob <- tprob * nb.allow
+    } 
+    tprob
+}
+
+.applyDecisionRules <- function(model, x, hist, cd, tprob) {
+    if (!is.null(model@rules)) {
+        allow <- allow(x=x, hist=hist, categories=model@categories, cd=cd, rules=model@rules)
+        tprob <- tprob * allow
+    }
+    tprob
+}
 
 #' @useDynLib lulccR
 .updatehist <- function(lu0, lu1, hist) {
