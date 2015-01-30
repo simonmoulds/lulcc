@@ -1,20 +1,20 @@
-#' @include class-PredictorMaps.R
+#' @include class-ExpVarMaps.R
 NULL
 
-#' Resample maps in PredictorMaps object or list 
+#' Resample maps in ExpVarMaps object or list 
 #'
 #' A wrapper function for \code{raster::\link[raster]{resample}} to resample
-#' raster objects in a \link{PredictorMaps-class} object or list.
+#' raster objects in a \link{ExpVarMaps-class} object or list.
 #'
-#' @param x a PredictorMaps object or list of Raster* maps to be resampled
+#' @param x a ExpVarMaps object or list of Raster* maps to be resampled
 #' @param y Raster* object with parameters that \code{x} should be resampled to
 #' @param method method used to compute values for the new RasterLayer, should be
 #'   \code{"bilinear"} for bilinear interpolation, or \code{"ngb"} for nearest
 #'   neighbour
 #' @param \dots additional arguments to \code{raster::\link[raster]{resample}}
 #'
-#' @seealso \code{\link{PredictorMaps}}, \code{raster::\link[raster]{resample}}
-#' @return A PredictorMaps object or list, depending on \code{x}.
+#' @seealso \code{\link{ExpVarMaps}}, \code{raster::\link[raster]{resample}}
+#' @return A ExpVarMaps object or list, depending on \code{x}.
 #'
 #' @rdname resample
 #'
@@ -22,18 +22,17 @@ NULL
 #'
 #' @examples
 #'
-#' ## create PredictorMaps object
-#' pred <- predictorMaps(x=pie, pattern="pred")
-#' pred <- PredictorMaps(maps=pred)
+#' ## create ExpVarMaps object
+#' ef <- ExpVarMaps(x=pie, pattern="ef")
 #'
 #' ## resample to ensure maps have same characteristics as observed maps
-#' pred <- resample(x=pred, y=pie$lu_pie_1985, method="ngb")
+#' ef <- resample(x=ef, y=pie$lu_pie_1985, method="ngb")
 
 ##setGeneric("resample")
 
 #' @rdname resample
-#' @aliases resample,PredictorMaps,Raster-method
-setMethod("resample", signature(x = "PredictorMaps", y = "Raster"),
+#' @aliases resample,ExpVarMaps,Raster-method
+setMethod("resample", signature(x = "ExpVarMaps", y = "Raster"),
           function(x, y, method="ngb", ...) {
               maps <- x@maps
               ##calls <- x@calls

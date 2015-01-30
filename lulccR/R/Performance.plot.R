@@ -1,19 +1,19 @@
-#' @include class-PerformanceMulti.R
+#' @include class-Performance.R
 NULL
 
-#' Plot method for PerformanceMulti objects
+#' Plot method for Performance objects
 #'
 #' Plot the the ROC curve for each \code{performance} object in a
-#' \code{\link{PerformanceMulti}} object. If more than one
-#' \code{PerformanceMulti} objects are provided ROC curves for the same land use
+#' \code{\link{Performance}} object. If more than one
+#' \code{Performance} objects are provided ROC curves for the same land use
 #' category from different objects are included on the same plot for model
 #' comparison.
 #'
-#' @param x either a single \code{PerformanceMulti} object or a list of these.
+#' @param x either a single \code{Performance} object or a list of these.
 #'   If a list is provided it must be named.
 #' @param multipanel logical. If \code{TRUE}, create a trellis plot where the
-#'   number of panels equals the number of \code{PerformanceMulti} objects.
-#'   Otherwise, create a single plot for each \code{PerformanceMulti} object
+#'   number of panels equals the number of \code{Performance} objects.
+#'   Otherwise, create a single plot for each \code{Performance} object
 #' @param type character. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param abline list. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param col character. Plotting colour
@@ -21,30 +21,30 @@ NULL
 #'   \code{cex})
 #' @param \dots additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
-#' @seealso \code{\link{PerformanceMulti}}
+#' @seealso \code{\link{Performance}}
 #' @return A trellis object.
 #'
 #' @export
-#' @rdname PerformanceMulti.plot
-setGeneric("PerformanceMulti.plot", function(x, ...)
-           standardGeneric("PerformanceMulti.plot"))
+#' @rdname Performance.plot
+setGeneric("Performance.plot", function(x, ...)
+           standardGeneric("Performance.plot"))
 
-##  @rdname PerformanceMulti.plot
-##  @aliases PerformanceMulti.plot,PerformanceMulti-method
-## setMethod("PerformanceMulti.plot", signature(x = "PerformanceMulti"),
+##  @rdname Performance.plot
+##  @aliases Performance.plot,Performance-method
+## setMethod("Performance.plot", signature(x = "Performance"),
 ##           function(x, type, ...) {
 ##               l <- list(x)
-##               out <- PerformanceMulti.plot(l, ...)
+##               out <- Performance.plot(l, ...)
 ##           }
 ## )
 
-#' @rdname PerformanceMulti.plot
-#' @aliases PerformanceMulti.plot,list-method
-setMethod("PerformanceMulti.plot", signature(x = "list"),
+#' @rdname Performance.plot
+#' @aliases Performance.plot,list-method
+setMethod("Performance.plot", signature(x = "list"),
           function(x, multipanel=TRUE, type="l", abline=list(c(0,1), col="grey"), col=RColorBrewer::brewer.pal(9, "Set1"), key.args=NULL, ...) {
 
-              c1 <- all(sapply(x, function(x) is(x, "PerformanceMulti")))
-              if (!c1) stop("all objects in list should have class 'PerformanceMulti'")
+              c1 <- all(sapply(x, function(x) is(x, "Performance")))
+              if (!c1) stop("all objects in list should have class 'Performance'")
 
               if (is.null(names(x)) || any(nchar(names(x)) == 0)) stop("'x' must be a named list")
 

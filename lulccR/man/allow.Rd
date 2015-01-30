@@ -62,7 +62,7 @@ two matrices together, disallowed transitions are removed from the allocation
 procedure.
 }
 \examples{
-obs <- ObservedMaps(x=pie,
+obs <- ObsLulcMaps(x=pie,
                     pattern="lu",
                     categories=c(1,2,3),
                     labels=c("forest","built","other"),

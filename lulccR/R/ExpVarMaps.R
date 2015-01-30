@@ -1,4 +1,4 @@
-#' Create a PredictorMaps object
+#' Create a ExpVarMaps object
 #'
 #' Methods to load maps of predictor variables, which may be created from file, an
 #' existing Raster* object or a list of Raster* objects.
@@ -9,7 +9,7 @@
 #' (dynamic) parts: firstly, the prefix should differentiate predictor maps from
 #' other maps in the directory, list or RasterStack. This should be followed
 #' by a unique number to differentiate the predictor maps (note that the order of
-#' predictor variables in the PredictorMaps object is determined by this value)
+#' predictor variables in the ExpVarMaps object is determined by this value)
 #' If the predictor is dynamic this number should be followed by a second number
 #' representing the timestep to which the map applies. Dynamic variables should
 #' include a map for time 0 (corresponding to the initial observed map) and every
@@ -19,7 +19,7 @@
 #' Maps of different predictor variables should have the same coordinate
 #' reference system but do not have to have the same extent and resolution as 
 #' long as the minimum extent is that of the study region defined by an
-#' \code{ObservedMaps} object. However, maps for different timesteps of the same
+#' \code{ObsLulcMaps} object. However, maps for different timesteps of the same
 #' dynamic predictor variable should have the same extent and resolution because
 #' these are stored as RasterStack objects.
 #' 
@@ -31,33 +31,33 @@
 #'   information about supported filetypes
 #' @param \dots additional arguments to \code{raster::\link[raster]{stack}}
 #'
-#' @return A PredictorMaps object.
+#' @return A ExpVarMaps object.
 #'
 #' @export
-#' @rdname PredictorMaps
+#' @rdname ExpVarMaps
 #'
 #' @examples
 #'
 #' ## Plum Island Ecosystem
-#' pred.maps <- PredictorMaps(x=pie, pattern="pred")
+#' pred.maps <- ExpVarMaps(x=pie, pattern="pred")
 #'
 #' ## Sibuyan
-#' pred.maps <- PredictorMaps(x=sibuyan, pattern="pred")
+#' pred.maps <- ExpVarMaps(x=sibuyan, pattern="pred")
 
-setGeneric("PredictorMaps", function(x, pattern, ...)
-           standardGeneric("PredictorMaps"))
+setGeneric("ExpVarMaps", function(x, pattern, ...)
+           standardGeneric("ExpVarMaps"))
 
-#' @rdname PredictorMaps
-#' @aliases PredictorMaps,missing,character-method
-setMethod("PredictorMaps", signature(x = "missing", pattern = "character"),
+#' @rdname ExpVarMaps
+#' @aliases ExpVarMaps,missing,character-method
+setMethod("ExpVarMaps", signature(x = "missing", pattern = "character"),
           function(x, pattern, ...) {
-              out <- PredictorMaps(x=".", pattern=pattern, ...)
+              out <- ExpVarMaps(x=".", pattern=pattern, ...)
           }
 )
 
-#' @rdname PredictorMaps
-#' @aliases PredictorMaps,character,character-method
-setMethod("PredictorMaps", signature(x = "character", pattern = "character"),
+#' @rdname ExpVarMaps
+#' @aliases ExpVarMaps,character,character-method
+setMethod("ExpVarMaps", signature(x = "character", pattern = "character"),
           function(x, pattern, ...) {
               files <- list.files(path=x, pattern=pattern, full.names=FALSE)
               if (length(files) > 0) {
@@ -68,7 +68,7 @@ setMethod("PredictorMaps", signature(x = "character", pattern = "character"),
                   nms <- names(x)
                   x <- raster::unstack(x)
                   names(x) <- nms
-                  out <- PredictorMaps(x=x, pattern=pattern, ...)
+                  out <- ExpVarMaps(x=x, pattern=pattern, ...)
                   #out <- .getPredMaps(maps)                  
               } else {
                   stop("no predictor maps found")
@@ -77,20 +77,20 @@ setMethod("PredictorMaps", signature(x = "character", pattern = "character"),
           }
 )
 
-#' @rdname PredictorMaps
-#' @aliases PredictorMaps,RasterStack,character-method
-setMethod("PredictorMaps", signature(x = "RasterStack", pattern = "character"),
+#' @rdname ExpVarMaps
+#' @aliases ExpVarMaps,RasterStack,character-method
+setMethod("ExpVarMaps", signature(x = "RasterStack", pattern = "character"),
           function(x, pattern, ...) {
               stack.names <- names(x)
               x <- raster::unstack(x)
               names(x) <- stack.names
-              out <- PredictorMaps(x=x, pattern=pattern)
+              out <- ExpVarMaps(x=x, pattern=pattern)
           }
 )
 
-#' @rdname PredictorMaps
-#' @aliases PredictorMaps,list,character-method
-setMethod("PredictorMaps", signature(x = "list", pattern = "character"),
+#' @rdname ExpVarMaps
+#' @aliases ExpVarMaps,list,character-method
+setMethod("ExpVarMaps", signature(x = "list", pattern = "character"),
           function(x, pattern, ...) {
               list.names <- names(x)
               if (is.null(list.names)) stop("list elements must be named")
@@ -101,7 +101,7 @@ setMethod("PredictorMaps", signature(x = "list", pattern = "character"),
               maps <- .getPredMaps(maps)
               dynamic <- FALSE
               if (max(sapply(maps, nlayers)) > 1) dynamic <- TRUE
-              out <- new("PredictorMaps",
+              out <- new("ExpVarMaps",
                          maps=maps,
                          map.names=as.character(names(maps)),
                          dynamic=dynamic)

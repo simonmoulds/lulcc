@@ -32,7 +32,7 @@ NULL
 #' relate observed land use or land use change to spatially explicit predictor
 #' variables. A mathematical model is usually obtained for each category or
 #' transition, respectively. Collectively, these are represented by the
-#' \code{StatModels} class. Currently lulccR supports binary logistic regression,
+#' \code{PredModels} class. Currently lulccR supports binary logistic regression,
 #' provided by base R (\code{glm}), recursive partitioning and regression trees,
 #' provided by package \code{rpart} and random forest, provided by package
 #' \code{randomForest}. To a large extent, the success of the allocation routine

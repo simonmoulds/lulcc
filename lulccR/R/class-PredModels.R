@@ -1,4 +1,4 @@
-#' Class StatModels
+#' Class PredModels
 #'
 #' An S4 class to hold multiple mathematical models for different land use
 #' categories belonging to the same map.
@@ -9,10 +9,10 @@
 #' @slot labels character vector with labels corresponding to \code{categories}
 #'
 #' @export
-#' @exportClass StatModels
-#' @rdname StatModels-class
+#' @exportClass PredModels
+#' @rdname PredModels-class
 
-setClass("StatModels",
+setClass("PredModels",
          slots = c(models = "list",
                    types = "character",
                    categories = "numeric",

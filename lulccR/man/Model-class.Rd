@@ -9,11 +9,11 @@ An S4 virtual class to represent land use change models.
 \section{Slots}{
 
 \describe{
-\item{\code{obs}}{an ObservedMaps object}
+\item{\code{obs}}{an ObsLulcMaps object}
 
-\item{\code{pred}}{a PredictorMaps object}
+\item{\code{ef}}{an ExpVarMaps object}
 
-\item{\code{models}}{a StatModels object}
+\item{\code{models}}{a PredModels object}
 
 \item{\code{time}}{numeric vector containing timesteps over which simulation will
 occur}

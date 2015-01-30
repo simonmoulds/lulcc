@@ -9,7 +9,7 @@ setOldClass(c("randomForest.formula","randomForest"))
 #' suitability at each timestep. However, it may also be used to produce
 #' suitability maps (see examples).
 #'
-#' @param object a \code{StatModels} object or a model of any class
+#' @param object a \code{PredModels} object or a model of any class
 #'   for which a predict method exists (currently, \code{glm},
 #'   \code{rpart::\link[rpart]{rpart}} and
 #'   \code{randomForest::\link[randomForest]{randomForest}}
@@ -18,7 +18,7 @@ setOldClass(c("randomForest.formula","randomForest"))
 #'   (default) or data.frame
 #' @param \dots additional arguments to the \code{predict}
 #'
-#' @seealso \code{\link{StatModels}},\code{\link{allocate}},\code{\link{predict}}
+#' @seealso \code{\link{PredModels}},\code{\link{allocate}},\code{\link{predict}}
 #' @author Simon Moulds
 #' @return A matrix or data.frame.
 #'
@@ -53,8 +53,8 @@ setMethod("calcProb", signature(object = "randomForest"),
 )
 
 #' @rdname calcProb
-#' @aliases calcProb,StatModels-method
-setMethod("calcProb", signature(object = "StatModels"),
+#' @aliases calcProb,PredModels-method
+setMethod("calcProb", signature(object = "PredModels"),
           function(object, newdata, df=FALSE, ...) {
               out <- list()
               for (i in 1:length(object@models)) {

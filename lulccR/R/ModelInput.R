@@ -1,8 +1,8 @@
 #' @include class-ModelInput.R
 #' @include class-NeighbMaps.R
-#' @include class-ObservedMaps.R
-#' @include class-PredictorMaps.R
-#' @include class-StatModels.R
+#' @include class-ObsLulcMaps.R
+#' @include class-ExpVarMaps.R
+#' @include class-PredModels.R
 NULL
 
 #' Create a ModelInput object
@@ -11,9 +11,9 @@ NULL
 #' modelling and perform a series of checks to ensure the objects are compatible
 #' in time and space for a model simulation.
 #' 
-#' @param obs an ObservedMaps object or a ModelInput object
-#' @param pred a PredictorMaps object
-#' @param models a StatModels object
+#' @param obs an ObsLulcMaps object or a ModelInput object
+#' @param ef an ExpVarMaps object
+#' @param models a PredModels object
 #' @param time numeric vector containing timesteps over which simulation will
 #'   occur  
 #' @param demand matrix with demand for each land use category in terms of number
@@ -33,14 +33,14 @@ NULL
 #'
 #' @export
 #' @rdname ModelInput
-setGeneric("ModelInput", function(obs, pred, models, time, demand, ...)
+setGeneric("ModelInput", function(obs, ef, models, time, demand, ...)
            standardGeneric("ModelInput"))
 
 #' @rdname ModelInput
-#' @aliases ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matrix-method
-setMethod("ModelInput", signature(obs = "ObservedMaps", pred = "PredictorMaps", models = "StatModels", time = "numeric", demand = "matrix"),
-           function(obs, pred, models, time, demand, hist, mask, neighb=NULL, ...) {
-               pred <- resample(pred, obs@maps) ## all predictor maps to same resolution as map0
+#' @aliases ModelInput,ObsLulcMaps,ExpVarMaps,PredModels,numeric,matrix-method
+setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps", models = "PredModels", time = "numeric", demand = "matrix"),
+           function(obs, ef, models, time, demand, hist, mask, neighb=NULL, ...) {
+               ef <- resample(ef, obs@maps) ## all predictor maps to same resolution as map0
 
                ## check x and models refer to the same categories
                if (!all(obs@categories == models@categories)) {
@@ -86,7 +86,7 @@ setMethod("ModelInput", signature(obs = "ObservedMaps", pred = "PredictorMaps", 
                ## create ModelInput object
                out <- new("ModelInput",
                           obs=obs,
-                          pred=pred,
+                          ef=ef,
                           models=models,
                           time=time,
                           demand=demand,
@@ -203,7 +203,7 @@ setMethod("CluesModel", signature(x = "ModelInput"),
 #'
 #' An ordered allocation procedure is frequently used in large study areas TODO
 #' 
-#' @param x an ObservedMaps object or a ModelInput object
+#' @param x an ObsLulcMaps object or a ModelInput object
 #' @param rules matrix with land use change decision rules
 #' @param nb.rules numeric with neighbourhood decision rules
 #' @param order numeric vector of land use categories in the order that change

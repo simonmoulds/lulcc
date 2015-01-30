@@ -1,13 +1,13 @@
-#' @include class-ObservedMaps.R
+#' @include class-ObsLulcMaps.R
 NULL
 
-#' Create an ObservedMaps object
+#' Create an ObsLulcMaps object
 #'
-#' Methods to create an ObservedMaps object, which may be created from file, an
+#' Methods to create an ObsLulcMaps object, which may be created from file, an
 #' existing Raster* object or a list of Raster* objects.
 #'
 #' Observed land use maps should have the same extent and resolution. The
-#' location of non-NA cells in \code{ObservedMaps} objects defines the region for
+#' location of non-NA cells in \code{ObsLulcMaps} objects defines the region for
 #' subsequent analysis.
 #' 
 #' @param x path (character), Raster* object or list of Raster* objects. Default
@@ -23,43 +23,43 @@ NULL
 #'   first timestep must be 0
 #' @param \dots additional arguments to \code{raster::\link[raster]{stack}}
 #'
-#' @return An ObservedMaps object.
+#' @return An ObsLulcMaps object.
 #'
 #' @export
-#' @rdname ObservedMaps
+#' @rdname ObsLulcMaps
 #'
 #' @examples
 #'
 #' ## Plum Islands Ecosystem
-#' obs <- ObservedMaps(x=pie,
+#' obs <- ObsLulcMaps(x=pie,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3),
 #'                     labels=c("forest","built","other"),
 #'                     t=c(0,6,14))
 #'
 #' ## Sibuyan Island
-#' obs <- ObservedMaps(x=sibuyan,
+#' obs <- ObsLulcMaps(x=sibuyan,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3,4,5),
 #'                     labels=c("forest","coconut","grass","rice","other"),
 #'                     t=c(0))
 
-#if (!isGeneric("ObservedMaps")) {
-setGeneric("ObservedMaps", function(x, pattern, ...)
-           standardGeneric("ObservedMaps"))
+#if (!isGeneric("ObsLulcMaps")) {
+setGeneric("ObsLulcMaps", function(x, pattern, ...)
+           standardGeneric("ObsLulcMaps"))
 #}
 
-#' @rdname ObservedMaps
-#' @aliases ObservedMaps,missing,character-method
-setMethod("ObservedMaps", signature(x = "missing", pattern = "character"),
+#' @rdname ObsLulcMaps
+#' @aliases ObsLulcMaps,missing,character-method
+setMethod("ObsLulcMaps", signature(x = "missing", pattern = "character"),
           function(x, pattern, ...) {
-              out <- ObservedMaps(x=".", pattern=pattern, ...)
+              out <- ObsLulcMaps(x=".", pattern=pattern, ...)
           }
 )
 
-#' @rdname ObservedMaps
-#' @aliases ObservedMaps,character,character-method
-setMethod("ObservedMaps", signature(x = "character", pattern = "character"), 
+#' @rdname ObsLulcMaps
+#' @aliases ObsLulcMaps,character,character-method
+setMethod("ObsLulcMaps", signature(x = "character", pattern = "character"), 
           function(x, pattern, ...) {
               files <- list.files(path=x, pattern=pattern, full.names=FALSE)
               if (length(files) > 0) {
@@ -70,13 +70,13 @@ setMethod("ObservedMaps", signature(x = "character", pattern = "character"),
               } else {
                   stop("maps not found")
               }
-              out <- ObservedMaps(x=maps, ...)
+              out <- ObsLulcMaps(x=maps, ...)
           }
 )
 
-#' @rdname ObservedMaps
-#' @aliases ObservedMaps,list,character-method
-setMethod("ObservedMaps", signature(x = "list", pattern = "character"),
+#' @rdname ObsLulcMaps
+#' @aliases ObsLulcMaps,list,character-method
+setMethod("ObsLulcMaps", signature(x = "list", pattern = "character"),
            function(x, pattern, ...) {
               list.names <- names(x)
               if (is.null(list.names)) stop("list elements must be named")
@@ -89,22 +89,22 @@ setMethod("ObservedMaps", signature(x = "list", pattern = "character"),
               } else {
                   stop("maps not found")
               }
-              out <- ObservedMaps(x=maps, ...)
+              out <- ObsLulcMaps(x=maps, ...)
           }
 )
 
-#' @rdname ObservedMaps
-#' @aliases ObservedMaps,RasterLayer,ANY-method
-setMethod("ObservedMaps", signature(x = "RasterLayer", pattern = "ANY"),
+#' @rdname ObsLulcMaps
+#' @aliases ObsLulcMaps,RasterLayer,ANY-method
+setMethod("ObsLulcMaps", signature(x = "RasterLayer", pattern = "ANY"),
           function(x, ...) {
               maps <- raster::stack(x)
-              out <- ObservedMaps(x=maps, ...)
+              out <- ObsLulcMaps(x=maps, ...)
           }
 )
 
-#' @rdname ObservedMaps
-#' @aliases ObservedMaps,RasterStack,ANY-method
-setMethod("ObservedMaps", signature(x = "RasterStack", pattern = "ANY"),
+#' @rdname ObsLulcMaps
+#' @aliases ObsLulcMaps,RasterStack,ANY-method
+setMethod("ObsLulcMaps", signature(x = "RasterStack", pattern = "ANY"),
           function(x, pattern, categories, labels, t) {
               if (missing(categories)) categories <- sort(unique(as.numeric(raster::getValues(x))))
               ix <- order(categories)
@@ -117,6 +117,6 @@ setMethod("ObservedMaps", signature(x = "RasterStack", pattern = "ANY"),
               if (missing(t)) t <- 0
               info <- total(x, categories)
               total <- info$total
-              out <- new("ObservedMaps", maps=x, t=t, total=total, categories=categories, labels=labels)
+              out <- new("ObsLulcMaps", maps=x, t=t, total=total, categories=categories, labels=labels)
           }
 )

@@ -1,4 +1,4 @@
-#' Class ObservedMaps
+#' Class ObsLulcMaps
 #'
 #' An S4 class for observed land use maps.
 #'
@@ -11,10 +11,10 @@
 #' @slot labels character vector corresponding to \code{categories}
 #' 
 #' @export
-#' @exportClass ObservedMaps
-#' @rdname ObservedMaps-class
+#' @exportClass ObsLulcMaps
+#' @rdname ObsLulcMaps-class
 
-setClass("ObservedMaps",
+setClass("ObsLulcMaps",
          slots = c(maps = "RasterStack",
                    t = "numeric",
                    total = "matrix",

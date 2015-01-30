@@ -6,7 +6,7 @@
 approxExtrapDemand(obs, tout, ...)
 }
 \arguments{
-\item{obs}{an \code{ObservedMaps} object containing at least two maps}
+\item{obs}{an \code{ObsLulcMaps} object containing at least two maps}
 
 \item{tout}{numeric vector specifying the timesteps where interpolation is to
 take place. Comparable to the \code{xout} argument of
@@ -30,7 +30,7 @@ future or past land use demand based on economic considerations, however,
 linear extrapolation of trends remains a useful technique.
 }
 \examples{
-obs <- ObservedMaps(x=pie,
+obs <- ObsLulcMaps(x=pie,
                     pattern="lu",
                     categories=c(1,2,3),
                     labels=c("forest","built","other"),

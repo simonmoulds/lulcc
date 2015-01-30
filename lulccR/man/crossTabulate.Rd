@@ -2,7 +2,7 @@
 \docType{methods}
 \name{crossTabulate}
 \alias{crossTabulate}
-\alias{crossTabulate,ObservedMaps,ANY-method}
+\alias{crossTabulate,ObsLulcMaps,ANY-method}
 \alias{crossTabulate,RasterLayer,RasterLayer-method}
 \title{Cross tabulate land use transitions}
 \usage{
@@ -11,23 +11,23 @@ crossTabulate(x, y, ...)
 \S4method{crossTabulate}{RasterLayer,RasterLayer}(x, y, categories,
   labels = as.character(categories), ...)
 
-\S4method{crossTabulate}{ObservedMaps,ANY}(x, y, index, ...)
+\S4method{crossTabulate}{ObsLulcMaps,ANY}(x, y, index, ...)
 }
 \arguments{
 \item{x}{RasterLayer representing land use map from an earlier timestep or an
-\code{ObservedMaps} object containing at least two land use maps for
+\code{ObsLulcMaps} object containing at least two land use maps for
 different points in time}
 
 \item{y}{RasterLayer representing land use map from a later timestep. Not used
-if \code{x} is an ObservedMaps object}
+if \code{x} is an ObsLulcMaps object}
 
 \item{categories}{numeric vector containing land use categories to consider.
-Not used if \code{x} is an ObservedMaps object}
+Not used if \code{x} is an ObsLulcMaps object}
 
 \item{labels}{character vector (optional) with labels corresponding to
-\code{categories}. Not used if \code{x} is an ObservedMaps object}
+\code{categories}. Not used if \code{x} is an ObsLulcMaps object}
 
-\item{index}{numeric vector with index of land use maps from ObservedMaps
+\item{index}{numeric vector with index of land use maps from ObsLulcMaps
 to use in analysis}
 
 \item{\dots}{additional arguments to \code{raster::\link[raster]{crosstab}}}
@@ -42,8 +42,8 @@ this step should be the basis for further research into the processes driving
 the most important transitions in the study region.
 }
 \examples{
-# ObservedMaps input
-obs <- ObservedMaps(x=pie,
+# ObsLulcMaps input
+obs <- ObsLulcMaps(x=pie,
                     pattern="lu",
                     categories=c(1,2,3),
                     labels=c("forest","built","other"),
@@ -63,6 +63,6 @@ important categorical land changes while accounting for persistence.
 Agriculture, Ecosystems & Environment 101(2):251-268.
 }
 \seealso{
-\code{\link{ObservedMaps}},\code{raster::\link[raster]{crosstab}}
+\code{\link{ObsLulcMaps}},\code{raster::\link[raster]{crosstab}}
 }
 

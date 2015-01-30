@@ -1,13 +1,13 @@
-#' @include class-PredictorMaps.R
+#' @include class-ExpVarMaps.R
 NULL
 
-#' Coerce \code{PredictorMaps} object to data.frame
+#' Coerce \code{ExpVarMaps} object to data.frame
 #'
 #' This function extracts data from all raster objects in a
-#' \code{\link{PredictorMaps}} object for a specified timestep (if dynamic
+#' \code{\link{ExpVarMaps}} object for a specified timestep (if dynamic
 #' variables are present).
 #'
-#' @param x an object of class \code{\link{PredictorMaps}}
+#' @param x an object of class \code{\link{ExpVarMaps}}
 #' @param row.names NULL or a character vector giving the row.names for the
 #'   data.frame. Missing values are not allowed
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -17,7 +17,7 @@ NULL
 #'  relevant if x@@maps contains dynamic predictor variables
 #' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{PredictorMaps}},\code{\link{partition}}
+#' @seealso \code{\link{ExpVarMaps}},\code{\link{partition}}
 #' @return data.frame
 #'
 #' @export
@@ -26,12 +26,12 @@ NULL
 setGeneric("as.data.frame")
 
 #' @rdname as.data.frame
-#' @aliases as.data.frame,PredictorMaps-method
-setMethod("as.data.frame", signature(x = "PredictorMaps"),
+#' @aliases as.data.frame,ExpVarMaps-method
+setMethod("as.data.frame", signature(x = "ExpVarMaps"),
           function(x, row.names=NULL, optional=FALSE, cells, timestep=0, ...) {
               ix <- timestep + 1
-              ##maps <- c(.getPredictorMaps(x@maps, timestep), lapply(x@calls, function(x) x@map))
-              maps <- .getPredictorMaps(x@maps, timestep)
+              ##maps <- c(.getExpVarMaps(x@maps, timestep), lapply(x@calls, function(x) x@map))
+              maps <- .getExpVarMaps(x@maps, timestep)
               s <- raster::stack(maps, ...) ## this will fail if map characteristics do not agree
               df <- as.data.frame(s[cells], row.names=row.names, optional=optional)
               ##names(df) <- c(x@map.names, x@call.names)
@@ -62,7 +62,7 @@ setMethod("as.data.frame", signature(x = "PredictorMaps"),
     x
 }
     
-.getPredictorMaps <- function(maps, timestep) {
+.getExpVarMaps <- function(maps, timestep) {
     index <- timestep + 1
     for (i in 1:length(maps)) {
         s <- maps[[i]]

@@ -32,7 +32,7 @@ setMethod("allocate", signature(model = "CluesModel"),
               map0.vals <- raster::extract(map0, cells)
               if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
               if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
-              newdata <- as.data.frame(x=model@pred, cells=cells)
+              newdata <- as.data.frame(x=model@ef, cells=cells)
               prob <- calcProb(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
 
@@ -41,8 +41,8 @@ setMethod("allocate", signature(model = "CluesModel"),
                    d <- model@demand[(i+1),] 
 
                    ## 1. update land use suitability matrix if dynamic factors exist
-                   if (model@pred@dynamic && i > 1) {
-                       newdata <- .update.data.frame(x=newdata, y=model@pred, map=map0, cells=cells, timestep=(i-1))
+                   if (model@ef@dynamic && i > 1) {
+                       newdata <- .update.data.frame(x=newdata, y=model@ef, map=map0, cells=cells, timestep=(i-1))
                        prob <- calcProb(object=model@models, newdata=newdata)
                    }
                    tprob <- prob
@@ -92,7 +92,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
               map0.vals <- raster::extract(map0, cells)
               if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
               if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
-              newdata <- as.data.frame(x=model@pred, cells=cells)
+              newdata <- as.data.frame(x=model@ef, cells=cells)
               prob <- calcProb(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
 
@@ -101,8 +101,8 @@ setMethod("allocate", signature(model = "OrderedModel"),
                    d <- model@demand[(i+1),]
 
                    ## 1. update land use suitability matrix if dynamic factors exist
-                   if (model@pred@dynamic && i > 1) {
-                       newdata <- .update.data.frame(x=newdata, y=model@pred, map=map0, cells=cells, timestep=(i-1))
+                   if (model@ef@dynamic && i > 1) {
+                       newdata <- .update.data.frame(x=newdata, y=model@ef, map=map0, cells=cells, timestep=(i-1))
                        prob <- calcProb(object=model@models, newdata=newdata)
                    }
                    tprob <- prob

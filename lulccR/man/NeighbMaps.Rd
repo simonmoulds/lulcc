@@ -53,7 +53,7 @@ be used as the basis of neighbourhood decision rules.
 }
 \examples{
 ## observed data
-obs <- ObservedMaps(x=pie,
+obs <- ObsLulcMaps(x=pie,
                     pattern="lu",
                     categories=c(1,2,3),
                     labels=c("forest","built","other"),

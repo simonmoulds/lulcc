@@ -5,7 +5,7 @@ NULL
 #'
 #' This function returns the type of predictive model in use. 
 #'
-#' @param x a StatModels object, a model or a list of models
+#' @param x a PredModels object, a model or a list of models
 #' @param \dots additional arguments (none)
 #'
 #' @return Character.
@@ -28,8 +28,8 @@ setMethod("predModelType", signature(x = "rpart"), function(x, ...) "rpart")
 setMethod("predModelType", signature(x = "randomForest"), function(x, ...) "randomForest")
 
 #' @rdname predModelType
-#' @aliases predModelType,StatModels-method
-setMethod("predModelType", signature(x = "StatModels"),
+#' @aliases predModelType,PredModels-method
+setMethod("predModelType", signature(x = "PredModels"),
           function(x, ...) {
               types <- predModelType(x@models)
               types

@@ -25,7 +25,7 @@
 #'
 #' @examples
 #'
-#' obs <- ObservedMaps(x=sibuyan,
+#' obs <- ObsLulcMaps(x=sibuyan,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3,4,5),
 #'                     labels=c("forest","coconut","grass","rice","other"),

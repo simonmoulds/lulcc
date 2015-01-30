@@ -11,7 +11,7 @@ OrderedModel(x, ...)
   params, output = NULL, ...)
 }
 \arguments{
-\item{x}{an ObservedMaps object or a ModelInput object}
+\item{x}{an ObsLulcMaps object or a ModelInput object}
 
 \item{rules}{matrix with land use change decision rules}
 

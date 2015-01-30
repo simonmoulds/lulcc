@@ -4,7 +4,7 @@ setClassUnion("numericOrNULL", c("numeric", "NULL"))
 setClassUnion("RasterLayerOrNULL", c("RasterLayer", "NULL"))
 setClassUnion("RasterStackOrNULL", c("RasterStack", "NULL"))
 
-#' @include class-NeighbMaps.R class-PredictorMaps.R class-StatModels.R class-ObservedMaps.R
+#' @include class-NeighbMaps.R class-ExpVarMaps.R class-PredModels.R class-ObsLulcMaps.R
 NULL
 
 #' Class ModelInput
@@ -13,9 +13,9 @@ NULL
 #'
 #' TODO
 #' 
-#' @slot obs an ObservedMaps object 
-#' @slot pred a PredictorMaps object
-#' @slot models a StatModels object
+#' @slot obs an ObsLulcMaps object 
+#' @slot ef an ExpVarMaps object
+#' @slot models a PredModels object
 #' @slot time numeric vector containing timesteps over which simulation will
 #'   occur
 #' @slot demand matrix containing demand scenario or NULL
@@ -29,9 +29,9 @@ NULL
 #' @exportClass ModelInput
 #' @rdname ModelInput-class
 setClass("ModelInput",
-         slots = c(obs = "ObservedMaps",           
-                   pred = "PredictorMaps",
-                   models = "StatModels",
+         slots = c(obs = "ObsLulcMaps",           
+                   ef = "ExpVarMaps",
+                   models = "PredModels",
                    time = "numeric",
                    demand = "matrixOrNULL",
                    hist = "RasterLayerOrNULL",           
@@ -49,9 +49,9 @@ setClass("ModelInput",
 #'
 #' An S4 virtual class to represent land use change models.
 #'
-#' @slot obs an ObservedMaps object 
-#' @slot pred a PredictorMaps object
-#' @slot models a StatModels object
+#' @slot obs an ObsLulcMaps object 
+#' @slot ef an ExpVarMaps object
+#' @slot models a PredModels object
 #' @slot time numeric vector containing timesteps over which simulation will
 #'   occur
 #' @slot demand matrix containing demand scenario or NULL
@@ -81,9 +81,9 @@ setClass("Model",
 #'
 #' TODO
 #'
-#' @slot obs an ObservedMaps object 
-#' @slot pred a PredictorMaps object
-#' @slot models a StatModels object
+#' @slot obs an ObsLulcMaps object 
+#' @slot ef an ExpVarMaps object
+#' @slot models a PredModels object
 #' @slot time numeric vector containing timesteps over which simulation will
 #'   occur
 #' @slot demand matrix containing demand scenario or NULL
@@ -120,9 +120,9 @@ setClass("CluesModel",
 #'
 #' TODO
 #' 
-#' @slot obs an ObservedMaps object 
-#' @slot pred a PredictorMaps object
-#' @slot models a StatModels object
+#' @slot obs an ObsLulcMaps object 
+#' @slot ef an ExpVarMaps object
+#' @slot models a PredModels object
 #' @slot time numeric vector containing timesteps over which simulation will
 #'   occur
 #' @slot demand matrix containing demand scenario or NULL

@@ -1,23 +1,23 @@
-#' @include class-PredictionMulti.R
+#' @include class-Prediction.R
 NULL
 
 #' Compare the area under the ROC curve (AUC) for different predictive models
 #'
 #' Estimate the AUC for each \code{ROCR::\link[ROCR]{prediction}} object in a
-#' \code{\link{PredictionMulti}} object.
+#' \code{\link{Prediction}} object.
 #'
 #' The user can compare the performance of different statistical models by
-#' providing a list of \code{PredictionMulti} objects. Note that
+#' providing a list of \code{Prediction} objects. Note that
 #' \code{compareAUC} should be used in conjunction with other comparison methods
 #' because the AUC does not contain as much information as, for instance, the ROC
 #' curve itself
 #'
-#' @param pred a \code{PredictionMulti} object or a list of these
+#' @param pred a \code{Prediction} object or a list of these
 #' @param digits numeric indicating the number of digits to be displayed after
 #'   the decimal point for AUC values
 #' @param \dots additional arguments (none) 
 #'
-#' @seealso \code{\link{PredictionMulti}}, \code{ROCR::\link[ROCR]{performance}}
+#' @seealso \code{\link{Prediction}}, \code{ROCR::\link[ROCR]{performance}}
 #' @return data.frame containing AUC values
 #' @export
 #' @rdname compareAUC
@@ -30,8 +30,8 @@ setGeneric("compareAUC", function(pred, ...)
            standardGeneric("compareAUC"))
 
 #' @rdname compareAUC
-#' @aliases compareAUC,PredictionMulti-method
-setMethod("compareAUC", signature(pred = "PredictionMulti"),
+#' @aliases compareAUC,Prediction-method
+setMethod("compareAUC", signature(pred = "Prediction"),
           function(pred, digits=4, ...) {
               auc <- ROCR::performance(pred@prediction, measure="auc")
               auc <- sapply(auc, function(x) unlist(slot(x, "y.values")))
@@ -47,8 +47,8 @@ setMethod("compareAUC", signature(pred = "PredictionMulti"),
 setMethod("compareAUC", signature(pred = "list"),
           function(pred, digits=4, ...) {
 
-              c1 <- all(sapply(pred, function(x) is(x, "PredictionMulti")))
-              if (!c1) stop("all objects in list should have class PredictionMulti")
+              c1 <- all(sapply(pred, function(x) is(x, "Prediction")))
+              if (!c1) stop("all objects in list should have class Prediction")
 
               if (length(pred) == 1) {
                   out <- compareAUC(pred[[1]], ...)

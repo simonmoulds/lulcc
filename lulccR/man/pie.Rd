@@ -9,16 +9,16 @@
   other)}
   \item{lu_pie_1991}{RasterLayer showing land use in 1991}
   \item{lu_pie_1999}{RasterLayer showing land use in 1999}
-  \item{pred_001}{RasterLayer showing elevation}
-  \item{pred_002}{RasterLayer showing slope}
-  \item{pred_003}{RasterLayer showing distance to built land in 1985}
+  \item{ef_001}{RasterLayer showing elevation}
+  \item{ef_002}{RasterLayer showing slope}
+  \item{ef_003}{RasterLayer showing distance to built land in 1985}
 }}
 \usage{
 pie
 }
 \description{
-Dataset containing land use maps for 1985, 1991 and 1999 and several predictor
-variables derived from Pontius and Parmentier (2014).
+Dataset containing land use maps for 1985, 1991 and 1999 and several
+explanatory variables derived from Pontius and Parmentier (2014).
 }
 \references{
 Pontius, R.G., and Parmentier, B. (2014). Recommendations for

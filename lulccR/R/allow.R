@@ -55,7 +55,7 @@
 #'
 #' @examples
 #'
-#' obs <- ObservedMaps(x=pie,
+#' obs <- ObsLulcMaps(x=pie,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3),
 #'                     labels=c("forest","built","other"),

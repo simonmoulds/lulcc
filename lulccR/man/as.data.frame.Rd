@@ -2,16 +2,16 @@
 \docType{methods}
 \name{as.data.frame}
 \alias{as.data.frame}
-\alias{as.data.frame,PredictorMaps-method}
-\title{Coerce \code{PredictorMaps} object to data.frame}
+\alias{as.data.frame,ExpVarMaps-method}
+\title{Coerce \code{ExpVarMaps} object to data.frame}
 \usage{
 as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
-\S4method{as.data.frame}{PredictorMaps}(x, row.names = NULL,
-  optional = FALSE, cells, timestep = 0, ...)
+\S4method{as.data.frame}{ExpVarMaps}(x, row.names = NULL, optional = FALSE,
+  cells, timestep = 0, ...)
 }
 \arguments{
-\item{x}{an object of class \code{\link{PredictorMaps}}}
+\item{x}{an object of class \code{\link{ExpVarMaps}}}
 
 \item{row.names}{NULL or a character vector giving the row.names for the
 data.frame. Missing values are not allowed}
@@ -31,10 +31,10 @@ data.frame
 }
 \description{
 This function extracts data from all raster objects in a
-\code{\link{PredictorMaps}} object for a specified timestep (if dynamic
+\code{\link{ExpVarMaps}} object for a specified timestep (if dynamic
 variables are present).
 }
 \seealso{
-\code{\link{PredictorMaps}},\code{\link{partition}}
+\code{\link{ExpVarMaps}},\code{\link{partition}}
 }
 

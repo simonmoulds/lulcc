@@ -2,18 +2,18 @@
 \docType{methods}
 \name{compareAUC}
 \alias{compareAUC}
-\alias{compareAUC,PredictionMulti-method}
+\alias{compareAUC,Prediction-method}
 \alias{compareAUC,list-method}
 \title{Compare the area under the ROC curve (AUC) for different predictive models}
 \usage{
 compareAUC(pred, ...)
 
-\S4method{compareAUC}{PredictionMulti}(pred, digits = 4, ...)
+\S4method{compareAUC}{Prediction}(pred, digits = 4, ...)
 
 \S4method{compareAUC}{list}(pred, digits = 4, ...)
 }
 \arguments{
-\item{pred}{a \code{PredictionMulti} object or a list of these}
+\item{pred}{a \code{Prediction} object or a list of these}
 
 \item{digits}{numeric indicating the number of digits to be displayed after
 the decimal point for AUC values}
@@ -25,11 +25,11 @@ data.frame containing AUC values
 }
 \description{
 Estimate the AUC for each \code{ROCR::\link[ROCR]{prediction}} object in a
-\code{\link{PredictionMulti}} object.
+\code{\link{Prediction}} object.
 }
 \details{
 The user can compare the performance of different statistical models by
-providing a list of \code{PredictionMulti} objects. Note that
+providing a list of \code{Prediction} objects. Note that
 \code{compareAUC} should be used in conjunction with other comparison methods
 because the AUC does not contain as much information as, for instance, the ROC
 curve itself
@@ -40,6 +40,6 @@ ROCR: visualizing classifier performance in R. Bioinformatics
 21(20):3940-3941.
 }
 \seealso{
-\code{\link{PredictionMulti}}, \code{ROCR::\link[ROCR]{performance}}
+\code{\link{Prediction}}, \code{ROCR::\link[ROCR]{performance}}
 }
 

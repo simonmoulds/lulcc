@@ -6,19 +6,19 @@
 #' the most important transitions in the study region.
 #'
 #' @param x RasterLayer representing land use map from an earlier timestep or an
-#'   \code{ObservedMaps} object containing at least two land use maps for
+#'   \code{ObsLulcMaps} object containing at least two land use maps for
 #'   different points in time
 #' @param y RasterLayer representing land use map from a later timestep. Not used
-#'   if \code{x} is an ObservedMaps object
+#'   if \code{x} is an ObsLulcMaps object
 #' @param categories numeric vector containing land use categories to consider.
-#'   Not used if \code{x} is an ObservedMaps object
+#'   Not used if \code{x} is an ObsLulcMaps object
 #' @param labels character vector (optional) with labels corresponding to
-#'   \code{categories}. Not used if \code{x} is an ObservedMaps object
-#' @param index numeric vector with index of land use maps from ObservedMaps
+#'   \code{categories}. Not used if \code{x} is an ObsLulcMaps object
+#' @param index numeric vector with index of land use maps from ObsLulcMaps
 #'   to use in analysis
 #' @param \dots additional arguments to \code{raster::\link[raster]{crosstab}}
 #'
-#' @seealso \code{\link{ObservedMaps}},\code{raster::\link[raster]{crosstab}}
+#' @seealso \code{\link{ObsLulcMaps}},\code{raster::\link[raster]{crosstab}}
 #' @return A data.frame.
 #'
 #' @export
@@ -30,8 +30,8 @@
 #'
 #' @examples
 #'
-#' # ObservedMaps input
-#' obs <- ObservedMaps(x=pie,
+#' # ObsLulcMaps input
+#' obs <- ObsLulcMaps(x=pie,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3),
 #'                     labels=c("forest","built","other"),
@@ -79,8 +79,8 @@ setMethod("crossTabulate", signature(x = "RasterLayer", y = "RasterLayer"),
 )
 
 #' @rdname crossTabulate
-#' @aliases crossTabulate,ObservedMaps,ANY-method
-setMethod("crossTabulate", signature(x = "ObservedMaps", y = "ANY"),
+#' @aliases crossTabulate,ObsLulcMaps,ANY-method
+setMethod("crossTabulate", signature(x = "ObsLulcMaps", y = "ANY"),
           function(x, y, index, ...) {
 
               if (nlayers(x@maps) < 2) stop("at least two maps required")

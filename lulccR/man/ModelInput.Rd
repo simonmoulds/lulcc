@@ -2,21 +2,20 @@
 \docType{methods}
 \name{ModelInput}
 \alias{ModelInput}
-\alias{ModelInput,ObservedMaps,PredictorMaps,StatModels,numeric,matrix-method}
+\alias{ModelInput,ObsLulcMaps,ExpVarMaps,PredModels,numeric,matrix-method}
 \title{Create a ModelInput object}
 \usage{
-ModelInput(obs, pred, models, time, demand, ...)
+ModelInput(obs, ef, models, time, demand, ...)
 
-
-  \S4method{ModelInput}{ObservedMaps,PredictorMaps,StatModels,numeric,matrix}(obs,
-  pred, models, time, demand, hist, mask, neighb = NULL, ...)
+\S4method{ModelInput}{ObsLulcMaps,ExpVarMaps,PredModels,numeric,matrix}(obs, ef,
+  models, time, demand, hist, mask, neighb = NULL, ...)
 }
 \arguments{
-\item{obs}{an ObservedMaps object or a ModelInput object}
+\item{obs}{an ObsLulcMaps object or a ModelInput object}
 
-\item{pred}{a PredictorMaps object}
+\item{ef}{an ExpVarMaps object}
 
-\item{models}{a StatModels object}
+\item{models}{a PredModels object}
 
 \item{time}{numeric vector containing timesteps over which simulation will
 occur}

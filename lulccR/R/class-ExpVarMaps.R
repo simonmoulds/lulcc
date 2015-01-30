@@ -1,4 +1,4 @@
-#' Class PredictorMaps
+#' Class ExpVarMaps
 #'
 #' An S4 class for predictor variables.
 #'
@@ -9,10 +9,10 @@
 #' @slot dynamic logical indicating whether dynamic variables are present
 #'
 #' @export
-#' @exportClass PredictorMaps
-#' @rdname PredictorMaps-class
+#' @exportClass ExpVarMaps
+#' @rdname ExpVarMaps-class
         
-setClass("PredictorMaps",
+setClass("ExpVarMaps",
          slots = c(maps = "list",
                    map.names = "character",
                    dynamic = "logical"),

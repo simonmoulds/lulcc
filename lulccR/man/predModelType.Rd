@@ -2,7 +2,7 @@
 \docType{methods}
 \name{predModelType}
 \alias{predModelType}
-\alias{predModelType,StatModels-method}
+\alias{predModelType,PredModels-method}
 \alias{predModelType,glm-method}
 \alias{predModelType,list-method}
 \alias{predModelType,randomForest-method}
@@ -17,12 +17,12 @@ predModelType(x, ...)
 
 \S4method{predModelType}{randomForest}(x, ...)
 
-\S4method{predModelType}{StatModels}(x, ...)
+\S4method{predModelType}{PredModels}(x, ...)
 
 \S4method{predModelType}{list}(x, ...)
 }
 \arguments{
-\item{x}{a StatModels object, a model or a list of models}
+\item{x}{a PredModels object, a model or a list of models}
 
 \item{\dots}{additional arguments (none)}
 }

@@ -18,7 +18,7 @@ NULL
 #' @return A list of \code{performance} objects.
 #'
 #' @export
-#' @rdname performance
+#' @rdname performance.rocr
 #' 
 #' @references Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).
 #' ROCR: visualizing classifier performance in R. Bioinformatics
@@ -27,7 +27,7 @@ NULL
 setGeneric("performance", function(prediction.obj, ...)
            standardGeneric("performance"))
 
-#' @rdname performance
+#' @rdname performance.rocr
 #' @aliases performance,list-method
 setMethod("performance", signature(prediction.obj = "list"),
           function(prediction.obj, measure, x.measure="cutoff", ...) {

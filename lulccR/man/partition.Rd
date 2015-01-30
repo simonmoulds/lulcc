@@ -33,7 +33,7 @@ A list containing the following components:
 Divide a categorical raster map into training and testing partitions.
 }
 \examples{
-obs <- ObservedMaps(x=sibuyan,
+obs <- ObsLulcMaps(x=sibuyan,
                     pattern="lu",
                     categories=c(1,2,3,4,5),
                     labels=c("forest","coconut","grass","rice","other"),

@@ -2,7 +2,7 @@
 \docType{methods}
 \name{calcProb}
 \alias{calcProb}
-\alias{calcProb,StatModels-method}
+\alias{calcProb,PredModels-method}
 \alias{calcProb,glm-method}
 \alias{calcProb,randomForest-method}
 \alias{calcProb,rpart-method}
@@ -16,10 +16,10 @@ calcProb(object, ...)
 
 \S4method{calcProb}{randomForest}(object, newdata, ...)
 
-\S4method{calcProb}{StatModels}(object, newdata, df = FALSE, ...)
+\S4method{calcProb}{PredModels}(object, newdata, df = FALSE, ...)
 }
 \arguments{
-\item{object}{a \code{StatModels} object or a model of any class
+\item{object}{a \code{PredModels} object or a model of any class
 for which a predict method exists (currently, \code{glm},
 \code{rpart::\link[rpart]{rpart}} and
 \code{randomForest::\link[randomForest]{randomForest}}}
@@ -46,6 +46,6 @@ suitability maps (see examples).
 Simon Moulds
 }
 \seealso{
-\code{\link{StatModels}},\code{\link{allocate}},\code{\link{predict}}
+\code{\link{PredModels}},\code{\link{allocate}},\code{\link{predict}}
 }
 
