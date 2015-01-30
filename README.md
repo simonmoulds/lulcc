@@ -84,11 +84,11 @@ glm.models <- PredModels(models=list(forest.glm, built.glm, other.glm),
 			 
 rpart.models <- PredModels(models=list(built.rpart, other.rpart),
                            categories=obs@categories[2:3],
-			   labels=obs@labels[2:3])
+                           labels=obs@labels[2:3])
 
 rf.models <- PredModels(models=list(built.rf, other.rf),
                         categories=obs@categories[2:3],
-			labels=obs@labels[2:3])
+                        labels=obs@labels[2:3])
 ```
 
 Model performance is assessed using the receiver operator characteristic provided by the [ROCR](http://cran.r-project.org/web/packages/ROCR/index.html) package. lulccR includes classes `Prediction` and `Performance` which extend the native ROCR classes to contain multiple `prediction` and `performance` objects. The procedure to obtain these objects and assess performance is as follows:
@@ -172,7 +172,7 @@ An important yet frequently overlooked aspect of land use change modelling is mo
 # evaluate CLUE-S model output
 clues.tabs <- ThreeMapComparison(x=clues.model,
                                  factors=2^(1:10),
-				 timestep=14)
+                                 timestep=14)
 ```
 
 From these tables we can easily extract information about different types of agreement and disagreement as well as compute summary statistics such as the figure of merit:
