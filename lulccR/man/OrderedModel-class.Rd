@@ -4,8 +4,7 @@
 \alias{OrderedModel-class}
 \title{Class OrderedModel}
 \description{
-An S4 class to represent inputs to the ordered stochastic land use change
-model.
+An S4 class to represent inputs to [...]
 }
 \details{
 TODO
@@ -37,6 +36,9 @@ occur}
 \item{\code{rules}}{matrix with land use change decision rules}
 
 \item{\code{nb.rules}}{numeric with neighbourhood decision rules}
+
+\item{\code{order}}{numeric vector of land use categories in the order that change
+should be allocated}
 
 \item{\code{params}}{list with model parameters}
 

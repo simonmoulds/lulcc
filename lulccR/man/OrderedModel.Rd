@@ -7,7 +7,7 @@
 \usage{
 OrderedModel(x, ...)
 
-\S4method{OrderedModel}{ModelInput}(x, rules = NULL, nb.rules = NULL,
+\S4method{OrderedModel}{ModelInput}(x, rules = NULL, nb.rules = NULL, order,
   params, output = NULL, ...)
 }
 \arguments{
@@ -16,6 +16,9 @@ OrderedModel(x, ...)
 \item{rules}{matrix with land use change decision rules}
 
 \item{nb.rules}{numeric with neighbourhood decision rules}
+
+\item{order}{numeric vector of land use categories in the order that change
+should be allocated. See Details}
 
 \item{params}{list with model parameters}
 
@@ -39,7 +42,7 @@ the following components:
     demanded area of any land use type. Default is 5}
 }
 
-TODO
+An ordered allocation procedure is frequently used in large study areas TODO
 }
 \seealso{
 \code{link{ModelInput}},\code{\link{allocate}}

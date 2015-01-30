@@ -201,11 +201,13 @@ setMethod("CluesModel", signature(x = "ModelInput"),
 #'     demanded area of any land use type. Default is 5}
 #' }
 #'
-#' TODO
+#' An ordered allocation procedure is frequently used in large study areas TODO
 #' 
 #' @param x an ObservedMaps object or a ModelInput object
 #' @param rules matrix with land use change decision rules
 #' @param nb.rules numeric with neighbourhood decision rules
+#' @param order numeric vector of land use categories in the order that change
+#'   should be allocated. See Details
 #' @param params list with model parameters
 #' @param output either a RasterStack containing output maps or NULL
 #' @param \dots additional arguments to \code{\link{ModelInput}}
@@ -221,83 +223,6 @@ setGeneric("OrderedModel", function(x, ...)
 #' @rdname OrderedModel
 #' @aliases OrderedModel,ModelInput-method
 setMethod("OrderedModel", signature(x = "ModelInput"),
-          function(x, rules=NULL, nb.rules=NULL, params, output=NULL, ...) {
-
-              if (!is.null(rules)) {
-                  if (!all(dim(rules) %in% length(x@obs@categories))) {
-                      stop("'rules' must be square matrix with dimensions equal to number of land use categories")
-                  }
-              } 
-
-              if (!is.null(x@neighb) && !is.null(nb.rules)) {
-                  if (length(nb.rules) != length(x@neighb@maps)) {
-                      stop("rule should be provided for each neighbourhood map")
-                  }
-                  
-              } else if (is.null(x@neighb) && !is.null(nb.rules)) {
-                  warning("x@neighb is NULL: neighbourhood decision rules not implemented")
-                  nb.rules <- NULL
-              }
-
-              if (missing(params)) {
-                  params <- .checkOrderedParams()
-              } else {
-                  params <- .checkOrderedParams(params)
-              }
-              
-              out <- new("OrderedModel", x, rules=rules, nb.rules=nb.rules, params=params, output=output)
-             
-          }
-)
-
-.checkOrderedParams <- function(params) {
-    if (missing(params) || length(params) == 0) {
-        params <- list(max.diff=5)
-    } else {
-        if (is.null(names(params)) || any(nchar(names(params)) == 0)) stop("'params' must be a named list") 
-        if (!all(c("max.diff") %in% params)) {
-            stop("'params' does not contain the required parameter set")
-        }
-        ## TODO check reasonable values
-    }
-    params <- params[c("max.diff")]
-}
-
-#' Create an OrderedModel2 object
-#'
-#' Methods to create a \code{OrderedModel2} object to supply to
-#' \code{\link{allocate}}.
-#'
-#' The \code{params} argument is a list of parameter values which should contain
-#' the following components:
-#' 
-#' \describe{
-#'   \item{\code{max.diff}}{The maximum allowed difference between allocated and
-#'     demanded area of any land use type. Default is 5}
-#' }
-#'
-#' An ordered allocation procedure is frequently used in large study areas TODO
-#' 
-#' @param x an ObservedMaps object or a ModelInput object
-#' @param rules matrix with land use change decision rules
-#' @param nb.rules numeric with neighbourhood decision rules
-#' @param order numeric vector of land use categories in the order that change
-#'   should be allocated. See Details
-#' @param params list with model parameters
-#' @param output either a RasterStack containing output maps or NULL
-#' @param \dots additional arguments to \code{\link{ModelInput}}
-#'
-#' @seealso \code{link{ModelInput}},\code{\link{allocate}}
-#' @return An OrderedModel2 object.
-#'
-#' @export
-#' @rdname OrderedModel2
-setGeneric("OrderedModel2", function(x, ...)
-           standardGeneric("OrderedModel2"))
-
-#' @rdname OrderedModel2
-#' @aliases OrderedModel2,ModelInput-method
-setMethod("OrderedModel2", signature(x = "ModelInput"),
           function(x, rules=NULL, nb.rules=NULL, order, params, output=NULL, ...) {
 
               if (!is.null(rules)) {
@@ -325,17 +250,17 @@ setMethod("OrderedModel2", signature(x = "ModelInput"),
               }
               
               if (missing(params)) {
-                  params <- .checkOrdered2Params()
+                  params <- .checkOrderedParams()
               } else {
-                  params <- .checkOrdered2Params(params)
+                  params <- .checkOrderedParams(params)
               }
               
-              out <- new("OrderedModel2", x, rules=rules, nb.rules=nb.rules, order=order, params=params, output=output)
+              out <- new("OrderedModel", x, rules=rules, nb.rules=nb.rules, order=order, params=params, output=output)
              
           }
 )
 
-.checkOrdered2Params <- function(params) {
+.checkOrderedParams <- function(params) {
     params <- list()
 }
 
