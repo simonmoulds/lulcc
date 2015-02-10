@@ -17,8 +17,8 @@ NULL
 #' @param type character. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param abline list. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param col character. Plotting colour
-#' @param key.args list containing additional \code{key} components (e.g.
-#'   \code{cex})
+#' @param key.args list containing additional components to be passed to
+#'   the key argument of \code{lattice::\link[lattice]{xyplot}}
 #' @param \dots additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
 #' @seealso \code{\link{Performance}}
@@ -47,7 +47,7 @@ setMethod("Performance.plot", signature(x = "list"),
               if (!c1) stop("all objects in list should have class 'Performance'")
 
               if (is.null(names(x)) || any(nchar(names(x)) == 0)) stop("'x' must be a named list")
-
+              
               categories <- sort(unique(unlist(lapply(x, function(x) x@categories))))
               out <- list()
               rocdata <- list()
@@ -88,7 +88,7 @@ setMethod("Performance.plot", signature(x = "list"),
                                    abline=abline, 
                                    col=col,
                                    panel=.panel.roc, 
-                                   auc=aucdata, 
+                                   auc=aucdata,
                                    roc.col=col,
                                    key.args=key.args, ...)
               

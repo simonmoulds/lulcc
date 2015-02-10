@@ -33,6 +33,7 @@ A list containing the following components:
 Divide a categorical raster map into training and testing partitions.
 }
 \examples{
+## Sibuyan
 obs <- ObsLulcMaps(x=sibuyan,
                     pattern="lu",
                     categories=c(1,2,3,4,5),
@@ -40,6 +41,6 @@ obs <- ObsLulcMaps(x=sibuyan,
                     t=c(0))
 
 ## create equally sized training and testing partitions
-partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
+part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
 }
 

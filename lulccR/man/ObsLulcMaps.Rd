@@ -55,16 +55,16 @@ subsequent analysis.
 \examples{
 ## Plum Islands Ecosystem
 obs <- ObsLulcMaps(x=pie,
-                    pattern="lu",
-                    categories=c(1,2,3),
-                    labels=c("forest","built","other"),
-                    t=c(0,6,14))
+                   pattern="lu",
+                   categories=c(1,2,3),
+                   labels=c("forest","built","other"),
+                   t=c(0,6,14))
 
 ## Sibuyan Island
 obs <- ObsLulcMaps(x=sibuyan,
-                    pattern="lu",
-                    categories=c(1,2,3,4,5),
-                    labels=c("forest","coconut","grass","rice","other"),
-                    t=c(0))
+                   pattern="lu",
+                   categories=c(1,2,3,4,5),
+                   labels=c("forest","coconut","grass","rice","other"),
+                   t=c(0))
 }
 

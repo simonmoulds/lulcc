@@ -19,6 +19,14 @@ NULL
 #'
 #' @export
 #' @rdname PredModels
+#'
+#' @examples
+#'
+#' ## Plum Island Ecosystems
+#' forest.glm <- glm(forest~1, family=binomial, data=train.data)
+#' built.glm <- glm(built~ef_001+ef_002+ef_003, family=binomial, data=train.data)
+#' other.glm <- glm(other~ef_001+ef_002, family=binomial, data=train.data)
+
 setGeneric("PredModels", function(models, obs, categories, labels, ...)
            standardGeneric("PredModels"))
 

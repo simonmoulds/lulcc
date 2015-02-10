@@ -39,10 +39,10 @@
 #' @examples
 #'
 #' ## Plum Island Ecosystem
-#' pred.maps <- ExpVarMaps(x=pie, pattern="pred")
+#' ef <- ExpVarMaps(x=pie, pattern="ef")
 #'
 #' ## Sibuyan
-#' pred.maps <- ExpVarMaps(x=sibuyan, pattern="pred")
+#' ef <- ExpVarMaps(x=sibuyan, pattern="ef")
 
 setGeneric("ExpVarMaps", function(x, pattern, ...)
            standardGeneric("ExpVarMaps"))

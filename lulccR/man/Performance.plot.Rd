@@ -25,8 +25,8 @@ Otherwise, create a single plot for each \code{Performance} object}
 
 \item{col}{character. Plotting colour}
 
-\item{key.args}{list containing additional \code{key} components (e.g.
-\code{cex})}
+\item{key.args}{list containing additional components to be passed to
+the key argument of \code{lattice::\link[lattice]{xyplot}}}
 
 \item{\dots}{additional arguments to \code{lattice::\link[lattice]{xyplot}}}
 }

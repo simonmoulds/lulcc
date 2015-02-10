@@ -25,6 +25,7 @@
 #'
 #' @examples
 #'
+#' ## Sibuyan
 #' obs <- ObsLulcMaps(x=sibuyan,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3,4,5),
@@ -32,7 +33,7 @@
 #'                     t=c(0))
 #'
 #' ## create equally sized training and testing partitions
-#' partition(x=obs@@maps[[1]], size=0.5, spatial=FALSE)
+#' part <- partition(x=obs@@maps[[1]], size=0.5, spatial=FALSE)
 
 partition <- function(x, size=0.5, spatial=TRUE, ...) {
     points <- raster::rasterToPoints(x, spatial=TRUE)

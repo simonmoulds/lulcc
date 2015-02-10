@@ -22,8 +22,15 @@ NULL
 #'
 #' @export
 #' @rdname as.data.frame
+#'
+#' @examples
+#'
+#' ## Sibuyan
+#' ef <- ExpVarMaps(x=sibuyan, pattern="ef")
+#' part <- partition(x=obs@@maps[[1]], size=0.5, spatial=FALSE)
+#' efdf <- as.data.frame(x=ef, cells=part$train)
 
-setGeneric("as.data.frame")
+##setGeneric("as.data.frame")
 
 #' @rdname as.data.frame
 #' @aliases as.data.frame,ExpVarMaps-method
