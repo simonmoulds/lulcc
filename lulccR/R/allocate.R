@@ -221,18 +221,23 @@ setMethod("allocate", signature(model = "OrderedModel"),
         if (n < 0) {
             ixx <- which(map0.vals %in% cat)                  ## index of all cells currently belonging to lu
             p <- tprob[ixx,ix]                                ## suitability of all cells currently belonging to lu (will include NAs)
-            p.ix <- order(p, na.last=TRUE, increasing=TRUE)   ## index of cells when arranged low to high
+            p.ix <- order(p, na.last=TRUE, decreasing=FALSE)   ## index of cells when arranged low to high
             p <- p[p.ix]                                      ## suitability arranged from low to high
             p.ix <- p.ix[which(!is.na(p))]                    ## index with NAs removed
             p <- p[which(!is.na(p))]                          ## suitability with NAs removed
             ixx <- ixx[p.ix]                                  ## actual index of cells (as they appear in map1.vals)  
-            p.range <- range(p, na.rm=TRUE)                   
-            p <- (p - p.range[1]) / diff(p.range)             ## normalise suitability
-            repeat {
-                select.ix <- which(p < runif(length(p)))      ## compare suitability to numbers drawn from random normal distribution 
-                if (length(select.ix) >= abs(n)) break()      ## only exit loop if select.ix includes enough cells to meet demand
+            ## p.range <- range(p, na.rm=TRUE)                   
+            ## p <- (p - p.range[1]) / diff(p.range)             ## normalise suitability
+            if (stochastic) {
+                repeat {
+                    select.ix <- which(p < runif(length(p)))      ## compare suitability to numbers drawn from random normal distribution 
+                    if (length(select.ix) >= abs(n)) break()      ## only exit loop if select.ix includes enough cells to meet demand
+                }
+            } else {
+                select.ix <- seq(1, length(p))
             }
-            select.ix <- select.ix[1:n]                       ## select cells with lowest suitability
+            
+            select.ix <- select.ix[1:abs(n)]                       ## select cells with lowest suitability
             ixx <- ixx[select.ix]                             ## index 
             map1.vals[ixx] <- -1                              ## unclassified
             ixx <- which(map1.vals %in% cat)                  ## index of cells belonging to lu
