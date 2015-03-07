@@ -11,7 +11,7 @@ FigureOfMerit(x, ...)
 \item{\dots}{additional arguments (none)}
 }
 \value{
-A \code{FigureOfMerit} object.
+A FigureOfMerit object.
 }
 \description{
 Calculate the figure of merit at different levels and at different resolutions
@@ -19,10 +19,10 @@ for a reference map at time 1, a reference map at time 2 and a simulated map
 at time 2.
 }
 \details{
-In land use change modelling terms, the figure of merit is the intersection
-of observed change and simulated change divided by the union of these, with
-a range of 0 (perfect disagreement) to 1 (perfect agreement). It is useful to
-to calculate the figure of merit at three levels: (1) considering all possible
+In land use change modelling, the figure of merit is the intersection of
+observed change and simulated change divided by the union of these, with a
+range of 0 (perfect disagreement) to 1 (perfect agreement). It is useful to
+calculate the figure of merit at three levels: (1) considering all possible
 transitions from all land use categories, (2) considering all transitions from
 specific land use categories and (3) considering a specific transition from
 one land use category to another.
@@ -34,6 +34,6 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{ThreeMapComparison}},\code{\link{FigureOfMerit.plot}}
+\code{\link{FigureOfMerit.plot}}, \code{\link{ThreeMapComparison}}
 }
 

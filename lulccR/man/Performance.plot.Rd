@@ -41,6 +41,6 @@ category from different objects are included on the same plot for model
 comparison.
 }
 \seealso{
-\code{\link{Performance}}
+\code{\link{Performance}}, \code{lattice::\link[lattice]{xyplot}}
 }
 

@@ -53,7 +53,7 @@ location of non-NA cells in \code{ObsLulcMaps} objects defines the region for
 subsequent analysis.
 }
 \examples{
-## Plum Islands Ecosystem
+## Plum Island Ecosystems
 obs <- ObsLulcMaps(x=pie,
                    pattern="lu",
                    categories=c(1,2,3),
@@ -65,6 +65,6 @@ obs <- ObsLulcMaps(x=sibuyan,
                    pattern="lu",
                    categories=c(1,2,3,4,5),
                    labels=c("forest","coconut","grass","rice","other"),
-                   t=c(0))
+                   t=c(0,14))
 }
 

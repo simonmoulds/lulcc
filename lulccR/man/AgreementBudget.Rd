@@ -39,7 +39,18 @@ Pontius et al. (2011):
 }
 }
 \examples{
-# Example for Sibuyan Island
+## Sibuyan Island
+
+## load clues.model for Sibuyan Island
+sib.clues.model <- sibuyan$intermediate$clues.model
+
+sib.clues.tables <- ThreeMapComparison(x=sib.clues.model,
+                                       factors=2^(1:9),
+                                       timestep=14)
+
+sib.clues.agr <- AgreementBudget(x=sib.clues.tables)
+p <- AgreementBudget.plot(x=sib.clues.agr)
+print(p)
 }
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
@@ -48,7 +59,8 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{ThreeMapComparison}},\code{\link{FigureOfMerit}},
-  \code{\link{AgreementBudget.plot}}
+\code{\link{AgreementBudget-class}},
+\code{\link{AgreementBudget.plot}}, \code{\link{ThreeMapComparison}},
+\code{\link{FigureOfMerit}}
 }
 

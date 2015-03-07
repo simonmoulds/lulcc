@@ -5,29 +5,41 @@
 \title{Land use change dataset for Sibuyan Island}
 \format{A list containing the following components:
 \describe{
-  \item{lu_sib_1997}{RasterLayer with land use in 1997 (forest, coconut,
-  grassland, rice, other)}
-  \item{ef_001}{RasterLayer showing distance to sea}
-  \item{ef_002}{RasterLayer showing mean population density}
-  \item{ef_003}{RasterLayer showing occurrence of diorite rock}
-  \item{ef_004}{RasterLayer showing occurrence of ultramafic rock}
-  \item{ef_005}{RasterLayer showing occurrence of sediments}
-  \item{ef_006}{RasterLayer showing areas with no erosion}
-  \item{ef_007}{RasterLayer showing areas with moderate erosion}
-  \item{ef_008}{RasterLayer showing elevation}
-  \item{ef_009}{RasterLayer showing slope}
-  \item{ef_010}{RasterLayer showing aspect}
-  \item{ef_011}{RasterLayer showing distance to roads in 1997}
-  \item{ef_012}{RasterLayer showing distance to urban areas in 1997}
-  \item{ef_013}{RasterLayer showing distance to streams}
-  \item{restr1}{RasterLayer showing location of current national park}
-  \item{restr2}{RasterLayer showing location of proposed national park}
-  \item{demand1}{data.frame with demand scenario representing slow growth
-  scenario}
-  \item{demand2}{data.frame with demand scenario representing fast growth
-  scenario}
-  \item{demand3}{data.frame with demand scenario representing land use
-  change primarily for food production}
+  \item{maps}{list containing the following RasterLayers:}
+  \describe{
+    \item{lu_sib_1997}{RasterLayer with land use in 1997 (forest, coconut,
+    grassland, rice, other)}
+    \item{ef_001}{RasterLayer showing distance to sea}
+    \item{ef_002}{RasterLayer showing mean population density}
+    \item{ef_003}{RasterLayer showing occurrence of diorite rock}
+    \item{ef_004}{RasterLayer showing occurrence of ultramafic rock}
+    \item{ef_005}{RasterLayer showing occurrence of sediments}
+    \item{ef_006}{RasterLayer showing areas with no erosion}
+    \item{ef_007}{RasterLayer showing areas with moderate erosion}
+    \item{ef_008}{RasterLayer showing elevation}
+    \item{ef_009}{RasterLayer showing slope}
+    \item{ef_010}{RasterLayer showing aspect}
+    \item{ef_011}{RasterLayer showing distance to roads in 1997}
+    \item{ef_012}{RasterLayer showing distance to urban areas in 1997}
+    \item{ef_013}{RasterLayer showing distance to streams}
+    \item{restr1}{RasterLayer showing location of current national park}
+    \item{restr2}{RasterLayer showing location of proposed national park}
+  }
+  \item{demand}{list of matrices with different demand scenarions:}
+  \describe{
+    \item{demand1}{data.frame with demand scenario representing slow growth
+    scenario}
+    \item{demand2}{data.frame with demand scenario representing fast growth
+    scenario}
+    \item{demand3}{data.frame with demand scenario representing land use
+    change primarily for food production}
+  }
+  \item{intermediate}{list of two intermediate outputs, for demonstration purposes:}
+  \describe{
+    \item{glm.models}{PredModels object representing Sibuyan land use
+    categories}
+    \item{clues.model}{CluesModel object}
+  }
 }}
 \usage{
 sibuyan

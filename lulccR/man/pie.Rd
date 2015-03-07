@@ -21,9 +21,8 @@ Dataset containing land use maps for 1985, 1991 and 1999 and several
 explanatory variables derived from Pontius and Parmentier (2014).
 }
 \references{
-Pontius, R.G., and Parmentier, B. (2014). Recommendations for
-using the relative operating characteristic (ROC). Landscape Ecology
-doi:10.1007/s10980-013-9984-8.
+Pontius Jr, R. G., & Parmentier, B. (2014). Recommendations for using the
+relative operating characteristic (ROC). Landscape ecology, 29(3), 367-382.
 }
 \keyword{datasets}
 

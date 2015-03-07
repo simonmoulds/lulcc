@@ -23,8 +23,8 @@ argument the transition defined by these two arguments (i.e. \code{from} ->
 \code{to}) will be plotted. It is possible to include more than one category
 in which case the different transitions will be included on the same plot}
 
-\item{col}{character specifying the plotting colour. Default is to use the 'Set2'
-palette from \code{RColorBrewer}}
+\item{col}{character specifying the plotting colour. Default is to use the
+'Set2' palette from \code{RColorBrewer}}
 
 \item{type}{character. See \code{lattice::\link[lattice]{panel.xyplot}}}
 
@@ -46,7 +46,7 @@ Plot the overall, category-specific or transition-specific figure of merit at
 different resolutions.
 }
 \seealso{
-\code{\link{FigureOfMerit}},\code{lattice::\link[lattice]{xyplot}},
+\code{\link{FigureOfMerit}}, \code{lattice::\link[lattice]{xyplot}},
   \code{lattice::\link[lattice]{panel.xyplot}}
 }
 

@@ -24,17 +24,22 @@ a valid (although not necessarily realistic) demand scenario.
 }
 \details{
 Many allocation routines, including the two included with \code{lulccR},
-require non-estimates of land use demand for every timestep in the study
-period. Some routines are coupled to complex economic models that predict
-future or past land use demand based on economic considerations, however,
-linear extrapolation of trends remains a useful technique.
+require non-spatial estimates of land use demand for every timestep in the
+study period. Some routines are coupled to complex economic models that
+predict future or past land use demand based on economic considerations;
+however, linear extrapolation of trends remains a useful technique.
 }
 \examples{
+## Plum Island Ecosystems
+
+## load observed land use maps
 obs <- ObsLulcMaps(x=pie,
                     pattern="lu",
                     categories=c(1,2,3),
                     labels=c("forest","built","other"),
                     t=c(0,6,14))
+
+## obtain demand scenario
 dmd <- approxExtrapDemand(obs=obs, tout=c(0:14))
 }
 

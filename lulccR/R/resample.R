@@ -4,21 +4,21 @@ NULL
 #' Resample maps in ExpVarMaps object or list 
 #'
 #' A wrapper function for \code{raster::\link[raster]{resample}} to resample
-#' raster objects in a \link{ExpVarMaps-class} object or list.
+#' raster objects in an ExpVarMaps object or list.
 #'
-#' @param x a ExpVarMaps object or list of Raster* maps to be resampled
+#' @param x an ExpVarMaps object or list of Raster* maps to be resampled
 #' @param y Raster* object with parameters that \code{x} should be resampled to
 #' @param method method used to compute values for the new RasterLayer, should be
 #'   \code{"bilinear"} for bilinear interpolation, or \code{"ngb"} for nearest
 #'   neighbour
 #' @param \dots additional arguments to \code{raster::\link[raster]{resample}}
 #'
-#' @seealso \code{\link{ExpVarMaps}}, \code{raster::\link[raster]{resample}}
-#' @return A ExpVarMaps object or list, depending on \code{x}.
-#'
-#' @rdname resample
+#' @seealso \code{\link{ExpVarMaps}}, \code{\link{ExpVarMaps-class}}, 
+#' \code{raster::\link[raster]{resample}}
+#' @return An ExpVarMaps object or list, depending on \code{x}.
 #'
 #' @export
+#' @rdname resample
 #'
 #' @examples
 #'
@@ -27,7 +27,7 @@ NULL
 #'
 #' ## resample to ensure maps have same characteristics as observed maps
 #' ef <- resample(x=ef, y=pie$lu_pie_1985, method="ngb")
-
+ 
 ##setGeneric("resample")
 
 #' @rdname resample

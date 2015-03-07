@@ -40,11 +40,10 @@ A ModelInput object.
 }
 \description{
 Methods to combine several object classes that are useful for land use change
-modelling and perform a series of checks to ensure the objects are compatible
-in time and space for a model simulation.
+modelling and perform checks to ensure the objects are compatible in time and
+space for a model simulation.
 }
 \seealso{
-\code{\link{CluesModel}},\code{\link{OrderedModel}},
-  \code{\link{allocate}}
+\code{\link{ModelInput-class}}
 }
 

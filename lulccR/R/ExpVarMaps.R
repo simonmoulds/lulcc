@@ -1,27 +1,27 @@
-#' Create a ExpVarMaps object
+#' Create an ExpVarMaps object
 #'
-#' Methods to load maps of predictor variables, which may be created from file, an
-#' existing Raster* object or a list of Raster* objects.
+#' Methods to load maps of explanatory variables, which may be created from file,
+#' an existing Raster* object or a list of Raster* objects.
 #'
-#' Predictor maps should follow a naming convention to identify them as static
-#' (one map provided for the study period) or dynamic (one map provided for each
-#' year of the study period). The name should consist of two (static) or three
-#' (dynamic) parts: firstly, the prefix should differentiate predictor maps from
-#' other maps in the directory, list or RasterStack. This should be followed
-#' by a unique number to differentiate the predictor maps (note that the order of
-#' predictor variables in the ExpVarMaps object is determined by this value)
-#' If the predictor is dynamic this number should be followed by a second number
-#' representing the timestep to which the map applies. Dynamic variables should
-#' include a map for time 0 (corresponding to the initial observed map) and every
-#' subsequent timestep. The different parts should be separated by a period or
-#' underscore.  
+#' Explanatory variables should follow a naming convention to identify them as
+#' static (one map provided for the study period) or dynamic (one map provided
+#' for each year of the study period). The name should consist of two (static)
+#' or three (dynamic) parts: firstly, the prefix should differentiate explanatory
+#' variables from other maps in the directory, list or RasterStack. This should
+#' be followed by a unique number to differentiate the explanatory variables
+#' (note that the order of variables in the ExpVarMaps object is determined by
+#' this value) If the variable is dynamic this number should be followed by a
+#' second number representing the timestep to which the map applies. Dynamic
+#' variables should include a map for time 0 (corresponding to the initial
+#' observed map) and every subsequent timestep in the simulation. The different
+#' parts should be separated by a period or underscore.  
 #'
-#' Maps of different predictor variables should have the same coordinate
-#' reference system but do not have to have the same extent and resolution as 
+#' Maps of different explanatory variables should have the same coordinate
+#' reference system but do not have to have the same extent and resolution as
 #' long as the minimum extent is that of the study region defined by an
 #' \code{ObsLulcMaps} object. However, maps for different timesteps of the same
-#' dynamic predictor variable should have the same extent and resolution because
-#' these are stored as RasterStack objects.
+#' dynamic variable should have the same extent and resolution because these are
+#' stored as RasterStack objects.
 #' 
 #' @param x path (character) to directory containing observed land use maps,
 #'   a Raster* object or a list of Raster* objects. 
@@ -31,18 +31,19 @@
 #'   information about supported filetypes
 #' @param \dots additional arguments to \code{raster::\link[raster]{stack}}
 #'
-#' @return A ExpVarMaps object.
+#' @seealso \code{raster::\link[raster]{stack}}
+#' @return An ExpVarMaps object.
 #'
 #' @export
 #' @rdname ExpVarMaps
 #'
 #' @examples
 #'
-#' ## Plum Island Ecosystem
+#' ## Plum Island Ecosystems
 #' ef <- ExpVarMaps(x=pie, pattern="ef")
 #'
 #' ## Sibuyan
-#' ef <- ExpVarMaps(x=sibuyan, pattern="ef")
+#' ef <- ExpVarMaps(x=sibuyan$maps, pattern="ef")
 
 setGeneric("ExpVarMaps", function(x, pattern, ...)
            standardGeneric("ExpVarMaps"))

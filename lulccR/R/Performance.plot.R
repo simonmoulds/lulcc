@@ -21,11 +21,13 @@ NULL
 #'   the key argument of \code{lattice::\link[lattice]{xyplot}}
 #' @param \dots additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
-#' @seealso \code{\link{Performance}}
+#' @seealso \code{\link{Performance}}, \code{lattice::\link[lattice]{xyplot}}
+#'
 #' @return A trellis object.
 #'
 #' @export
 #' @rdname Performance.plot
+
 setGeneric("Performance.plot", function(x, ...)
            standardGeneric("Performance.plot"))
 

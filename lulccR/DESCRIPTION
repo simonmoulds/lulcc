@@ -3,7 +3,7 @@ Title: Land use change modelling in R
 Version: 0.0.0.9000
 Author: Simon Moulds <simonm@riseup.net>
 Maintainer: Simon Moulds <simonm@riseup.net>
-Description: Functions for land use change modelling in R
+Description: Classes and methods for land use change modelling in R
 Depends:
     methods,
     R (>= 3.1.0)
@@ -11,7 +11,7 @@ License: GPL-3
 LazyData: true
 Imports:
     raster,
-    ROCR,
+    ROCR
 Suggests:
     caret,
     gsubfn,
@@ -19,8 +19,7 @@ Suggests:
     knitr,
     lattice,
     plyr,
-    RColorBrewer,
-VignetteBuilder: knitr
+    RColorBrewer
 Collate:
     'AgreementBudget.R'
     'class-AgreementBudget.R'

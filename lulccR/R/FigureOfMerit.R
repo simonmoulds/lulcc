@@ -4,10 +4,10 @@
 #' for a reference map at time 1, a reference map at time 2 and a simulated map
 #' at time 2.
 #'
-#' In land use change modelling terms, the figure of merit is the intersection
-#' of observed change and simulated change divided by the union of these, with
-#' a range of 0 (perfect disagreement) to 1 (perfect agreement). It is useful to
-#' to calculate the figure of merit at three levels: (1) considering all possible
+#' In land use change modelling, the figure of merit is the intersection of
+#' observed change and simulated change divided by the union of these, with a
+#' range of 0 (perfect disagreement) to 1 (perfect agreement). It is useful to
+#' calculate the figure of merit at three levels: (1) considering all possible
 #' transitions from all land use categories, (2) considering all transitions from
 #' specific land use categories and (3) considering a specific transition from
 #' one land use category to another.
@@ -15,8 +15,8 @@
 #' @param x a \code{ThreeMapComparison} object
 #' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{ThreeMapComparison}},\code{\link{FigureOfMerit.plot}}
-#' @return A \code{FigureOfMerit} object.
+#' @seealso \code{\link{FigureOfMerit.plot}}, \code{\link{ThreeMapComparison}}
+#' @return A FigureOfMerit object.
 #'
 #' @export
 #'

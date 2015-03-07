@@ -1,12 +1,12 @@
 #' @importFrom ROCR performance
 NULL
 
-#' Create \code{performance} objects
+#' Create ROCR performance objects
 #'
 #' A wrapper function for \code{ROCR::\link[ROCR]{performance}} to create
 #' \code{performance} objects from a list of \code{prediction} objects.
 #'
-#' @param prediction.obj a list of \code{prediction} objects 
+#' @param prediction.obj a list of \code{ROCR::\link[ROCR]{prediction}} objects 
 #' @param measure performance measure to use for the evaluation. See
 #'   \code{ROCR::\link[ROCR]{performance}}
 #' @param x.measure a second performance measure. See

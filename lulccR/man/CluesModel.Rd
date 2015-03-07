@@ -13,7 +13,9 @@ CluesModel(x, ...)
 \arguments{
 \item{x}{a ModelInput object}
 
-\item{elas}{numeric indicating elasticity of each land use category to change}
+\item{elas}{numeric indicating the elasticity of each land use category to
+change. Elasticity varies between 0 and 1, with 0 indicating a low
+resistance to change and 1 indicating a high resistance to change}
 
 \item{rules}{matrix with land use change decision rules}
 
@@ -48,10 +50,14 @@ the following components:
   \item{\code{ave.diff}}{The average allowed difference between allocated and
     demanded area. Default is 5}
 }
-
-TODO
+}
+\references{
+Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon, V., Mastura,
+S.S. (2002). Modeling the spatial dynamics of regional land use: the CLUE-S
+model. Environmental management, 30(3):391-405.
 }
 \seealso{
-\code{link{ModelInput}},\code{\link{allocate}}
+\code{\link{allocate}}, \code{\link{allow}},
+\code{\link{allowNeighb}}
 }
 

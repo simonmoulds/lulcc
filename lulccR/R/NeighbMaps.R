@@ -26,7 +26,7 @@ NULL
 #' @param fun function. Input argument to \code{focal}. Default is \code{mean}
 #' @param \dots additional arguments to \code{raster::\link[raster]{focal}}
 #'
-#' @seealso \code{\link{allowNeighb}}
+#' @seealso \code{\link{NeighbMaps-class}}, \code{\link{allowNeighb}}
 #' @return A NeighbMaps object.
 #'
 #' @export
@@ -65,11 +65,12 @@ NULL
 #' ## update nb2 for 1991
 #' nb2 <- NeighbMaps(x=obs@@maps[[2]],
 #'                   neighb=nb2)
+#'
+#' ## plot neighbourhood map for forest
+#' plot(nb2@@maps[[1]])
 
-#if (!isGeneric("NeighbMaps")) {
 setGeneric("NeighbMaps", function(x, categories, weights, neighb, ...)
            standardGeneric("NeighbMaps"))
-#}
 
 #' @rdname NeighbMaps
 #' @aliases NeighbMaps,RasterLayer,numeric,list,ANY-method

@@ -6,9 +6,6 @@
 \description{
 An S4 class to represent common inputs to land use change models.
 }
-\details{
-TODO
-}
 \section{Slots}{
 
 \describe{

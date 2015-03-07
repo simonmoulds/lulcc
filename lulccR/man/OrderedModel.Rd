@@ -11,7 +11,7 @@ OrderedModel(x, ...)
   params, output = NULL, ...)
 }
 \arguments{
-\item{x}{an ObsLulcMaps object or a ModelInput object}
+\item{x}{a ModelInput object}
 
 \item{rules}{matrix with land use change decision rules}
 
@@ -24,7 +24,7 @@ should be allocated. See Details}
 
 \item{output}{either a RasterStack containing output maps or NULL}
 
-\item{\dots}{additional arguments to \code{\link{ModelInput}}}
+\item{\dots}{additional arguments (none)}
 }
 \value{
 An OrderedModel object.
@@ -41,10 +41,14 @@ the following components:
   \item{\code{max.diff}}{The maximum allowed difference between allocated and
     demanded area of any land use type. Default is 5}
 }
-
-An ordered allocation procedure is frequently used in large study areas TODO
+}
+\references{
+Fuchs, R., Herold, M., Verburg, P.H., and Clevers, J.G.P.W. (2013). A
+high-resolution and harmonized model approach for reconstructing and analysing
+historic land changes in Europe, Biogeosciences, 10:1543-1559.
 }
 \seealso{
-\code{link{ModelInput}},\code{\link{allocate}}
+\code{\link{allocate}}, \code{\link{allow}},
+\code{\link{allowNeighb}}
 }
 

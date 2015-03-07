@@ -23,10 +23,10 @@ A list containing the following components:
 Count the number of cells belonging to each category in a Raster* object.
 }
 \examples{
-# RasterLayer
-total(x=sib$lu_sib_1997)
+## RasterLayer
+total(x=sibuyan$maps$lu_sib_1997)
 
-# RasterStack
+## RasterStack
 total(x=stack(pie$lu_pie_1985, pie$lu_pie_1991, pie$lu_pie_1999))
 }
 

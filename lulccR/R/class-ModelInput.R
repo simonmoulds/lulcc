@@ -11,8 +11,6 @@ NULL
 #'
 #' An S4 class to represent common inputs to land use change models.
 #'
-#' TODO
-#' 
 #' @slot obs an ObsLulcMaps object 
 #' @slot ef an ExpVarMaps object
 #' @slot models a PredModels object
@@ -28,6 +26,7 @@ NULL
 #' @export
 #' @exportClass ModelInput
 #' @rdname ModelInput-class
+
 setClass("ModelInput",
          slots = c(obs = "ObsLulcMaps",           
                    ef = "ExpVarMaps",
@@ -47,13 +46,12 @@ setClass("ModelInput",
 
 #' Virtual class Model
 #'
-#' An S4 virtual class to represent land use change models.
+#' A virtual S4 class to represent land use change models.
 #'
 #' @slot obs an ObsLulcMaps object 
 #' @slot ef an ExpVarMaps object
 #' @slot models a PredModels object
-#' @slot time numeric vector containing timesteps over which simulation will
-#'   occur
+#' @slot time numeric vector of timesteps over which simulation will occur
 #' @slot demand matrix containing demand scenario or NULL
 #' @slot hist RasterLayer showing land use history or NULL
 #' @slot mask RasterLayer showing masked areas or NULL
@@ -79,28 +77,26 @@ setClass("Model",
 #'
 #' An S4 class to represent inputs to the CLUE-S land use change model.
 #'
-#' TODO
-#'
 #' @slot obs an ObsLulcMaps object 
 #' @slot ef an ExpVarMaps object
 #' @slot models a PredModels object
-#' @slot time numeric vector containing timesteps over which simulation will
-#'   occur
+#' @slot time numeric vector of timesteps over which simulation will occur
 #' @slot demand matrix containing demand scenario or NULL
 #' @slot hist RasterLayer showing land use history or NULL
 #' @slot mask RasterLayer showing masked areas or NULL
 #' @slot neighb NeighbMaps object or NULL
 #' @slot categories numeric vector of land use categories 
 #' @slot labels character vector corresponding to \code{categories}
+#' @slot output RasterStack containing simulated land use maps or NULL
 #' @slot rules matrix with land use change decision rules
 #' @slot nb.rules numeric with neighbourhood decision rules
 #' @slot elas numeric indicating elasticity to change (only required for
 #' @slot params list with model parameters
-#' @slot output RasterStack containing simulated land use maps or NULL
 #'
 #' @export
 #' @exportClass CluesModel
 #' @rdname CluesModel-class
+
 setClass("CluesModel",
          contains = c("ModelInput",
                       "Model"),
@@ -116,27 +112,24 @@ setClass("CluesModel",
 
 #' Class OrderedModel
 #'
-#' An S4 class to represent inputs to [...]
-#'
-#' TODO
+#' An S4 class to represent inputs to the Ordered allocation procedure
 #' 
 #' @slot obs an ObsLulcMaps object 
 #' @slot ef an ExpVarMaps object
 #' @slot models a PredModels object
-#' @slot time numeric vector containing timesteps over which simulation will
-#'   occur
+#' @slot time numeric vector of timesteps over which simulation will occur
 #' @slot demand matrix containing demand scenario or NULL
 #' @slot hist RasterLayer showing land use history or NULL
 #' @slot mask RasterLayer showing masked areas or NULL
 #' @slot neighb NeighbMaps object or NULL
 #' @slot categories numeric vector of land use categories 
 #' @slot labels character vector corresponding to \code{categories}
+#' @slot output RasterStack containing simulated land use maps or NULL
 #' @slot rules matrix with land use change decision rules
 #' @slot nb.rules numeric with neighbourhood decision rules
 #' @slot order numeric vector of land use categories in the order that change
 #'   should be allocated
 #' @slot params list with model parameters
-#' @slot output RasterStack containing simulated land use maps or NULL
 #'
 #' @export
 #' @exportClass OrderedModel

@@ -33,12 +33,14 @@ A list containing the following components:
 Divide a categorical raster map into training and testing partitions.
 }
 \examples{
-## Sibuyan
-obs <- ObsLulcMaps(x=sibuyan,
-                    pattern="lu",
-                    categories=c(1,2,3,4,5),
-                    labels=c("forest","coconut","grass","rice","other"),
-                    t=c(0))
+## Plum Island Ecosystems
+
+## Load observed land use maps
+obs <- ObsLulcMaps(x=pie,
+                   pattern="lu",
+                   categories=c(1,2,3),
+                   labels=c("forest","built","other"),
+                   t=c(0,6,14))
 
 ## create equally sized training and testing partitions
 part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)

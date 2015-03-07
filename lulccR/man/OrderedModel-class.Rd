@@ -4,10 +4,7 @@
 \alias{OrderedModel-class}
 \title{Class OrderedModel}
 \description{
-An S4 class to represent inputs to [...]
-}
-\details{
-TODO
+An S4 class to represent inputs to the Ordered allocation procedure
 }
 \section{Slots}{
 
@@ -18,8 +15,7 @@ TODO
 
 \item{\code{models}}{a PredModels object}
 
-\item{\code{time}}{numeric vector containing timesteps over which simulation will
-occur}
+\item{\code{time}}{numeric vector of timesteps over which simulation will occur}
 
 \item{\code{demand}}{matrix containing demand scenario or NULL}
 
@@ -33,6 +29,8 @@ occur}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}
 
+\item{\code{output}}{RasterStack containing simulated land use maps or NULL}
+
 \item{\code{rules}}{matrix with land use change decision rules}
 
 \item{\code{nb.rules}}{numeric with neighbourhood decision rules}
@@ -41,7 +39,5 @@ occur}
 should be allocated}
 
 \item{\code{params}}{list with model parameters}
-
-\item{\code{output}}{RasterStack containing simulated land use maps or NULL}
 }}
 

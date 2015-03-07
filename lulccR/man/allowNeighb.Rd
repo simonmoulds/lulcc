@@ -9,7 +9,7 @@ allowNeighb(neighb, x, categories, rules, ...)
 \item{neighb}{a \code{NeighbMaps} object}
 
 \item{x}{a categorical RasterLayer to which neighbourhood rules should be
-applied. This map is used to update \code{neighb}}
+applied. If 'neighb' is supplied it is updated with this map}
 
 \item{categories}{numeric vector containing land use categories. If
 \code{allowNeighb} is called from an allocation model this argument
@@ -24,40 +24,44 @@ above which change is allowed. Rules should correspond with
 \item{\dots}{additional arguments (none)}
 }
 \value{
-a matrix. See \code{\link{allow}}.
+a matrix with values of 1 (change allowed) or NA (change not allowed)
 }
 \description{
 Identify legitimate transitions for each cell according to neighbourhood
 decision rules.
 }
-\details{
-See \code{\link{allow}}.
-}
 \examples{
-# observed data
+## Plum Island Ecosystems
+
+## load observed land use data
 obs <- ObsLulcMaps(x=pie,
-                    pattern="lu",
-                    categories=c(1,2,3),
-                    labels=c("forest","built","other"),
-                    t=c(0,6,14))
+                     pattern="lu",
+                     categories=c(1,2,3),
+                     labels=c("forest","built","other"),
+                     t=c(0,6,14))
 
-# create a NeighbMaps object
+## create a NeighbMaps object for forest only
 nb <- NeighbMaps(x=obs@maps[[1]],
-                 categories=1,
-                 weights=3,
-                 fun=mean)
+                  categories=1,
+                  weights=3,
+                  fun=mean)
 
-# index of non-NA cells in study region
-na.ix <- which(!is.na(getValues(obs@maps[[1]])))
-
-# only allow change to forest within neighbourhood of current forest cells
-# note that rules can be any value between zero (less restrictive) and one
-# (more restrictive)
-nb.allow <- allowNeighb(x=nb,
-                        cells=na.ix,
+## only allow change to forest within neighbourhood of current forest cells
+## note that rules can be any value between zero (less restrictive) and one
+## (more restrictive)
+nb.allow <- allowNeighb(neighb=nb,
+                        x=obs@maps[[1]],
                         categories=obs@categories,
                         rules=0.5)
 
-# NB output is only useful when used within an allocation routine
+## create raster showing cells allowed to change to forest
+r <- obs@maps[[1]]
+r[!is.na(r)] <- nb.allow[,1]
+plot(r)
+
+## NB output is only useful when used within an allocation routine
+}
+\seealso{
+\code{\link{allow}}, \code{\link{NeighbMaps}}
 }
 

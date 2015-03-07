@@ -4,7 +4,7 @@
 \alias{compareAUC}
 \alias{compareAUC,Prediction-method}
 \alias{compareAUC,list-method}
-\title{Compare the area under the ROC curve (AUC) for different predictive models}
+\title{Calculate the area under the ROC curve (AUC)}
 \usage{
 compareAUC(pred, ...)
 
@@ -21,7 +21,7 @@ the decimal point for AUC values}
 \item{\dots}{additional arguments (none)}
 }
 \value{
-data.frame containing AUC values
+A data.frame containing AUC values.
 }
 \description{
 Estimate the AUC for each \code{ROCR::\link[ROCR]{prediction}} object in a
@@ -29,15 +29,17 @@ Estimate the AUC for each \code{ROCR::\link[ROCR]{prediction}} object in a
 }
 \details{
 The user can compare the performance of different statistical models by
-providing a list of \code{Prediction} objects. Note that
-\code{compareAUC} should be used in conjunction with other comparison methods
-because the AUC does not contain as much information as, for instance, the ROC
-curve itself
+providing a list of \code{Prediction} objects. Note that \code{compareAUC}
+should be used in conjunction with other comparison methods because the AUC
+does not contain as much information as, for instance, the ROC curve itself
+(Pontius and Parmentier, 2014).
 }
 \references{
-Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).
-ROCR: visualizing classifier performance in R. Bioinformatics
-21(20):3940-3941.
+Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005). ROCR: visualizing
+classifier performance in R. Bioinformatics 21(20):3940-3941.
+
+Pontius Jr, R. G., & Parmentier, B. (2014). Recommendations for using the
+relative operating characteristic (ROC). Landscape ecology, 29(3), 367-382.
 }
 \seealso{
 \code{\link{Prediction}}, \code{ROCR::\link[ROCR]{performance}}

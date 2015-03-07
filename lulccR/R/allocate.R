@@ -4,22 +4,44 @@ NULL
 #' Allocate land use change spatially
 #'
 #' Perform spatially explicit allocation of land use change using different
-#' methods. Currently the function provides an algorithm based on the Change in
-#' Land Use and its Effects at Small regional extent (CLUE-S) model(Verburg et
-#' al., 2002) and a novel stochastic procedure that aims to represent the
-#' uncertainty associated with the allocation of change.  
+#' models. Currently the function provides an implementation of the Change in
+#' Land Use and its Effects at Small regional extent (CLUE-S) model (Verburg et
+#' al., 2002) and an ordered procedure based on the algorithm described by Fuchs
+#' et al., (2013), modified to allow stochastic transitions.
 #'
 #' @param model an object inheriting from class \code{ModelInput}
+#' @param stochastic logical indicating whether the ordered model should be run
+#'   stochastically
 #' @param \dots additional arguments for specific methods
 #'
-#' @seealso \code{\link{ModelInput}}
+#' @seealso \code{\link{ModelInput}}, \code{\link{CluesModel}},
+#' \code{\link{OrderedModel}}
 #'
 #' @export
 #' @rdname allocate
 #'
-#' @references Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,
-#' V., Mastura, S.S. (2002). Modeling the spatial dynamics of regional land use:
-#' the CLUE-S model. Environmental management, 30(3):391-405.
+#' @references
+#' Fuchs, R., Herold, M., Verburg, P.H., and Clevers, J.G.P.W. (2013). A
+#' high-resolution and harmonized model approach for reconstructing and analysing
+#' historic land changes in Europe, Biogeosciences, 10:1543-1559.
+#'
+#' Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon, V., Mastura,
+#' S.S. (2002). Modeling the spatial dynamics of regional land use: the CLUE-S
+#' model. Environmental management, 30(3):391-405.
+#'
+#' @examples
+#'
+#' ## Sibuyan Island
+#'
+#' ## load clues.model for Sibuyan Island
+#' sib.clues.model <- sibuyan$intermediate$clues.model
+#'
+#' ## allocate
+#' sib.clues.model <- allocate(sib.clues.model)
+#'
+#' library(raster)
+#' plot(sib.clues.model@@output[[15]])
+
 setGeneric("allocate", function(model, ...)
            standardGeneric("allocate"))
 
@@ -86,7 +108,7 @@ setMethod("allocate", signature(model = "CluesModel"),
 #' @rdname allocate
 #' @aliases allocate,OrderedModel-method
 setMethod("allocate", signature(model = "OrderedModel"),
-          function(model, ...) {
+          function(model, stochastic=TRUE, ...) {
               map0 <- model@obs@maps[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
@@ -120,7 +142,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
                    tprob[auto$ix,] <- NA
 
                    ## 5. allocation
-                   map1.vals <- do.call(.ordered, c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories, order=model@order), model@params))
+                   map1.vals <- do.call(.ordered, c(list(tprob=tprob, map0.vals=map0.vals, demand=d, categories=model@categories, order=model@order, stochastic=stochastic), model@params))
                    map1 <- raster::raster(map0, ...) 
                    map1[cells] <- map1.vals
                    maps <- raster::stack(maps, map1)
@@ -143,7 +165,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
 }
 
 #' @useDynLib lulccR
-.ordered <- function(tprob, map0.vals, demand, categories, order) {
+.ordered <- function(tprob, map0.vals, demand, categories, order, stochastic) {
 
     map0.area <- .Call("total", map0.vals, categories)        ## initial condition
     diff <- demand - map0.area
@@ -172,10 +194,22 @@ setMethod("allocate", signature(model = "OrderedModel"),
             ixx <- ixx[p.ix]                                  ## actual index of cells (as they appear in map1.vals)     
             #p.range <- range(p, na.rm=TRUE); print(p.range)                   
             #p <- (p - p.range[1]) / diff(p.range)             ## normalise suitability (0-1)
-            repeat {
-                select.ix <- which(p >= runif(length(p)))     ## compare suitability to numbers drawn from random normal distribution
-                if (length(select.ix) >= abs(n)) break()      ## only exit loop if select.ix includes enough cells to meet demand
+
+            ## repeat {
+            ##     select.ix <- which(p >= runif(length(p)))     ## compare suitability to numbers drawn from random normal distribution
+            ##     if (length(select.ix) >= abs(n)) break()      ## only exit loop if select.ix includes enough cells to meet demand
+            ## }
+
+            if (stochastic) {
+                repeat {
+                    select.ix <- which(p >= runif(length(p)))     ## compare suitability to numbers drawn from random normal distribution
+                    if (length(select.ix) >= abs(n)) break()      ## only exit loop if select.ix includes enough cells to meet demand
+                }
+
+            } else {
+                select.ix <- seq(1, length(p))
             }
+            
             select.ix <- select.ix[1:n]                       ## select cells with the highest suitability
             ixx <- ixx[select.ix]                             ## index
             map1.vals[ixx] <- cat                             ## allocate change

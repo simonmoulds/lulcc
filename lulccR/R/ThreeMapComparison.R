@@ -7,8 +7,6 @@
 #' coarse squares, disagreement between coarse squares, disagreement about the
 #' quantity of land use change and agreement.
 #'
-#' TODO
-#'
 #' @param x either a RasterLayer of observed land use at time 0 or an object
 #'   inheriting from class \code{Model}
 #' @param x1 a RasterLayer of observed land use at a subsequent time. Only
@@ -26,7 +24,7 @@
 #'   \code{categories}. Only required if \code{x} is a RasterLayer
 #' @param \dots additional arguments to \code{raster::\link[raster]{aggregate}}
 #'
-#' @seealso \code{\link{AgreementBudget}},\code{\link{FigureOfMerit}}
+#' @seealso \code{\link{AgreementBudget}}, \code{\link{FigureOfMerit}}
 #' @return A \code{ThreeMapComparison} object.
 #'
 #' @export
@@ -36,6 +34,26 @@
 #' Comparison of three maps at multiple resol utions: a case study of land change
 #' simulation in Cho Don District, Vietnam. Annals of the Association of American
 #' Geographers 101(1): 45-62.
+#'
+#' @examples
+#'
+#' ## Example for Sibuyan Island
+#'
+#' ## get CluesModel object from data
+#' sib.clues.model <- sibuyan$intermediate$clues.model
+#'
+#' ## validation
+#' sib.clues.tables <- ThreeMapComparison(x=sib.clues.model,
+#'                                        factors=2^(1:9),
+#'                                        timestep=14)
+#'
+#' sib.clues.agr <- AgreementBudget(x=sib.clues.tables)
+#' p <- AgreementBudget.plot(x=sib.clues.agr)
+#' print(p)
+#'
+#' sib.clues.fom <- FigureOfMerit(x=sib.clues.tables)
+#' p <- FigureOfMerit.plot(x=sib.clues.fom)
+#' print(p)
 
 setGeneric("ThreeMapComparison", function(x, x1, y1, ...)
            standardGeneric("ThreeMapComparison"))

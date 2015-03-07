@@ -9,11 +9,11 @@ An S4 class for neighbourhood maps.
 \section{Slots}{
 
 \describe{
-\item{\code{maps}}{list of RasterLayers showing neighbourhood values for each land use in
-\code{categories}}
+\item{\code{maps}}{list of RasterLayers showing neighbourhood values for each land use
+in \code{categories}}
 
 \item{\code{categories}}{numeric vector of land use categories for which neighbourhood
-maps were calculated}
+maps exist}
 
 \item{\code{weights}}{list of weights matrices}
 

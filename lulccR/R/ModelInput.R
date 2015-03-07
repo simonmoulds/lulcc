@@ -8,8 +8,8 @@ NULL
 #' Create a ModelInput object
 #'
 #' Methods to combine several object classes that are useful for land use change
-#' modelling and perform a series of checks to ensure the objects are compatible
-#' in time and space for a model simulation.
+#' modelling and perform checks to ensure the objects are compatible in time and
+#' space for a model simulation.
 #' 
 #' @param obs an ObsLulcMaps object or a ModelInput object
 #' @param ef an ExpVarMaps object
@@ -27,12 +27,12 @@ NULL
 #' @param neighb an object of class NeighbMaps
 #' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{CluesModel}},\code{\link{OrderedModel}},
-#'   \code{\link{allocate}}
+#' @seealso \code{\link{ModelInput-class}}
 #' @return A ModelInput object.
 #'
 #' @export
 #' @rdname ModelInput
+
 setGeneric("ModelInput", function(obs, ef, models, time, demand, ...)
            standardGeneric("ModelInput"))
 
@@ -119,21 +119,29 @@ setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps", models
 #'     demanded area. Default is 5}
 #' }
 #'
-#' TODO
-#' 
 #' @param x a ModelInput object
 #' @param rules matrix with land use change decision rules
 #' @param nb.rules numeric with neighbourhood decision rules
-#' @param elas numeric indicating elasticity of each land use category to change
+#' @param elas numeric indicating the elasticity of each land use category to
+#'   change. Elasticity varies between 0 and 1, with 0 indicating a low
+#'   resistance to change and 1 indicating a high resistance to change
 #' @param params list with model parameters
 #' @param output either a RasterStack containing output maps or NULL
 #' @param \dots additional arguments (none)
 #'
-#' @seealso \code{link{ModelInput}},\code{\link{allocate}}
+#' @seealso \code{\link{allocate}}, \code{\link{allow}},
+#' \code{\link{allowNeighb}}
+#'
 #' @return A CluesModel object.
 #'
 #' @export
 #' @rdname CluesModel
+#'
+#' @references
+#' Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon, V., Mastura,
+#' S.S. (2002). Modeling the spatial dynamics of regional land use: the CLUE-S
+#' model. Environmental management, 30(3):391-405.
+ 
 setGeneric("CluesModel", function(x, ...)
            standardGeneric("CluesModel"))
 
@@ -200,23 +208,29 @@ setMethod("CluesModel", signature(x = "ModelInput"),
 #'   \item{\code{max.diff}}{The maximum allowed difference between allocated and
 #'     demanded area of any land use type. Default is 5}
 #' }
-#'
-#' An ordered allocation procedure is frequently used in large study areas TODO
 #' 
-#' @param x an ObsLulcMaps object or a ModelInput object
+#' @param x a ModelInput object
 #' @param rules matrix with land use change decision rules
 #' @param nb.rules numeric with neighbourhood decision rules
 #' @param order numeric vector of land use categories in the order that change
 #'   should be allocated. See Details
 #' @param params list with model parameters
 #' @param output either a RasterStack containing output maps or NULL
-#' @param \dots additional arguments to \code{\link{ModelInput}}
+#' @param \dots additional arguments (none)
 #'
-#' @seealso \code{link{ModelInput}},\code{\link{allocate}}
+#' @seealso \code{\link{allocate}}, \code{\link{allow}},
+#' \code{\link{allowNeighb}}
+#'
 #' @return An OrderedModel object.
 #'
 #' @export
 #' @rdname OrderedModel
+#'
+#' @references
+#' Fuchs, R., Herold, M., Verburg, P.H., and Clevers, J.G.P.W. (2013). A
+#' high-resolution and harmonized model approach for reconstructing and analysing
+#' historic land changes in Europe, Biogeosciences, 10:1543-1559.
+ 
 setGeneric("OrderedModel", function(x, ...)
            standardGeneric("OrderedModel"))
 

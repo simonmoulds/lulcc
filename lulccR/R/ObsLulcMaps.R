@@ -30,7 +30,7 @@ NULL
 #'
 #' @examples
 #'
-#' ## Plum Islands Ecosystem
+#' ## Plum Island Ecosystems
 #' obs <- ObsLulcMaps(x=pie,
 #'                    pattern="lu",
 #'                    categories=c(1,2,3),
@@ -42,7 +42,7 @@ NULL
 #'                    pattern="lu",
 #'                    categories=c(1,2,3,4,5),
 #'                    labels=c("forest","coconut","grass","rice","other"),
-#'                    t=c(0))
+#'                    t=c(0,14))
 
 setGeneric("ObsLulcMaps", function(x, pattern, ...)
            standardGeneric("ObsLulcMaps"))

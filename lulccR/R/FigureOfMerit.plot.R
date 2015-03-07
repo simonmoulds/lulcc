@@ -14,17 +14,18 @@ NULL
 #'   argument the transition defined by these two arguments (i.e. \code{from} ->
 #'   \code{to}) will be plotted. It is possible to include more than one category
 #'   in which case the different transitions will be included on the same plot
-#' @param col character specifying the plotting colour. Default is to use the 'Set2'
-#'   palette from \code{RColorBrewer}
+#' @param col character specifying the plotting colour. Default is to use the
+#' 'Set2' palette from \code{RColorBrewer}
 #' @param type character. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param key list. See \code{lattice::\link[lattice]{xyplot}}
 #' @param scales list. See \code{lattice::\link[lattice]{xyplot}}
-#' @param xlab character or expression. See \code{lattice::\link[lattice]{xyplot}} 
+#' @param xlab character or expression. See \code{lattice::\link[lattice]{xyplot}}
 #' @param ylab character or expression. See \code{lattice::\link[lattice]{xyplot}}
 #' @param \dots additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
-#' @seealso \code{\link{FigureOfMerit}},\code{lattice::\link[lattice]{xyplot}},
+#' @seealso \code{\link{FigureOfMerit}}, \code{lattice::\link[lattice]{xyplot}},
 #'   \code{lattice::\link[lattice]{panel.xyplot}}
+#'
 #' @return A trellis object.
 #'
 #' @export

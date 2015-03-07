@@ -49,8 +49,24 @@ taking into account persistence. The method quantifies disagreement within
 coarse squares, disagreement between coarse squares, disagreement about the
 quantity of land use change and agreement.
 }
-\details{
-TODO
+\examples{
+## Example for Sibuyan Island
+
+## get CluesModel object from data
+sib.clues.model <- sibuyan$intermediate$clues.model
+
+## validation
+sib.clues.tables <- ThreeMapComparison(x=sib.clues.model,
+                                       factors=2^(1:9),
+                                       timestep=14)
+
+sib.clues.agr <- AgreementBudget(x=sib.clues.tables)
+p <- AgreementBudget.plot(x=sib.clues.agr)
+print(p)
+
+sib.clues.fom <- FigureOfMerit(x=sib.clues.tables)
+p <- FigureOfMerit.plot(x=sib.clues.fom)
+print(p)
 }
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
@@ -59,6 +75,6 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{AgreementBudget}},\code{\link{FigureOfMerit}}
+\code{\link{AgreementBudget}}, \code{\link{FigureOfMerit}}
 }
 

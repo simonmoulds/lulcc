@@ -3,7 +3,7 @@
 \name{performance}
 \alias{performance}
 \alias{performance,list-method}
-\title{Create \code{performance} objects}
+\title{Create ROCR performance objects}
 \usage{
 performance(prediction.obj, ...)
 
@@ -11,7 +11,7 @@ performance(prediction.obj, ...)
   ...)
 }
 \arguments{
-\item{prediction.obj}{a list of \code{prediction} objects}
+\item{prediction.obj}{a list of \code{ROCR::\link[ROCR]{prediction}} objects}
 
 \item{measure}{performance measure to use for the evaluation. See
 \code{ROCR::\link[ROCR]{performance}}}

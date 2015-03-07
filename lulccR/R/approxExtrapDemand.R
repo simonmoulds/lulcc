@@ -4,10 +4,10 @@
 #' a valid (although not necessarily realistic) demand scenario.
 #'
 #' Many allocation routines, including the two included with \code{lulccR},
-#' require non-estimates of land use demand for every timestep in the study
-#' period. Some routines are coupled to complex economic models that predict
-#' future or past land use demand based on economic considerations, however,
-#' linear extrapolation of trends remains a useful technique.
+#' require non-spatial estimates of land use demand for every timestep in the
+#' study period. Some routines are coupled to complex economic models that
+#' predict future or past land use demand based on economic considerations;
+#' however, linear extrapolation of trends remains a useful technique.
 #'
 #' @param obs an \code{ObsLulcMaps} object containing at least two maps
 #' @param tout numeric vector specifying the timesteps where interpolation is to
@@ -21,12 +21,17 @@
 #' @export
 #'
 #' @examples
-#' 
+#'
+#' ## Plum Island Ecosystems
+#'
+#' ## load observed land use maps
 #' obs <- ObsLulcMaps(x=pie,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3),
 #'                     labels=c("forest","built","other"),
 #'                     t=c(0,6,14))
+#'
+#' ## obtain demand scenario
 #' dmd <- approxExtrapDemand(obs=obs, tout=c(0:14))
 
 approxExtrapDemand <- function(obs, tout, ...) {
@@ -63,6 +68,17 @@ approxExtrapDemand <- function(obs, tout, ...) {
 #' @return A matrix.
 #'
 #' @export
+#'
+#' @examples
+#'
+#' ## Sibuyan Island
+#'
+#' ## load demand scenario from data
+#' dmd <- sibuyan$demand$demand1 * runif(1)
+#' ncell <- length(which(!is.na(getValues(sibuyan$maps$lu_sib_1997))))
+#'
+#' ## recover demand
+#' dmd <- roundSum(dmd, ncell=ncell)
 
 roundSum <- function(x, ncell, ...) {
     

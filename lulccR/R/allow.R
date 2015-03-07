@@ -10,18 +10,12 @@
 #' element should represent a rule from the following list:
 #'
 #' \enumerate{
-#'   \item (rule == 0 | rule == 1): this rule concerns specific land use
+#'   \item rule == 0 | rule == 1: this rule concerns specific land use
 #'     transitions that are allowed (1) or not (0)
-#'   \item (rule == -1): this rule prevents transitions unless demand
-#'     for the present land use category is decreasing
-#'   \item (rule == -2): this rule prevents transitions to land use
-#'     categories with decreasing or static demand. Note that by combining
-#'     rule 3 and rule 2 it is possible to prevent simultaneous expansion and
-#'     contraction
-#'   \item (rule > 100 & rule < 1000): this rule imposes a time limit (rule-100)
+#'   \item rule > 100 & rule < 1000: this rule imposes a time limit (rule-100)
 #'     on land use transitions, after which land use change is not allowed. Time
 #'     is taken from \code{hist}
-#'   \item (rule > 1000): this rule imposes a minimum period of time (rule-1000)
+#'   \item rule > 1000: this rule imposes a minimum period of time (rule-1000)
 #'     before land use is allowed to change
 #' }
 #'
@@ -41,13 +35,16 @@
 #'   demand and 0 means demand is static 
 #' @param rules matrix. See details
 #' @param hist numeric vector containing land use history (values represent the
-#'   number of years the cell has contained the current land use category). Only
-#'   required for rules 4 and 5
+#'   number of timesteps the cell has contained the current land use category).
+#'   Only required for rules 2 and 3
 #' @param \dots additional arguments (none)
 #'
-#' @return a matrix with values of 1 (change allowed) or NA (change not allowed)
+#' @return A matrix with values of 1 (change allowed) or NA (change not allowed)
 #'
 #' @useDynLib lulccR
+#'
+#' @seealso \code{\link{allowNeighb}}
+#'
 #' @export
 #' @references Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,
 #' V., Mastura, S.S. (2002). Modeling the spatial dynamics of regional land use:
@@ -55,34 +52,45 @@
 #'
 #' @examples
 #'
+#' ## Plum Island Ecosystems
+#'
+#' ## load observed land use data
 #' obs <- ObsLulcMaps(x=pie,
-#'                     pattern="lu",
-#'                     categories=c(1,2,3),
-#'                     labels=c("forest","built","other"),
-#'                     t=c(0,6,14))
+#'                    pattern="lu",
+#'                    categories=c(1,2,3),
+#'                    labels=c("forest","built","other"),
+#'                    t=c(0,6,14))
 #'
-#' # create arbitrary land use history raster
-#' hist <- raster(obs@@maps[[1]])
-#' vals <- sample(1:10, ncell(hist))
-#' hist <- setValues(hist, vals[which(!is.na(getValues(obs@@maps[[1]])))])
+#' ## get land use values
+#' x <- getValues(obs@@maps[[1]])
+#' x <- x[!is.na(x)]
 #'
-#' # calculate demand and get change direction for first timestep
+#' ## create vector of arbitrary land use history values
+#' hist <- sample(1:10, length(x), replace=TRUE)
+#'
+#' ## calculate demand and get change direction for first timestep
 #' dmd <- approxExtrapDemand(obs=obs, tout=0:14)
 #' cd <- dmd[2,] - dmd[1,]
 #' 
-#' # create rules matrix, only allowing forest to change if the cell has
-#' # belonged to forest for more than 8 years
+#' ## create rules matrix, only allowing forest to change if the cell has
+#' ## belonged to forest for more than 8 years
 #' rules <- matrix(data=c(1,1008,1008,
 #'                        1,1,1,
 #'                        1,1,1), nrow=3, ncol=3, byrow=TRUE)
 #'
-#' allow <- allow(x=obs@@maps[[1]],
+#' allow <- allow(x=x,
 #'                hist=hist,
 #'                categories=obs@@categories,
 #'                cd=cd,
 #'                rules=rules)
 #'
-#' # NB output is only useful when used within an allocation routine
+#' ## create raster showing cells allowed to change from forest to built
+#' r <- obs@@maps[[1]]
+#' r[!is.na(r)] <- allow[,2]
+#' r[obs@@maps[[1]] != 1] <- NA  ## set all cells not belonging to forest to NA
+#' plot(r)
+#'
+#' ## NB in reality, output is only useful when used within an allocation routine
 
 allow <- function(x, categories, cd, rules, hist=NULL, ...) {
     if (!all(dim(rules) %in% length(categories))) stop("rules matrix should be a square matrix with dimension equal to number of categories")

@@ -10,7 +10,7 @@
 \S4method{resample}{list,Raster}(x, y, method = "ngb", ...)
 }
 \arguments{
-\item{x}{a ExpVarMaps object or list of Raster* maps to be resampled}
+\item{x}{an ExpVarMaps object or list of Raster* maps to be resampled}
 
 \item{y}{Raster* object with parameters that \code{x} should be resampled to}
 
@@ -21,11 +21,11 @@ neighbour}
 \item{\dots}{additional arguments to \code{raster::\link[raster]{resample}}}
 }
 \value{
-A ExpVarMaps object or list, depending on \code{x}.
+An ExpVarMaps object or list, depending on \code{x}.
 }
 \description{
 A wrapper function for \code{raster::\link[raster]{resample}} to resample
-raster objects in a \link{ExpVarMaps-class} object or list.
+raster objects in an ExpVarMaps object or list.
 }
 \examples{
 ## create ExpVarMaps object
@@ -35,6 +35,7 @@ ef <- ExpVarMaps(x=pie, pattern="ef")
 ef <- resample(x=ef, y=pie$lu_pie_1985, method="ngb")
 }
 \seealso{
-\code{\link{ExpVarMaps}}, \code{raster::\link[raster]{resample}}
+\code{\link{ExpVarMaps}}, \code{\link{ExpVarMaps-class}},
+\code{raster::\link[raster]{resample}}
 }
 

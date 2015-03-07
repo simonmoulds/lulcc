@@ -42,6 +42,6 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{AgreementBudget}},\code{lattice::\link[lattice]{xyplot}}
+\code{\link{AgreementBudget}}, \code{lattice::\link[lattice]{xyplot}}
 }
 

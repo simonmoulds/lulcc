@@ -10,26 +10,46 @@ allocate(model, ...)
 
 \S4method{allocate}{CluesModel}(model, ...)
 
-\S4method{allocate}{OrderedModel}(model, ...)
+\S4method{allocate}{OrderedModel}(model, stochastic = TRUE, ...)
 }
 \arguments{
 \item{model}{an object inheriting from class \code{ModelInput}}
+
+\item{stochastic}{logical indicating whether the ordered model should be run
+stochastically}
 
 \item{\dots}{additional arguments for specific methods}
 }
 \description{
 Perform spatially explicit allocation of land use change using different
-methods. Currently the function provides an algorithm based on the Change in
-Land Use and its Effects at Small regional extent (CLUE-S) model(Verburg et
-al., 2002) and a novel stochastic procedure that aims to represent the
-uncertainty associated with the allocation of change.
+models. Currently the function provides an implementation of the Change in
+Land Use and its Effects at Small regional extent (CLUE-S) model (Verburg et
+al., 2002) and an ordered procedure based on the algorithm described by Fuchs
+et al., (2013), modified to allow stochastic transitions.
+}
+\examples{
+## Sibuyan Island
+
+## load clues.model for Sibuyan Island
+sib.clues.model <- sibuyan$intermediate$clues.model
+
+## allocate
+sib.clues.model <- allocate(sib.clues.model)
+
+library(raster)
+plot(sib.clues.model@output[[15]])
 }
 \references{
-Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,
-V., Mastura, S.S. (2002). Modeling the spatial dynamics of regional land use:
-the CLUE-S model. Environmental management, 30(3):391-405.
+Fuchs, R., Herold, M., Verburg, P.H., and Clevers, J.G.P.W. (2013). A
+high-resolution and harmonized model approach for reconstructing and analysing
+historic land changes in Europe, Biogeosciences, 10:1543-1559.
+
+Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon, V., Mastura,
+S.S. (2002). Modeling the spatial dynamics of regional land use: the CLUE-S
+model. Environmental management, 30(3):391-405.
 }
 \seealso{
-\code{\link{ModelInput}}
+\code{\link{ModelInput}}, \code{\link{CluesModel}},
+\code{\link{OrderedModel}}
 }
 

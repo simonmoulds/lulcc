@@ -83,8 +83,11 @@ nb2 <- NeighbMaps(x=obs@maps[[1]],
 ## update nb2 for 1991
 nb2 <- NeighbMaps(x=obs@maps[[2]],
                   neighb=nb2)
+
+## plot neighbourhood map for forest
+plot(nb2@maps[[1]])
 }
 \seealso{
-\code{\link{allowNeighb}}
+\code{\link{NeighbMaps-class}}, \code{\link{allowNeighb}}
 }
 

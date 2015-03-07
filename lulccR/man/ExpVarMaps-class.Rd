@@ -4,13 +4,13 @@
 \alias{ExpVarMaps-class}
 \title{Class ExpVarMaps}
 \description{
-An S4 class for predictor variables.
+An S4 class for explanatory variables.
 }
 \section{Slots}{
 
 \describe{
 \item{\code{maps}}{list of RasterStacks. The length of the list corresponds to the
-number of predictor variables and the number of layers in each RasterStack
+number of explanatory variables and the number of layers in each RasterStack
 represents time}
 
 \item{\code{map.names}}{character vector of the name of each variable in \code{maps}}

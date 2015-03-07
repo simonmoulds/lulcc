@@ -13,6 +13,11 @@
 #' @export
 #' @exportClass ThreeMapComparison
 #' @rdname ThreeMapComparison-class
+#'
+#' @references Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
+#' Comparison of three maps at multiple resol utions: a case study of land change
+#' simulation in Cho Don District, Vietnam. Annals of the Association of American
+#' Geographers 101(1): 45-62.
 
 setClass("ThreeMapComparison",
          representation(

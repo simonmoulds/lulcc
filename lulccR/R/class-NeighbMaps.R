@@ -2,10 +2,10 @@
 #'
 #' An S4 class for neighbourhood maps.
 #'
-#' @slot maps list of RasterLayers showing neighbourhood values for each land use in
-#'   \code{categories}
+#' @slot maps list of RasterLayers showing neighbourhood values for each land use
+#' in \code{categories}
 #' @slot categories numeric vector of land use categories for which neighbourhood
-#'   maps were calculated
+#'   maps exist
 #' @slot weights list of weights matrices
 #' @slot fun function used to calculate neighbourhood values
 #' @slot focal.args list of all other arguments supplied to

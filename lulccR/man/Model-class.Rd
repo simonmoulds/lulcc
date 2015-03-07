@@ -4,7 +4,7 @@
 \alias{Model-class}
 \title{Virtual class Model}
 \description{
-An S4 virtual class to represent land use change models.
+A virtual S4 class to represent land use change models.
 }
 \section{Slots}{
 
@@ -15,8 +15,7 @@ An S4 virtual class to represent land use change models.
 
 \item{\code{models}}{a PredModels object}
 
-\item{\code{time}}{numeric vector containing timesteps over which simulation will
-occur}
+\item{\code{time}}{numeric vector of timesteps over which simulation will occur}
 
 \item{\code{demand}}{matrix containing demand scenario or NULL}
 

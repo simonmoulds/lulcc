@@ -25,4 +25,14 @@ demand matrix specifies exactly the number of cells to be allocated to each
 land use category for the respective timestep. It may also be used to convert
 the units of demand to number of cells, as required by \code{ModelInput}.
 }
+\examples{
+## Sibuyan Island
+
+## load demand scenario from data
+dmd <- sibuyan$demand$demand1 * runif(1)
+ncell <- length(which(!is.na(getValues(sibuyan$maps$lu_sib_1997))))
+
+## recover demand
+dmd <- roundSum(dmd, ncell=ncell)
+}
 

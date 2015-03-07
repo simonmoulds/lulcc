@@ -1,9 +1,9 @@
 #' Class ExpVarMaps
 #'
-#' An S4 class for predictor variables.
+#' An S4 class for explanatory variables.
 #'
 #' @slot maps list of RasterStacks. The length of the list corresponds to the
-#'   number of predictor variables and the number of layers in each RasterStack
+#'   number of explanatory variables and the number of layers in each RasterStack
 #'   represents time 
 #' @slot map.names character vector of the name of each variable in \code{maps}
 #' @slot dynamic logical indicating whether dynamic variables are present

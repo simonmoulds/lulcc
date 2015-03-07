@@ -18,10 +18,11 @@
 #' @export
 #'
 #' @examples
-#' # RasterLayer
-#' total(x=sib$lu_sib_1997)
 #'
-#' # RasterStack
+#' ## RasterLayer
+#' total(x=sibuyan$maps$lu_sib_1997)
+#'
+#' ## RasterStack
 #' total(x=stack(pie$lu_pie_1985, pie$lu_pie_1991, pie$lu_pie_1999))
 
 total <- function(x, categories) {

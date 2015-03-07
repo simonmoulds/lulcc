@@ -16,7 +16,7 @@ NULL
 #' @param ylab character or expression. See \code{lattice::\link[lattice]{xyplot}}
 #' @param \dots additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
-#' @seealso \code{\link{AgreementBudget}},\code{lattice::\link[lattice]{xyplot}}
+#' @seealso \code{\link{AgreementBudget}}, \code{lattice::\link[lattice]{xyplot}}
 #' @return A trellis object.
 #'
 #' @export

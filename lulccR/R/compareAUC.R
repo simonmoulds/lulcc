@@ -1,16 +1,16 @@
 #' @include class-Prediction.R
 NULL
 
-#' Compare the area under the ROC curve (AUC) for different predictive models
+#' Calculate the area under the ROC curve (AUC)
 #'
 #' Estimate the AUC for each \code{ROCR::\link[ROCR]{prediction}} object in a
 #' \code{\link{Prediction}} object.
 #'
 #' The user can compare the performance of different statistical models by
-#' providing a list of \code{Prediction} objects. Note that
-#' \code{compareAUC} should be used in conjunction with other comparison methods
-#' because the AUC does not contain as much information as, for instance, the ROC
-#' curve itself
+#' providing a list of \code{Prediction} objects. Note that \code{compareAUC}
+#' should be used in conjunction with other comparison methods because the AUC
+#' does not contain as much information as, for instance, the ROC curve itself
+#' (Pontius and Parmentier, 2014).
 #'
 #' @param pred a \code{Prediction} object or a list of these
 #' @param digits numeric indicating the number of digits to be displayed after
@@ -18,13 +18,16 @@ NULL
 #' @param \dots additional arguments (none) 
 #'
 #' @seealso \code{\link{Prediction}}, \code{ROCR::\link[ROCR]{performance}}
-#' @return data.frame containing AUC values
+#' @return A data.frame containing AUC values.
 #' @export
 #' @rdname compareAUC
 #'
-#' @references Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).
-#' ROCR: visualizing classifier performance in R. Bioinformatics
-#' 21(20):3940-3941.
+#' @references
+#' Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005). ROCR: visualizing
+#' classifier performance in R. Bioinformatics 21(20):3940-3941.
+#'
+#' Pontius Jr, R. G., & Parmentier, B. (2014). Recommendations for using the
+#' relative operating characteristic (ROC). Landscape ecology, 29(3), 367-382.
 
 setGeneric("compareAUC", function(pred, ...)
            standardGeneric("compareAUC"))
@@ -33,7 +36,7 @@ setGeneric("compareAUC", function(pred, ...)
 #' @aliases compareAUC,Prediction-method
 setMethod("compareAUC", signature(pred = "Prediction"),
           function(pred, digits=4, ...) {
-              auc <- ROCR::performance(pred@prediction, measure="auc")
+              auc <- performance(pred@prediction, measure="auc")
               auc <- sapply(auc, function(x) unlist(slot(x, "y.values")))
               out <- as.data.frame(matrix(data=NA, nrow=1, ncol=length(auc)))
               out[1,] <- formatC(auc, digits=digits, format="f")
@@ -66,7 +69,7 @@ setMethod("compareAUC", signature(pred = "list"),
                   for (i in 1:length(pred)) {
                       p <- pred[[i]]
                       ix <- which(categories %in% p@categories)
-                      auc <- ROCR::performance(p@prediction, measure="auc")
+                      auc <- performance(p@prediction, measure="auc")
                       auc <- sapply(auc, function(x) unlist(slot(x, "y.values")))
                       out[i,ix] <- formatC(auc, digits=digits, format="f")      
                   }

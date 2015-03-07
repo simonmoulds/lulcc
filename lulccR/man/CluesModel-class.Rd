@@ -6,9 +6,6 @@
 \description{
 An S4 class to represent inputs to the CLUE-S land use change model.
 }
-\details{
-TODO
-}
 \section{Slots}{
 
 \describe{
@@ -18,8 +15,7 @@ TODO
 
 \item{\code{models}}{a PredModels object}
 
-\item{\code{time}}{numeric vector containing timesteps over which simulation will
-occur}
+\item{\code{time}}{numeric vector of timesteps over which simulation will occur}
 
 \item{\code{demand}}{matrix containing demand scenario or NULL}
 
@@ -33,6 +29,8 @@ occur}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}
 
+\item{\code{output}}{RasterStack containing simulated land use maps or NULL}
+
 \item{\code{rules}}{matrix with land use change decision rules}
 
 \item{\code{nb.rules}}{numeric with neighbourhood decision rules}
@@ -40,7 +38,5 @@ occur}
 \item{\code{elas}}{numeric indicating elasticity to change (only required for}
 
 \item{\code{params}}{list with model parameters}
-
-\item{\code{output}}{RasterStack containing simulated land use maps or NULL}
 }}
 

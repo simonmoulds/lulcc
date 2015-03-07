@@ -1,9 +1,9 @@
 #' Cross tabulate land use transitions
 #'
 #' Cross tabulate land use transitions using
-#' \code{raster::\link[raster]{crosstab}}. According to Pontius et al. (2004),
-#' this step should be the basis for further research into the processes driving
-#' the most important transitions in the study region.
+#' \code{raster::\link[raster]{crosstab}}. This step should form the basis of
+#' further research into the processes driving the most important transitions in
+#' the study region (Pontius et al., 2004).
 #'
 #' @param x RasterLayer representing land use map from an earlier timestep or an
 #'   \code{ObsLulcMaps} object containing at least two land use maps for
@@ -18,7 +18,7 @@
 #'   to use in analysis
 #' @param \dots additional arguments to \code{raster::\link[raster]{crosstab}}
 #'
-#' @seealso \code{\link{ObsLulcMaps}},\code{raster::\link[raster]{crosstab}}
+#' @seealso \code{\link{ObsLulcMaps}}, \code{raster::\link[raster]{crosstab}}
 #' @return A data.frame.
 #'
 #' @export
@@ -30,7 +30,9 @@
 #'
 #' @examples
 #'
-#' # ObsLulcMaps input
+#' ## Plum Island Ecosystems 
+#'
+#' ## Load observed land use maps
 #' obs <- ObsLulcMaps(x=pie,
 #'                    pattern="lu",
 #'                    categories=c(1,2,3),
@@ -39,7 +41,7 @@
 #'
 #' crossTabulate(x=obs, index=c(1,3))
 #'
-#' # RasterLayer input
+#' ## RasterLayer input
 #' crossTabulate(x=pie$lu_pie_1985,
 #'               y=pie$lu_pie_1999,
 #'               categories=c(1,2,3),

@@ -24,8 +24,10 @@
 #'   these two arguments (i.e. \code{from} -> \code{to})
 #' @param \dots additional arguments (none) 
 #'
-#' @seealso \code{\link{ThreeMapComparison}},\code{\link{FigureOfMerit}},
-#'   \code{\link{AgreementBudget.plot}}
+#' @seealso \code{\link{AgreementBudget-class}},
+#' \code{\link{AgreementBudget.plot}}, \code{\link{ThreeMapComparison}},
+#' \code{\link{FigureOfMerit}} 
+#'
 #' @return An \code{AgreementBudget} object.
 #'
 #' @export
@@ -37,7 +39,19 @@
 #'
 #' @examples
 #'
-#' # Example for Sibuyan Island 
+#' ## Sibuyan Island
+#'
+#' ## load clues.model for Sibuyan Island
+#' sib.clues.model <- sibuyan$intermediate$clues.model
+#'
+#' sib.clues.tables <- ThreeMapComparison(x=sib.clues.model,
+#'                                        factors=2^(1:9),
+#'                                        timestep=14)
+#'
+#' sib.clues.agr <- AgreementBudget(x=sib.clues.tables)
+#' p <- AgreementBudget.plot(x=sib.clues.agr)
+#' print(p)
+
 AgreementBudget <- function(x, from, to, ...) {
 
     categories <- x@categories

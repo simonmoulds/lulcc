@@ -37,12 +37,14 @@ A data.frame.
 }
 \description{
 Cross tabulate land use transitions using
-\code{raster::\link[raster]{crosstab}}. According to Pontius et al. (2004),
-this step should be the basis for further research into the processes driving
-the most important transitions in the study region.
+\code{raster::\link[raster]{crosstab}}. This step should form the basis of
+further research into the processes driving the most important transitions in
+the study region (Pontius et al., 2004).
 }
 \examples{
-# ObsLulcMaps input
+## Plum Island Ecosystems
+
+## Load observed land use maps
 obs <- ObsLulcMaps(x=pie,
                    pattern="lu",
                    categories=c(1,2,3),
@@ -51,7 +53,7 @@ obs <- ObsLulcMaps(x=pie,
 
 crossTabulate(x=obs, index=c(1,3))
 
-# RasterLayer input
+## RasterLayer input
 crossTabulate(x=pie$lu_pie_1985,
               y=pie$lu_pie_1999,
               categories=c(1,2,3),
@@ -63,6 +65,6 @@ important categorical land changes while accounting for persistence.
 Agriculture, Ecosystems & Environment 101(2):251-268.
 }
 \seealso{
-\code{\link{ObsLulcMaps}},\code{raster::\link[raster]{crosstab}}
+\code{\link{ObsLulcMaps}}, \code{raster::\link[raster]{crosstab}}
 }
 
