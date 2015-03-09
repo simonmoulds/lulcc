@@ -1,4 +1,4 @@
-#' @include class-FigureOfMerit.R
+#' @include class-ThreeMapComparison.R
 NULL
 
 #' Plot method for FigureOfMerit objects
@@ -115,32 +115,56 @@ setMethod("FigureOfMerit.plot", signature(x = "FigureOfMerit"),
                                       text=list(var),
                                       divide=1)
               }
-
+                
               if (missing(key)) {
                   key <- default.key
               } else if (!is.null(key)) {
-                  key <- c(key, default.key[!names(default.key) %in% names(key)])
-              }
+                   matching.args <- names(default.key)[names(default.key) %in% names(key)]
+                   key <- c(key, default.key[!names(default.key) %in% names(key)])
+
+                   ## deal with embedded lists 
+                   for (arg in matching.args) {
+                       key[[arg]] <- c(key[[arg]], default.key[[arg]][!names(default.key[[arg]]) %in% names(key[[arg]])])
+                   }
+             }
 
               default.scales <- list(x=list(at=1:length(x@factors), labels=x@factors))
               if (missing(scales)) {
                   scales <- default.scales
               } else {
-                  scales <- c(scales, default.scales[!names(default.scales) %in% names(scales)])
+                   matching.args <- names(default.scales)[names(default.scales) %in% names(scales)]
+                   scales <- c(scales, default.scales[!names(default.scales) %in% names(scales)])
+
+                   ## deal with embedded lists 
+                   for (arg in matching.args) {
+                       scales[[arg]] <- c(scales[[arg]], default.scales[[arg]][!names(default.scales[[arg]]) %in% names(scales[[arg]])])
+                   }
               }
 
               default.xlab <- list(label="Resolution (multiple of native pixel size)")
               if (missing(xlab)) {
                   xlab <- default.xlab
               } else {
-                  xlab <- c(xlab, default.xlab[!names(default.xlab) %in% names(xlab)])
+                   matching.args <- names(default.xlab)[names(default.xlab) %in% names(xlab)]
+                   xlab <- c(xlab, default.xlab[!names(default.xlab) %in% names(xlab)])
+
+                   ## deal with embedded lists 
+                   for (arg in matching.args) {
+                       xlab[[arg]] <- c(xlab[[arg]], default.xlab[[arg]][!names(default.xlab[[arg]]) %in% names(xlab[[arg]])])
+                   }
               }
 
               default.ylab <- list(label="Figure of merit")
               if (missing(ylab)) {
                   ylab <- default.ylab
               } else {
-                  ylab <- c(ylab, default.ylab[!names(default.ylab) %in% names(ylab)])
+                   matching.args <- names(default.ylab)[names(default.ylab) %in% names(ylab)]
+                   ylab <- c(ylab, default.ylab[!names(default.ylab) %in% names(ylab)])
+
+                   ## deal with embedded lists 
+                   for (arg in matching.args) {
+                       ylab[[arg]] <- c(ylab[[arg]], default.ylab[[arg]][!names(default.ylab[[arg]]) %in% names(ylab[[arg]])])
+                   }
               }
 
               p <- lattice::xyplot(y~x,

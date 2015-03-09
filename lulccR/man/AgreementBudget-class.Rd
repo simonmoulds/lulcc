@@ -10,22 +10,21 @@ between three categorical raster maps.
 \section{Slots}{
 
 \describe{
-\item{\code{agreement}}{data.frame containing sources of agreement and disagreement.
-Rows represent different resolutions and columns represent the different
-types of agreement and disagreement}
+\item{\code{tables}}{list of data.frames that depict the three dimensional table
+described by Pontius et al. (2011) at different resolutions}
 
 \item{\code{factors}}{numeric vector of aggregation factors}
 
-\item{\code{type}}{character. Either 'overall' (considering all possible transitions),
-'category' (all transitions from one category) or 'transition' (specific
-transition)}
+\item{\code{categories}}{numeric vector of land use categories}
 
-\item{\code{categories}}{numeric vector of land use categories in the three
-maps considered}
+\item{\code{labels}}{character vector corresponding to \code{categories}}
 
-\item{\code{labels}}{character vector with labels corresponding to \code{categories}}
+\item{\code{overall}}{data.frame containing the overall agreement budget}
 
-\item{\code{from,to}}{numeric vectors that together define the land use transitions
-  for which agreement was calculated}
+\item{\code{category}}{list of data.frames showing the agreement budget for each
+category}
+
+\item{\code{transition}}{list of data.frames showing the agreement budget for all
+  possible transitions}
 }}
 

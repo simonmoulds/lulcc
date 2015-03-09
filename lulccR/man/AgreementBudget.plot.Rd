@@ -7,14 +7,22 @@
 \usage{
 AgreementBudget.plot(x, ...)
 
-\S4method{AgreementBudget.plot}{AgreementBudget}(x,
+\S4method{AgreementBudget.plot}{AgreementBudget}(x, from, to,
   col = RColorBrewer::brewer.pal(5, "Set2"), key, scales, xlab, ylab, ...)
 }
 \arguments{
 \item{x}{object of class \code{AgreementBudget}}
 
-\item{col}{character specifying the plotting colour. Default is to use the 'Set2'
-palette from \code{RColorBrewer}}
+\item{from}{optional numeric value representing a land use category. If
+provided without \code{to} the figure of merit for all transitions from this
+category will be plotted}
+
+\item{to}{similar to \code{from}. If provided with a valid \code{from}
+argument the transition defined by these two arguments (i.e. \code{from} ->
+\code{to}) will be plotted}
+
+\item{col}{character specifying the plotting colour. Default is to use the
+'Set2' palette from \code{RColorBrewer}}
 
 \item{key}{list. See \code{lattice::\link[lattice]{xyplot}}}
 

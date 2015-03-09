@@ -1,3 +1,6 @@
+#' @include class-ThreeMapComparison.R
+NULL
+
 #' Create an AgreementBudget object
 #' 
 #' This function quantifies sources of agreement and disagreement between a
@@ -16,13 +19,9 @@
 #'   \item Change simulated as persistence (disagreement)
 #' }
 #'
-#' @param x a \code{ThreeMapComparison} object
-#' @param from optional numeric value representing a land use category. If 
-#'   provided, results will be restricted to transitions from this category
-#' @param to similar to \code{from}. If provided with a valid \code{from}
-#'   argument the result will be restricted to the transition defined by
-#'   these two arguments (i.e. \code{from} -> \code{to})
-#' @param \dots additional arguments (none) 
+#' @param x a ThreeMapComparison object or RasterLayer
+#' @param \dots additional arguments to ThreeMapComparison. Only required if x is
+#'   not a ThreeMapComparison object
 #'
 #' @seealso \code{\link{AgreementBudget-class}},
 #' \code{\link{AgreementBudget.plot}}, \code{\link{ThreeMapComparison}},
@@ -31,6 +30,7 @@
 #' @return An \code{AgreementBudget} object.
 #'
 #' @export
+#' @rdname AgreementBudget
 #' 
 #' @references Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
 #' Comparison of three maps at multiple resolutions: a case study of land change
@@ -52,56 +52,78 @@
 #' p <- AgreementBudget.plot(x=sib.clues.agr)
 #' print(p)
 
-AgreementBudget <- function(x, from, to, ...) {
+setGeneric("AgreementBudget", function(x, ...)
+           standardGeneric("AgreementBudget"))
 
-    categories <- x@categories
-    labels <- x@labels
-    factors <- x@factors
-    tables <- x@tables
+#' @rdname AgreementBudget
+#' @aliases AgreementBudget,ThreeMapComparison-method
+setMethod("AgreementBudget", signature(x = "ThreeMapComparison"),
+          function(x, ...) {
 
-    if (!missing(from) && missing(to)) type <- "category"
+              ## overall
+              overall.agr <- .agreementBudget(tables=x@tables,
+                                              factors=x@factors,
+                                              categories=x@categories,
+                                              type="overall",
+                                              from.ix=1:length(x@categories),
+                                              to.ix=1:length(x@categories))
 
-    if (!missing(from)) {
-        from.ix <- which(categories %in% from)
-        if (length(from.ix) > 1) {
-            stop("'from' must be a single land use category")
-        } else if (length(from.ix) == 0) {
-            stop("'from' is not a valid land use category")
-        }
+              ## category
+              category.agr <- list()
+              for (i in 1:length(x@categories)) {
+                  category.agr[[i]] <- .agreementBudget(tables=x@tables,
+                                                        factors=x@factors,
+                                                        type="category",
+                                                        categories=x@categories,
+                                                        from.ix=i,
+                                                        to.ix=1:length(x@categories))
+              }
+              names(category.agr) <- x@labels
 
-    } else {
-        type <- "overall"
-        from <- categories
-        from.ix <- 1:length(categories)
-    }
+              ## transition
+              transition.agr <- list()
+              for (i in 1:length(x@categories)) {
+                  for (j in 1:length(x@categories)) {
+                      ix <- (i-1) * length(x@categories) + j
+                      transition.agr[[ix]] <- .agreementBudget(tables=x@tables,
+                                                               factors=x@factors,
+                                                               type="transition",
+                                                               categories=x@categories,
+                                                               from.ix=i,
+                                                               to.ix=j)
 
-    if (!missing(from) && !missing(to)) {
-        to.ix <- which(categories %in% to)
-        if (length(to.ix) > 1) {
-            stop("'to' must be a single land use category")
-        } else if (length(to.ix) == 0) {
-            stop("'to' is not a valid land use category")
-        }
-        if (from.ix == to.ix) stop("'from' cannot equal 'to'")
-        type <- "transition"        
-    } else {
-        to <- categories
-        to.ix <- 1:length(categories)
-    }   
+                  }
+              }
+              names(transition.agr) <- paste0(rep(x@labels, each=length(x@categories)), "-", rep(x@labels, length(x@categories)))
 
+              new("AgreementBudget", x, overall=overall.agr, category=category.agr, transition=transition.agr)
+          }
+)
+
+#' @rdname AgreementBudget
+#' @aliases AgreementBudget,RasterLayer-method
+setMethod("AgreementBudget", signature(x = "RasterLayer"),
+          function(x, ...) {
+              x <- ThreeMapComparison(x, ...)
+              agreement <- AgreementBudget(x)
+          }
+)
+
+.agreementBudget <- function(tables, factors, categories, type, from.ix=NA, to.ix=NA) {
+    
     ## number of sources of agreement/disagreement (correct persistence not possible with 'transition')
     if (type == "transition") {
         n <- 4
     } else {
         n <- 5
     }
-
+    
     ## preallocate output data.frame
     agreement <- as.data.frame(matrix(data=NA, nrow=length(factors), ncol=n))
     names(agreement) <- c("a","b","c","d","e")[1:n]
 
-    for (f in 1:length(x@tables)) {
-        tab <- x@tables[[f]]
+    for (f in 1:length(tables)) {
+        tab <- tables[[f]]
 
         ## change simulated as persistence
         a <- rep(0, length(categories))
@@ -192,18 +214,9 @@ AgreementBudget <- function(x, from, to, ...) {
             agreement[f,] <- c(a, b, c, d, e)
         } else {
             agreement[f,] <- c(a, b, c, d)
-        }
-
+        }        
     }
-
-    out <- new("AgreementBudget",
-               agreement=agreement,
-               factors=factors,
-               type=type,
-               categories=categories,
-               labels=labels,
-               from=from,
-               to=to)
+    
+    agreement
 
 }
-

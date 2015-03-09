@@ -9,17 +9,20 @@ An S4 class for different figure of merit scores.
 \section{Slots}{
 
 \describe{
-\item{\code{overall}}{list containing the overall figure of merit score for each
-aggregation factor}
-
-\item{\code{category}}{list of numeric vectors containing category specific scores}
-
-\item{\code{transition}}{list of matrices containing transition specific scores}
+\item{\code{tables}}{list of data.frames that depict the three dimensional table
+described by Pontius et al. (2011) at different resolutions}
 
 \item{\code{factors}}{numeric vector of aggregation factors}
 
 \item{\code{categories}}{numeric vector of land use categories}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}
+
+\item{\code{overall}}{list containing the overall figure of merit score for each
+aggregation factor}
+
+\item{\code{category}}{list of numeric vectors containing category specific scores}
+
+\item{\code{transition}}{list of matrices containing transition specific scores}
 }}
 

@@ -20,11 +20,69 @@
 #' Geographers 101(1): 45-62.
 
 setClass("ThreeMapComparison",
-         representation(
-             tables = "list",
-             factors = "numeric",
-             categories = "numeric",
-             labels = "character"),
+         slots = c(tables = "list",
+                   factors = "numeric",
+                   categories = "numeric",
+                   labels = "character"),
+         validity = function(object) {
+             ## TODO
+             return(TRUE)
+         }
+)
+
+#' Class AgreementBudget
+#'
+#' An S4 class for information about sources of agreement and disagreement
+#' between three categorical raster maps.
+#'
+#' @slot tables list of data.frames that depict the three dimensional table
+#'   described by Pontius et al. (2011) at different resolutions
+#' @slot factors numeric vector of aggregation factors
+#' @slot categories numeric vector of land use categories
+#' @slot labels character vector corresponding to \code{categories}
+#' @slot overall data.frame containing the overall agreement budget
+#' @slot category list of data.frames showing the agreement budget for each
+#'   category
+#' @slot transition list of data.frames showing the agreement budget for all
+#'   possible transitions
+#'
+#' @export
+#' @exportClass AgreementBudget
+#' @rdname AgreementBudget-class
+
+setClass("AgreementBudget",
+         contains = c("ThreeMapComparison"),
+         slots = c(overall = "data.frame",
+                   category = "list",
+                   transition = "list"),
+         validity = function(object) {
+             ## TODO
+             return(TRUE)
+         }
+)
+
+#' Class FigureOfMerit
+#'
+#' An S4 class for different figure of merit scores.
+#'
+#' @slot tables list of data.frames that depict the three dimensional table
+#'   described by Pontius et al. (2011) at different resolutions
+#' @slot factors numeric vector of aggregation factors
+#' @slot categories numeric vector of land use categories
+#' @slot labels character vector corresponding to \code{categories}
+#' @slot overall list containing the overall figure of merit score for each
+#'   aggregation factor
+#' @slot category list of numeric vectors containing category specific scores
+#' @slot transition list of matrices containing transition specific scores
+#' 
+#' @export
+#' @exportClass FigureOfMerit
+#' @rdname FigureOfMerit-class
+setClass("FigureOfMerit",
+         contains = c("ThreeMapComparison"),
+         slots = c(overall = "list",
+                   category = "list",
+                   transition = "list"),
          validity = function(object) {
              ## TODO
              return(TRUE)

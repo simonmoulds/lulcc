@@ -1,3 +1,6 @@
+#' @include class-ThreeMapComparison.R
+NULL
+
 #' Create a FigureOfMerit object
 #'
 #' Calculate the figure of merit at different levels and at different resolutions
@@ -12,31 +15,48 @@
 #' specific land use categories and (3) considering a specific transition from
 #' one land use category to another.
 #'
-#' @param x a \code{ThreeMapComparison} object
-#' @param \dots additional arguments (none)
+#' @param x a ThreeMapComparison object or RasterLayer
+#' @param \dots additional arguments to ThreeMapComparison. Only required if x is
+#'   not a ThreeMapComparison object
 #'
 #' @seealso \code{\link{FigureOfMerit.plot}}, \code{\link{ThreeMapComparison}}
 #' @return A FigureOfMerit object.
 #'
 #' @export
+#' @rdname FigureOfMerit
 #'
 #' @references Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
 #' Comparison of three maps at multiple resolutions: a case study of land change
 #' simulation in Cho Don District, Vietnam. Annals of the Association of American
 #' Geographers 101(1): 45-62.
 
+setGeneric("FigureOfMerit", function(x, ...)
+           standardGeneric("FigureOfMerit"))
+
+#' @rdname FigureOfMerit
+#' @aliases FigureOfMerit,RasterLayer-method
+setMethod("FigureOfMerit", signature(x = "RasterLayer"),
+          function(x, ...) {
+              x <- ThreeMapComparison(x, ...)
+              fom <- FigureOfMerit(x)
+          }
+)
+
+#' @rdname FigureOfMerit
+#' @aliases FigureOfMerit,ThreeMapComparison-method
+setMethod("FigureOfMerit", signature(x = "ThreeMapComparison"),
+          function(x, ...) {
+              fom <- .figureOfMerit(tables=x@tables, factors=x@factors, categories=x@categories)
+              fom <- new("FigureOfMerit", x, overall=fom$overall, category=fom$category, transition=fom$transition)
+          }
+)
+
 ## NB Equation numbers refer to those in Pontius et al. (2011)
-FigureOfMerit <- function(x, ...) {
+.figureOfMerit <- function(tables, factors, categories) {
 
-    ## retrieve information from x
-    categories <- x@categories
-    labels <- x@labels
-    factors <- x@factors
-    tables <- x@tables 
-
-    overall.list <- list()
-    category.list <- list()
-    transition.list <- list()
+    overall.fom <- list()
+    category.fom <- list()
+    transition.fom <- list()
 
     for (f in 1:length(factors)) {
 
@@ -54,7 +74,7 @@ FigureOfMerit <- function(x, ...) {
             b <- sum(c(b, tab[b.ixy, b.ixx]), na.rm=TRUE) ## expression right of minus sign in numerator
         }
 
-        overall.list[[f]] <- (a - b) / (1 - b) ## Equation 9
+        overall.fom[[f]] <- (a - b) / (1 - b) ## Equation 9
 
         ## Equation 10 (figure of merit for each category)
         eq10 <- rep(0, length(categories))
@@ -75,7 +95,7 @@ FigureOfMerit <- function(x, ...) {
             c <- tab[c.ixy, c.ixx] ## expression right of plus sign in numerator
             eq10[i] <- (a - c) / (b - c) ## Equation 10
         }
-        category.list[[f]] <- eq10
+        category.fom[[f]] <- eq10
 
         ## Equation 11 (figure of merit for each transition)
         eq11 <- matrix(data=0, nrow=length(categories), ncol=length(categories))
@@ -98,15 +118,11 @@ FigureOfMerit <- function(x, ...) {
                 eq11[i,j] <- a / (b + c - a) ## Equation 11
             }
         }
-        transition.list[[f]] <- eq11
+        transition.fom[[f]] <- eq11
     }
 
-    out <- new("FigureOfMerit",
-               overall=overall.list,
-               category=category.list,
-               transition=transition.list,
-               factors=factors,
-               categories=categories,
-               labels=labels)
+    list(overall=overall.fom, category=category.fom, transition=transition.fom)
 
 }
+
+    

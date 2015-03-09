@@ -1,4 +1,4 @@
-#' @include class-AgreementBudget.R
+#' @include class-ThreeMapComparison.R
 NULL
 
 #' Plot method for AgreementBudget objects
@@ -8,8 +8,14 @@ NULL
 #' The plot layout is based on work presented in Pontius et al. (2011)
 #'
 #' @param x object of class \code{AgreementBudget}
-#' @param col character specifying the plotting colour. Default is to use the 'Set2'
-#'   palette from \code{RColorBrewer}
+#' @param from optional numeric value representing a land use category. If 
+#'   provided without \code{to} the figure of merit for all transitions from this
+#'   category will be plotted
+#' @param to similar to \code{from}. If provided with a valid \code{from}
+#'   argument the transition defined by these two arguments (i.e. \code{from} ->
+#'   \code{to}) will be plotted
+#' @param col character specifying the plotting colour. Default is to use the
+#'   'Set2' palette from \code{RColorBrewer}
 #' @param key list. See \code{lattice::\link[lattice]{xyplot}}
 #' @param scales list. See \code{lattice::\link[lattice]{xyplot}}
 #' @param xlab character or expression. See \code{lattice::\link[lattice]{xyplot}} 
@@ -33,10 +39,38 @@ setGeneric("AgreementBudget.plot", function(x, ...)
 #' @rdname AgreementBudget.plot
 #' @aliases AgreementBudget.plot,AgreementBudget-method
 setMethod("AgreementBudget.plot", signature(x = "AgreementBudget"),
-          function(x, col=RColorBrewer::brewer.pal(5, "Set2"), key, scales, xlab, ylab, ...) {
-            
+          function(x, from, to, col=RColorBrewer::brewer.pal(5, "Set2"), key, scales, xlab, ylab, ...) {
+
+              if (!missing(from) && missing(to)) type <- "category"
+
+              if (!missing(from)) {
+                  from.ix <- which(x@categories %in% from)
+                  if (length(from.ix) > 1) {
+                      stop("'from' must be a single land use category")
+                  } else if (length(from.ix) == 0) {
+                      stop("'from' is not a valid land use category")
+                  }
+
+              } else {
+                  type <- "overall"
+              }
+
+              if (!missing(from) && !missing(to)) {
+                  to.ix <- which(x@categories %in% to)
+                  if (length(to.ix) > 1) {
+                      stop("'to' must be a single land use category")
+                  } else if (length(to.ix) == 0) {
+                      stop("'to' is not a valid land use category")
+                  }
+                  if (from.ix == to.ix) stop("'from' cannot equal 'to'")
+                  type <- "transition"        
+              } 
+              
+              if (type %in% c("overall"))     agreement <- x@overall
+              if (type %in% c("category"))    agreement <- x@category[[from.ix]]
+              if (type %in% c("transition"))  agreement <- x@transition[[ ((from.ix - 1) * length(x@categories) + to.ix) ]]
+              
               dots <- list(...)
-              #cols <- pal #RColorBrewer::brewer.pal(5, pal)
               border.col <- rep("black", 5)
               labels <- c("change simulated as persistence",
                           "change simulated correctly",
@@ -45,7 +79,7 @@ setMethod("AgreementBudget.plot", signature(x = "AgreementBudget"),
                           "persistence simulated correctly")
 
                ## number of sources of agreement and disagreement (correct persistence not possible for 'transition')
-               if (x@type == "overall" || x@type == "category") {
+               if (type == "overall" || type == "category") {
                    n <- 5
                } else {
                    n <- 4
@@ -54,7 +88,7 @@ setMethod("AgreementBudget.plot", signature(x = "AgreementBudget"),
                    labels <- c(labels[1:n], "")
                }
 
-               data <- t(apply(x@agreement, 1, cumsum))
+               data <- t(apply(agreement, 1, cumsum))
                data <- cbind(data.frame(origin=rep(0, nrow(data))), data)
                data.list <- list()
 
@@ -72,28 +106,55 @@ setMethod("AgreementBudget.plot", signature(x = "AgreementBudget"),
                if (missing(key)) {
                    key <- default.key
                } else if (!is.null(key)) {
+                   matching.args <- names(default.key)[names(default.key) %in% names(key)]
                    key <- c(key, default.key[!names(default.key) %in% names(key)])
+
+                   ## deal with embedded lists 
+                   for (arg in matching.args) {
+                       key[[arg]] <- c(key[[arg]], default.key[[arg]][!names(default.key[[arg]]) %in% names(key[[arg]])])
+                   }
                }
 
                default.scales <- list(x=list(at=1:length(x@factors), labels=x@factors))
                if (missing(scales)) {
                    scales <- default.scales
                } else {
+                   matching.args <- names(default.scales)[names(default.scales) %in% names(scales)]
                    scales <- c(scales, default.scales[!names(default.scales) %in% names(scales)])
+
+                   ## deal with embedded lists 
+                   for (arg in matching.args) {
+                       scales[[arg]] <- c(scales[[arg]], default.scales[[arg]][!names(default.scales[[arg]]) %in% names(scales[[arg]])])
+                   }
+                   
                }
 
                default.xlab <- list(label="Resolution (multiple of native pixel size)")
                if (missing(xlab)) {
                    xlab <- default.xlab
                } else {
+                   matching.args <- names(default.xlab)[names(default.xlab) %in% names(xlab)]
                    xlab <- c(xlab, default.xlab[!names(default.xlab) %in% names(xlab)])
+
+                   ## deal with embedded lists 
+                   for (arg in matching.args) {
+                       xlab[[arg]] <- c(xlab[[arg]], default.xlab[[arg]][!names(default.xlab[[arg]]) %in% names(xlab[[arg]])])
+                   }
+                   
                }
 
                default.ylab <- list(label="Fraction of study area")
                if (missing(ylab)) {
                    ylab <- default.ylab
                } else {
+                   matching.args <- names(default.ylab)[names(default.ylab) %in% names(ylab)]
                    ylab <- c(ylab, default.ylab[!names(default.ylab) %in% names(ylab)])
+
+                   ## deal with embedded lists 
+                   for (arg in matching.args) {
+                       ylab[[arg]] <- c(ylab[[arg]], default.ylab[[arg]][!names(default.ylab[[arg]]) %in% names(ylab[[arg]])])
+                   }
+                   
                }
 
                lattice::lattice.options(axis.padding=list(numeric=0))
