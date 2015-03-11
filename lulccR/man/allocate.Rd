@@ -31,16 +31,7 @@ al., 2002) and an ordered procedure based on the algorithm described by Fuchs
 et al., (2013), modified to allow stochastic transitions.
 }
 \examples{
-## Sibuyan Island
-
-## load clues.model for Sibuyan Island
-sib.clues.model <- sibuyan$intermediate$clues.model
-
-## allocate
-sib.clues.model <- allocate(sib.clues.model)
-
-library(raster)
-plot(sib.clues.model@output[[15]])
+## see lulccR-package examples
 }
 \references{
 Fuchs, R., Herold, M., Verburg, P.H., and Clevers, J.G.P.W. (2013). A

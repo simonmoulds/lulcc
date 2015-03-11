@@ -35,6 +35,8 @@ This function extracts data from all raster objects in a
 variables are present).
 }
 \examples{
+\dontrun{
+
 ## Plum Island Ecosystems
 obs <- ObsLulcMaps(x=pie,
                    pattern="lu",
@@ -45,6 +47,7 @@ obs <- ObsLulcMaps(x=pie,
 ef <- ExpVarMaps(x=pie, pattern="ef")
 part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
 efdf <- as.data.frame(x=ef, cells=part$train)
+}
 }
 \seealso{
 \code{\link[base]{as.data.frame}}, \code{\link{ExpVarMaps}},

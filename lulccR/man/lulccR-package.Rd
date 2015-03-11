@@ -59,6 +59,8 @@ utility functions to assist with the model building process. Two example
 datasets are also included.
 }
 \examples{
+\dontrun{
+
 ## Complete example for Plum Island Ecosystems dataset
 
 ## Load observed land use maps
@@ -144,6 +146,7 @@ print(p)
 pie.ordered.fom <- FigureOfMerit(x=pie.ordered.tabs)
 p <- FigureOfMerit.plot(x=pie.ordered.fom, from=1, to=2)
 print(p)
+}
 }
 \author{
 Simon Moulds

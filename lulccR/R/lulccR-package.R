@@ -76,6 +76,8 @@ NULL
 #'
 #' @examples
 #'
+#' \dontrun{
+#'
 #' ## Complete example for Plum Island Ecosystems dataset
 #'
 #' ## Load observed land use maps
@@ -161,4 +163,5 @@ NULL
 #' pie.ordered.fom <- FigureOfMerit(x=pie.ordered.tabs)
 #' p <- FigureOfMerit.plot(x=pie.ordered.fom, from=1, to=2)
 #' print(p)
+#' }
 NULL

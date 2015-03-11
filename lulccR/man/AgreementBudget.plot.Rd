@@ -44,7 +44,7 @@ Plot an \code{\link{AgreementBudget}} object.
 The plot layout is based on work presented in Pontius et al. (2011)
 }
 \examples{
-## see AgreementBudget examples
+## see lulccR-package examples
 }
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).

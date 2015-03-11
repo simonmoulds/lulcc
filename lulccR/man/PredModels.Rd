@@ -36,6 +36,8 @@ A \code{\link{PredModels}} object.
 Methods to create a \code{\link{PredModels-class}} object.
 }
 \examples{
+\dontrun{
+
 ## Plum Island Ecosystems
 
 ## Load observed land use maps
@@ -120,6 +122,7 @@ p <- Performance.plot(list(glm=glm.perf, rpart=rp.perf, rf=rf.perf),
 
 ## view plot
 print(p)
+}
 }
 \seealso{
 \code{\link[stats]{glm}}, \code{rpart::\link[rpart]{rpart}},

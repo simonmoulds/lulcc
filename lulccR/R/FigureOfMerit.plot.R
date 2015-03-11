@@ -33,7 +33,7 @@ NULL
 #'
 #' @examples
 #'
-#' ## see FigureOfMerit examples
+#' ## see lulccR-package examples
 
 setGeneric("FigureOfMerit.plot", function(x, ...)
            standardGeneric("FigureOfMerit.plot"))

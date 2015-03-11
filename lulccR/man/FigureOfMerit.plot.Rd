@@ -46,7 +46,7 @@ Plot the overall, category-specific or transition-specific figure of merit at
 different resolutions.
 }
 \examples{
-## see FigureOfMerit examples
+## see lulccR-package examples
 }
 \seealso{
 \code{\link{FigureOfMerit}}, \code{lattice::\link[lattice]{xyplot}},

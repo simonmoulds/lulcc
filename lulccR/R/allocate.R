@@ -31,16 +31,7 @@ NULL
 #'
 #' @examples
 #'
-#' ## Sibuyan Island
-#'
-#' ## load clues.model for Sibuyan Island
-#' sib.clues.model <- sibuyan$intermediate$clues.model
-#'
-#' ## allocate
-#' sib.clues.model <- allocate(sib.clues.model)
-#'
-#' library(raster)
-#' plot(sib.clues.model@@output[[15]])
+#' ## see lulccR-package examples
 
 setGeneric("allocate", function(model, ...)
            standardGeneric("allocate"))

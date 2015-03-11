@@ -4,21 +4,58 @@ Version: 0.1.0
 Author: Simon Moulds <simonm@riseup.net>
 Maintainer: Simon Moulds <simonm@riseup.net>
 Description: Classes and methods for land use change modelling in R
-Depends: methods, raster, R (>= 3.1.0)
+Depends:
+    methods,
+    raster,
+    R (>= 3.1.0)
 License: GPL-3
 LazyData: true
-Imports: ROCR
-Suggests: rpart, randomForest, caret, gsubfn, Hmisc, knitr, lattice,
-        plyr, RColorBrewer
-Collate: 'class-ThreeMapComparison.R' 'AgreementBudget.R'
-        'AgreementBudget.plot.R' 'class-ExpVarMaps.R' 'ExpVarMaps.R'
-        'FigureOfMerit.R' 'FigureOfMerit.plot.R' 'class-PredModels.R'
-        'class-ObsLulcMaps.R' 'class-NeighbMaps.R' 'class-ModelInput.R'
-        'ModelInput.R' 'NeighbMaps.R' 'ObsLulcMaps.R'
-        'class-Performance.R' 'Performance.R' 'Performance.plot.R'
-        'PredModels.R' 'class-Prediction.R' 'Prediction.R'
-        'ThreeMapComparison.R' 'allocate.R' 'allow.R' 'allowNeighb.R'
-        'approxExtrapDemand.R' 'as.data.frame.R' 'calcProb.R'
-        'compareAUC.R' 'crossTabulate.R' 'data.R' 'lulccR-package.R'
-        'partition.R' 'performance.rocr.R' 'resample.R' 'total.R'
+Imports:
+    ROCR
+Suggests:
+    rpart,
+    randomForest,
+    caret,
+    gsubfn,
+    Hmisc,
+    knitr,
+    lattice,
+    plyr,
+    RColorBrewer
+Collate:
+    'class-ThreeMapComparison.R'
+    'AgreementBudget.R'
+    'AgreementBudget.plot.R'
+    'class-ExpVarMaps.R'
+    'ExpVarMaps.R'
+    'FigureOfMerit.R'
+    'FigureOfMerit.plot.R'
+    'class-PredModels.R'
+    'class-ObsLulcMaps.R'
+    'class-NeighbMaps.R'
+    'class-ModelInput.R'
+    'ModelInput.R'
+    'NeighbMaps.R'
+    'ObsLulcMaps.R'
+    'class-Performance.R'
+    'Performance.R'
+    'Performance.plot.R'
+    'PredModels.R'
+    'class-Prediction.R'
+    'Prediction.R'
+    'ThreeMapComparison.R'
+    'allocate.R'
+    'allow.R'
+    'allowNeighb.R'
+    'approxExtrapDemand.R'
+    'as.data.frame.R'
+    'calcProb.R'
+    'compareAUC.R'
+    'crossTabulate.R'
+    'data.R'
+    'lulccR-package.R'
+    'partition.R'
+    'performance.rocr.R'
+    'resample.R'
+    'total.R'
 Packaged: 2015-03-11 15:13:21 UTC; simon

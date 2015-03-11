@@ -27,6 +27,8 @@ NULL
 #'
 #' @examples
 #'
+#' \dontrun{
+#'
 #' ## Plum Island Ecosystems
 #' obs <- ObsLulcMaps(x=pie,
 #'                    pattern="lu",
@@ -37,6 +39,7 @@ NULL
 #' ef <- ExpVarMaps(x=pie, pattern="ef")
 #' part <- partition(x=obs@@maps[[1]], size=0.5, spatial=FALSE)
 #' efdf <- as.data.frame(x=ef, cells=part$train)
+#' }
 
 setGeneric("as.data.frame")
 

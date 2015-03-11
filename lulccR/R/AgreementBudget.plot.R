@@ -35,7 +35,7 @@ NULL
 #'
 #' @examples
 #'
-#' ## see AgreementBudget examples
+#' ## see lulccR-package examples
 
 setGeneric("AgreementBudget.plot", function(x, ...)
            standardGeneric("AgreementBudget.plot"))

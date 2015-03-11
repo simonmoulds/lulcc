@@ -22,12 +22,15 @@ NULL
 #'
 #' @examples
 #'
+#' \dontrun{
+#'
 #' ## create ExpVarMaps object
 #' ef <- ExpVarMaps(x=pie, pattern="ef")
 #'
 #' ## resample to ensure maps have same characteristics as observed maps
 #' ef <- resample(x=ef, y=pie$lu_pie_1985, method="ngb")
- 
+#' }
+
 setGeneric("resample")
 
 #' @rdname resample

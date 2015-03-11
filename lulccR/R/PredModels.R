@@ -23,7 +23,9 @@ NULL
 #' @rdname PredModels
 #'
 #' @examples
-#' 
+#'
+#' \dontrun{
+#'
 #' ## Plum Island Ecosystems
 #'
 #' ## Load observed land use maps
@@ -108,6 +110,7 @@ NULL
 #'
 #' ## view plot
 #' print(p)
+#' }
 
 setGeneric("PredModels", function(models, obs, categories, labels, ...)
            standardGeneric("PredModels"))

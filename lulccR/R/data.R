@@ -36,13 +36,6 @@
 #'     \item{demand3}{data.frame with demand scenario representing land use
 #'     change primarily for food production}
 #'   }
-#'   \item{intermediate}{list of two intermediate outputs, for demonstration
-#'   purposes:}
-#'   \describe{
-#'     \item{glm.models}{PredModels object representing Sibuyan land use
-#'     categories}
-#'     \item{clues.model}{CluesModel object}
-#'   }
 #' }
 #'
 #' @references Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,

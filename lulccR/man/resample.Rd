@@ -31,11 +31,14 @@ A wrapper function for \code{raster::\link[raster]{resample}} to resample
 raster objects in an ExpVarMaps object or list.
 }
 \examples{
+\dontrun{
+
 ## create ExpVarMaps object
 ef <- ExpVarMaps(x=pie, pattern="ef")
 
 ## resample to ensure maps have same characteristics as observed maps
 ef <- resample(x=ef, y=pie$lu_pie_1985, method="ngb")
+}
 }
 \seealso{
 \code{\link{ExpVarMaps}}, \code{raster::\link[raster]{resample}}

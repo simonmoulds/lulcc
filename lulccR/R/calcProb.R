@@ -29,13 +29,15 @@ setOldClass(c("randomForest.formula","randomForest"))
 #'
 #' @examples
 #'
+#' \dontrun{
+#'
 #' ## Sibuyan Island
 #'
 #' ## load observed land use data
 #' obs <- ObsLulcMaps(x=sibuyan$maps,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3,4,5),
-#'                     labels=c("forest","coconut","grass","rice","other"),
+#'                     labels=c("Forest","Coconut","Grass","Rice","Other"),
 #'                     t=c(0,14))
 #'
 #' ## load explanatory variables
@@ -43,14 +45,41 @@ setOldClass(c("randomForest.formula","randomForest"))
 #' part <- partition(x=obs@@maps[[1]], size=0.5, spatial=FALSE)
 #' efdf <- as.data.frame(x=ef, cells=part$all)
 #'
-#' ## get glm.models from data
-#' glm.models <- sibuyan$intermediate$glm.models
+#' ## get training data
+#' br <- raster::layerize(obs@@maps[[1]]) 
+#' names(br) <- obs@@labels
+#' train.df <- raster::extract(x=br, y=part$train, df=TRUE)
+#' train.df <- cbind(train.df, as.data.frame(x=ef, cells=part$train))
+#'
+#' ## fit glm models
+#' forest.glm <- glm(Forest ~ ef_001+ef_002+ef_003+ef_004+ef_005
+#'                            +ef_006+ef_007+ef_008+ef_010+ef_012,
+#'                   family=binomial, data=train.df)
+#' 
+#' coconut.glm <- glm(Coconut ~ ef_001+ef_002+ef_005+ef_007+ef_008
+#'                              +ef_009+ef_010+ef_011+ef_012,
+#'                    family=binomial, data=train.df)
+#' 
+#' grass.glm <- glm(Grass ~ ef_001+ef_002+ef_004+ef_005+ef_007
+#'                              +ef_008+ef_009+ef_010+ef_011+ef_012+ef_013,
+#'                  family=binomial, data=train.df)
+#'
+#' rice.glm <- glm(Rice~ef_009+ef_010+ef_011,
+#'                 family=binomial, data=train.df)
+#'
+#' other.glm <- glm(Other~1, family=binomial, data=train.df)
+#'
+#' ## create PredModels object
+#' glm.models <- PredModels(models=list(forest.glm, coconut.glm, grass.glm,
+#'                                      rice.glm, other.glm),
+#'                          obs=obs)
 #'
 #' probmaps <- calcProb(object=glm.models, newdata=efdf, df=TRUE)
 #' points <- rasterToPoints(obs@@maps[[1]], spatial=TRUE)
 #' probmaps <- SpatialPointsDataFrame(coords=points, data=probmaps)
 #' r <- rasterize(x=probmaps, y=obs@@maps[[1]], field=names(probmaps))
 #' plot(stack(r))
+#' }
 
 setGeneric("calcProb", function(object, ...)
            standardGeneric("calcProb"))

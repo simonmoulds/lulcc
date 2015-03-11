@@ -32,19 +32,7 @@ NULL
 #'
 #' @examples
 #'
-#' ## Example for Sibuyan Island
-#'
-#' ## get CluesModel object from data
-#' sib.clues.model <- sibuyan$intermediate$clues.model
-#'
-#' ## validation
-#' sib.clues.tables <- ThreeMapComparison(x=sib.clues.model,
-#'                                        factors=2^(1:9),
-#'                                        timestep=14)
-#'
-#' sib.clues.fom <- FigureOfMerit(x=sib.clues.tables)
-#' p <- FigureOfMerit.plot(x=sib.clues.fom)
-#' print(p)
+#' ## see lulccR-package examples
 
 setGeneric("FigureOfMerit", function(x, ...)
            standardGeneric("FigureOfMerit"))
