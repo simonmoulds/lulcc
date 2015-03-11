@@ -11,7 +11,7 @@ ModelInput(obs, ef, models, time, demand, ...)
   models, time, demand, hist, mask, neighb = NULL, ...)
 }
 \arguments{
-\item{obs}{an ObsLulcMaps object or a ModelInput object}
+\item{obs}{an ObsLulcMaps or ModelInput object}
 
 \item{ef}{an ExpVarMaps object}
 
@@ -42,6 +42,9 @@ A ModelInput object.
 Methods to combine several object classes that are useful for land use change
 modelling and perform checks to ensure the objects are compatible in time and
 space for a model simulation.
+}
+\examples{
+## see lulccR-package examples
 }
 \seealso{
 \code{\link{ModelInput-class}}

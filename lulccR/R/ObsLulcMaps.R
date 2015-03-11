@@ -14,8 +14,8 @@ NULL
 #'   behaviour is to search for files in the working directory
 #' @param pattern regular expression (character). Only filenames (if \code{x} is
 #'   a path) or Raster* objects (if \code{x} is a list) matching the regular
-#'   expression will be returned. See \code{raster::\link[raster]{raster}} for
-#'   more information about supported filetypes
+#'   expression will be returned. See \cr
+#'   \code{raster::\link[raster]{raster}} for more information about supported filetypes
 #' @param categories numeric vector of land use categories in observed maps
 #' @param labels character vector (optional) with labels corresponding to
 #'   \code{categories}
@@ -24,6 +24,8 @@ NULL
 #' @param \dots additional arguments to \code{raster::\link[raster]{stack}}
 #'
 #' @return An ObsLulcMaps object.
+#'
+#' @seealso \code{\link{ObsLulcMaps-class}}, \code{raster::\link[raster]{stack}}
 #'
 #' @export
 #' @rdname ObsLulcMaps
@@ -38,7 +40,7 @@ NULL
 #'                    t=c(0,6,14))
 #'
 #' ## Sibuyan Island
-#' obs <- ObsLulcMaps(x=sibuyan,
+#' obs <- ObsLulcMaps(x=sibuyan$maps,
 #'                    pattern="lu",
 #'                    categories=c(1,2,3,4,5),
 #'                    labels=c("forest","coconut","grass","rice","other"),
@@ -113,8 +115,9 @@ setMethod("ObsLulcMaps", signature(x = "RasterStack", pattern = "ANY"),
                   labels <- labels[ix]
               }
               if (missing(t)) t <- 0
-              info <- total(x, categories)
-              total <- info$total
-              out <- new("ObsLulcMaps", maps=x, t=t, total=total, categories=categories, labels=labels)
+              ## info <- total(x, categories)
+              ## total <- info$total
+              ## out <- new("ObsLulcMaps", maps=x, t=t, total=total, categories=categories, labels=labels)
+              out <- new("ObsLulcMaps", maps=x, t=t, categories=categories, labels=labels)
           }
 )

@@ -9,14 +9,15 @@
 #' predict future or past land use demand based on economic considerations;
 #' however, linear extrapolation of trends remains a useful technique.
 #'
-#' @param obs an \code{ObsLulcMaps} object containing at least two maps
+#' @param obs an ObsLulcMaps object containing at least two maps
 #' @param tout numeric vector specifying the timesteps where interpolation is to
 #'   take place. Comparable to the \code{xout} argument of
 #'   \code{Hmisc::\link[Hmisc]{approxExtrap}}
 #' @param \dots additional arguments to \code{Hmisc::\link[Hmisc]{approxExtrap}}
 #'
-#' @return A matrix where columns correspond to land use categories and rows
-#'   correspond to timesteps.
+#' @return A matrix.
+#'
+#' @seealso \code{Hmisc::\link[Hmisc]{approxExtrap}}
 #'
 #' @export
 #'
@@ -36,9 +37,10 @@
 
 approxExtrapDemand <- function(obs, tout, ...) {
     if (nlayers(obs@maps) > 1) {
+        tot <- total(obs@maps)$total
         demand <- matrix(data=NA, nrow=length(tout), ncol=length(obs@categories))
         for (i in 1:length(obs@categories)) {
-            x <- Hmisc::approxExtrap(obs@t, obs@total[,i], tout)$y
+            x <- Hmisc::approxExtrap(obs@t, tot[,i], tout)$y
             x[x < 0] <- 0
             demand[,i] <- x
         }

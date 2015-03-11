@@ -9,16 +9,17 @@ NULL
 #' category from different objects are included on the same plot for model
 #' comparison.
 #'
-#' @param x either a single \code{Performance} object or a list of these.
-#'   If a list is provided it must be named.
+#' @param x either a single Performance object or a list of these. If a list is
+#'   provided it must be named.
 #' @param multipanel logical. If \code{TRUE}, create a trellis plot where the
 #'   number of panels equals the number of \code{Performance} objects.
-#'   Otherwise, create a single plot for each \code{Performance} object
+#'   Otherwise, create a single plot for each Performance object
 #' @param type character. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param abline list. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param col character. Plotting colour
 #' @param key.args list containing additional components to be passed to
-#'   the key argument of \code{lattice::\link[lattice]{xyplot}}
+#'   the key argument of \cr
+#'   \code{lattice::\link[lattice]{xyplot}}
 #' @param \dots additional arguments to \code{lattice::\link[lattice]{xyplot}}
 #'
 #' @seealso \code{\link{Performance}}, \code{lattice::\link[lattice]{xyplot}}
@@ -27,6 +28,10 @@ NULL
 #'
 #' @export
 #' @rdname Performance.plot
+#'
+#' @examples
+#'
+#' ## see PredModels examples
 
 setGeneric("Performance.plot", function(x, ...)
            standardGeneric("Performance.plot"))

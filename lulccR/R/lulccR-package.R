@@ -38,7 +38,7 @@ NULL
 #' \code{PredModels}. Currently lulccR supports binary logistic regression,
 #' provided by base R (\code{glm}), recursive partitioning and regression trees,
 #' provided by package \code{rpart} and random forest, provided by package
-#' \code{randomForest}. To a large extent, the success of the allocation routine
+#' \code{randomForest}. To a large extent the success of the allocation routine
 #' depends on the strength of the predictive models: this is one reason why an R
 #' package for land use change modelling is attractive. 
 #'
@@ -76,8 +76,6 @@ NULL
 #'
 #' @examples
 #'
-#' \dontrun{
-#' 
 #' ## Complete example for Plum Island Ecosystems dataset
 #'
 #' ## Load observed land use maps
@@ -131,7 +129,7 @@ NULL
 #'                              1,1,1,
 #'                              1,1,1), nrow=3, ncol=3, byrow=TRUE)
 #'
-#' ## clues.parms <- list(jitter.f=0.0002,
+#' clues.parms <- list(jitter.f=0.0002,
 #'                        scale.f=0.000001,
 #'                        max.iter=1000,
 #'                        max.diff=50,
@@ -156,12 +154,11 @@ NULL
 #'                                        factors=2^(1:9),
 #'                                        timestep=14)
 #'
-#' pie.ordered.agr <- AgreementBudget(x=pie.ordered.tabs, from=1, to=2)
-#' p <- AgreementBudget.plot(x=pie.ordered.agr)
+#' pie.ordered.agr <- AgreementBudget(x=pie.ordered.tabs)
+#' p <- AgreementBudget.plot(x=pie.ordered.agr, from=1, to=2)
 #' print(p)
 #'
 #' pie.ordered.fom <- FigureOfMerit(x=pie.ordered.tabs)
-#' p <- FigureOfMerit.plot(x=pie.ordered.fom)
+#' p <- FigureOfMerit.plot(x=pie.ordered.fom, from=1, to=2)
 #' print(p)
-#' }
 NULL

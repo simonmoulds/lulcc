@@ -11,7 +11,7 @@ AgreementBudget.plot(x, ...)
   col = RColorBrewer::brewer.pal(5, "Set2"), key, scales, xlab, ylab, ...)
 }
 \arguments{
-\item{x}{object of class \code{AgreementBudget}}
+\item{x}{an AgreementBudget object}
 
 \item{from}{optional numeric value representing a land use category. If
 provided without \code{to} the figure of merit for all transitions from this
@@ -42,6 +42,9 @@ Plot an \code{\link{AgreementBudget}} object.
 }
 \details{
 The plot layout is based on work presented in Pontius et al. (2011)
+}
+\examples{
+## see AgreementBudget examples
 }
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).

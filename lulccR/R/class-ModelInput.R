@@ -9,7 +9,7 @@ NULL
 
 #' Class ModelInput
 #'
-#' An S4 class to represent common inputs to land use change models.
+#' An S4 class to represent land use change model inputs.
 #'
 #' @slot obs an ObsLulcMaps object 
 #' @slot ef an ExpVarMaps object

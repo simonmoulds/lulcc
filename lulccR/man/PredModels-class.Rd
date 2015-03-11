@@ -12,8 +12,6 @@ categories belonging to the same map.
 \describe{
 \item{\code{models}}{list of predictive models}
 
-\item{\code{types}}{character vector of model types}
-
 \item{\code{categories}}{numeric vector of land use categories}
 
 \item{\code{labels}}{character vector with labels corresponding to \code{categories}}

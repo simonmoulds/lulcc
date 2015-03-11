@@ -62,7 +62,7 @@ obs <- ObsLulcMaps(x=pie,
 ## create a NeighbMaps object for 1985 land use map
 nb1 <- NeighbMaps(x=obs@maps[[1]],
                   categories=c(1,2,3), # all land use categories
-                  weights=3)           # 3*3 neighbourhood
+                  weights=c(3,3,3))           # 3*3 neighbourhood
 
 w1 <- matrix(data=c(1,1,1,
                     1,1,1,
@@ -88,6 +88,7 @@ nb2 <- NeighbMaps(x=obs@maps[[2]],
 plot(nb2@maps[[1]])
 }
 \seealso{
-\code{\link{NeighbMaps-class}}, \code{\link{allowNeighb}}
+\code{\link{NeighbMaps-class}}, \code{\link{allowNeighb}},
+\code{raster::\link[raster]{focal}}
 }
 

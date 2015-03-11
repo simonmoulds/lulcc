@@ -4,8 +4,9 @@
 #' compares a reference map at time 1, a reference map at time 2 and a simulated
 #' map at time 2 to evaluate allocation performance at multiple resolutions while
 #' taking into account persistence. The method quantifies disagreement within
-#' coarse squares, disagreement between coarse squares, disagreement about the
-#' quantity of land use change and agreement.
+#' coarse squares (minor allocation disagreement), disagreement between coarse
+#' squares (major allocation disagreement), disagreement about the quantity of
+#' land use change and agreement.
 #'
 #' @param x either a RasterLayer of observed land use at time 0 or an object
 #'   inheriting from class \code{Model}
@@ -14,8 +15,9 @@
 #' @param y1 a RasterLayer of simulated land use corresponding to \code{x1}. Only
 #'   required if \code{x} is also a RasterLayer
 #' @param factors numeric vector of aggregation factors (equivalent to the 'fact'
-#'   argument to \code{raster::\link[raster]{aggregate}} representing the
-#'   resolutions at which model performance should be tested
+#'   argument to \cr
+#'   \code{raster::\link[raster]{aggregate}} representing the resolutions at which
+#'   model performance should be tested
 #' @param timestep numeric value indicating the timestep of the simulated land use
 #'   map. Only required if \code{x} is a \code{Model} object
 #' @param categories numeric vector of land use categories in observed maps. Only
@@ -24,7 +26,8 @@
 #'   \code{categories}. Only required if \code{x} is a RasterLayer
 #' @param \dots additional arguments to \code{raster::\link[raster]{aggregate}}
 #'
-#' @seealso \code{\link{AgreementBudget}}, \code{\link{FigureOfMerit}}
+#' @seealso \code{\link{AgreementBudget}}, \code{\link{FigureOfMerit}},
+#' \code{raster::\link[raster]{aggregate}}
 #' @return A \code{ThreeMapComparison} object.
 #'
 #' @export

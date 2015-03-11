@@ -12,7 +12,7 @@ FigureOfMerit.plot(x, ...)
   ylab, ...)
 }
 \arguments{
-\item{x}{a \code{FigureOfMerit} object}
+\item{x}{a FigureOfMerit object}
 
 \item{from}{optional numeric value representing a land use category. If
 provided without \code{to} the figure of merit for all transitions from this
@@ -44,6 +44,9 @@ A trellis object.
 \description{
 Plot the overall, category-specific or transition-specific figure of merit at
 different resolutions.
+}
+\examples{
+## see FigureOfMerit examples
 }
 \seealso{
 \code{\link{FigureOfMerit}}, \code{lattice::\link[lattice]{xyplot}},

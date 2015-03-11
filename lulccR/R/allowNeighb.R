@@ -3,9 +3,9 @@
 #' Identify legitimate transitions for each cell according to neighbourhood
 #' decision rules.
 #' 
-#' @param neighb a \code{NeighbMaps} object
+#' @param neighb a NeighbMaps object
 #' @param x a categorical RasterLayer to which neighbourhood rules should be
-#'   applied. If 'neighb' is supplied it is updated with this map
+#'   applied. If \code{neighb} is supplied it is updated with this map
 #' @param categories numeric vector containing land use categories. If
 #'   \code{allowNeighb} is called from an allocation model this argument
 #'   should contain all categories in the simulation, regardless of whether
@@ -16,7 +16,7 @@
 #'   \code{x@@categories}
 #' @param \dots additional arguments (none)
 #'
-#' @return a matrix with values of 1 (change allowed) or NA (change not allowed)
+#' @return A matrix.
 #'
 #' @seealso \code{\link{allow}}, \code{\link{NeighbMaps}}
 #' 

@@ -7,7 +7,7 @@ NULL
 #' for a reference map at time 1, a reference map at time 2 and a simulated map
 #' at time 2.
 #'
-#' In land use change modelling, the figure of merit is the intersection of
+#' In land use change modelling the figure of merit is the intersection of
 #' observed change and simulated change divided by the union of these, with a
 #' range of 0 (perfect disagreement) to 1 (perfect agreement). It is useful to
 #' calculate the figure of merit at three levels: (1) considering all possible
@@ -29,6 +29,22 @@ NULL
 #' Comparison of three maps at multiple resolutions: a case study of land change
 #' simulation in Cho Don District, Vietnam. Annals of the Association of American
 #' Geographers 101(1): 45-62.
+#'
+#' @examples
+#'
+#' ## Example for Sibuyan Island
+#'
+#' ## get CluesModel object from data
+#' sib.clues.model <- sibuyan$intermediate$clues.model
+#'
+#' ## validation
+#' sib.clues.tables <- ThreeMapComparison(x=sib.clues.model,
+#'                                        factors=2^(1:9),
+#'                                        timestep=14)
+#'
+#' sib.clues.fom <- FigureOfMerit(x=sib.clues.tables)
+#' p <- FigureOfMerit.plot(x=sib.clues.fom)
+#' print(p)
 
 setGeneric("FigureOfMerit", function(x, ...)
            standardGeneric("FigureOfMerit"))

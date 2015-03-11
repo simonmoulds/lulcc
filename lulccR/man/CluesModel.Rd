@@ -50,6 +50,12 @@ the following components:
   \item{\code{ave.diff}}{The average allowed difference between allocated and
     demanded area. Default is 5}
 }
+
+Note that, in order to achieve convergence, it is likely that some adjustment
+of these parameters will be required.
+}
+\examples{
+## see lulccR-package examples
 }
 \references{
 Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon, V., Mastura,
@@ -57,7 +63,6 @@ S.S. (2002). Modeling the spatial dynamics of regional land use: the CLUE-S
 model. Environmental management, 30(3):391-405.
 }
 \seealso{
-\code{\link{allocate}}, \code{\link{allow}},
-\code{\link{allowNeighb}}
+\code{\link{CluesModel-class}}, \code{\link{allocate}}
 }
 

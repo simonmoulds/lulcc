@@ -7,7 +7,7 @@ NULL
 #' \code{ROCR::\link[ROCR]{prediction}} objects stored in a
 #' \code{\link{Prediction}} object.
 #'
-#' @param pred an object of class \code{Prediction}
+#' @param pred an object of class Prediction
 #' @param measure performance measure to use for the evaluation. See
 #'   \code{ROCR::\link[ROCR]{performance}}
 #' @param x.measure a second performance measure. See
@@ -22,6 +22,10 @@ NULL
 #' @references Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).
 #' ROCR: visualizing classifier performance in R. Bioinformatics
 #' 21(20):3940-3941.
+#'
+#' @examples
+#'
+#' ## see PredModels examples
 
 Performance <- function(pred, measure, x.measure="cutoff", ...) {
     perf <- performance(pred@prediction, measure, x.measure, ...)
@@ -31,7 +35,7 @@ Performance <- function(pred, measure, x.measure="cutoff", ...) {
     out <- new("Performance",
                 performance = perf,
                 auc = auc,
-                types = pred@types,
+                ## types = pred@types,
                 categories = pred@categories,
                 labels = pred@labels)
 }

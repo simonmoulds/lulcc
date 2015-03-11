@@ -1,4 +1,4 @@
-#' @include class-PredModels.R predModelType.R
+#' @include class-PredModels.R
 NULL
 
 #' Create a PredModels object
@@ -23,8 +23,6 @@ NULL
 #' @rdname PredModels
 #'
 #' @examples
-#' 
-#' \dontrun{
 #' 
 #' ## Plum Island Ecosystems
 #'
@@ -75,7 +73,7 @@ NULL
 #' glm.models <- PredModels(models=list(forest.glm, built.glm, other.glm),
 #'                          obs=obs)
 #'
-#' rp.models <- PredModels(models=list(built.rp, other.bp),
+#' rp.models <- PredModels(models=list(built.rp, other.rp),
 #'                         categories=obs@@categories[2:3],
 #'                         labels=obs@@labels[2:3])
 #'
@@ -110,7 +108,6 @@ NULL
 #'
 #' ## view plot
 #' print(p)
-#' }
 
 setGeneric("PredModels", function(models, obs, categories, labels, ...)
            standardGeneric("PredModels"))
@@ -120,8 +117,9 @@ setGeneric("PredModels", function(models, obs, categories, labels, ...)
 setMethod("PredModels", signature(models = "list", obs = "ObsLulcMaps", categories = "ANY", labels = "ANY"),
           function(models, obs, categories, labels, ...) {
               if (length(models) != length(obs@labels)) stop("")
-              types <- predModelType(x=models)
-              new("PredModels", models=models, types=types, categories=obs@categories, labels=obs@labels)
+              ## types <- predModelType(x=models)
+              ## new("PredModels", models=models, types=types, categories=obs@categories, labels=obs@labels)
+              new("PredModels", models=models, categories=obs@categories, labels=obs@labels)
           }
 )
 
@@ -131,9 +129,8 @@ setMethod("PredModels", signature(models = "list", obs = "ANY", categories = "nu
           function(models, obs, categories, labels, ...) {
               if (length(models) != length(labels)) stop("")
               if (length(models) != length(categories)) stop("")
-              types <- predModelType(x=models)
-              new("PredModels", models=models, types=types, categories=categories, labels=labels)
+              ## types <- predModelType(x=models)
+              ## new("PredModels", models=models, types=types, categories=categories, labels=labels)
+              new("PredModels", models=models, categories=categories, labels=labels)
           }
 )
-
-## TODO: add slot to PredModels that describes the type of models in slot 'models'

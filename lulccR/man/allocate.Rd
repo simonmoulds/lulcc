@@ -13,12 +13,15 @@ allocate(model, ...)
 \S4method{allocate}{OrderedModel}(model, stochastic = TRUE, ...)
 }
 \arguments{
-\item{model}{an object inheriting from class \code{ModelInput}}
+\item{model}{an object inheriting from class \code{Model}}
 
-\item{stochastic}{logical indicating whether the ordered model should be run
-stochastically}
+\item{stochastic}{logical indicating whether the model should be run
+stochastically. Only used if \code{model} is an \code{OrderedModel} object}
 
 \item{\dots}{additional arguments for specific methods}
+}
+\value{
+An update Model object.
 }
 \description{
 Perform spatially explicit allocation of land use change using different

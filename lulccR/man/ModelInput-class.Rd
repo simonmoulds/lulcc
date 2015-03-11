@@ -4,7 +4,7 @@
 \alias{ModelInput-class}
 \title{Class ModelInput}
 \description{
-An S4 class to represent common inputs to land use change models.
+An S4 class to represent land use change model inputs.
 }
 \section{Slots}{
 

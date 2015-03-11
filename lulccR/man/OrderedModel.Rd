@@ -42,13 +42,15 @@ the following components:
     demanded area of any land use type. Default is 5}
 }
 }
+\examples{
+## see lulccR-package examples
+}
 \references{
 Fuchs, R., Herold, M., Verburg, P.H., and Clevers, J.G.P.W. (2013). A
 high-resolution and harmonized model approach for reconstructing and analysing
 historic land changes in Europe, Biogeosciences, 10:1543-1559.
 }
 \seealso{
-\code{\link{allocate}}, \code{\link{allow}},
-\code{\link{allowNeighb}}
+\code{\link{OrderedModel-class}}, \code{\link{allocate}}
 }
 

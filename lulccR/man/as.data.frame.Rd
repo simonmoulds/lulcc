@@ -11,7 +11,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
   cells, timestep = 0, ...)
 }
 \arguments{
-\item{x}{an object of class \code{\link{ExpVarMaps}}}
+\item{x}{an ExpVarMaps object}
 
 \item{row.names}{NULL or a character vector giving the row.names for the
 data.frame. Missing values are not allowed}
@@ -36,6 +36,12 @@ variables are present).
 }
 \examples{
 ## Plum Island Ecosystems
+obs <- ObsLulcMaps(x=pie,
+                   pattern="lu",
+                   categories=c(1,2,3),
+                   labels=c("forest","built","other"),
+                   t=c(0,6,14))
+
 ef <- ExpVarMaps(x=pie, pattern="ef")
 part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
 efdf <- as.data.frame(x=ef, cells=part$train)

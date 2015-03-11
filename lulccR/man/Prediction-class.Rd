@@ -14,9 +14,6 @@ the results of multiple model predictions.
 These objects are calculated for each statistical model in the
 \code{\link{PredModels}} object supplied to the constructor function}
 
-\item{\code{types}}{character vector of model types for which \code{prediction}
-objects were created}
-
 \item{\code{categories}}{numeric vector of land use categories for which
 \code{prediction} objects were created}
 

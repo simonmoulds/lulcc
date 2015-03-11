@@ -9,11 +9,11 @@ An S4 class for explanatory variables.
 \section{Slots}{
 
 \describe{
-\item{\code{maps}}{list of RasterStacks. The length of the list corresponds to the
-number of explanatory variables and the number of layers in each RasterStack
-represents time}
+\item{\code{maps}}{list of RasterStack objects. The length of the list corresponds to
+the number of explanatory variables and the number of layers in each
+RasterStack represents time}
 
-\item{\code{map.names}}{character vector of the name of each variable in \code{maps}}
+\item{\code{varnames}}{character vector with the name of each variable in \code{maps}}
 
 \item{\code{dynamic}}{logical indicating whether dynamic variables are present}
 }}

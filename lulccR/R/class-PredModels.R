@@ -4,7 +4,6 @@
 #' categories belonging to the same map.
 #'
 #' @slot models list of predictive models
-#' @slot types character vector of model types
 #' @slot categories numeric vector of land use categories
 #' @slot labels character vector with labels corresponding to \code{categories}
 #'
@@ -14,7 +13,7 @@
 
 setClass("PredModels",
          slots = c(models = "list",
-                   types = "character",
+                   ## types = "character",
                    categories = "numeric",
                    labels = "character"),
          validity = function(object) {

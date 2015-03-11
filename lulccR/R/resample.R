@@ -13,8 +13,8 @@ NULL
 #'   neighbour
 #' @param \dots additional arguments to \code{raster::\link[raster]{resample}}
 #'
-#' @seealso \code{\link{ExpVarMaps}}, \code{\link{ExpVarMaps-class}}, 
-#' \code{raster::\link[raster]{resample}}
+#' @seealso \code{\link{ExpVarMaps}}, \code{raster::\link[raster]{resample}}
+#'
 #' @return An ExpVarMaps object or list, depending on \code{x}.
 #'
 #' @export
@@ -28,7 +28,7 @@ NULL
 #' ## resample to ensure maps have same characteristics as observed maps
 #' ef <- resample(x=ef, y=pie$lu_pie_1985, method="ngb")
  
-##setGeneric("resample")
+setGeneric("resample")
 
 #' @rdname resample
 #' @aliases resample,ExpVarMaps,Raster-method

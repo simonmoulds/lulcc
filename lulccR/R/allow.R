@@ -19,8 +19,8 @@
 #'     before land use is allowed to change
 #' }
 #'
-#' \code{allow} should be called from methods in \code{\link{allocate}}. The
-#' output is a matrix with the same dimensions as the matrix used internally by
+#' \code{allow} should be called from \code{\link{allocate}} methods. The output
+#' is a matrix with the same dimensions as the matrix used internally by
 #' allocation functions to store land use suitability. Thus, by multiplying the
 #' two matrices together, disallowed transitions are removed from the allocation
 #' procedure.
@@ -39,7 +39,7 @@
 #'   Only required for rules 2 and 3
 #' @param \dots additional arguments (none)
 #'
-#' @return A matrix with values of 1 (change allowed) or NA (change not allowed)
+#' @return A matrix.
 #'
 #' @useDynLib lulccR
 #'
@@ -90,7 +90,7 @@
 #' r[obs@@maps[[1]] != 1] <- NA  ## set all cells not belonging to forest to NA
 #' plot(r)
 #'
-#' ## NB in reality, output is only useful when used within an allocation routine
+#' ## NB output is only useful when used within an allocation routine
 
 allow <- function(x, categories, cd, rules, hist=NULL, ...) {
     if (!all(dim(rules) %in% length(categories))) stop("rules matrix should be a square matrix with dimension equal to number of categories")

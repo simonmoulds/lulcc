@@ -8,6 +8,15 @@ library(devtools)
 install_github("simonmoulds/r_lulccR", subdir = "lulccR")
 library(lulccR)
 ```
+
+Alternatively, download and extract the package source, set the working directory to this location and load all files:
+
+```R
+setwd("/path/to/lulccR")
+roxygen2::update_collate(".")
+devtools::load_all(quiet=TRUE)
+```
+
 # Data and functions
 
 The package includes two example datasets: one for Sibuyan Island in the Phillipines and one for the Plum Island Ecosystem in Massachusetts, United States. Here we present a complete working example for the Plum Island Ecosystem dataset.
@@ -17,10 +26,10 @@ Land use change modelling requires a large amount of input data. The most import
 
 ```R
 obs <- ObsLulcMaps(x=pie,
-                   pattern="lu",
-                   categories=c(1,2,3),
-                   labels=c("forest","built","other"),
-                   t=c(0,6,14)) 
+                   pattern="lu", 
+                   categories=c(1,2,3), 
+                   labels=c("Forest","Built","Other"), 
+                   t=c(0,6,14))
 ```
 
 A useful starting point in land use change modelling is to obtain a transition matrix for two observed land use maps to identify the main transitions. This can be achieved with the `crossTabulate` function:
@@ -35,7 +44,7 @@ For the Plum Island Ecosystem site this reveals that the main transition was fro
 The next stage is to relate observed land use or observed land use transitions to spatially explicit biophysical or socioeconomic explanatory variables. These are loaded as follows:
 
 ```R
-ef.maps <- ExpVarMaps(x=pie, pattern="ef")
+ef <- ExpVarMaps(x=pie, pattern="ef")
 ```
 
 To fit predictive models we first divide the study region into training and testing partitions. The `partition` function returns a list with cell numbers for each partition:
@@ -49,31 +58,25 @@ We then extract cell values for the training partition and create a data.frame t
 ```R
 # convert initial land use map to RasterBrick where each layer is a boolean
 # map for the respective land use category
-lu.br <- raster::layerize(obs@maps[[1]])
-names(lu.br) <- obs@labels
+br <- raster::layerize(obs@maps[[1]]) 
+names(br) <- obs@labels
 
 # extract training and testing partition cells
-lu.train.df <- raster::extract(x=lu.br, y=part$train, df=TRUE)
-ef.train.df <- as.data.frame(x=ef.maps, cells=part$train)
-train.data <- cbind(lu.train.df, ef.train.df)
+train.df <- raster::extract(x=br, y=part$train, df=TRUE)
+train.df <- cbind(train.df, as.data.frame(x=ef, cells=part$train))
 
 # fit models (note that a predictive model is required for each land use category)
-forest.formula <- formula(forest ~ 1) # null model
-built.formula <- formula(built ~ pred_001+pred_002+pred_003)
-other.formula <- formula(other ~ pred_001+pred_002)
-
-# glm models
-forest.glm <- glm(formula=forest.formula, family=binomial, data=train.data)
-built.glm <- glm(formula=built.formula, family=binomial, data=train.data)
-other.glm <- glm(formula=other.formula, family=binomial, data=train.data)
+built.glm <- glm(Built ~ ef_001+ef_002+ef_003, family=binomial, data=train.df)
+forest.glm <- glm(Forest ~ 1, family=binomial, data=train.df)
+other.glm <- glm(Other ~ ef_001+ef_002, family=binomial, data=train.df)
 
 # recursive partitioning and regression tree models
-built.rpart <- rpart::rpart(formula=built.formula, data=train.data, method="class")
-other.rpart <- rpart::rpart(formula=other.formula, data=train.data, method="class")
+built.rpart <- rpart::rpart(formula=built.formula, data=train.df, method="class")
+other.rpart <- rpart::rpart(formula=other.formula, data=train.df, method="class")
 
 # random forest models (WARNING: takes a long time!)
-built.rf <- randomForest::randomForest(formula=built.formula, data=train.data)
-other.rf <- randomForest::randomForest(formula=other.formula, data=train.data)
+built.rf <- randomForest::randomForest(formula=built.formula, data=train.df)
+other.rf <- randomForest::randomForest(formula=other.formula, data=train.df)
 ```
 
 Predictive models are represented by the `PredModels` class. For comparison, we create a `PredModels` object for each type of predictive model: 
@@ -94,11 +97,6 @@ rf.models <- PredModels(models=list(built.rf, other.rf),
 Model performance is assessed using the receiver operator characteristic provided by the [ROCR](http://cran.r-project.org/web/packages/ROCR/index.html) package. lulccR includes classes `Prediction` and `Performance` which extend the native ROCR classes to contain multiple `prediction` and `performance` objects. The procedure to obtain these objects and assess performance is as follows:
 
 ```R
-# extract cell values for the testing partition
-lu.test.df <- raster::extract(x=lu.br, y=part$test, df=TRUE)
-pred.test.df <- as.data.frame(x=pred, cells=part$test)
-test.data <- cbind(lu.test.df, pred.test.df)
-
 glm.pred <- Prediction(models=glm.models,
                        obs=obs,
                        ef=ef,
@@ -134,29 +132,35 @@ The culmination of the modelling process is to simulate the location of land use
 
 ```R
 # prepare model input
-input <- ModelInput(x=obs,
+input <- ModelInput(obs=obs,
                     ef=ef,
                     models=glm.models,
                     time=0:14,
                     demand=dmd)
 
-clues.rules <- matrix(data=c(1,1,1,
-                             1,1,1,
-                             1,1,1), nrow=3, ncol=3, byrow=TRUE)
+# get neighbourhood values
+nb <- NeighbMaps(x=obs@maps[[1]],
+                 categories=2,
+                 weights=3)
+
+# CLUE-S
+clues.rules <- matrix(data=c(1,1,1,1,1,1,1,1,1),
+                      nrow=3, ncol=3, byrow=TRUE) 
 
 clues.parms <- list(jitter.f=0.0002,
                     scale.f=0.000001,
                     max.iter=1000,
-                    max.diff=50,
-                    ave.diff=50)
+                    max.diff=50, 
+                    ave.diff=50) 
 
-clues.input <- CluesModel(x=input,
+clues.model <- CluesModel(x=input,
                           elas=c(0.2,0.2,0.2),
                           rules=clues.rules,
                           params=clues.parms)
 
-# allocate built, then forest, then other
-ordered.input <- OrderedModel(x=input, order=c(2,1,3))
+# Ordered
+ordered.model <- OrderedModel(x=input,
+                              order=c(2,1,3)) 
 ```
 
 Then, finally, we can perform allocation:
@@ -170,22 +174,22 @@ An important yet frequently overlooked aspect of land use change modelling is mo
 
 ```R
 # evaluate CLUE-S model output
-clues.tabs <- ThreeMapComparison(x=clues.model,
-                                 factors=2^(1:10),
-                                 timestep=14)
+ordered.tabs <- ThreeMapComparison(x=ordered.model,
+                                   timestep=14, 
+                                   factors=2^(1:9))
 ```
 
 From these tables we can easily extract information about different types of agreement and disagreement as well as compute summary statistics such as the figure of merit:
 
 ```R
 # calculate agreement budget and plot
-clues.agr <- AgreementBudget(x=clues.tabs,from=1,to=2)
-p <- AgreementBudget.plot(clues.agr)
+clues.agr <- AgreementBudget(x=ordered.tabs)
+p <- AgreementBudget.plot(clues.agr, from=1, to=2)
 print(p)
 
 # calculate Figure of Merit and plot
 clues.fom <- FigureOfMerit(x=clues.tabs)
-p <- FigureOfMerit(clues.fom)
+p <- FigureOfMerit(clues.fom, from=1, to=2)
 print(p)
 ```
 
@@ -193,4 +197,4 @@ print(p)
 This package and functions herein are part of an experimental open-source project. They are provided as is, without any guarantee.
 
 ## Please leave your feedback
-I would be grateful for any feedback on this project (simonmdev@riseup.net).
+I would be grateful for any feedback on this project (simonm@riseup.net).

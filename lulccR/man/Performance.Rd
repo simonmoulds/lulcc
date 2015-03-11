@@ -6,7 +6,7 @@
 Performance(pred, measure, x.measure = "cutoff", ...)
 }
 \arguments{
-\item{pred}{an object of class \code{Prediction}}
+\item{pred}{an object of class Prediction}
 
 \item{measure}{performance measure to use for the evaluation. See
 \code{ROCR::\link[ROCR]{performance}}}
@@ -23,6 +23,9 @@ A \code{Performance} object.
 This function uses different measures to evaluate multiple
 \code{ROCR::\link[ROCR]{prediction}} objects stored in a
 \code{\link{Prediction}} object.
+}
+\examples{
+## see PredModels examples
 }
 \references{
 Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).

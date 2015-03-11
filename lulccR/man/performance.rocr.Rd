@@ -25,8 +25,9 @@ performance(prediction.obj, ...)
 A list of \code{performance} objects.
 }
 \description{
-A wrapper function for \code{ROCR::\link[ROCR]{performance}} to create
-\code{performance} objects from a list of \code{prediction} objects.
+A wrapper function for \code{ROCR::\link[ROCR]{performance}} (Sing et al,
+2005) to create \code{performance} objects from a list of \code{prediction}
+objects.
 }
 \references{
 Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).

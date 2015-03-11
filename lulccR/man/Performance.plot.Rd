@@ -12,12 +12,12 @@ Performance.plot(x, ...)
   "Set1"), key.args = NULL, ...)
 }
 \arguments{
-\item{x}{either a single \code{Performance} object or a list of these.
-If a list is provided it must be named.}
+\item{x}{either a single Performance object or a list of these. If a list is
+provided it must be named.}
 
 \item{multipanel}{logical. If \code{TRUE}, create a trellis plot where the
 number of panels equals the number of \code{Performance} objects.
-Otherwise, create a single plot for each \code{Performance} object}
+Otherwise, create a single plot for each Performance object}
 
 \item{type}{character. See \code{lattice::\link[lattice]{panel.xyplot}}}
 
@@ -26,7 +26,8 @@ Otherwise, create a single plot for each \code{Performance} object}
 \item{col}{character. Plotting colour}
 
 \item{key.args}{list containing additional components to be passed to
-the key argument of \code{lattice::\link[lattice]{xyplot}}}
+the key argument of \cr
+\code{lattice::\link[lattice]{xyplot}}}
 
 \item{\dots}{additional arguments to \code{lattice::\link[lattice]{xyplot}}}
 }
@@ -39,6 +40,9 @@ Plot the the ROC curve for each \code{performance} object in a
 \code{Performance} objects are provided ROC curves for the same land use
 category from different objects are included on the same plot for model
 comparison.
+}
+\examples{
+## see PredModels examples
 }
 \seealso{
 \code{\link{Performance}}, \code{lattice::\link[lattice]{xyplot}}

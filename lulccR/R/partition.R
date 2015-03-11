@@ -1,7 +1,10 @@
 #' Partition raster data 
 #'
 #' Divide a categorical raster map into training and testing partitions.
-#'
+#' A wrapper function for \cr
+#' \code{caret::\link[caret]{createDataPartition}} (Kuhn, 2008) to divide a
+#' categorical raster map into training and testing partitions.
+#' 
 #' @param x RasterLayer with categorical data
 #' @param size numeric value between zero and one indicating the proportion of
 #'   non-NA cells that should be included in the training partition. Default is
@@ -11,6 +14,7 @@
 #'   are returned
 #' @param \dots additional arguments (none)
 #'
+#' @seealso \code{caret::\link[caret]{createDataPartition}}
 #' @return A list containing the following components:
 #' \describe{
 #'   \item{\code{train}}{a SpatialPoints object or numeric vector indicating the
@@ -20,8 +24,11 @@
 #'   \item{\code{all}}{a SpatialPoints object or numeric vector indicating all
 #'   non-NA cells in the study region}
 #' }
-#' 
+#'
 #' @export
+#'
+#' @references Kuhn, M. (2008). Building predictive models in R using the caret
+#' package. Journal of Statistical Software, 28(5), 1-26.
 #'
 #' @examples
 #'

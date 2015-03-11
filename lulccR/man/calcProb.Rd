@@ -19,8 +19,8 @@ calcProb(object, ...)
 \S4method{calcProb}{PredModels}(object, newdata, df = FALSE, ...)
 }
 \arguments{
-\item{object}{a \code{PredModels} object or a model of any class
-for which a predict method exists (currently, \code{\link[stats]{glm}},
+\item{object}{a PredModels object or a model of any class for which a predict
+method exists (currently, \code{\link[stats]{glm}},
 \code{rpart::\link[rpart]{rpart}} and
 \code{randomForest::\link[randomForest]{randomForest}}}
 
@@ -29,7 +29,7 @@ for which a predict method exists (currently, \code{\link[stats]{glm}},
 \item{df}{logical indicating whether the function should return a matrix
 (default) or data.frame}
 
-\item{\dots}{additional arguments to \code{predict}}
+\item{\dots}{additional arguments to \code{predict} methods}
 }
 \value{
 A matrix or data.frame.
@@ -43,8 +43,6 @@ suitability at each timestep. However, it may also be used to produce
 suitability maps (see examples).
 }
 \examples{
-\dontrun{
-
 ## Sibuyan Island
 
 ## load observed land use data
@@ -67,7 +65,6 @@ points <- rasterToPoints(obs@maps[[1]], spatial=TRUE)
 probmaps <- SpatialPointsDataFrame(coords=points, data=probmaps)
 r <- rasterize(x=probmaps, y=obs@maps[[1]], field=names(probmaps))
 plot(stack(r))
-}
 }
 \seealso{
 \code{\link{PredModels}}, \code{\link{allocate}},

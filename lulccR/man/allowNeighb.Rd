@@ -6,10 +6,10 @@
 allowNeighb(neighb, x, categories, rules, ...)
 }
 \arguments{
-\item{neighb}{a \code{NeighbMaps} object}
+\item{neighb}{a NeighbMaps object}
 
 \item{x}{a categorical RasterLayer to which neighbourhood rules should be
-applied. If 'neighb' is supplied it is updated with this map}
+applied. If \code{neighb} is supplied it is updated with this map}
 
 \item{categories}{numeric vector containing land use categories. If
 \code{allowNeighb} is called from an allocation model this argument
@@ -24,7 +24,7 @@ above which change is allowed. Rules should correspond with
 \item{\dots}{additional arguments (none)}
 }
 \value{
-a matrix with values of 1 (change allowed) or NA (change not allowed)
+A matrix.
 }
 \description{
 Identify legitimate transitions for each cell according to neighbourhood

@@ -6,7 +6,7 @@ NULL
 #' Plot the overall, category-specific or transition-specific figure of merit at
 #' different resolutions.
 #'
-#' @param x a \code{FigureOfMerit} object
+#' @param x a FigureOfMerit object
 #' @param from optional numeric value representing a land use category. If 
 #'   provided without \code{to} the figure of merit for all transitions from this
 #'   category will be plotted
@@ -30,6 +30,10 @@ NULL
 #'
 #' @export
 #' @rdname FigureOfMerit.plot
+#'
+#' @examples
+#'
+#' ## see FigureOfMerit examples
 
 setGeneric("FigureOfMerit.plot", function(x, ...)
            standardGeneric("FigureOfMerit.plot"))

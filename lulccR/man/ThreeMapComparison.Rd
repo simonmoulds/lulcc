@@ -24,8 +24,9 @@ required if \code{x} is also a RasterLayer}
 required if \code{x} is also a RasterLayer}
 
 \item{factors}{numeric vector of aggregation factors (equivalent to the 'fact'
-argument to \code{raster::\link[raster]{aggregate}} representing the
-resolutions at which model performance should be tested}
+argument to \cr
+\code{raster::\link[raster]{aggregate}} representing the resolutions at which
+model performance should be tested}
 
 \item{timestep}{numeric value indicating the timestep of the simulated land use
 map. Only required if \code{x} is a \code{Model} object}
@@ -46,8 +47,9 @@ An implementation of the method described by Pontius et al. (2011), which
 compares a reference map at time 1, a reference map at time 2 and a simulated
 map at time 2 to evaluate allocation performance at multiple resolutions while
 taking into account persistence. The method quantifies disagreement within
-coarse squares, disagreement between coarse squares, disagreement about the
-quantity of land use change and agreement.
+coarse squares (minor allocation disagreement), disagreement between coarse
+squares (major allocation disagreement), disagreement about the quantity of
+land use change and agreement.
 }
 \examples{
 ## Example for Sibuyan Island
@@ -75,6 +77,7 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{AgreementBudget}}, \code{\link{FigureOfMerit}}
+\code{\link{AgreementBudget}}, \code{\link{FigureOfMerit}},
+\code{raster::\link[raster]{aggregate}}
 }
 

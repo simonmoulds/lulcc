@@ -7,7 +7,7 @@ NULL
 #' \code{\link{ExpVarMaps}} object for a specified timestep (if dynamic
 #' variables are present).
 #'
-#' @param x an object of class \code{\link{ExpVarMaps}}
+#' @param x an ExpVarMaps object
 #' @param row.names NULL or a character vector giving the row.names for the
 #'   data.frame. Missing values are not allowed
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -28,6 +28,12 @@ NULL
 #' @examples
 #'
 #' ## Plum Island Ecosystems
+#' obs <- ObsLulcMaps(x=pie,
+#'                    pattern="lu",
+#'                    categories=c(1,2,3),
+#'                    labels=c("forest","built","other"),
+#'                    t=c(0,6,14))
+#'
 #' ef <- ExpVarMaps(x=pie, pattern="ef")
 #' part <- partition(x=obs@@maps[[1]], size=0.5, spatial=FALSE)
 #' efdf <- as.data.frame(x=ef, cells=part$train)
@@ -43,8 +49,7 @@ setMethod("as.data.frame", signature(x = "ExpVarMaps"),
               maps <- .getExpVarMaps(x@maps, timestep)
               s <- raster::stack(maps, ...) ## this will fail if map characteristics do not agree
               df <- as.data.frame(s[cells], row.names=row.names, optional=optional)
-              ##names(df) <- c(x@map.names, x@call.names)
-              names(df) <- x@map.names
+              names(df) <- x@varnames
               df
           }
 )

@@ -11,7 +11,7 @@ NULL
 #' modelling and perform checks to ensure the objects are compatible in time and
 #' space for a model simulation.
 #' 
-#' @param obs an ObsLulcMaps object or a ModelInput object
+#' @param obs an ObsLulcMaps or ModelInput object
 #' @param ef an ExpVarMaps object
 #' @param models a PredModels object
 #' @param time numeric vector containing timesteps over which simulation will
@@ -32,6 +32,10 @@ NULL
 #'
 #' @export
 #' @rdname ModelInput
+#'
+#' @examples
+#'
+#' ## see lulccR-package examples
 
 setGeneric("ModelInput", function(obs, ef, models, time, demand, ...)
            standardGeneric("ModelInput"))
@@ -119,6 +123,9 @@ setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps", models
 #'     demanded area. Default is 5}
 #' }
 #'
+#' Note that, in order to achieve convergence, it is likely that some adjustment
+#' of these parameters will be required.
+#'
 #' @param x a ModelInput object
 #' @param rules matrix with land use change decision rules
 #' @param nb.rules numeric with neighbourhood decision rules
@@ -129,8 +136,7 @@ setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps", models
 #' @param output either a RasterStack containing output maps or NULL
 #' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{allocate}}, \code{\link{allow}},
-#' \code{\link{allowNeighb}}
+#' @seealso \code{\link{CluesModel-class}}, \code{\link{allocate}}
 #'
 #' @return A CluesModel object.
 #'
@@ -141,7 +147,11 @@ setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps", models
 #' Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon, V., Mastura,
 #' S.S. (2002). Modeling the spatial dynamics of regional land use: the CLUE-S
 #' model. Environmental management, 30(3):391-405.
- 
+#'
+#' @examples
+#'
+#' ## see lulccR-package examples
+
 setGeneric("CluesModel", function(x, ...)
            standardGeneric("CluesModel"))
 
@@ -218,8 +228,7 @@ setMethod("CluesModel", signature(x = "ModelInput"),
 #' @param output either a RasterStack containing output maps or NULL
 #' @param \dots additional arguments (none)
 #'
-#' @seealso \code{\link{allocate}}, \code{\link{allow}},
-#' \code{\link{allowNeighb}}
+#' @seealso \code{\link{OrderedModel-class}}, \code{\link{allocate}}
 #'
 #' @return An OrderedModel object.
 #'
@@ -230,6 +239,10 @@ setMethod("CluesModel", signature(x = "ModelInput"),
 #' Fuchs, R., Herold, M., Verburg, P.H., and Clevers, J.G.P.W. (2013). A
 #' high-resolution and harmonized model approach for reconstructing and analysing
 #' historic land changes in Europe, Biogeosciences, 10:1543-1559.
+#'
+#' @examples
+#'
+#' ## see lulccR-package examples
  
 setGeneric("OrderedModel", function(x, ...)
            standardGeneric("OrderedModel"))

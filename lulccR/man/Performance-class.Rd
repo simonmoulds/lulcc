@@ -10,19 +10,15 @@ the results of multiple model evaluations.
 \section{Slots}{
 
 \describe{
-\item{\code{performance}}{list of \code{performance} objects. Each object is
-calculated for the corresponding \code{prediction} object held in the
-\code{\linkS4class{Prediction}} object supplied to the constructor
-function}
+\item{\code{performance}}{list of ROCR performance objects. Each object is
+calculated for the corresponding ROCR prediction object held in the
+Prediction object supplied to the constructor function}
 
 \item{\code{auc}}{numeric vector containing the area under the ROC curve for each
 performance object}
 
-\item{\code{types}}{character vector of model types for which \code{performance}
+\item{\code{categories}}{numeric vector of land use categories for which performance
 objects were created}
-
-\item{\code{categories}}{numeric vector of land use categories for which
-\code{performance} objects were created}
 
 \item{\code{labels}}{character vector with labels corresponding to \code{categories}}
 }}

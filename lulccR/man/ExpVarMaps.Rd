@@ -20,12 +20,13 @@ ExpVarMaps(x, pattern, ...)
 }
 \arguments{
 \item{x}{path (character) to directory containing observed land use maps,
-a Raster* object or a list of Raster* objects.}
+a Raster* object or a list of Raster* objects}
 
 \item{pattern}{regular expression (character). Only filenames (if \code{x} is
 a path) or Raster* objects (if \code{x} is a list) matching the regular
-expression will be returned. See \code{raster::\link{raster}} for more
-information about supported filetypes}
+expression will be returned. See \cr
+\code{raster::\link[raster]{raster}} for more information about supported
+filetypes}
 
 \item{\dots}{additional arguments to \code{raster::\link[raster]{stack}}}
 }

@@ -13,7 +13,7 @@ compareAUC(pred, ...)
 \S4method{compareAUC}{list}(pred, digits = 4, ...)
 }
 \arguments{
-\item{pred}{a \code{Prediction} object or a list of these}
+\item{pred}{a Prediction object or a list of these}
 
 \item{digits}{numeric indicating the number of digits to be displayed after
 the decimal point for AUC values}
@@ -21,7 +21,7 @@ the decimal point for AUC values}
 \item{\dots}{additional arguments (none)}
 }
 \value{
-A data.frame containing AUC values.
+A data.frame.
 }
 \description{
 Estimate the AUC for each \code{ROCR::\link[ROCR]{prediction}} object in a
@@ -33,6 +33,9 @@ providing a list of \code{Prediction} objects. Note that \code{compareAUC}
 should be used in conjunction with other comparison methods because the AUC
 does not contain as much information as, for instance, the ROC curve itself
 (Pontius and Parmentier, 2014).
+}
+\examples{
+## see PredModels examples
 }
 \references{
 Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005). ROCR: visualizing

@@ -26,7 +26,9 @@ NULL
 #' @param fun function. Input argument to \code{focal}. Default is \code{mean}
 #' @param \dots additional arguments to \code{raster::\link[raster]{focal}}
 #'
-#' @seealso \code{\link{NeighbMaps-class}}, \code{\link{allowNeighb}}
+#' @seealso \code{\link{NeighbMaps-class}}, \code{\link{allowNeighb}},
+#' \code{raster::\link[raster]{focal}}
+#'
 #' @return A NeighbMaps object.
 #'
 #' @export
@@ -44,7 +46,7 @@ NULL
 #' ## create a NeighbMaps object for 1985 land use map
 #' nb1 <- NeighbMaps(x=obs@@maps[[1]],     
 #'                   categories=c(1,2,3), # all land use categories
-#'                   weights=3)           # 3*3 neighbourhood
+#'                   weights=c(3,3,3))           # 3*3 neighbourhood
 #'
 #' w1 <- matrix(data=c(1,1,1,
 #'                     1,1,1,

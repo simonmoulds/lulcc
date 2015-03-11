@@ -27,8 +27,8 @@ behaviour is to search for files in the working directory}
 
 \item{pattern}{regular expression (character). Only filenames (if \code{x} is
 a path) or Raster* objects (if \code{x} is a list) matching the regular
-expression will be returned. See \code{raster::\link[raster]{raster}} for
-more information about supported filetypes}
+expression will be returned. See \cr
+\code{raster::\link[raster]{raster}} for more information about supported filetypes}
 
 \item{categories}{numeric vector of land use categories in observed maps}
 
@@ -61,10 +61,13 @@ obs <- ObsLulcMaps(x=pie,
                    t=c(0,6,14))
 
 ## Sibuyan Island
-obs <- ObsLulcMaps(x=sibuyan,
+obs <- ObsLulcMaps(x=sibuyan$maps,
                    pattern="lu",
                    categories=c(1,2,3,4,5),
                    labels=c("forest","coconut","grass","rice","other"),
                    t=c(0,14))
+}
+\seealso{
+\code{\link{ObsLulcMaps-class}}, \code{raster::\link[raster]{stack}}
 }
 

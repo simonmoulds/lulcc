@@ -7,7 +7,7 @@ NULL
 #'
 #' The plot layout is based on work presented in Pontius et al. (2011)
 #'
-#' @param x object of class \code{AgreementBudget}
+#' @param x an AgreementBudget object
 #' @param from optional numeric value representing a land use category. If 
 #'   provided without \code{to} the figure of merit for all transitions from this
 #'   category will be plotted
@@ -32,6 +32,10 @@ NULL
 #' Comparison of three maps at multiple resolutions: a case study of land change
 #' simulation in Cho Don District, Vietnam. Annals of the Association of American
 #' Geographers 101(1): 45-62.
+#'
+#' @examples
+#'
+#' ## see AgreementBudget examples
 
 setGeneric("AgreementBudget.plot", function(x, ...)
            standardGeneric("AgreementBudget.plot"))

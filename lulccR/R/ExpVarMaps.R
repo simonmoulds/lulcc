@@ -1,3 +1,6 @@
+#' @include class-ExpVarMaps.R
+NULL
+
 #' Create an ExpVarMaps object
 #'
 #' Methods to load maps of explanatory variables, which may be created from file,
@@ -24,11 +27,12 @@
 #' stored as RasterStack objects.
 #' 
 #' @param x path (character) to directory containing observed land use maps,
-#'   a Raster* object or a list of Raster* objects. 
+#'   a Raster* object or a list of Raster* objects
 #' @param pattern regular expression (character). Only filenames (if \code{x} is
 #'   a path) or Raster* objects (if \code{x} is a list) matching the regular
-#'   expression will be returned. See \code{raster::\link{raster}} for more
-#'   information about supported filetypes
+#'   expression will be returned. See \cr
+#'   \code{raster::\link[raster]{raster}} for more information about supported
+#'   filetypes
 #' @param \dots additional arguments to \code{raster::\link[raster]{stack}}
 #'
 #' @seealso \code{raster::\link[raster]{stack}}
@@ -104,7 +108,7 @@ setMethod("ExpVarMaps", signature(x = "list", pattern = "character"),
               if (max(sapply(maps, nlayers)) > 1) dynamic <- TRUE
               out <- new("ExpVarMaps",
                          maps=maps,
-                         map.names=as.character(names(maps)),
+                         varnames=as.character(names(maps)),
                          dynamic=dynamic)
               
           }

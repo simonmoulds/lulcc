@@ -6,8 +6,8 @@
 #' the study region (Pontius et al., 2004).
 #'
 #' @param x RasterLayer representing land use map from an earlier timestep or an
-#'   \code{ObsLulcMaps} object containing at least two land use maps for
-#'   different points in time
+#'   ObsLulcMaps object containing at least two land use maps for different
+#'   points in time
 #' @param y RasterLayer representing land use map from a later timestep. Not used
 #'   if \code{x} is an ObsLulcMaps object
 #' @param categories numeric vector containing land use categories to consider.

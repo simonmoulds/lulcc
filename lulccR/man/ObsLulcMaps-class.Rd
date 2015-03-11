@@ -13,10 +13,6 @@ An S4 class for observed land use maps.
 
 \item{\code{t}}{numeric vector with timesteps corresponding to each observed map}
 
-\item{\code{total}}{matrix with number of cells belonging to each land use category in
-the observed maps. Columns represent land use categories and rows represent
-different maps}
-
 \item{\code{categories}}{numeric vector of land use categories}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}

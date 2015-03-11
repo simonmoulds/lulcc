@@ -31,6 +31,9 @@ A list containing the following components:
 }
 \description{
 Divide a categorical raster map into training and testing partitions.
+A wrapper function for \cr
+\code{caret::\link[caret]{createDataPartition}} (Kuhn, 2008) to divide a
+categorical raster map into training and testing partitions.
 }
 \examples{
 ## Plum Island Ecosystems
@@ -44,5 +47,12 @@ obs <- ObsLulcMaps(x=pie,
 
 ## create equally sized training and testing partitions
 part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
+}
+\references{
+Kuhn, M. (2008). Building predictive models in R using the caret
+package. Journal of Statistical Software, 28(5), 1-26.
+}
+\seealso{
+\code{caret::\link[caret]{createDataPartition}}
 }
 

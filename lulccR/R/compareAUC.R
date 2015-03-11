@@ -12,13 +12,13 @@ NULL
 #' does not contain as much information as, for instance, the ROC curve itself
 #' (Pontius and Parmentier, 2014).
 #'
-#' @param pred a \code{Prediction} object or a list of these
+#' @param pred a Prediction object or a list of these
 #' @param digits numeric indicating the number of digits to be displayed after
 #'   the decimal point for AUC values
 #' @param \dots additional arguments (none) 
 #'
 #' @seealso \code{\link{Prediction}}, \code{ROCR::\link[ROCR]{performance}}
-#' @return A data.frame containing AUC values.
+#' @return A data.frame.
 #' @export
 #' @rdname compareAUC
 #'
@@ -28,6 +28,10 @@ NULL
 #'
 #' Pontius Jr, R. G., & Parmentier, B. (2014). Recommendations for using the
 #' relative operating characteristic (ROC). Landscape ecology, 29(3), 367-382.
+#'
+#' @examples
+#'
+#' ## see PredModels examples
 
 setGeneric("compareAUC", function(pred, ...)
            standardGeneric("compareAUC"))

@@ -6,7 +6,7 @@
 approxExtrapDemand(obs, tout, ...)
 }
 \arguments{
-\item{obs}{an \code{ObsLulcMaps} object containing at least two maps}
+\item{obs}{an ObsLulcMaps object containing at least two maps}
 
 \item{tout}{numeric vector specifying the timesteps where interpolation is to
 take place. Comparable to the \code{xout} argument of
@@ -15,8 +15,7 @@ take place. Comparable to the \code{xout} argument of
 \item{\dots}{additional arguments to \code{Hmisc::\link[Hmisc]{approxExtrap}}}
 }
 \value{
-A matrix where columns correspond to land use categories and rows
-  correspond to timesteps.
+A matrix.
 }
 \description{
 Extrapolate land use area from two or more observed land use maps to provide
@@ -41,5 +40,8 @@ obs <- ObsLulcMaps(x=pie,
 
 ## obtain demand scenario
 dmd <- approxExtrapDemand(obs=obs, tout=c(0:14))
+}
+\seealso{
+\code{Hmisc::\link[Hmisc]{approxExtrap}}
 }
 

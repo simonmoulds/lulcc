@@ -9,14 +9,14 @@ NULL
 #' al., 2002) and an ordered procedure based on the algorithm described by Fuchs
 #' et al., (2013), modified to allow stochastic transitions.
 #'
-#' @param model an object inheriting from class \code{ModelInput}
-#' @param stochastic logical indicating whether the ordered model should be run
-#'   stochastically
+#' @param model an object inheriting from class \code{Model}
+#' @param stochastic logical indicating whether the model should be run
+#'   stochastically. Only used if \code{model} is an \code{OrderedModel} object
 #' @param \dots additional arguments for specific methods
 #'
 #' @seealso \code{\link{ModelInput}}, \code{\link{CluesModel}},
 #' \code{\link{OrderedModel}}
-#'
+#' @return An update Model object.
 #' @export
 #' @rdname allocate
 #'

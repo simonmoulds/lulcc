@@ -36,8 +36,6 @@ A \code{\link{PredModels}} object.
 Methods to create a \code{\link{PredModels-class}} object.
 }
 \examples{
-\dontrun{
-
 ## Plum Island Ecosystems
 
 ## Load observed land use maps
@@ -87,7 +85,7 @@ other.rf <- randomForest::randomForest(formula=other.formula, data=train.df)
 glm.models <- PredModels(models=list(forest.glm, built.glm, other.glm),
                          obs=obs)
 
-rp.models <- PredModels(models=list(built.rp, other.bp),
+rp.models <- PredModels(models=list(built.rp, other.rp),
                         categories=obs@categories[2:3],
                         labels=obs@labels[2:3])
 
@@ -122,7 +120,6 @@ p <- Performance.plot(list(glm=glm.perf, rpart=rp.perf, rf=rf.perf),
 
 ## view plot
 print(p)
-}
 }
 \seealso{
 \code{\link[stats]{glm}}, \code{rpart::\link[rpart]{rpart}},
