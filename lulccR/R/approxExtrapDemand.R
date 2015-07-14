@@ -88,7 +88,7 @@ roundSum <- function(x, ncell, ...) {
     if (missing(ncell)) stop("missing 'ncell'") 
     
     for (i in 1:nrow(x)) {
-        y <- x[i,]
+        y <- as.numeric(x[i,])
         y <- y / sum(y) * ncell ## scale row to ensure it sums to ncell
         xint <- floor(y) ## convert x to integer
         diff <- y - floor(y) ## roundoff error TODO: tolerance?

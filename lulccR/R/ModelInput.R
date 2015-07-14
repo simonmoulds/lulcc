@@ -44,7 +44,7 @@ setGeneric("ModelInput", function(obs, ef, models, time, demand, ...)
 #' @aliases ModelInput,ObsLulcMaps,ExpVarMaps,PredModels,numeric,matrix-method
 setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps", models = "PredModels", time = "numeric", demand = "matrix"),
            function(obs, ef, models, time, demand, hist, mask, neighb=NULL, ...) {
-               ef <- resample(ef, obs@maps) ## all predictor maps to same resolution as map0
+#               ef <- resample(ef, obs@maps) ## all predictor maps to same resolution as map0
 
                ## check x and models refer to the same categories
                if (!all(obs@categories == models@categories)) {
