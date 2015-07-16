@@ -49,21 +49,21 @@ NULL
 #' ## Sibuyan
 #' ef <- ExpVarMaps(x=sibuyan$maps, pattern="ef")
 
-setGeneric("ExpVarMaps", function(x, pattern, ...)
+setGeneric("ExpVarMaps", function(x, ...)
            standardGeneric("ExpVarMaps"))
 
 #' @rdname ExpVarMaps
 #' @aliases ExpVarMaps,missing,character-method
-setMethod("ExpVarMaps", signature(x = "missing", pattern = "character"),
-          function(x, pattern, ...) {
+setMethod("ExpVarMaps", signature(x = "missing"),
+          function(x, pattern = NULL, ...) {
               out <- ExpVarMaps(x=".", pattern=pattern, ...)
           }
 )
 
 #' @rdname ExpVarMaps
 #' @aliases ExpVarMaps,character,character-method
-setMethod("ExpVarMaps", signature(x = "character", pattern = "character"),
-          function(x, pattern, ...) {
+setMethod("ExpVarMaps", signature(x = "character"),
+          function(x, pattern = NULL, ...) {
               files <- list.files(path=x, pattern=pattern, full.names=FALSE)
               if (length(files) > 0) {
                   ##files <- mixedsort(files)
@@ -73,7 +73,7 @@ setMethod("ExpVarMaps", signature(x = "character", pattern = "character"),
                   nms <- names(x)
                   x <- raster::unstack(x)
                   names(x) <- nms
-                  out <- ExpVarMaps(x=x, pattern=pattern, ...)
+                  out <- ExpVarMaps(x=x, ...)
                   #out <- .getPredMaps(maps)                  
               } else {
                   stop("no predictor maps found")
@@ -84,8 +84,8 @@ setMethod("ExpVarMaps", signature(x = "character", pattern = "character"),
 
 #' @rdname ExpVarMaps
 #' @aliases ExpVarMaps,RasterStack,character-method
-setMethod("ExpVarMaps", signature(x = "RasterStack", pattern = "character"),
-          function(x, pattern, ...) {
+setMethod("ExpVarMaps", signature(x = "RasterStack"),
+          function(x, pattern = NULL, ...) {
               stack.names <- names(x)
               x <- raster::unstack(x)
               names(x) <- stack.names
@@ -95,11 +95,18 @@ setMethod("ExpVarMaps", signature(x = "RasterStack", pattern = "character"),
 
 #' @rdname ExpVarMaps
 #' @aliases ExpVarMaps,list,character-method
-setMethod("ExpVarMaps", signature(x = "list", pattern = "character"),
-          function(x, pattern, ...) {
+setMethod("ExpVarMaps", signature(x = "list"),
+          function(x, pattern = NULL, ...) {
               list.names <- names(x)
               if (is.null(list.names)) stop("list elements must be named")
-              ix <- grep(pattern=pattern, x=list.names)
+
+              if (!is.null(pattern)) {
+                  ix <- grep(pattern=pattern, x=list.names)
+              } else {
+                  ix <- seq(1:length(x))
+              }
+              
+              ##ix <- grep(pattern=pattern, x=list.names)
               files <- list.names[ix]
               files <- sort(files)
               maps <- x[files]              

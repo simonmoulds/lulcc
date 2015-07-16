@@ -1,21 +1,28 @@
+#' @include class-CategoryLabel.R
+NULL
+
 #' Class PredModels
 #'
 #' An S4 class to hold multiple mathematical models for different land use
 #' categories belonging to the same map.
 #'
 #' @slot models list of predictive models
+#' @slot prediction TODO
+#' @slot performance TODO
 #' @slot categories numeric vector of land use categories
 #' @slot labels character vector with labels corresponding to \code{categories}
 #'
 #' @export
 #' @exportClass PredModels
 #' @rdname PredModels-class
-
 setClass("PredModels",
+         contains = c("CategoryLabel"),
          slots = c(models = "list",
+                   prediction = "list",
+                   performance = "list"),
                    ## types = "character",
-                   categories = "numeric",
-                   labels = "character"),
+                   ## categories = "numeric",
+                   ## labels = "character"),
          validity = function(object) {
              check1 <- (length(object@models) == length(object@categories))
              if (!check1) stop("")

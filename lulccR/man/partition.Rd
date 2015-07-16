@@ -46,7 +46,7 @@ obs <- ObsLulcMaps(x=pie,
                    t=c(0,6,14))
 
 ## create equally sized training and testing partitions
-part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
+part <- partition(x=obs[[1]], size=0.5, spatial=FALSE)
 }
 \references{
 Kuhn, M. (2008). Building predictive models in R using the caret

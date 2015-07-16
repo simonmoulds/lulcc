@@ -56,11 +56,11 @@ obs <- ObsLulcMaps(x=sibuyan$maps,
 
 ## load explanatory variables
 ef <- ExpVarMaps(x=sibuyan$maps, pattern="ef")
-part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
+part <- partition(x=obs[[1]], size=0.5, spatial=FALSE)
 efdf <- as.data.frame(x=ef, cells=part$all)
 
 ## get training data
-br <- raster::layerize(obs@maps[[1]])
+br <- raster::layerize(obs[[1]])
 names(br) <- obs@labels
 train.df <- raster::extract(x=br, y=part$train, df=TRUE)
 train.df <- cbind(train.df, as.data.frame(x=ef, cells=part$train))
@@ -89,9 +89,9 @@ glm.models <- PredModels(models=list(forest.glm, coconut.glm, grass.glm,
                          obs=obs)
 
 probmaps <- calcProb(object=glm.models, newdata=efdf, df=TRUE)
-points <- rasterToPoints(obs@maps[[1]], spatial=TRUE)
+points <- rasterToPoints(obs[[1]], spatial=TRUE)
 probmaps <- SpatialPointsDataFrame(coords=points, data=probmaps)
-r <- rasterize(x=probmaps, y=obs@maps[[1]], field=names(probmaps))
+r <- rasterize(x=probmaps, y=obs[[1]], field=names(probmaps))
 plot(stack(r))
 }
 }

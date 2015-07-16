@@ -3,20 +3,24 @@
 \name{ExpVarMaps}
 \alias{ExpVarMaps}
 \alias{ExpVarMaps,RasterStack,character-method}
+\alias{ExpVarMaps,RasterStack-method}
 \alias{ExpVarMaps,character,character-method}
+\alias{ExpVarMaps,character-method}
 \alias{ExpVarMaps,list,character-method}
+\alias{ExpVarMaps,list-method}
 \alias{ExpVarMaps,missing,character-method}
+\alias{ExpVarMaps,missing-method}
 \title{Create an ExpVarMaps object}
 \usage{
-ExpVarMaps(x, pattern, ...)
+ExpVarMaps(x, ...)
 
-\S4method{ExpVarMaps}{missing,character}(x, pattern, ...)
+\S4method{ExpVarMaps}{missing}(x, pattern = NULL, ...)
 
-\S4method{ExpVarMaps}{character,character}(x, pattern, ...)
+\S4method{ExpVarMaps}{character}(x, pattern = NULL, ...)
 
-\S4method{ExpVarMaps}{RasterStack,character}(x, pattern, ...)
+\S4method{ExpVarMaps}{RasterStack}(x, pattern = NULL, ...)
 
-\S4method{ExpVarMaps}{list,character}(x, pattern, ...)
+\S4method{ExpVarMaps}{list}(x, pattern = NULL, ...)
 }
 \arguments{
 \item{x}{path (character) to directory containing observed land use maps,

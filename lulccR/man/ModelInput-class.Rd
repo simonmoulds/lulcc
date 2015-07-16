@@ -13,18 +13,10 @@ An S4 class to represent land use change model inputs.
 
 \item{\code{ef}}{an ExpVarMaps object}
 
-\item{\code{models}}{a PredModels object}
-
 \item{\code{time}}{numeric vector containing timesteps over which simulation will
 occur}
 
 \item{\code{demand}}{matrix containing demand scenario or NULL}
-
-\item{\code{hist}}{RasterLayer showing land use history or NULL}
-
-\item{\code{mask}}{RasterLayer showing masked areas or NULL}
-
-\item{\code{neighb}}{NeighbMaps object or NULL}
 
 \item{\code{categories}}{numeric vector of land use categories}
 

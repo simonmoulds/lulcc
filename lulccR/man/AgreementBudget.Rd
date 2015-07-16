@@ -50,7 +50,7 @@ Geographers 101(1): 45-62.
 }
 \seealso{
 \code{\link{AgreementBudget-class}},
-\code{\link{AgreementBudget.plot}}, \code{\link{ThreeMapComparison}},
+\code{\link{plot.AgreementBudget}}, \code{\link{ThreeMapComparison}},
 \code{\link{FigureOfMerit}}
 }
 

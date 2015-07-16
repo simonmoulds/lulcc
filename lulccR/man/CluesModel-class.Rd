@@ -13,11 +13,11 @@ An S4 class to represent inputs to the CLUE-S land use change model.
 
 \item{\code{ef}}{an ExpVarMaps object}
 
-\item{\code{models}}{a PredModels object}
-
 \item{\code{time}}{numeric vector of timesteps over which simulation will occur}
 
 \item{\code{demand}}{matrix containing demand scenario or NULL}
+
+\item{\code{models}}{a PredModels object}
 
 \item{\code{hist}}{RasterLayer showing land use history or NULL}
 

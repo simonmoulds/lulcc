@@ -24,7 +24,7 @@ NULL
 #'   not a ThreeMapComparison object
 #'
 #' @seealso \code{\link{AgreementBudget-class}},
-#' \code{\link{AgreementBudget.plot}}, \code{\link{ThreeMapComparison}},
+#' \code{\link{plot.AgreementBudget}}, \code{\link{ThreeMapComparison}},
 #' \code{\link{FigureOfMerit}} 
 #'
 #' @return An \code{AgreementBudget} object.

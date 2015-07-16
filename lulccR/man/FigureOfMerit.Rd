@@ -45,6 +45,6 @@ simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }
 \seealso{
-\code{\link{FigureOfMerit.plot}}, \code{\link{ThreeMapComparison}}
+\code{\link{plot.FigureOfMerit}}, \code{\link{ThreeMapComparison}}
 }
 

@@ -11,11 +11,11 @@
 #' @export
 #' @exportClass ExpVarMaps
 #' @rdname ExpVarMaps-class
+
 setClass("ExpVarMaps",
-         representation(
-             maps = "list",
-             varnames = "character",
-             dynamic = "logical"),
+         slots = c(maps = "list",
+                   varnames = "character",
+                   dynamic = "logical"),
          validity = function(object) {
              ##check1 <- (length(object@maps) > 0)
              ##if (!check1) stop("empty list")
@@ -24,3 +24,17 @@ setClass("ExpVarMaps",
              return(TRUE)           
          }
 )
+
+## setClass("ExpVarMaps",
+##          representation(
+##              maps = "list",
+##              varnames = "character",
+##              dynamic = "logical"),
+##          validity = function(object) {
+##              ##check1 <- (length(object@maps) > 0)
+##              ##if (!check1) stop("empty list")
+##              ##check2 <- (length(object@maps) == length(object@names))
+##              ##if (!check2) stop("maps and names have different lengths")
+##              return(TRUE)           
+##          }
+## )

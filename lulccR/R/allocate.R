@@ -40,7 +40,7 @@ setGeneric("allocate", function(model, ...)
 #' @aliases allocate,CluesModel-method
 setMethod("allocate", signature(model = "CluesModel"),
           function(model, ...) {
-              map0 <- model@obs@maps[[1]]
+              map0 <- model@obs[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
               if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
@@ -100,7 +100,7 @@ setMethod("allocate", signature(model = "CluesModel"),
 #' @aliases allocate,OrderedModel-method
 setMethod("allocate", signature(model = "OrderedModel"),
           function(model, stochastic=TRUE, ...) {
-              map0 <- model@obs@maps[[1]]
+              map0 <- model@obs[[1]]
               cells <- which(!is.na(raster::getValues(map0)))
               map0.vals <- raster::extract(map0, cells)
               if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
@@ -145,6 +145,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
                        map0.vals <- map1.vals 
                    }
                }
+               
                model@output <- maps
                model     
           }
@@ -285,7 +286,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
 
 ## .allocate <- function(model, fun, ...) {              
 
-##     map0 <- model@obs@maps[[1]]
+##     map0 <- model@obs[[1]]
 ##     cells <- which(!is.na(raster::getValues(map0)))
 ##     map0.vals <- raster::extract(map0, cells)
 ##     hist.vals <- raster::extract(model@hist, cells)

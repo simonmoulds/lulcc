@@ -39,11 +39,11 @@ NULL
 #' ef <- ExpVarMaps(x=pie, pattern="ef")
 #'
 #' ## create equally sized training and testing partitions
-#' part <- partition(x=obs@@maps[[1]], size=0.5, spatial=FALSE)
+#' part <- partition(x=obs[[1]], size=0.5, spatial=FALSE)
 #' 
 #' ## convert initial land use map to RasterBrick where each layer is a boolean
 #' ## map for the respective land use
-#' br <- raster::layerize(obs@@maps[[1]])
+#' br <- raster::layerize(obs[[1]])
 #' names(br) <- obs@@labels
 #'
 #' ## create data.frame to fit models
@@ -119,9 +119,11 @@ setGeneric("PredModels", function(models, obs, categories, labels, ...)
 #' @aliases PredModels,list,ObsLulcMaps,ANY,ANY-method
 setMethod("PredModels", signature(models = "list", obs = "ObsLulcMaps", categories = "ANY", labels = "ANY"),
           function(models, obs, categories, labels, ...) {
-              if (length(models) != length(obs@labels)) stop("")
+              if (length(models) != length(obs@labels)) stop("'models' must contain a model for each category in 'obs'")
+
               ## types <- predModelType(x=models)
               ## new("PredModels", models=models, types=types, categories=obs@categories, labels=obs@labels)
+
               new("PredModels", models=models, categories=obs@categories, labels=obs@labels)
           }
 )
@@ -132,8 +134,10 @@ setMethod("PredModels", signature(models = "list", obs = "ANY", categories = "nu
           function(models, obs, categories, labels, ...) {
               if (length(models) != length(labels)) stop("")
               if (length(models) != length(categories)) stop("")
+
               ## types <- predModelType(x=models)
               ## new("PredModels", models=models, types=types, categories=categories, labels=labels)
+              
               new("PredModels", models=models, categories=categories, labels=labels)
           }
 )

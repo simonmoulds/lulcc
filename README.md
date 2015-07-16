@@ -25,6 +25,7 @@ The package includes two example datasets: one for Sibuyan Island in the Phillip
 Land use change modelling requires a large amount of input data. The most important input is at least one map of observed land use. In lulccR, this data is represented by the `ObsLulcMaps` class:
 
 ```R
+data(pie)
 obs <- ObsLulcMaps(x=pie,
                    pattern="lu", 
                    categories=c(1,2,3), 

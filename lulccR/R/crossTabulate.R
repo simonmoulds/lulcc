@@ -1,3 +1,6 @@
+#' @include index.R
+NULL
+
 #' Cross tabulate land use transitions
 #'
 #' Cross tabulate land use transitions using
@@ -85,21 +88,21 @@ setMethod("crossTabulate", signature(x = "RasterLayer", y = "RasterLayer"),
 setMethod("crossTabulate", signature(x = "ObsLulcMaps", y = "ANY"),
           function(x, y, index, ...) {
 
-              if (nlayers(x@maps) < 2) stop("at least two maps required")
+              if (nlayers(x) < 2) stop("at least two maps required")
               
               if (missing(index)) {
                   index <- c(1,2)
               } else if (length(index) != 2) {
                   stop("index must contain two elements")
-              } else if (any(index > raster::nlayers(x@maps))) {
+              } else if (any(index > raster::nlayers(x))) {
                   stop("index out of range")
               } 
 
               ix1 <- index[1]
               ix2 <- index[2]
               
-              m <- crossTabulate(x=x@maps[[ix1]],
-                                 y=x@maps[[ix2]],
+              m <- crossTabulate(x=x[[ix1]],
+                                 y=x[[ix2]],
                                  categories=x@categories,
                                  labels=x@labels)
               m              

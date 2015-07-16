@@ -56,9 +56,9 @@ setMethod("ThreeMapComparison", signature(x = "Model", x1 = "ANY", y1 = "ANY"),
 
               categories <- x@categories
               labels <- x@labels
-              x1 <- x@obs@maps[[which(x@obs@t %in% timestep)]]
+              x1 <- x@obs[[which(x@obs@t %in% timestep)]]
               y1 <- x@output[[which(x@time %in% timestep)]]
-              x <- x@obs@maps[[1]]
+              x <- x@obs[[1]]
               
               out <- ThreeMapComparison(x=x, x1=x1, y1=y1, factors=factors, categories=categories, labels=labels, ...)
               out
@@ -304,16 +304,241 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
 
               }
 
+              ## agr <- .agreementBudget(tables=tables, factors=factors, categories=categories)
+              ## fom <- .figureOfMerit(tables=tables, factors=factors, categories=categories)
+              
               out <- new("ThreeMapComparison",
                          tables=tables,
                          factors=factors,
+                         ## agr.overall=agr@overall,
+                         ## agr.category=agr@category,
+                         ## agr.transition=agr@transition,
+                         ## fom.overall=fom@overall,
+                         ## fom.category=fom@category,
+                         ## fom.transition=fom@transition,                         
                          categories=categories,
                          labels=labels)
 
           }
 )
 
-          
+## .agreementBudget <- function(tables, factors, categories) { 
+
+##     ## overall
+##     overall.agr <- .agreementBudget2(tables=tables, factors=factors, categories=categories, type="overall", from.ix=1:length(categories), to.ix=1:length(categories))
+
+##     ## category
+##     category.agr <- list()
+##     for (i in 1:length(categories)) {
+##         category.agr[[i]] <- .agreementBudget2(tables=tables, factors=factors, type="category", categories=categories, from.ix=i, to.ix=1:length(categories))
+##     }
+##     names(category.agr) <- labels
+
+##     ## transition
+##     transition.agr <- list()
+##     for (i in 1:length(categories)) {
+##         for (j in 1:length(categories)) {
+##             ix <- (i-1) * length(categories) + j
+##             transition.agr[[ix]] <- .agreementBudget2(tables=tables, factors=factors, type="transition", categories=categories, from.ix=i, to.ix=j)
+
+##         }
+##     }
+##     names(transition.agr) <- paste0(rep(labels, each=length(categories)), "-", rep(labels, length(categories)))
+
+##     list(overall=overall.agr, category=category.agr, transition=transition.agr)
+
+## }
+
+## .agreementBudget2 <- function(tables, factors, categories, type, from.ix=NA, to.ix=NA) {
+    
+##     ## number of sources of agreement/disagreement (correct persistence not possible with 'transition')
+##     if (type == "transition") {
+##         n <- 4
+##     } else {
+##         n <- 5
+##     }
+    
+##     ## preallocate output data.frame
+##     agreement <- as.data.frame(matrix(data=NA, nrow=length(factors), ncol=n))
+##     names(agreement) <- c("a","b","c","d","e")[1:n]
+
+##     for (f in 1:length(tables)) {
+##         tab <- tables[[f]]
+
+##         ## change simulated as persistence
+##         a <- rep(0, length(categories))
+##         for (j in to.ix) {
+##             asub <- rep(0, length(categories))
+##             for (i in from.ix) {
+##                 if (i != j) {
+##                     ixy <- i + (j-1) * (length(categories) + 1)
+##                     ixx <- i
+##                     asub[i] <- tab[ixy,ixx]
+##                 }
+##             }
+##             a[j] <- sum(asub, na.rm=TRUE)
+##         }
+##         a <- sum(a)
+
+##         ## correctly simulated change
+##         b <- rep(0, length(categories))
+##         for (j in to.ix) {
+##             bsub <- rep(0, length(categories))
+##             for (i in from.ix) {
+##                 if (i != j) {
+##                     ixy <- i + (j-1) * (length(categories) + 1)
+##                     ixx <- j
+##                     bsub[i] <- tab[ixy,ixx]
+##                 } 
+##             }
+##             b[j] <- sum(bsub)
+##         }
+##         b <- sum(b)
+
+##         ## incorrectly simulated change
+##         c <- rep(0, length(categories)) 
+##         for (j in to.ix) {
+##             csub <- rep(0, length(categories))   
+##             for (i in from.ix) {
+##                 csubsub <- rep(0, length(categories))               
+##                 for (k in 1:length(categories)) {
+##                     if (i != j && i != k && j != k) {
+##                         ixy <- i + (j-1) * (length(categories) + 1)
+##                         ixx <- k
+##                         csubsub[k] <- tab[ixy,ixx]
+##                     }
+##                 }
+##                 csub[i] <- sum(csubsub, na.rm=TRUE)
+##             }
+##             c[j] <- sum(csub, na.rm=TRUE)
+##         }
+##         c <- sum(c)
+
+##         ## if looking at specific transitions...
+##         if (length(to.ix) == 1) {
+##             csub <- rep(0, length(categories))
+##             for (j in 1:length(categories)) {
+##                 if (j != from.ix && j != to.ix) {
+##                     ixy <- from.ix + (j-1) * (length(categories) + 1)
+##                     ixx <- to.ix
+##                     csub[j] <- tab[ixy,ixx]
+##                 }
+##             }
+##             c <- c + sum(csub)
+##         }
+
+##         ## persistence simulated incorrectly
+##         d <- rep(0, length(categories))
+##         for (j in from.ix) {
+##             dsub <- rep(0, length(categories))
+##             for (k in to.ix) {
+##                 if (k != j) {
+##                     ixy <- j + (j-1) * (length(categories) + 1)
+##                     ixx <- k 
+##                     dsub[k] <- tab[ixy,ixx]
+##                 }
+##             }
+##             d[j] <- sum(dsub)
+##         }
+##         d <- sum(d)
+
+##         ## persistence simulated correctly
+##         if (type == "overall" || type == "category") {
+##             e <- rep(0, length(categories))
+##             for (i in from.ix) {
+##                 ixy <- i + (i-1) * (length(categories) + 1)
+##                 ixx <- i
+##                 e[i] <- tab[ixy,ixx]
+##             }
+##             e <- sum(e)
+##             agreement[f,] <- c(a, b, c, d, e)
+##         } else {
+##             agreement[f,] <- c(a, b, c, d)
+##         }        
+##     }
+    
+##     agreement
+
+## }
+
+## ## NB Equation numbers refer to those in Pontius et al. (2011)
+## .figureOfMerit <- function(tables, factors, categories) {
+
+##     overall.fom <- list()
+##     category.fom <- list()
+##     transition.fom <- list()
+
+##     for (f in 1:length(factors)) {
+
+##         tab <- tables[[f]]
+
+##         ## Equation 9 (overall figure of merit)
+##         a <- 0
+##         b <- 0            
+##         for (j in 1:length(categories)) {
+##             a.ixy <- j * (length(categories) + 1)
+##             a.ixx <- j
+##             a <- sum(c(a, tab[a.ixy, a.ixx]), na.rm=TRUE) ## expression left of minus sign in numerator
+##             b.ixy <- j + (j-1) * (length(categories) + 1)
+##             b.ixx <- j
+##             b <- sum(c(b, tab[b.ixy, b.ixx]), na.rm=TRUE) ## expression right of minus sign in numerator
+##         }
+
+##         overall.fom[[f]] <- (a - b) / (1 - b) ## Equation 9
+
+##         ## Equation 10 (figure of merit for each category)
+##         eq10 <- rep(0, length(categories))
+##         names(eq10) <- categories ## useful?
+##         for (i in 1:length(categories)) {
+##             a <- 0
+##             b <- 0
+##             for (j in 1:length(categories)) {
+##                 a.ixy <- i + (j-1) * (length(categories) + 1)
+##                 a.ixx <- j
+##                 a <- sum(c(a, tab[a.ixy, a.ixx]), na.rm=TRUE) ## expression left of minus sign in numerator
+##                 b.ixy <- a.ixy
+##                 b.ixx <- length(categories) + 1
+##                 b <- sum(c(b, tab[b.ixy, b.ixx]), na.rm=TRUE) ## expression left of minus sign in denominator 
+##             }
+##             c.ixy <- i + (i-1) * (length(categories) + 1)
+##             c.ixx <- i
+##             c <- tab[c.ixy, c.ixx] ## expression right of plus sign in numerator
+##             eq10[i] <- (a - c) / (b - c) ## Equation 10
+##         }
+##         category.fom[[f]] <- eq10
+
+##         ## Equation 11 (figure of merit for each transition)
+##         eq11 <- matrix(data=0, nrow=length(categories), ncol=length(categories))
+##         colnames(eq11) <- categories ## useful?
+##         rownames(eq11) <- categories ## useful?
+##         for (j in 1:length(categories)) {
+##             for (i in 1:length(categories)) {
+##                 a.ixy <- i + (j-1) * (length(categories) + 1)
+##                 a.ixx <- j 
+##                 a <- tab[a.ixy, a.ixx] ## numerator
+##                 b.ixy <- i + (j-1) * (length(categories) + 1)
+##                 b.ixx <- length(categories) + 1
+##                 b <- tab[b.ixy, b.ixx] ## expression left of plus sign in denominator
+##                 c <- 0
+##                 for (k in 1:length(categories)) {
+##                     c.ixy <- i + (k-1) * (length(categories) + 1)
+##                     c.ixx <- j
+##                     c <- sum(c(c, tab[c.ixy, c.ixx]), na.rm=TRUE) ## expression right of plus sign in denominator
+##                 }
+##                 eq11[i,j] <- a / (b + c - a) ## Equation 11
+##             }
+##         }
+##         transition.fom[[f]] <- eq11
+##     }
+
+##     list(overall=overall.fom, category=category.fom, transition=transition.fom)
+
+## }
+
+
+
+## old:
+
 ## ThreeMapComparison <- function(rt1, rt2, st2, factors, categories, labels, ...) {
   
 ##     ## NB equation numbers refer to those in Pontius et al. (2011)

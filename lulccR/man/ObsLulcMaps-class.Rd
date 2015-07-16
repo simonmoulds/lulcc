@@ -9,7 +9,27 @@ An S4 class for observed land use maps.
 \section{Slots}{
 
 \describe{
-\item{\code{maps}}{RasterStack containing observed land use maps}
+\item{\code{filename}}{TODO}
+
+\item{\code{layers}}{TODO}
+
+\item{\code{title}}{TODO}
+
+\item{\code{extent}}{TODO}
+
+\item{\code{rotated}}{TODO}
+
+\item{\code{rotation}}{TODO}
+
+\item{\code{ncols}}{TODO}
+
+\item{\code{nrows}}{TODO}
+
+\item{\code{crs}}{TODO}
+
+\item{\code{history}}{TODO}
+
+\item{\code{z}}{TODO}
 
 \item{\code{t}}{numeric vector with timesteps corresponding to each observed map}
 

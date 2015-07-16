@@ -19,7 +19,7 @@ NULL
 #' @param \dots additional arguments to ThreeMapComparison. Only required if x is
 #'   not a ThreeMapComparison object
 #'
-#' @seealso \code{\link{FigureOfMerit.plot}}, \code{\link{ThreeMapComparison}}
+#' @seealso \code{\link{plot.FigureOfMerit}}, \code{\link{ThreeMapComparison}}
 #' @return A FigureOfMerit object.
 #'
 #' @export

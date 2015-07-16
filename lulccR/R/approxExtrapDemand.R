@@ -36,8 +36,8 @@
 #' dmd <- approxExtrapDemand(obs=obs, tout=c(0:14))
 
 approxExtrapDemand <- function(obs, tout, ...) {
-    if (nlayers(obs@maps) > 1) {
-        tot <- total(obs@maps)$total
+    if (nlayers(obs) > 1) {
+        tot <- total(x=obs)$total
         demand <- matrix(data=NA, nrow=length(tout), ncol=length(obs@categories))
         for (i in 1:length(obs@categories)) {
             x <- Hmisc::approxExtrap(obs@t, tot[,i], tout)$y
@@ -49,7 +49,7 @@ approxExtrapDemand <- function(obs, tout, ...) {
         stop("cannot estimate land use demand with only one observed map")
     }
 
-    ncell <- length(which(!is.na(raster::getValues(obs@maps[[1]]))))
+    ncell <- length(which(!is.na(raster::getValues(obs[[1]]))))
     demand <- roundSum(demand, ncell)
 }
 

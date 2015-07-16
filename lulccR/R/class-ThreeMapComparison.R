@@ -1,3 +1,6 @@
+#' @include class-CategoryLabel.R
+NULL
+
 #' Class ThreeMapComparison
 #'
 #' An S4 class to hold results of a comparison between a reference map for time
@@ -20,10 +23,11 @@
 #' Geographers 101(1): 45-62.
 
 setClass("ThreeMapComparison",
+         contains = c("CategoryLabel"),
          slots = c(tables = "list",
-                   factors = "numeric",
-                   categories = "numeric",
-                   labels = "character"),
+                   factors = "numeric"),
+                   ## categories = "numeric",
+                   ## labels = "character"),
          validity = function(object) {
              ## TODO
              return(TRUE)

@@ -9,17 +9,31 @@ An S4 class for neighbourhood maps.
 \section{Slots}{
 
 \describe{
-\item{\code{maps}}{list of RasterLayers showing neighbourhood values for each land use
-in \code{categories}}
+\item{\code{filename}}{TODO}
+
+\item{\code{layers}}{TODO}
+
+\item{\code{title}}{TODO}
+
+\item{\code{extent}}{TODO}
+
+\item{\code{rotated}}{TODO}
+
+\item{\code{rotation}}{TODO}
+
+\item{\code{ncols}}{TODO}
+
+\item{\code{nrows}}{TODO}
+
+\item{\code{crs}}{TODO}
+
+\item{\code{history}}{TODO}
+
+\item{\code{z}}{TODO}
+
+\item{\code{calls}}{list}
 
 \item{\code{categories}}{numeric vector of land use categories for which neighbourhood
-maps exist}
-
-\item{\code{weights}}{list of weights matrices}
-
-\item{\code{fun}}{function used to calculate neighbourhood values}
-
-\item{\code{focal.args}}{list of all other arguments supplied to
-  \code{raster::\link[raster]{focal}}}
+  maps exist}
 }}
 

@@ -33,7 +33,7 @@
 #'                      t=c(0,6,14))
 #'
 #' ## create a NeighbMaps object for forest only
-#' nb <- NeighbMaps(x=obs@@maps[[1]],
+#' nb <- NeighbMaps(x=obs[[1]],
 #'                   categories=1,
 #'                   weights=3,
 #'                   fun=mean)
@@ -42,12 +42,12 @@
 #' ## note that rules can be any value between zero (less restrictive) and one
 #' ## (more restrictive)
 #' nb.allow <- allowNeighb(neighb=nb,
-#'                         x=obs@@maps[[1]],
+#'                         x=obs[[1]],
 #'                         categories=obs@@categories,
 #'                         rules=0.5)
 #'
 #' ## create raster showing cells allowed to change to forest
-#' r <- obs@@maps[[1]]
+#' r <- obs[[1]]
 #' r[!is.na(r)] <- nb.allow[,1]
 #' plot(r)
 #'

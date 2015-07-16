@@ -3,19 +3,12 @@
 \alias{Prediction}
 \title{Create a Prediction object}
 \usage{
-Prediction(models, obs, ef, timestep = 0, partition, ...)
+Prediction(models, newdata, ...)
 }
 \arguments{
 \item{models}{a PredModels object}
 
-\item{obs}{an ObsLulcMaps object}
-
-\item{ef}{an ExpVarMaps object}
-
-\item{timestep}{numeric indicating the timestep of the observed map in
-\code{obs} against which the observed map should be tested}
-
-\item{partition}{index of cells for which occurrence should be predicted}
+\item{newdata}{a data.frame containing new data}
 
 \item{\dots}{additional arguments to \code{ROCR::\link[ROCR]{prediction}}}
 }

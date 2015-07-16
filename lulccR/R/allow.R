@@ -62,7 +62,7 @@
 #'                    t=c(0,6,14))
 #'
 #' ## get land use values
-#' x <- getValues(obs@@maps[[1]])
+#' x <- getValues(obs[[1]])
 #' x <- x[!is.na(x)]
 #'
 #' ## create vector of arbitrary land use history values
@@ -85,9 +85,9 @@
 #'                rules=rules)
 #'
 #' ## create raster showing cells allowed to change from forest to built
-#' r <- obs@@maps[[1]]
+#' r <- obs[[1]]
 #' r[!is.na(r)] <- allow[,2]
-#' r[obs@@maps[[1]] != 1] <- NA  ## set all cells not belonging to forest to NA
+#' r[r != 1] <- NA  ## set all cells not belonging to forest to NA
 #' plot(r)
 #'
 #' ## NB output is only useful when used within an allocation routine

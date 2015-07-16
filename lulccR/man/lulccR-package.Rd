@@ -74,11 +74,11 @@ obs <- ObsLulcMaps(x=pie,
 ef <- ExpVarMaps(x=pie, pattern="ef")
 
 ## create equally sized training and testing partitions
-part <- partition(x=obs@maps[[1]], size=0.5, spatial=FALSE)
+part <- partition(x=obs[[1]], size=0.5, spatial=FALSE)
 
 ## convert initial land use map to RasterBrick where each layer is a boolean
 ## map for the respective land use
-br <- raster::layerize(obs@maps[[1]])
+br <- raster::layerize(obs[[1]])
 names(br) <- obs@labels
 
 ## create data.frame to fit models

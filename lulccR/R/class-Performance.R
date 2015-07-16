@@ -1,3 +1,6 @@
+#' @include class-CategoryLabel.R
+NULL
+
 #' Class Performance
 #'
 #' An S4 class that extends \code{ROCR::\link[ROCR]{performance-class}} to hold
@@ -6,8 +9,7 @@
 #' @slot performance list of ROCR performance objects. Each object is
 #'   calculated for the corresponding ROCR prediction object held in the
 #'   Prediction object supplied to the constructor function
-#' @slot auc numeric vector containing the area under the ROC curve for each
-#'   performance object
+#' @slot auc TODO
 #' @slot categories numeric vector of land use categories for which performance
 #'   objects were created
 #' @slot labels character vector with labels corresponding to \code{categories}
@@ -17,11 +19,12 @@
 #' @rdname Performance-class
 
 setClass("Performance",
+         contains = c("CategoryLabel"),
          slots = c(performance = "list",
-                   auc = "numeric",
+                   auc = "numeric"),
                    ## types = "character",
-                   categories = "numeric",
-                   labels = "character"),
+                   ## categories = "numeric",
+                   ## labels = "character"),
          validity = function(object) {
              ## TODO
              return(TRUE)

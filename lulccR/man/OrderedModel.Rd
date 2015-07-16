@@ -7,11 +7,21 @@
 \usage{
 OrderedModel(x, ...)
 
-\S4method{OrderedModel}{ModelInput}(x, rules = NULL, nb.rules = NULL, order,
-  params, output = NULL, ...)
+\S4method{OrderedModel}{ModelInput}(x, models, hist, mask, neighb = NULL,
+  rules = NULL, nb.rules = NULL, order, params, output = NULL, ...)
 }
 \arguments{
 \item{x}{a ModelInput object}
+
+\item{models}{a PredModels object}
+
+\item{hist}{RasterLayer containing land use history (values represent the
+number of years the cell has contained the current land use category)}
+
+\item{mask}{RasterLayer containing binary values where 0 indicates cells
+that are not allowed to change}
+
+\item{neighb}{an object of class NeighbMaps}
 
 \item{rules}{matrix with land use change decision rules}
 

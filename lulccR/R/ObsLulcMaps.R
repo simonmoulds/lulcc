@@ -1,4 +1,4 @@
-#' @include class-ObsLulcMaps.R
+#' @include class-ObsLulcMaps.R class-CategoryLabel.R
 NULL
 
 #' Create an ObsLulcMaps object
@@ -118,6 +118,6 @@ setMethod("ObsLulcMaps", signature(x = "RasterStack", pattern = "ANY"),
               ## info <- total(x, categories)
               ## total <- info$total
               ## out <- new("ObsLulcMaps", maps=x, t=t, total=total, categories=categories, labels=labels)
-              out <- new("ObsLulcMaps", maps=x, t=t, categories=categories, labels=labels)
+              out <- new("ObsLulcMaps", x, t=t, categories=categories, labels=labels)
           }
 )

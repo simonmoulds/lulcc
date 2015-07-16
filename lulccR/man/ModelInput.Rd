@@ -2,20 +2,17 @@
 \docType{methods}
 \name{ModelInput}
 \alias{ModelInput}
-\alias{ModelInput,ObsLulcMaps,ExpVarMaps,PredModels,numeric,matrix-method}
+\alias{ModelInput,ObsLulcMaps,ExpVarMaps-method}
 \title{Create a ModelInput object}
 \usage{
-ModelInput(obs, ef, models, time, demand, ...)
+ModelInput(obs, ef, ...)
 
-\S4method{ModelInput}{ObsLulcMaps,ExpVarMaps,PredModels,numeric,matrix}(obs, ef,
-  models, time, demand, hist, mask, neighb = NULL, ...)
+\S4method{ModelInput}{ObsLulcMaps,ExpVarMaps}(obs, ef, time, demand, ...)
 }
 \arguments{
 \item{obs}{an ObsLulcMaps or ModelInput object}
 
 \item{ef}{an ExpVarMaps object}
-
-\item{models}{a PredModels object}
 
 \item{time}{numeric vector containing timesteps over which simulation will
 occur}
@@ -24,14 +21,6 @@ occur}
 of cells to be allocated. The first row should be the number of cells
 allocated to the initial observed land use map (i.e. the land use map for
 time 0)}
-
-\item{hist}{RasterLayer containing land use history (values represent the
-number of years the cell has contained the current land use category)}
-
-\item{mask}{RasterLayer containing binary values where 0 indicates cells
-that are not allowed to change}
-
-\item{neighb}{an object of class NeighbMaps}
 
 \item{\dots}{additional arguments (none)}
 }

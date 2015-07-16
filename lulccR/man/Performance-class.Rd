@@ -14,8 +14,7 @@ the results of multiple model evaluations.
 calculated for the corresponding ROCR prediction object held in the
 Prediction object supplied to the constructor function}
 
-\item{\code{auc}}{numeric vector containing the area under the ROC curve for each
-performance object}
+\item{\code{auc}}{TODO}
 
 \item{\code{categories}}{numeric vector of land use categories for which performance
 objects were created}

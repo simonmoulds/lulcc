@@ -15,21 +15,19 @@ Imports:
 Suggests:
     rpart,
     randomForest,
-    caret,
     gsubfn,
     Hmisc,
-    knitr,
     lattice,
     plyr,
+    rasterVis,
     RColorBrewer
 Collate:
+    'class-CategoryLabel.R'
     'class-ThreeMapComparison.R'
     'AgreementBudget.R'
-    'AgreementBudget.plot.R'
     'class-ExpVarMaps.R'
     'ExpVarMaps.R'
     'FigureOfMerit.R'
-    'FigureOfMerit.plot.R'
     'class-PredModels.R'
     'class-ObsLulcMaps.R'
     'class-NeighbMaps.R'
@@ -39,7 +37,6 @@ Collate:
     'ObsLulcMaps.R'
     'class-Performance.R'
     'Performance.R'
-    'Performance.plot.R'
     'PredModels.R'
     'class-Prediction.R'
     'Prediction.R'
@@ -50,12 +47,24 @@ Collate:
     'approxExtrapDemand.R'
     'as.data.frame.R'
     'calcProb.R'
+    'index.R'
+    'coerce.R'
     'compareAUC.R'
     'crossTabulate.R'
     'data.R'
+    'glmModels.R'
+    'length.R'
     'lulccR-package.R'
+    'names.R'
     'partition.R'
     'performance.rocr.R'
+    'plot.AgreementBudget.R'
+    'plot.FigureOfMerit.R'
+    'plot.ModelInput.R'
+    'plot.Performance.R'
     'resample.R'
+    'show.R'
+    'subset.R'
+    'summary.R'
     'total.R'
 Packaged: 2015-03-11 15:13:21 UTC; simon

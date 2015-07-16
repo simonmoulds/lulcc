@@ -2,27 +2,23 @@
 \docType{methods}
 \name{NeighbMaps}
 \alias{NeighbMaps}
-\alias{NeighbMaps,RasterLayer,ANY,ANY,NeighbMaps-method}
-\alias{NeighbMaps,RasterLayer,numeric,list,ANY-method}
-\alias{NeighbMaps,RasterLayer,numeric,numeric,ANY-method}
+\alias{NeighbMaps,RasterLayer,ANY,NeighbMaps-method}
+\alias{NeighbMaps,RasterLayer,list,ANY-method}
+\alias{NeighbMaps,RasterLayer,matrix,ANY-method}
 \title{Create a NeighbMaps object}
 \usage{
-NeighbMaps(x, categories, weights, neighb, ...)
+NeighbMaps(x, weights, neighb, ...)
 
-\S4method{NeighbMaps}{RasterLayer,numeric,list,ANY}(x, categories, weights,
-  neighb, fun = mean, ...)
+\S4method{NeighbMaps}{RasterLayer,list,ANY}(x, weights, neighb, categories,
+  fun = mean, ...)
 
-\S4method{NeighbMaps}{RasterLayer,numeric,numeric,ANY}(x, categories, weights,
-  neighb, fun = mean, ...)
+\S4method{NeighbMaps}{RasterLayer,matrix,ANY}(x, weights, neighb, categories,
+  fun = mean, ...)
 
-\S4method{NeighbMaps}{RasterLayer,ANY,ANY,NeighbMaps}(x, categories, weights,
-  neighb)
+\S4method{NeighbMaps}{RasterLayer,ANY,NeighbMaps}(x, weights, neighb)
 }
 \arguments{
 \item{x}{RasterLayer containing categorical data}
-
-\item{categories}{numeric vector containing land use categories for which
-neighbourhood values should be calculated}
 
 \item{weights}{list containing a matrix of weights (the \code{w} argument in
 \code{focal}) for each land use category or a numeric vector specifying the
@@ -35,6 +31,9 @@ neighbourhood values should be calculated}
 \code{weights} are not provided. This option can be useful when existing
 NeighbMaps objects need to be updated because a new land use map is
 available, such as during the allocation procedure.}
+
+\item{categories}{numeric vector containing land use categories for which
+neighbourhood values should be calculated}
 
 \item{fun}{function. Input argument to \code{focal}. Default is \code{mean}}
 
@@ -60,7 +59,7 @@ obs <- ObsLulcMaps(x=pie,
                     t=c(0,6,14))
 
 ## create a NeighbMaps object for 1985 land use map
-nb1 <- NeighbMaps(x=obs@maps[[1]],
+nb1 <- NeighbMaps(x=obs[[1]],
                   categories=c(1,2,3), # all land use categories
                   weights=c(3,3,3))           # 3*3 neighbourhood
 
@@ -76,12 +75,12 @@ w3 <- matrix(data=c(1,1,1,
                     1,1,1,
                     1,1,1), nrow=3, ncol=3, byrow=TRUE)
 
-nb2 <- NeighbMaps(x=obs@maps[[1]],
+nb2 <- NeighbMaps(x=obs[[1]],
                   categories=c(1,2,3),
                   weights=list(w1,w2,w3))
 
 ## update nb2 for 1991
-nb2 <- NeighbMaps(x=obs@maps[[2]],
+nb2 <- NeighbMaps(x=obs[[2]],
                   neighb=nb2)
 
 ## plot neighbourhood map for forest

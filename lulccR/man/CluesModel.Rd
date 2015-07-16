@@ -7,11 +7,21 @@
 \usage{
 CluesModel(x, ...)
 
-\S4method{CluesModel}{ModelInput}(x, elas, rules = NULL, nb.rules = NULL,
-  params, output = NULL, ...)
+\S4method{CluesModel}{ModelInput}(x, models, hist, mask, neighb = NULL, elas,
+  rules = NULL, nb.rules = NULL, params, output = NULL, ...)
 }
 \arguments{
 \item{x}{a ModelInput object}
+
+\item{models}{a PredModels object}
+
+\item{hist}{RasterLayer containing land use history (values represent the
+number of years the cell has contained the current land use category)}
+
+\item{mask}{RasterLayer containing binary values where 0 indicates cells
+that are not allowed to change}
+
+\item{neighb}{an object of class NeighbMaps}
 
 \item{elas}{numeric indicating the elasticity of each land use category to
 change. Elasticity varies between 0 and 1, with 0 indicating a low

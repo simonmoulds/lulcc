@@ -44,7 +44,7 @@ NULL
 #'                     t=c(0,6,14))
 #'
 #' ## create a NeighbMaps object for 1985 land use map
-#' nb1 <- NeighbMaps(x=obs@@maps[[1]],     
+#' nb1 <- NeighbMaps(x=obs[[1]],     
 #'                   categories=c(1,2,3), # all land use categories
 #'                   weights=c(3,3,3))           # 3*3 neighbourhood
 #'
@@ -60,60 +60,94 @@ NULL
 #'                     1,1,1,
 #'                     1,1,1), nrow=3, ncol=3, byrow=TRUE)
 #'
-#' nb2 <- NeighbMaps(x=obs@@maps[[1]],
+#' nb2 <- NeighbMaps(x=obs[[1]],
 #'                   categories=c(1,2,3),
 #'                   weights=list(w1,w2,w3))
 #'
 #' ## update nb2 for 1991
-#' nb2 <- NeighbMaps(x=obs@@maps[[2]],
+#' nb2 <- NeighbMaps(x=obs[[2]],
 #'                   neighb=nb2)
 #'
 #' ## plot neighbourhood map for forest
 #' plot(nb2@@maps[[1]])
 
-setGeneric("NeighbMaps", function(x, categories, weights, neighb, ...)
+setGeneric("NeighbMaps", function(x, weights, neighb, ...)
            standardGeneric("NeighbMaps"))
 
 #' @rdname NeighbMaps
-#' @aliases NeighbMaps,RasterLayer,numeric,list,ANY-method
-setMethod("NeighbMaps", signature(x = "RasterLayer", categories = "numeric", weights = "list", neighb="ANY"),
-          function(x, categories, weights, neighb, fun=mean, ...) {
+#' @aliases NeighbMaps,RasterLayer,list,ANY-method
+setMethod("NeighbMaps", signature(x = "RasterLayer", weights = "list", neighb="ANY"),
+          function(x, weights, neighb, categories, fun=mean, ...) {
+
               if (length(weights) != length(categories)) stop("'weights' and 'categories' must have same length")
-              if (any(is.na(weights))) stop("'weights' cannot contain NAs")            
-              maps <- list()
+                            
               vals <- raster::getValues(x)
+              missing.ix <- (!categories %in% vals)
+
+              if (length(which(missing.ix)) > 0) {
+                  warning(paste0("categories ", categories[missing.ix], " not found in 'x'"))
+              } 
+
+              categories <- categories[!missing.ix]
+              weights <- weights[!missing.ix]
+              
+              maps <- list()
+              calls <- list()
+    
               for (i in 1:length(categories)) {
-                  if (categories[i] %in% vals) {
-                      r <- (x[[i]] == categories[i])
-                      ix <- length(maps) + 1
-                      maps[[ix]] <- raster::focal(r, weights[[i]], fun=fun, pad=TRUE, na.rm=TRUE, ...)
-                  } else {
-                      maps[[i]] <- NA
-                      warning(paste0("category ", categories[i], " not found in input map"))
-                  }
+                  ## if (categories[i] %in% vals) {
+                  r <- (x == categories[i])
+                  w <- weights[[i]]
+                  cl <- call("focal", x=r, w=w, fun=fun, pad=TRUE, na.rm=TRUE)#, list(...))
+
+                  ##maps[[ix]] <- eval(cl) ##raster::focal(r, weights[[i]], fun=fun, pad=TRUE, na.rm=TRUE, ...)
+                  
+                  maps[[i]]  <- eval(cl)
+                  cl$x <- NA
+                  calls[[i]] <- cl
+                      
               }
-              out <- new("NeighbMaps", maps=maps, weights=weights, fun=fun, focal.args=list(...), categories=categories)  
+
+              maps <- stack(maps)
+              out <- new("NeighbMaps", maps, calls=calls, categories=categories)  
           }
 )
 
 #' @rdname NeighbMaps
-#' @aliases NeighbMaps,RasterLayer,numeric,numeric,ANY-method
-setMethod("NeighbMaps", signature(x = "RasterLayer", categories = "numeric", weights = "numeric", neighb="ANY"),
-          function(x, categories, weights, neighb, fun=mean, ...) {
-              if (length(weights) != length(categories)) stop("'weights' and 'categories' must have same lengths")
-              if (any(is.na(weights))) stop("'weights' cannot contain NAs")           
+#' @aliases NeighbMaps,RasterLayer,matrix,ANY-method
+setMethod("NeighbMaps", signature(x = "RasterLayer", weights = "matrix", neighb="ANY"),
+          function(x, weights, neighb, categories, fun=mean, ...) {
+              ##if (length(weights) != length(categories)) stop("'weights' and 'categories' must have same lengths")
+              ##if (any(is.na(weights))) stop("'weights' cannot contain NAs")           
               weights.list <- list()
               for (i in 1:length(categories)) {
-                  weights.list[[i]] <- matrix(data=1, nrow=weights[i], ncol=weights[i])
+                  weights.list[[i]] <- weights
               }
-              out <- NeighbMaps(x=x, categories=categories, weights=weights.list, fun=fun, ...)
+              
+              out <- NeighbMaps(x=x, weights=weights.list, categories=categories, fun=fun, ...)
           }
 )
 
 #' @rdname NeighbMaps
-#' @aliases NeighbMaps,RasterLayer,ANY,ANY,NeighbMaps-method
-setMethod("NeighbMaps", signature(x = "RasterLayer", categories = "ANY", weights = "ANY", neighb="NeighbMaps"),
-          function(x, categories, weights, neighb) {
-              out <- do.call("NeighbMaps", c(list(x=x, categories=neighb@categories, weights=neighb@weights, fun=neighb@fun), neighb@focal.args))              
+#' @aliases NeighbMaps,RasterLayer,ANY,NeighbMaps-method
+setMethod("NeighbMaps", signature(x = "RasterLayer", weights = "ANY", neighb="NeighbMaps"),
+          function(x, weights, neighb) {
+
+              categories <- neighb@categories
+              calls <- list()
+              maps  <- list()
+              
+              for (i in 1:length(categories)) {
+                  r <- (x == categories[i])
+                  cl <- neighb@calls[[i]]
+                  cl$x <- r
+                  maps <- eval(cl)
+                  cl$x <- NA  ## set this to NA to save space
+                  calls[[i]] <- cl
+              }
+              maps <- stack(maps)
+              out <- new("NeighbMaps", maps, calls=calls, categories=categories)  
+              
+              ##out <- do.call("NeighbMaps", c(list(x=x, categories=neighb@categories, weights=neighb@weights, fun=neighb@fun), neighb@focal.args))              
           }
 )
