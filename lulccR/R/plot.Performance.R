@@ -18,6 +18,8 @@ NULL
 #' @param type character. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param abline list. See \code{lattice::\link[lattice]{panel.xyplot}}
 #' @param col character. Plotting colour
+#' @param xlab character giving label for x-axis
+#' @param ylab character giving label for y-axis
 #' @param key.args list containing additional components to be passed to
 #'   the key argument of \cr
 #'   \code{lattice::\link[lattice]{xyplot}}
@@ -33,12 +35,12 @@ NULL
 #'
 #' @examples
 #'
-#' ## see PredModels examples
+#' ## see lulccR-package examples
 
 #' @rdname plot.Performance
 #' @method plot Performance
 #' @export
-plot.Performance <- function(x, y, multipanel=TRUE, type="l", abline=list(c(0,1), col="grey"), col=RColorBrewer::brewer.pal(9, "Set1"), key.args=NULL, ...) {
+plot.Performance <- function(x, y, multipanel=TRUE, type="l", abline=list(c(0,1), col="grey"), col=RColorBrewer::brewer.pal(9, "Set1"), key.args=NULL, xlab="False Alarms/(False Alarms + Correct Rejections)", ylab="Hits/(Hits + Misses)", ...) {
 
     ## c1 <- all(sapply(x, function(x) is(x, "Performance")))
     ## if (!c1) stop("all objects in list should have class 'Performance'")

@@ -15,10 +15,6 @@ NULL
 #' @param ef an ExpVarMaps object
 #' @param time numeric vector containing timesteps over which simulation will
 #'   occur  
-#' @param demand matrix with demand for each land use category in terms of number
-#'   of cells to be allocated. The first row should be the number of cells
-#'   allocated to the initial observed land use map (i.e. the land use map for
-#'   time 0)
 #' @param \dots additional arguments (none)
 #'
 #' @seealso \code{\link{ModelInput-class}}
@@ -37,7 +33,7 @@ setGeneric("ModelInput", function(obs, ef, ...)
 #' @rdname ModelInput
 #' @aliases ModelInput,ObsLulcMaps,ExpVarMaps-method
 setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps"),
-           function(obs, ef, time, demand, ...) {
+           function(obs, ef, time, ...) {
 
                ## check that all maps have the same projection
                cr <- lapply(ef@maps, FUN=function(x) compareRaster(obs, x, extent=FALSE, rowcol=FALSE, crs=TRUE, res=FALSE, orig=FALSE, stopiffalse=TRUE))
@@ -50,13 +46,13 @@ setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps"),
                ## check t starts from 0
                if (time[1] != 0) stop("first timestep in 't' must be 0")
 
-               ## check dimensions of demand and time
-               if (ncol(demand) != length(obs@categories)) {
-                   stop("number of columns in 'demand' must equal number of land use categories")
-               }              
-               if (nrow(demand) != length(time)) {
-                   stop("number of rows in 'demand' must equal number of timesteps in 't'")
-               }
+               ## ## check dimensions of demand and time
+               ## if (ncol(demand) != length(obs@categories)) {
+               ##     stop("number of columns in 'demand' must equal number of land use categories")
+               ## }              
+               ## if (nrow(demand) != length(time)) {
+               ##     stop("number of rows in 'demand' must equal number of timesteps in 't'")
+               ## }
 
                ## ## check whether hist and mask exist and have correct extent
                ## if (missing(hist)) {
@@ -88,7 +84,7 @@ setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps"),
                           obs=obs,
                           ef=ef,
                           time=time,
-                          demand=demand,
+                          ## demand=demand,
                           categories=obs@categories,
                           labels=obs@labels)
            }
@@ -120,6 +116,10 @@ setMethod("ModelInput", signature(obs = "ObsLulcMaps", ef = "ExpVarMaps"),
 #'
 #' @param x a ModelInput object
 #' @param models a PredModels object
+#' @param demand matrix with demand for each land use category in terms of number
+#'   of cells to be allocated. The first row should be the number of cells
+#'   allocated to the initial observed land use map (i.e. the land use map for
+#'   time 0)
 #' @param hist RasterLayer containing land use history (values represent the
 #'   number of years the cell has contained the current land use category)
 #' @param mask RasterLayer containing binary values where 0 indicates cells
@@ -156,11 +156,19 @@ setGeneric("CluesModel", function(x, ...)
 #' @rdname CluesModel
 #' @aliases CluesModel,ModelInput-method
 setMethod("CluesModel", signature(x = "ModelInput"),
-          function(x, models, hist, mask, neighb=NULL, elas, rules=NULL, nb.rules=NULL, params, output=NULL, ...) {
+          function(x, models, demand, hist, mask, neighb=NULL, elas, rules=NULL, nb.rules=NULL, params, output=NULL, ...) {
 
               ## check x and models refer to the same categories
               if (!all(x@obs@categories == models@categories)) {
                   stop("'models' does not correspond with land use categories in 'obs'")
+              }
+
+              ## check dimensions of demand and time
+              if (ncol(demand) != length(x@obs@categories)) {
+                  stop("number of columns in 'demand' must equal number of land use categories")
+              }              
+              if (nrow(demand) != length(x@time)) {
+                  stop("number of rows in 'demand' must equal number of timesteps in 't'")
               }
 
               ## check whether hist and mask exist and have correct extent
@@ -213,7 +221,7 @@ setMethod("CluesModel", signature(x = "ModelInput"),
                   params <- .checkCluesParams(params)
               }
                   
-              out <- new("CluesModel", x, models=models, hist=hist, mask=mask, neighb=neighb, elas=elas, rules=rules, nb.rules=nb.rules, params=params, output=output)
+              out <- new("CluesModel", x, models=models, demand=demand, hist=hist, mask=mask, neighb=neighb, elas=elas, rules=rules, nb.rules=nb.rules, params=params, output=output)
              
           }
 )
@@ -248,6 +256,10 @@ setMethod("CluesModel", signature(x = "ModelInput"),
 #' 
 #' @param x a ModelInput object
 #' @param models a PredModels object
+#' @param demand matrix with demand for each land use category in terms of number
+#'   of cells to be allocated. The first row should be the number of cells
+#'   allocated to the initial observed land use map (i.e. the land use map for
+#'   time 0)
 #' @param hist RasterLayer containing land use history (values represent the
 #'   number of years the cell has contained the current land use category)
 #' @param mask RasterLayer containing binary values where 0 indicates cells
@@ -283,11 +295,19 @@ setGeneric("OrderedModel", function(x, ...)
 #' @rdname OrderedModel
 #' @aliases OrderedModel,ModelInput-method
 setMethod("OrderedModel", signature(x = "ModelInput"),
-          function(x, models, hist, mask, neighb=NULL, rules=NULL, nb.rules=NULL, order, params, output=NULL, ...) {
+          function(x, models, demand, hist, mask, neighb=NULL, rules=NULL, nb.rules=NULL, order, params, output=NULL, ...) {
 
               ## check x and models refer to the same categories
               if (!all(x@obs@categories == models@categories)) {
                   stop("'models' does not correspond with land use categories in 'obs'")
+              }
+
+              ## check dimensions of demand and time
+              if (ncol(demand) != length(x@obs@categories)) {
+                  stop("number of columns in 'demand' must equal number of land use categories")
+              }              
+              if (nrow(demand) != length(x@time)) {
+                  stop("number of rows in 'demand' must equal number of timesteps in 't'")
               }
 
               ## check whether hist and mask exist and have correct extent
@@ -344,7 +364,7 @@ setMethod("OrderedModel", signature(x = "ModelInput"),
                   params <- .checkOrderedParams(params)
               }
               
-              out <- new("OrderedModel", x, models=models, hist=hist, mask=mask, neighb=neighb, rules=rules, nb.rules=nb.rules, order=order, params=params, output=output)
+              out <- new("OrderedModel", x, models=models, demand=demand, hist=hist, mask=mask, neighb=neighb, rules=rules, nb.rules=nb.rules, order=order, params=params, output=output)
              
           }
 )

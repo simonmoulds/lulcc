@@ -24,7 +24,7 @@ NULL
 #'
 #' @examples
 #'
-#' ## see PredModels examples
+#' ## see lulccR-package examples
 
 Prediction <- function(models, newdata, ...) {
     ## ix <- which(obs@t %in% timestep)
@@ -35,7 +35,7 @@ Prediction <- function(models, newdata, ...) {
     ## }
     ## obs.vals <- obs[[ix]][partition]
     ## newdata <- as.data.frame(ef, cells=partition)
-    mod <- calcProb(object=models, newdata=newdata) 
+    mod <- predict(object=models, newdata=newdata) 
     prediction.list <- list()
     for (j in 1:length(models@models)) {
         ## labels <- as.numeric(obs.vals == models@categories[j])

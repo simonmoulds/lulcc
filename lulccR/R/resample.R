@@ -24,14 +24,22 @@ NULL
 #'
 #' \dontrun{
 #'
-#' ## create ExpVarMaps object
-#' ef <- ExpVarMaps(x=pie, pattern="ef")
+#' ## Plum Island Ecosystems
 #'
+#' ## observed data
+#' obs <- ObsLulcMaps(x=pie,
+#'                     pattern="lu",
+#'                     categories=c(1,2,3),
+#'                     labels=c("forest","built","other"),
+#'                     t=c(0,6,14))
+#' 
+#' ## explanatory variables
+#' ef <- ExpVarMaps(x=pie, pattern="ef")
+#' 
 #' ## resample to ensure maps have same characteristics as observed maps
-#' ef <- resample(x=ef, y=pie$lu_pie_1985, method="ngb")
+#' ef <- resample(x=ef, y=obs, method="ngb")
+#'
 #' }
-
-setGeneric("resample")
 
 #' @rdname resample
 #' @aliases resample,ExpVarMaps,Raster-method

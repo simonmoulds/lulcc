@@ -7,7 +7,7 @@
 \usage{
 ModelInput(obs, ef, ...)
 
-\S4method{ModelInput}{ObsLulcMaps,ExpVarMaps}(obs, ef, time, demand, ...)
+\S4method{ModelInput}{ObsLulcMaps,ExpVarMaps}(obs, ef, time, ...)
 }
 \arguments{
 \item{obs}{an ObsLulcMaps or ModelInput object}
@@ -16,11 +16,6 @@ ModelInput(obs, ef, ...)
 
 \item{time}{numeric vector containing timesteps over which simulation will
 occur}
-
-\item{demand}{matrix with demand for each land use category in terms of number
-of cells to be allocated. The first row should be the number of cells
-allocated to the initial observed land use map (i.e. the land use map for
-time 0)}
 
 \item{\dots}{additional arguments (none)}
 }

@@ -15,26 +15,27 @@ The aims of the package are as follows:
     reuse of code within the land use change modelling community
   \item to make it easy to directly compare and combine different model
     structures
-  \item to allow users to perform every aspect of the modelling process within the same
-    environment
+  \item to allow users to perform several aspects of the modelling process
+    within the same environment
 }
 
 To achieve these aims the package utilises an object-oriented approach based
 on the S4 system, which provides a formal structure for the modelling
-framework.
+framework. Generic methods implemented for the \code{lulcc} classes include
+\code{summary}, \code{show}, and \code{plot}.
 
-Models are represented by objects inheriting from the superclass \code{Model}.
-This class is designed to represent general information required by all
-models while specific models are represented by its subclasses. Currently the
-package includes two inductive land use change models: the first is an
-implementation of the Change in Land Use and its Effects at Small Regional
-extent (CLUE-S) model (Verburg et al., 2002) (class \code{CluesModel}), while
-the second is an ordered procedure based on the algorithm described by
-Fuchs et al. (2013) but modified to allow stochastic transitions (class
-\code{OrderedModel}).
+Land use change models are represented by objects inheriting from the
+superclass \code{Model}. This class is designed to represent general
+information required by all models while specific models are represented by
+its subclasses. Currently the package includes two inductive land use change
+models: the first is an implementation of the Change in Land Use and its
+Effects at Small Regional extent (CLUE-S) model (Verburg et al., 2002) (class
+\code{CluesModel}), while the second is an ordered procedure based on the
+algorithm described by Fuchs et al. (2013) but modified to allow stochastic
+transitions (class \code{OrderedModel}).
 
-The main input to land use change models is a set of predictive models
-relating observed land use or land use change to spatially explicit
+The main input to inductive land use change models is a set of predictive
+models relating observed land use or land use change to spatially explicit
 explanatory variables. A predictive model is usually obtained for each
 category or transition. In lulccR these models are represented by the class
 \code{PredModels}. Currently lulccR supports binary logistic regression,
@@ -61,91 +62,97 @@ datasets are also included.
 \examples{
 \dontrun{
 
-## Complete example for Plum Island Ecosystems dataset
+## Plum Island Ecosystems
 
-## Load observed land use maps
+## load data
+data(pie)
+
+## observed maps
 obs <- ObsLulcMaps(x=pie,
                    pattern="lu",
                    categories=c(1,2,3),
-                   labels=c("forest","built","other"),
+                   labels=c("Forest","Built","Other"),
                    t=c(0,6,14))
+obs
 
-## Load explanatory variables
+## explanatory variables
 ef <- ExpVarMaps(x=pie, pattern="ef")
+ef
 
-## create equally sized training and testing partitions
-part <- partition(x=obs[[1]], size=0.5, spatial=FALSE)
+## prepare model input
+input <- ModelInput(obs=obs,
+                    ef=ef,
+                    time=0:14)
+input
 
-## convert initial land use map to RasterBrick where each layer is a boolean
-## map for the respective land use
-br <- raster::layerize(obs[[1]])
-names(br) <- obs@labels
+part <- partition(x=obs[[1]], size=0.1, spatial=TRUE)
+train.data <- as.data.frame(x=input, cells=part[["train"]], t=0)
+test.data  <- as.data.frame(x=input, cells=part[["test"]], t=0)
 
-## create data.frame to fit models
-train.df <- raster::extract(x=br, y=part$train, df=TRUE)
-train.df <- cbind(train.df, as.data.frame(x=ef, cells=part$train))
+forms <- list(Built ~ ef_001+ef_002+ef_003,
+              Forest ~ 1,
+              Other ~ ef_001+ef_002)
 
-## model formulas
-forest.formula <- formula(forest ~ 1)
-built.formula <- formula(built~ef_001+ef_002+ef_003)
-other.formula <- formula(built~ef_001+ef_002)
+glm.models <- glmModels(formula=forms, family=binomial, data=train.data, obs=obs)
 
-## glm models
-forest.glm <- glm(formula=forest.formula, family=binomial, data=train.df)
-built.glm <- glm(formula=built.formula, family=binomial, data=train.df)
-other.glm <- glm(formula=other.formula, family=binomial, data=train.df)
-
-## create PredModels objects
-glm.models <- PredModels(models=list(forest.glm, built.glm, other.glm),
-                         obs=obs)
+glm.pred <- Prediction(models=glm.models, newdata=test.data)
+glm.perf <- Performance(pred=glm.pred, measure="rch")
+plot(list(glm=glm.perf))
 
 ## obtain demand scenario
-dmd <- approxExtrapDemand(obs=obs, tout=c(0:14))
+dmd <- approxExtrapDemand(obs=obs, tout=0:14)
+matplot(dmd, type="l", ylab="Demand (no. of cells)", xlab="Time point",
+        lty=1, col=c("Green","Red","Blue"))
+legend("topleft", legend=obs@labels, col=c("Green","Red","Blue"), lty=1)
 
-## create model input object
-pie.model.input <- ModelInput(obs=obs,
-                              ef=ef,
-                              models=glm.models,
-                              time=0:14,
-                              demand=dmd)
+## get neighbourhood values
 
-## create ClueModel object
-clues.rules <- matrix(data=c(1,1,1,
-                             1,1,1,
-                             1,1,1), nrow=3, ncol=3, byrow=TRUE)
+w <- matrix(data=1, nrow=3, ncol=3)
+nb <- NeighbMaps(x=obs[[1]], weights=w, categories=2)
+
+## create CLUE-S model object
+clues.rules <- matrix(data=c(1,1,1,1,1,1,1,1,1),
+                      nrow=3, ncol=3, byrow=TRUE)
 
 clues.parms <- list(jitter.f=0.0002,
-                       scale.f=0.000001,
-                       max.iter=1000,
-                       max.diff=50,
-                       ave.diff=50)
+                    scale.f=0.000001,
+                    max.iter=1000,
+                    max.diff=50,
+                    ave.diff=50)
 
-pie.clues <- CluesModel(x=pie.model.input,
-                        elas=c(0.2,0.2,0.2),
-                        rules=clues.rules,
-                        params=clues.parms)
+clues.model <- CluesModel(x=input,
+                          models=glm.models,
+                          demand=dmd,
+                          neighb=nb,
+                          elas=c(0.2,0.2,0.2),
+                          rules=clues.rules,
+                          params=clues.parms)
 
-## create OrderedModel object
-## allocate built land first, then forest, then other
-pie.ordered <- OrderedModel(x=pie.model.input,
-                            order=c(2,1,3))
+## Create Ordered model (Fuchs et al)
+ordered.model <- OrderedModel(x=input,
+                              models=glm.models,
+                              demand=dmd,
+                              order=c(2,1,3))
 
 ## perform allocation
-pie.clues <- allocate(pie.clues)
-pie.ordered <- allocate(pie.ordered)
+clues.model <- allocate(clues.model)
+ordered.model <- allocate(ordered.model, stochastic=TRUE)
 
 ## validate ordered model input
-pie.ordered.tabs <- ThreeMapComparison(x=pie.ordered,
-                                       factors=2^(1:9),
-                                       timestep=14)
+clues.tabs <- ThreeMapComparison(x=clues.model,
+                                 factors=2^(1:9),
+                                 timestep=14)
+plot(clues.tabs)
+plot(clues.tabs, category=1, factors=2^(1:9)[c(1,3,5,7)])
 
-pie.ordered.agr <- AgreementBudget(x=pie.ordered.tabs)
-p <- AgreementBudget.plot(x=pie.ordered.agr, from=1, to=2)
-print(p)
+## calculate agreement budget and plot
+clues.agr <- AgreementBudget(x=clues.tabs)
+plot(clues.agr, from=1, to=2)
 
-pie.ordered.fom <- FigureOfMerit(x=pie.ordered.tabs)
-p <- FigureOfMerit.plot(x=pie.ordered.fom, from=1, to=2)
-print(p)
+## calculate Figure of Merit and plot
+clues.fom <- FigureOfMerit(x=clues.tabs)
+plot(clues.fom, from=1, to=2)
+
 }
 }
 \author{

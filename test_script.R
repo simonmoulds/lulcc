@@ -143,7 +143,7 @@ clues.tabs <- ThreeMapComparison(x=clues.model,
 
 ## calculate agreement budget and plot
 clues.agr <- AgreementBudget(x=clues.tabs)
-p <- plot(clues.agr, from=1, to=2)
+plot(clues.agr, from=1, to=2)
 
 ## calculate Figure of Merit and plot
 clues.fom <- FigureOfMerit(x=clues.tabs)

@@ -2,9 +2,9 @@
 \docType{class}
 \name{CategoryLabel-class}
 \alias{CategoryLabel-class}
-\title{Virtual class Model}
+\title{Virtual class CategoryLabel}
 \description{
-A virtual S4 class to represent land use change models.
+A virtual S4 class to represent information about categorical Raster* objects.
 }
 \section{Slots}{
 

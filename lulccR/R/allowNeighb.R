@@ -31,13 +31,11 @@
 #'                      categories=c(1,2,3),
 #'                      labels=c("forest","built","other"),
 #'                      t=c(0,6,14))
-#'
+#' 
 #' ## create a NeighbMaps object for forest only
-#' nb <- NeighbMaps(x=obs[[1]],
-#'                   categories=1,
-#'                   weights=3,
-#'                   fun=mean)
-#'
+#' w <- matrix(data=1, nrow=3, ncol=3)
+#' nb <- NeighbMaps(x=obs[[1]], weights=w, categories=1)
+#' 
 #' ## only allow change to forest within neighbourhood of current forest cells
 #' ## note that rules can be any value between zero (less restrictive) and one
 #' ## (more restrictive)
@@ -45,44 +43,26 @@
 #'                         x=obs[[1]],
 #'                         categories=obs@@categories,
 #'                         rules=0.5)
-#'
+#' 
 #' ## create raster showing cells allowed to change to forest
 #' r <- obs[[1]]
 #' r[!is.na(r)] <- nb.allow[,1]
 #' plot(r)
-#'
+#' 
 #' ## NB output is only useful when used within an allocation routine
+#'
 
 allowNeighb <- function(neighb, x, categories, rules, ...) {
-    if (length(rules) != length(neighb@maps)) stop("rule should be provided for each neighbourhood map")
+    if (length(rules) != nlayers(neighb)) stop("rule should be provided for each neighbourhood map")
     cells <- which(!is.na(raster::getValues(x)))
     neighb <- NeighbMaps(x=x, neighb=neighb) ## update neighbourhood maps
     allow.nb <- matrix(data=1, nrow=length(cells), ncol=length(categories))
     for (i in 1:length(neighb@categories)) {
         ix <- which(categories %in% neighb@categories[i])
-        nb.vals <- raster::extract(neighb@maps[[i]], cells)
+        nb.vals <- raster::extract(neighb[[i]], cells)
         allow.nb[,ix] <- as.numeric(nb.vals >= rules[i])
     }    
     allow.nb[allow.nb == 0] <- NA
     allow.nb
 }
 
-
-## allowNeighb <- function(x, cells, categories, rules, ...) {
-##     if (length(rules) != length(x@maps)) stop("rule should be provided for each neighbourhood map")
-##     allow.nb <- matrix(data=1, nrow=length(cells), ncol=length(categories))
-##     for (i in 1:length(x@categories)) {
-##         ix <- which(categories %in% x@categories[i])
-##         nb.vals <- raster::extract(x@maps[[i]], cells)
-##         allow.nb[,ix] <- as.numeric(nb.vals >= rules[i])
-##     }
-##     allow.nb[allow.nb == 0] <- NA
-##     allow.nb
-## }
-
-
-
-
-
-                       
-    

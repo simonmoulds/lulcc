@@ -25,7 +25,7 @@ This function uses different measures to evaluate multiple
 \code{\link{Prediction}} object.
 }
 \examples{
-## see PredModels examples
+## see lulccR-package examples
 }
 \references{
 Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).

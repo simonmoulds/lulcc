@@ -15,8 +15,6 @@ A virtual S4 class to represent land use change models.
 
 \item{\code{time}}{numeric vector of timesteps over which simulation will occur}
 
-\item{\code{demand}}{matrix containing demand scenario or NULL}
-
 \item{\code{categories}}{numeric vector of land use categories}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}

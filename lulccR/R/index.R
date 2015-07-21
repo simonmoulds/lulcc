@@ -3,14 +3,16 @@ NULL
 
 #' Extract by index
 #'
-#' TODO
+#' \code{object[[i]]} can be used to extract individual objects from container
+#' classes such as \code{ExpVarMaps}, \code{PredModels}, \code{Prediction} and
+#' \code{Performance}.
 #'
-#' @param x TODO
-#' @param i TODO
-#' @param j TODO
-#' @param ... additional arguments
-#'
-#' @return TODO
+#' @param x an object of class ExpVarMaps or any object inheriting from the
+#'   virtual class CategoryLabel
+#' @param i layer number (if 'x' inherits from a RasterStack) or list index (if
+#'   'x' stores data as a list)
+#' @param j numeric (not used)
+#' @param ... additional arguments (none)
 #'
 #' @export
 #' @name Extract by index
@@ -18,7 +20,18 @@ NULL
 #'
 #' @examples
 #'
-#' ## TODO
+#' ## Plum Island Ecosystems
+#' 
+#' ## Load observed land use maps
+#' obs <- ObsLulcMaps(x=pie,
+#'                    pattern="lu",
+#'                    categories=c(1,2,3),
+#'                    labels=c("forest","built","other"),
+#'                    t=c(0,6,14))
+#' 
+#' summary(obs[[1]])
+#' summary(obs[[1:2]])
+#'
 
 #' @rdname extractIndex
 #' @aliases [[,ExpVarMaps,ANY,ANY-method

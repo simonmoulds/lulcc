@@ -3,28 +3,38 @@
 \alias{glmModels}
 \title{Model fitting}
 \usage{
-glmModels(formula, family = binomial, data, obs, model = FALSE, ...)
+glmModels(formula, family = binomial, data, obs, categories, labels,
+  model = FALSE, ...)
 }
 \arguments{
 \item{formula}{list containing formula objects}
 
-\item{family}{TODO}
+\item{family}{see \code{\link[stats]{glm}}. Default is 'binomial'}
 
-\item{data}{TODO}
+\item{data}{see \code{\link[stats]{glm}}}
 
-\item{obs}{TODO}
+\item{obs}{an ObsLulcMaps object}
 
-\item{model}{TODO}
+\item{categories}{numeric vector of land use categories in observed maps.
+Only required if 'obs' is missing}
 
-\item{...}{additional arguments to glm}
+\item{labels}{character vector (optional) with labels corresponding to
+\code{categories}. Only required if 'obs' is missing}
+
+\item{model}{see \code{\link[stats]{glm}}. Default is FALSE}
+
+\item{...}{additional arguments to \code{\link[stats]{glm}}}
 }
 \value{
-TODO
+A PredModels object.
 }
 \description{
 Fit glm models to spatial data
 }
 \examples{
-## TODO
+## see lulccR-package examples
+}
+\seealso{
+\code{\link[stats]{glm}}, \code{\link{PredModels}}
 }
 

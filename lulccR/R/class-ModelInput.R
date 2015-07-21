@@ -15,7 +15,6 @@ NULL
 #' @slot ef an ExpVarMaps object
 #' @slot time numeric vector containing timesteps over which simulation will
 #'   occur
-#' @slot demand matrix containing demand scenario or NULL
 #' @slot categories numeric vector of land use categories 
 #' @slot labels character vector corresponding to \code{categories}
 #'
@@ -27,8 +26,8 @@ setClass("ModelInput",
          contains = c("CategoryLabel"),
          slots = c(obs = "ObsLulcMaps",           
                    ef = "ExpVarMaps",
-                   time = "numeric",
-                   demand = "matrixOrNULL"),
+                   time = "numeric"),
+                   ## demand = "matrixOrNULL"),
                    ## hist = "RasterLayerOrNULL",           
                    ## mask = "RasterLayerOrNULL",           
                    ## neighb = "NeighbMapsOrNULL"),         
@@ -47,7 +46,6 @@ setClass("ModelInput",
 #' @slot obs an ObsLulcMaps object 
 #' @slot ef an ExpVarMaps object
 #' @slot time numeric vector of timesteps over which simulation will occur
-#' @slot demand matrix containing demand scenario or NULL
 #' @slot categories numeric vector of land use categories 
 #' @slot labels character vector corresponding to \code{categories}
 #' @slot output RasterStack containing simulated land use maps or NULL
@@ -73,7 +71,7 @@ setClass("Model",
 #' @slot obs an ObsLulcMaps object 
 #' @slot ef an ExpVarMaps object
 #' @slot time numeric vector of timesteps over which simulation will occur
-#' @slot demand matrix containing demand scenario or NULL
+#' @slot demand matrix containing demand scenario
 #' @slot models a PredModels object
 #' @slot hist RasterLayer showing land use history or NULL
 #' @slot mask RasterLayer showing masked areas or NULL
@@ -94,6 +92,7 @@ setClass("CluesModel",
          contains = c("ModelInput",
                       "Model"),
          slots = c(models = "PredModels",
+                   demand = "matrix",
                    hist = "RasterLayerOrNULL",           
                    mask = "RasterLayerOrNULL",           
                    neighb = "NeighbMapsOrNULL",         
@@ -114,7 +113,7 @@ setClass("CluesModel",
 #' @slot obs an ObsLulcMaps object 
 #' @slot ef an ExpVarMaps object
 #' @slot time numeric vector of timesteps over which simulation will occur
-#' @slot demand matrix containing demand scenario or NULL
+#' @slot demand matrix containing demand scenario
 #' @slot models a PredModels object
 #' @slot hist RasterLayer showing land use history or NULL
 #' @slot mask RasterLayer showing masked areas or NULL
@@ -135,6 +134,7 @@ setClass("OrderedModel",
          contains = c("ModelInput",
                       "Model"),
          slots = c(models = "PredModels",
+                   demand = "matrix",
                    hist = "RasterLayerOrNULL",           
                    mask = "RasterLayerOrNULL",           
                    neighb = "NeighbMapsOrNULL",         

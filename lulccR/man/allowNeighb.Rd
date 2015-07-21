@@ -41,10 +41,8 @@ obs <- ObsLulcMaps(x=pie,
                      t=c(0,6,14))
 
 ## create a NeighbMaps object for forest only
-nb <- NeighbMaps(x=obs[[1]],
-                  categories=1,
-                  weights=3,
-                  fun=mean)
+w <- matrix(data=1, nrow=3, ncol=3)
+nb <- NeighbMaps(x=obs[[1]], weights=w, categories=1)
 
 ## only allow change to forest within neighbourhood of current forest cells
 ## note that rules can be any value between zero (less restrictive) and one

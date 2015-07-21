@@ -23,10 +23,17 @@ A list containing the following components:
 Count the number of cells belonging to each category in a Raster* object.
 }
 \examples{
-## RasterLayer
-total(x=sibuyan$maps$lu_sib_1997)
+## Sibuyan Island
 
-## RasterStack
-total(x=stack(pie$lu_pie_1985, pie$lu_pie_1991, pie$lu_pie_1999))
+## load observed land use data
+obs <- ObsLulcMaps(x=sibuyan$maps,
+                    pattern="lu",
+                    categories=c(1,2,3,4,5),
+                    labels=c("Forest","Coconut","Grass","Rice","Other"),
+                    t=c(0,14))
+
+total(x=obs)
+total(x=obs[[1]])
+total(x=obs[[2]])
 }
 

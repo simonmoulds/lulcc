@@ -16,7 +16,7 @@ NULL
 #'
 #' @seealso \code{\link{ModelInput}}, \code{\link{CluesModel}},
 #' \code{\link{OrderedModel}}
-#' @return An update Model object.
+#' @return An updated Model object.
 #' @export
 #' @rdname allocate
 #'
@@ -46,7 +46,7 @@ setMethod("allocate", signature(model = "CluesModel"),
               if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
               if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
               newdata <- as.data.frame(x=model@ef, cells=cells)
-              prob <- calcProb(object=model@models, newdata=newdata)
+              prob <- predict(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
 
               for (i in 1:(nrow(model@demand) - 1)) {
@@ -56,7 +56,7 @@ setMethod("allocate", signature(model = "CluesModel"),
                    ## 1. update land use suitability matrix if dynamic factors exist
                    if (model@ef@dynamic && i > 1) {
                        newdata <- .update.data.frame(x=newdata, y=model@ef, map=map0, cells=cells, timestep=(i-1))
-                       prob <- calcProb(object=model@models, newdata=newdata)
+                       prob <- predict(object=model@models, newdata=newdata)
                    }
                    tprob <- prob
 
@@ -106,7 +106,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
               if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
               if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
               newdata <- as.data.frame(x=model@ef, cells=cells)
-              prob <- calcProb(object=model@models, newdata=newdata)
+              prob <- predict(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
 
               for (i in 1:(nrow(model@demand) - 1)) {
@@ -116,7 +116,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
                    ## 1. update land use suitability matrix if dynamic factors exist
                    if (model@ef@dynamic && i > 1) {
                        newdata <- .update.data.frame(x=newdata, y=model@ef, map=map0, cells=cells, timestep=(i-1))
-                       prob <- calcProb(object=model@models, newdata=newdata)
+                       prob <- predict(object=model@models, newdata=newdata)
                    }
                    tprob <- prob
                    
@@ -292,7 +292,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
 ##     hist.vals <- raster::extract(model@hist, cells)
 ##     mask.vals <- raster::extract(model@mask, cells)
 ##     newdata <- as.data.frame(x=model@pred, cells=cells)
-##     prob <- calcProb(object=model@models, newdata=newdata)
+##     prob <- predict(object=model@models, newdata=newdata)
 ##     maps <- raster::stack(map0)
               
 ##     for (i in 1:(nrow(model@demand) - 1)) {
@@ -300,7 +300,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
 ##          d <- model@demand[(i+1),] ## demand for current timestep
 ##          if (model@pred@dynamic && i > 1) {
 ##              newdata <- .update.data.frame(x=newdata, y=model@pred, map=map0, cells=cells, timestep=(i-1))
-##              prob <- calcProb(object=model@models, newdata=newdata)
+##              prob <- predict(object=model@models, newdata=newdata)
 ##          }
 ##          tprob <- prob
 

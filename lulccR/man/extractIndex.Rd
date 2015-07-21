@@ -11,21 +11,32 @@
 \S4method{[[}{CategoryLabel,ANY,ANY}(x, i, j, ...)
 }
 \arguments{
-\item{x}{TODO}
+\item{x}{an object of class ExpVarMaps or any object inheriting from the
+virtual class CategoryLabel}
 
-\item{i}{TODO}
+\item{i}{layer number (if 'x' inherits from a RasterStack) or list index (if
+'x' stores data as a list)}
 
-\item{j}{TODO}
+\item{j}{numeric (not used)}
 
-\item{...}{additional arguments}
-}
-\value{
-TODO
+\item{...}{additional arguments (none)}
 }
 \description{
-TODO
+\code{object[[i]]} can be used to extract individual objects from container
+classes such as \code{ExpVarMaps}, \code{PredModels}, \code{Prediction} and
+\code{Performance}.
 }
 \examples{
-## TODO
+## Plum Island Ecosystems
+
+## Load observed land use maps
+obs <- ObsLulcMaps(x=pie,
+                   pattern="lu",
+                   categories=c(1,2,3),
+                   labels=c("forest","built","other"),
+                   t=c(0,6,14))
+
+summary(obs[[1]])
+summary(obs[[1:2]])
 }
 

@@ -36,17 +36,30 @@ A wrapper function for \cr
 categorical raster map into training and testing partitions.
 }
 \examples{
+\dontrun{
+
 ## Plum Island Ecosystems
 
-## Load observed land use maps
+## observed maps
 obs <- ObsLulcMaps(x=pie,
                    pattern="lu",
                    categories=c(1,2,3),
-                   labels=c("forest","built","other"),
+                   labels=c("Forest","Built","Other"),
                    t=c(0,6,14))
 
-## create equally sized training and testing partitions
-part <- partition(x=obs[[1]], size=0.5, spatial=FALSE)
+## explanatory variables
+ef <- ExpVarMaps(x=pie, pattern="ef")
+
+## prepare model input
+input <- ModelInput(obs=obs,
+                    ef=ef,
+                    time=0:14)
+
+part <- partition(x=obs[[1]], size=0.1, spatial=TRUE)
+train.data <- as.data.frame(x=input, cells=part[["train"]], t=0)
+test.data  <- as.data.frame(x=input, cells=part[["test"]], t=0)
+
+}
 }
 \references{
 Kuhn, M. (2008). Building predictive models in R using the caret

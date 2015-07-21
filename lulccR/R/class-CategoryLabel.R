@@ -1,6 +1,6 @@
-#' Virtual class Model
+#' Virtual class CategoryLabel
 #'
-#' A virtual S4 class to represent land use change models.
+#' A virtual S4 class to represent information about categorical Raster* objects.
 #'
 #' @slot categories numeric vector of land use categories 
 #' @slot labels character vector corresponding to \code{categories}

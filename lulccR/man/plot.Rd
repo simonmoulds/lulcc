@@ -4,22 +4,32 @@
 \alias{plot}
 \alias{plot,ModelInput,ANY-method}
 \alias{plot,ObsLulcMaps,ANY-method}
+\alias{plot,ThreeMapComparison,ANY-method}
 \alias{plot.ModelInput}
 \alias{plot.ObsLulcMaps}
+\alias{plot.ThreeMapComparison}
 \title{Plot method for objects based on Raster* data}
 \usage{
 \method{plot}{ObsLulcMaps}(x, y, ...)
 
 \method{plot}{ModelInput}(x, y, ...)
 
+\method{plot}{ThreeMapComparison}(x, y, category, factors, ...)
+
 \S4method{plot}{ObsLulcMaps,ANY}(x, y, ...)
 
 \S4method{plot}{ModelInput,ANY}(x, y, ...)
+
+\S4method{plot}{ThreeMapComparison,ANY}(x, y, category, factors, ...)
 }
 \arguments{
-\item{x}{an ObsLulcMaps or *Model object}
+\item{x}{an object from \code{lulcc} containing Raster data}
 
 \item{y}{not used}
+
+\item{category}{numeric}
+
+\item{factors}{numeric}
 
 \item{\dots}{additional arguments to
   \code{rasterVis::\link[rasterVis]{levelplot}}}

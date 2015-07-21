@@ -59,7 +59,7 @@ setMethod("ThreeMapComparison", signature(x = "Model", x1 = "ANY", y1 = "ANY"),
               x1 <- x@obs[[which(x@obs@t %in% timestep)]]
               y1 <- x@output[[which(x@time %in% timestep)]]
               x <- x@obs[[1]]
-              
+
               out <- ThreeMapComparison(x=x, x1=x1, y1=y1, factors=factors, categories=categories, labels=labels, ...)
               out
           }
@@ -80,8 +80,13 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
               y1.vals <- raster::extract(y1, pts.x)
               if (length(x1.vals) != length(pts.x)) stop("x1 contains NA values in study region")
               if (length(y1.vals) != length(pts.x)) stop("y1 contains NA values in study region")
-              x1 <- x
-              y1 <- x
+
+              x1.nm <- names(x1)
+              y1.nm <- names(y1)
+                             
+              x1 <- x; names(x1) <- x1.nm
+              y1 <- x; names(y1) <- y1.nm
+              
               x1[!is.na(x1)] <- x1.vals 
               y1[!is.na(y1)] <- y1.vals 
 
@@ -90,6 +95,7 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
               ones[!is.na(ones)] <- 1
               
               ## create list to hold output
+              maps <- list(stack(x,x1,y1))
               tables <- list()
               for (f in 1:length(factors)) {
 
@@ -113,6 +119,7 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
                   Rng.list <- list()
                   Sng.list <- list()
 
+                  st <- list() ####
                   for (j in 1:length(categories)) {
                       cat <- categories[j]
                       tmp.x <- (x == cat) ## maps with binary values where 1/0 indicates presence/absence of 'cat'
@@ -125,6 +132,9 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
                           tmp.y1 <- raster::aggregate(tmp.y1, fact=factors[f], fun=sum, na.rm=TRUE, expand=TRUE, ...)
                       }
 
+                      st[[j]] <- stack((tmp.x / weight), (tmp.x1 / weight), (tmp.y1 / weight)) ####
+                      names(st[[j]]) <- paste0(labels[j],".",c("x","x1","y1"),".",factors[f])
+                        
                       tmp.x.vals <- raster::getValues(tmp.x)
                       tmp.x.vals <- tmp.x.vals[!is.na(tmp.x.vals)]           
                       tmp.x1.vals <- raster::getValues(tmp.x1)
@@ -142,6 +152,8 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
 
                   }
 
+                  maps[[(f+1)]] <- stack(st)
+                  
                   eq1.list <- list()
                   eq2.list <- list()
                   for (j in 1:length(categories)) {
@@ -306,10 +318,14 @@ setMethod("ThreeMapComparison", signature(x = "RasterLayer", x1 = "RasterLayer",
 
               ## agr <- .agreementBudget(tables=tables, factors=factors, categories=categories)
               ## fom <- .figureOfMerit(tables=tables, factors=factors, categories=categories)
-              
+
               out <- new("ThreeMapComparison",
                          tables=tables,
                          factors=factors,
+                         maps=maps,
+                         ## ref.t0=x,
+                         ## ref.t1=x1,
+                         ## sim.t1=y1,
                          ## agr.overall=agr@overall,
                          ## agr.category=agr@category,
                          ## agr.transition=agr@transition,

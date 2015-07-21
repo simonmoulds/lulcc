@@ -23,7 +23,7 @@ same criteria while keeping track of which model corresponds to which land use
 category.
 }
 \examples{
-## see PredModels examples
+## see lulccR-package examples
 }
 \references{
 Sing, T., Sander, O., Beerenwinkel, N., Lengauer, T. (2005).

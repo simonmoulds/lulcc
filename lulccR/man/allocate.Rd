@@ -21,7 +21,7 @@ stochastically. Only used if \code{model} is an \code{OrderedModel} object}
 \item{\dots}{additional arguments for specific methods}
 }
 \value{
-An update Model object.
+An updated Model object.
 }
 \description{
 Perform spatially explicit allocation of land use change using different

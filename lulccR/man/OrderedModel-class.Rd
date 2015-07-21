@@ -15,7 +15,7 @@ An S4 class to represent inputs to the Ordered allocation procedure
 
 \item{\code{time}}{numeric vector of timesteps over which simulation will occur}
 
-\item{\code{demand}}{matrix containing demand scenario or NULL}
+\item{\code{demand}}{matrix containing demand scenario}
 
 \item{\code{models}}{a PredModels object}
 

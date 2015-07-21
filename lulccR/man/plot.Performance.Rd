@@ -7,11 +7,15 @@
 \usage{
 \method{plot}{Performance}(x, y, multipanel = TRUE, type = "l",
   abline = list(c(0, 1), col = "grey"), col = RColorBrewer::brewer.pal(9,
-  "Set1"), key.args = NULL, ...)
+  "Set1"), key.args = NULL,
+  xlab = "False Alarms/(False Alarms + Correct Rejections)",
+  ylab = "Hits/(Hits + Misses)", ...)
 
 \S4method{plot}{list,ANY}(x, y, multipanel = TRUE, type = "l",
   abline = list(c(0, 1), col = "grey"), col = RColorBrewer::brewer.pal(9,
-  "Set1"), key.args = NULL, ...)
+  "Set1"), key.args = NULL,
+  xlab = "False Alarms/(False Alarms + Correct Rejections)",
+  ylab = "Hits/(Hits + Misses)", ...)
 }
 \arguments{
 \item{x}{either a single Performance object or a list of these. If a list is
@@ -33,6 +37,10 @@ Otherwise, create a single plot for each Performance object}
 the key argument of \cr
 \code{lattice::\link[lattice]{xyplot}}}
 
+\item{xlab}{character giving label for x-axis}
+
+\item{ylab}{character giving label for y-axis}
+
 \item{\dots}{additional arguments to \code{lattice::\link[lattice]{xyplot}}}
 }
 \value{
@@ -46,7 +54,7 @@ category from different objects are included on the same plot for model
 comparison.
 }
 \examples{
-## see PredModels examples
+## see lulccR-package examples
 }
 \seealso{
 \code{\link{Performance}}, \code{lattice::\link[lattice]{xyplot}}

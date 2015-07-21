@@ -1,4 +1,4 @@
-#' @include class-CategoryLabel.R
+#' @include class-CategoryLabel.R class-ModelInput.R
 NULL
 
 #' Class ThreeMapComparison
@@ -10,6 +10,8 @@ NULL
 #' @slot tables list of data.frames that depict the three dimensional table
 #'   described by Pontius et al. (2011) at different resolutions
 #' @slot factors numeric vector of aggregation factors
+#' @slot maps list of RasterStack objects containing land use maps at different
+#'   resolutions
 #' @slot categories numeric vector of land use categories
 #' @slot labels character vector corresponding to \code{categories}
 #'
@@ -25,7 +27,11 @@ NULL
 setClass("ThreeMapComparison",
          contains = c("CategoryLabel"),
          slots = c(tables = "list",
-                   factors = "numeric"),
+           factors = "numeric",
+           maps = "list"),
+           ## ref.t0 = "RasterLayer",
+           ## ref.t1 = "RasterLayer",
+           ## sim.t1 = "RasterLayer"),
                    ## categories = "numeric",
                    ## labels = "character"),
          validity = function(object) {
@@ -42,6 +48,8 @@ setClass("ThreeMapComparison",
 #' @slot tables list of data.frames that depict the three dimensional table
 #'   described by Pontius et al. (2011) at different resolutions
 #' @slot factors numeric vector of aggregation factors
+#' @slot maps list of RasterStack objects containing land use maps at different
+#'   resolutions
 #' @slot categories numeric vector of land use categories
 #' @slot labels character vector corresponding to \code{categories}
 #' @slot overall data.frame containing the overall agreement budget
@@ -72,6 +80,8 @@ setClass("AgreementBudget",
 #' @slot tables list of data.frames that depict the three dimensional table
 #'   described by Pontius et al. (2011) at different resolutions
 #' @slot factors numeric vector of aggregation factors
+#' @slot maps list of RasterStack objects containing land use maps at different
+#'   resolutions
 #' @slot categories numeric vector of land use categories
 #' @slot labels character vector corresponding to \code{categories}
 #' @slot overall list containing the overall figure of merit score for each

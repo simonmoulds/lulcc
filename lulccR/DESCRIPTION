@@ -11,27 +11,28 @@ Depends:
 License: GPL-3
 LazyData: true
 Imports:
-    ROCR
+    ROCR,
+    lattice,
+    rasterVis
 Suggests:
+    caret,
     rpart,
     randomForest,
     gsubfn,
     Hmisc,
-    lattice,
     plyr,
-    rasterVis,
     RColorBrewer
 Collate:
     'class-CategoryLabel.R'
-    'class-ThreeMapComparison.R'
-    'AgreementBudget.R'
-    'class-ExpVarMaps.R'
-    'ExpVarMaps.R'
-    'FigureOfMerit.R'
     'class-PredModels.R'
     'class-ObsLulcMaps.R'
     'class-NeighbMaps.R'
+    'class-ExpVarMaps.R'
     'class-ModelInput.R'
+    'class-ThreeMapComparison.R'
+    'AgreementBudget.R'
+    'ExpVarMaps.R'
+    'FigureOfMerit.R'
     'ModelInput.R'
     'NeighbMaps.R'
     'ObsLulcMaps.R'
@@ -46,7 +47,6 @@ Collate:
     'allowNeighb.R'
     'approxExtrapDemand.R'
     'as.data.frame.R'
-    'calcProb.R'
     'index.R'
     'coerce.R'
     'compareAUC.R'
@@ -60,8 +60,9 @@ Collate:
     'performance.rocr.R'
     'plot.AgreementBudget.R'
     'plot.FigureOfMerit.R'
-    'plot.ModelInput.R'
     'plot.Performance.R'
+    'plot.R'
+    'predict.R'
     'resample.R'
     'show.R'
     'subset.R'

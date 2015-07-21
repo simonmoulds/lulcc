@@ -2,18 +2,18 @@
 #'
 #' An S4 class for neighbourhood maps.
 #'
-#' @slot filename TODO
-#' @slot layers TODO
-#' @slot title TODO
-#' @slot extent TODO
-#' @slot rotated TODO
-#' @slot rotation TODO
-#' @slot ncols TODO
-#' @slot nrows TODO
-#' @slot crs TODO
-#' @slot history TODO
-#' @slot z TODO
-#' @slot calls list
+#' @slot filename see \code{raster::\link[raster]{Raster-class}}
+#' @slot layers see \code{raster::\link[raster]{Raster-class}}
+#' @slot title see \code{raster::\link[raster]{Raster-class}}
+#' @slot extent see \code{raster::\link[raster]{Raster-class}}
+#' @slot rotated see \code{raster::\link[raster]{Raster-class}}
+#' @slot rotation see \code{raster::\link[raster]{Raster-class}}
+#' @slot ncols see \code{raster::\link[raster]{Raster-class}}
+#' @slot nrows see \code{raster::\link[raster]{Raster-class}}
+#' @slot crs see \code{raster::\link[raster]{Raster-class}}
+#' @slot history see \code{raster::\link[raster]{Raster-class}}
+#' @slot z see \code{raster::\link[raster]{Raster-class}}
+#' @slot calls list containing each call to \code{raster::\link[raster]{focal}}
 #' @slot categories numeric vector of land use categories for which neighbourhood
 #'   maps exist
 #'

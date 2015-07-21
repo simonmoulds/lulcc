@@ -54,8 +54,8 @@ obs <- ObsLulcMaps(x=pie,
 crossTabulate(x=obs, index=c(1,3))
 
 ## RasterLayer input
-crossTabulate(x=pie$lu_pie_1985,
-              y=pie$lu_pie_1999,
+crossTabulate(x=obs[[1]],
+              y=obs[[3]],
               categories=c(1,2,3),
               labels=c("forest","built","other"))
 }

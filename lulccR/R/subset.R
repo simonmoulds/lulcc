@@ -3,22 +3,38 @@ NULL
 
 #' Subset
 #'
-#' TODO
+#' Extract a subset of objects from container classes such as \code{ExpVarMaps},
+#' \code{PredModels}, \code{Prediction} and \code{Performance}.
 #'
-#' @param x TODO
-#' @param subset TODO
-#' @param ... additional arguments
-#'
-#' @return TODO
+#' @param x an object of class \code{\link{ExpVarMaps}}, \code{\link{PredModels}}, #'   \code{Prediction} or \code{Performance}
+#' @param subset integer or character indicating the objects to be extracted
+#' @param ... additional arguments (none)
 #'
 #' @export
 #' @rdname subset-methods
 #'
 #' @examples
 #'
-#' ## TODO
-
-## setGeneric("subset")
+#' ## Sibuyan Island
+#'
+#' ## load observed land use data
+#' obs <- ObsLulcMaps(x=sibuyan$maps,
+#'                     pattern="lu",
+#'                     categories=c(1,2,3,4,5),
+#'                     labels=c("Forest","Coconut","Grass","Rice","Other"),
+#'                     t=c(0,14))
+#' 
+#' summary(obs)
+#' obs <- subset(obs, subset=names(obs)[1])
+#' summary(obs)
+#' 
+#' ## load explanatory variables
+#' ef <- ExpVarMaps(x=sibuyan$maps, pattern="ef")
+#' 
+#' summary(ef)
+#' ef <- subset(ef, subset=1:10)
+#' summary(ef)
+#'
 
 #' @rdname subset-methods
 #' @aliases subset,ExpVarMaps-method

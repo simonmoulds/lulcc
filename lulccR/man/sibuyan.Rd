@@ -44,6 +44,9 @@ Sibuyan Island derived from Verburg et al. (2002). Data are modified by Peter
 Verburg to demonstrate the CLUE-s model; as such the dataset should not be
 used for purposes other than demonstration.
 }
+\examples{
+data(sibuyan)
+}
 \references{
 Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,
 V., Mastura, S.S (2002). Modeling the Spatial Dynamics of Regional Land Use:

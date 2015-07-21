@@ -42,7 +42,7 @@ element should represent a rule from the following list:
 \enumerate{
   \item rule == 0 | rule == 1: this rule concerns specific land use
     transitions that are allowed (1) or not (0)
-  \item rule > 100 & rule < 1000: this rule imposes a time limit (rule-100)
+  \item rule > 100 & rule < 1000: this rule imposes a time limit (rule - 100)
     on land use transitions, after which land use change is not allowed. Time
     is taken from \code{hist}
   \item rule > 1000: this rule imposes a minimum period of time (rule-1000)
@@ -79,8 +79,8 @@ cd <- dmd[2,] - dmd[1,]
 ## create rules matrix, only allowing forest to change if the cell has
 ## belonged to forest for more than 8 years
 rules <- matrix(data=c(1,1008,1008,
-                       1,1,1,
-                       1,1,1), nrow=3, ncol=3, byrow=TRUE)
+                        1,1,1,
+                        1,1,1), nrow=3, ncol=3, byrow=TRUE)
 
 allow <- allow(x=x,
                hist=hist,
@@ -88,13 +88,13 @@ allow <- allow(x=x,
                cd=cd,
                rules=rules)
 
-## create raster showing cells allowed to change from forest to built
+## create raster showing cells that are allowed to change from forest to built
 r <- obs[[1]]
 r[!is.na(r)] <- allow[,2]
-r[r != 1] <- NA  ## set all cells not belonging to forest to NA
+r[obs[[1]] != 1] <- NA
 plot(r)
 
-## NB output is only useful when used within an allocation routine
+## NB output is only useful when used within allocation routine
 }
 \references{
 Verburg, P.H., Soepboer, W., Veldkamp, A., Limpiada, R., Espaldon,

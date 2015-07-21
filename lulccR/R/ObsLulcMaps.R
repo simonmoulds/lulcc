@@ -38,13 +38,14 @@ NULL
 #'                    categories=c(1,2,3),
 #'                    labels=c("forest","built","other"),
 #'                    t=c(0,6,14))
-#'
+#' 
 #' ## Sibuyan Island
 #' obs <- ObsLulcMaps(x=sibuyan$maps,
 #'                    pattern="lu",
 #'                    categories=c(1,2,3,4,5),
 #'                    labels=c("forest","coconut","grass","rice","other"),
 #'                    t=c(0,14))
+#'
 
 setGeneric("ObsLulcMaps", function(x, pattern, ...)
            standardGeneric("ObsLulcMaps"))

@@ -14,11 +14,9 @@ NULL
 #' @param categories numeric vector containing land use categories for which
 #'   neighbourhood values should be calculated
 #' @param weights list containing a matrix of weights (the \code{w} argument in
-#'   \code{focal}) for each land use category or a numeric vector specifying the
-#'    size of each weights matrix. In the latter case only square matrices are
-#'    possible and all weights are given a value of 1. The order of list or
-#'    vector elements should correspond to the order of land use categories in
-#'    \code{categories}
+#'   \code{raster::\link[raster]{focal}}) for each land use category. The order
+#'    of list or vector elements should correspond to the order of land use
+#'    categories in \code{categories}
 #' @param neighb NeighbMaps object. Only used if \code{categories} and
 #'   \code{weights} are not provided. This option can be useful when existing
 #'   NeighbMaps objects need to be updated because a new land use map is
@@ -36,40 +34,31 @@ NULL
 #'
 #' @examples
 #'
+#' ## Plum Island Ecosystems
+#'
 #' ## observed data
 #' obs <- ObsLulcMaps(x=pie,
 #'                     pattern="lu",
 #'                     categories=c(1,2,3),
 #'                     labels=c("forest","built","other"),
 #'                     t=c(0,6,14))
-#'
+#' 
 #' ## create a NeighbMaps object for 1985 land use map
-#' nb1 <- NeighbMaps(x=obs[[1]],     
-#'                   categories=c(1,2,3), # all land use categories
-#'                   weights=c(3,3,3))           # 3*3 neighbourhood
-#'
-#' w1 <- matrix(data=c(1,1,1,
-#'                     1,1,1,
-#'                     1,1,1), nrow=3, ncol=3, byrow=TRUE)
-#'
-#' w2 <- matrix(data=c(1,1,1,
-#'                     1,1,1,
-#'                     1,1,1), nrow=3, ncol=3, byrow=TRUE)
-#'
-#' w3 <- matrix(data=c(1,1,1,
-#'                     1,1,1,
-#'                     1,1,1), nrow=3, ncol=3, byrow=TRUE)
-#'
-#' nb2 <- NeighbMaps(x=obs[[1]],
-#'                   categories=c(1,2,3),
-#'                   weights=list(w1,w2,w3))
-#'
+#' w1 <- matrix(data=1, nrow=3, ncol=3, byrow=TRUE)
+#' w2 <- w1
+#' w3 <- w1
+#' 
+#' nb1 <- NeighbMaps(x=obs[[1]],
+#'                  categories=c(1,2,3),
+#'                  weights=list(w1,w2,w3))
+#' 
 #' ## update nb2 for 1991
 #' nb2 <- NeighbMaps(x=obs[[2]],
-#'                   neighb=nb2)
-#'
+#'                   neighb=nb1)
+#' 
 #' ## plot neighbourhood map for forest
-#' plot(nb2@@maps[[1]])
+#' plot(nb2[[1]])
+#'
 
 setGeneric("NeighbMaps", function(x, weights, neighb, ...)
            standardGeneric("NeighbMaps"))

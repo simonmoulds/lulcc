@@ -25,7 +25,7 @@ NULL
 #'
 #' @examples
 #'
-#' ## see PredModels examples
+#' ## see lulccR-package examples
 
 Performance <- function(pred, measure, x.measure="cutoff", ...) {
     perf <- performance(pred@prediction, measure, x.measure, ...)

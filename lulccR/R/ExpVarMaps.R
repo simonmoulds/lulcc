@@ -45,9 +45,10 @@ NULL
 #'
 #' ## Plum Island Ecosystems
 #' ef <- ExpVarMaps(x=pie, pattern="ef")
-#'
+#' 
 #' ## Sibuyan
 #' ef <- ExpVarMaps(x=sibuyan$maps, pattern="ef")
+#'
 
 setGeneric("ExpVarMaps", function(x, ...)
            standardGeneric("ExpVarMaps"))

@@ -14,6 +14,9 @@ described by Pontius et al. (2011) at different resolutions}
 
 \item{\code{factors}}{numeric vector of aggregation factors}
 
+\item{\code{maps}}{list of RasterStack objects containing land use maps at different
+resolutions}
+
 \item{\code{categories}}{numeric vector of land use categories}
 
 \item{\code{labels}}{character vector corresponding to \code{categories}}

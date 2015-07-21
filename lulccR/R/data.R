@@ -43,6 +43,9 @@
 #' V., Mastura, S.S (2002). Modeling the Spatial Dynamics of Regional Land Use:
 #' The CLUE-S Model. Environmental Management 30(3): 391-405.
 #'
+#' @examples
+#'
+#' data(sibuyan)
 "sibuyan"
 
 #' Land use change dataset for Plum Island Ecosystem
@@ -65,4 +68,7 @@
 #' Pontius Jr, R. G., & Parmentier, B. (2014). Recommendations for using the
 #' relative operating characteristic (ROC). Landscape ecology, 29(3), 367-382.
 #'
+#' @examples
+#'
+#' data(pie)
 "pie"

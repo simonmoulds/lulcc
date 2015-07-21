@@ -7,13 +7,19 @@
 \usage{
 OrderedModel(x, ...)
 
-\S4method{OrderedModel}{ModelInput}(x, models, hist, mask, neighb = NULL,
-  rules = NULL, nb.rules = NULL, order, params, output = NULL, ...)
+\S4method{OrderedModel}{ModelInput}(x, models, demand, hist, mask,
+  neighb = NULL, rules = NULL, nb.rules = NULL, order, params,
+  output = NULL, ...)
 }
 \arguments{
 \item{x}{a ModelInput object}
 
 \item{models}{a PredModels object}
+
+\item{demand}{matrix with demand for each land use category in terms of number
+of cells to be allocated. The first row should be the number of cells
+allocated to the initial observed land use map (i.e. the land use map for
+time 0)}
 
 \item{hist}{RasterLayer containing land use history (values represent the
 number of years the cell has contained the current land use category)}

@@ -28,12 +28,16 @@ data.frame. Missing values are not allowed}
 \item{optional}{logical. If TRUE, setting row names and converting column
 names (to syntactic names: see make.names) is optional}
 
-\item{cells}{index of cells to be extracted}
+\item{cells}{index of cells to be extracted, which may be a
+\code{SpatialPoints*} object or a numeric vector representing cell numbers
+(see \code{raster::\link[raster]{extract}})}
 
 \item{t}{numeric indicating the time under consideration. Only
-relevant if \code{x@maps} contains dynamic predictor variables}
+relevant if 'x' contains dynamic explanatory variables}
 
-\item{efonly}{if 'x' is ModelInput object... TODO}
+\item{efonly}{Should the data.frame contain the response variable (i.e.
+observed land use) as well as explanatory variables, or just explanatory
+variables? Only relevant if 'x' is a \code{ModelInput} object}
 
 \item{\dots}{additional arguments (none)}
 }
@@ -49,19 +53,34 @@ variables are present).
 \dontrun{
 
 ## Plum Island Ecosystems
+
+## observed maps
 obs <- ObsLulcMaps(x=pie,
                    pattern="lu",
                    categories=c(1,2,3),
-                   labels=c("forest","built","other"),
+                   labels=c("Forest","Built","Other"),
                    t=c(0,6,14))
 
+## explanatory variables
 ef <- ExpVarMaps(x=pie, pattern="ef")
-part <- partition(x=obs[[1]], size=0.5, spatial=FALSE)
-efdf <- as.data.frame(x=ef, cells=part$train)
+
+## prepare model input
+input <- ModelInput(obs=obs,
+                    ef=ef,
+                    time=0:14)
+
+## separate data into training and testing partitions
+part <- partition(x=obs[[1]], size=0.1, spatial=TRUE)
+train.data <- as.data.frame(x=input, cells=part[["train"]], t=0)
+test.data  <- as.data.frame(x=input, cells=part[["test"]], t=0,  efonly=TRUE)
+
+names(train.data)
+names(test.data)
+
 }
 }
 \seealso{
 \code{\link[base]{as.data.frame}}, \code{\link{ExpVarMaps}},
-\code{\link{partition}}
+\code{link{ModelInput}}, \code{\link{partition}}
 }
 

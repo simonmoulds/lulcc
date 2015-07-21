@@ -16,19 +16,35 @@
 \S4method{subset}{Prediction}(x, subset, ...)
 }
 \arguments{
-\item{x}{TODO}
+\item{x}{an object of class \code{\link{ExpVarMaps}}, \code{\link{PredModels}}, #'   \code{Prediction} or \code{Performance}}
 
-\item{subset}{TODO}
+\item{subset}{integer or character indicating the objects to be extracted}
 
-\item{...}{additional arguments}
-}
-\value{
-TODO
+\item{...}{additional arguments (none)}
 }
 \description{
-TODO
+Extract a subset of objects from container classes such as \code{ExpVarMaps},
+\code{PredModels}, \code{Prediction} and \code{Performance}.
 }
 \examples{
-## TODO
+## Sibuyan Island
+
+## load observed land use data
+obs <- ObsLulcMaps(x=sibuyan$maps,
+                    pattern="lu",
+                    categories=c(1,2,3,4,5),
+                    labels=c("Forest","Coconut","Grass","Rice","Other"),
+                    t=c(0,14))
+
+summary(obs)
+obs <- subset(obs, subset=names(obs)[1])
+summary(obs)
+
+## load explanatory variables
+ef <- ExpVarMaps(x=sibuyan$maps, pattern="ef")
+
+summary(ef)
+ef <- subset(ef, subset=1:10)
+summary(ef)
 }
 

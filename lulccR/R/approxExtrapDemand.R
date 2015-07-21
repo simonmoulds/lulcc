@@ -27,13 +27,27 @@
 #'
 #' ## load observed land use maps
 #' obs <- ObsLulcMaps(x=pie,
-#'                     pattern="lu",
-#'                     categories=c(1,2,3),
-#'                     labels=c("forest","built","other"),
-#'                     t=c(0,6,14))
-#'
-#' ## obtain demand scenario
+#'                    pattern="lu",
+#'                    categories=c(1,2,3),
+#'                    labels=c("forest","built","other"),
+#'                    t=c(0,6,14))
+#' 
+#' ## obtain demand scenario by interpolating between observed maps
 #' dmd <- approxExtrapDemand(obs=obs, tout=c(0:14))
+#' 
+#' ## plot
+#' matplot(dmd, type="l", ylab="Demand (no. of cells)", xlab="Time point",
+#'         lty=1, col=c("Green","Red","Blue"))
+#' legend("topleft", legend=obs@@labels, col=c("Green","Red","Blue"), lty=1)
+#' 
+#' ## linear extrapolation is also possible
+#' dmd <- approxExtrapDemand(obs=obs, tout=c(0:50))
+#' 
+#' ## plot
+#' matplot(dmd, type="l", ylab="Demand (no. of cells)", xlab="Time point",
+#'         lty=1, col=c("Green","Red","Blue"))
+#' legend("topleft", legend=obs@@labels, col=c("Green","Red","Blue"), lty=1)
+#'
 
 approxExtrapDemand <- function(obs, tout, ...) {
     if (nlayers(obs) > 1) {
@@ -75,12 +89,26 @@ approxExtrapDemand <- function(obs, tout, ...) {
 #'
 #' ## Sibuyan Island
 #'
-#' ## load demand scenario from data
-#' dmd <- sibuyan$demand$demand1 * runif(1)
+#' ## load observed land use data and create demand scenario
+#' obs <- ObsLulcMaps(x=sibuyan$maps,
+#'                     pattern="lu",
+#'                     categories=c(1,2,3,4,5),
+#'                     labels=c("Forest","Coconut","Grass","Rice","Other"),
+#'                     t=c(0,14))
+#' 
+#' dmd <- approxExtrapDemand(obs, tout=0:14)
+#' apply(dmd, 1, sum)
+#' 
+#' ## artificially perturb for illustration purposes
+#' dmd <- dmd * runif(1)
+#' apply(dmd, 1, sum)
+#' 
+#' ## use roundSum to correct demand scenario
 #' ncell <- length(which(!is.na(getValues(sibuyan$maps$lu_sib_1997))))
-#'
-#' ## recover demand
+#' ncell
 #' dmd <- roundSum(dmd, ncell=ncell)
+#' apply(dmd, 1, sum)
+#'
 
 roundSum <- function(x, ncell, ...) {
     

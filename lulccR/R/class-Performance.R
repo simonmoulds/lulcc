@@ -9,7 +9,8 @@ NULL
 #' @slot performance list of ROCR performance objects. Each object is
 #'   calculated for the corresponding ROCR prediction object held in the
 #'   Prediction object supplied to the constructor function
-#' @slot auc TODO
+#' @slot auc numeric vector containing the area under the curve for each
+#'   performance object
 #' @slot categories numeric vector of land use categories for which performance
 #'   objects were created
 #' @slot labels character vector with labels corresponding to \code{categories}

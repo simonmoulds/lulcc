@@ -3,10 +3,11 @@
 \name{summary}
 \alias{summary}
 \alias{summary,ExpVarMaps-method}
+\alias{summary,Model-method}
+\alias{summary,ModelInput-method}
+\alias{summary,NeighbMaps-method}
 \alias{summary,ObsLulcMaps-method}
-\alias{summary,Performance-method}
 \alias{summary,PredModels-method}
-\alias{summary,Prediction-method}
 \title{Summary}
 \usage{
 summary(object, ...)
@@ -15,24 +16,23 @@ summary(object, ...)
 
 \S4method{summary}{ExpVarMaps}(object, ...)
 
+\S4method{summary}{NeighbMaps}(object, ...)
+
 \S4method{summary}{PredModels}(object, ...)
 
-\S4method{summary}{Prediction}(object, ...)
+\S4method{summary}{ModelInput}(object, ...)
 
-\S4method{summary}{Performance}(object, ...)
+\S4method{summary}{Model}(object, ...)
 }
 \arguments{
-\item{object}{TODO}
+\item{object}{an object belonging to one of the classes in \code{lulcc}}
 
-\item{...}{TODO}
+\item{...}{additional arguments (none)}
 }
 \value{
-TODO
+A matrix, data.frame or list
 }
 \description{
-Summarize lulcc objects
-}
-\examples{
-## TODO
+Summarise lulcc objects containing Raster* data or predictive models
 }
 

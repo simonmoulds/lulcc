@@ -9,27 +9,27 @@ An S4 class for observed land use maps.
 \section{Slots}{
 
 \describe{
-\item{\code{filename}}{TODO}
+\item{\code{filename}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{layers}}{TODO}
+\item{\code{layers}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{title}}{TODO}
+\item{\code{title}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{extent}}{TODO}
+\item{\code{extent}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{rotated}}{TODO}
+\item{\code{rotated}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{rotation}}{TODO}
+\item{\code{rotation}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{ncols}}{TODO}
+\item{\code{ncols}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{nrows}}{TODO}
+\item{\code{nrows}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{crs}}{TODO}
+\item{\code{crs}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{history}}{TODO}
+\item{\code{history}}{see \code{raster::\link[raster]{Raster-class}}}
 
-\item{\code{z}}{TODO}
+\item{\code{z}}{see \code{raster::\link[raster]{Raster-class}}}
 
 \item{\code{t}}{numeric vector with timesteps corresponding to each observed map}
 
