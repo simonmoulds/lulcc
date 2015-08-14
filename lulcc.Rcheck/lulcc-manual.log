@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2015.2.15)  30 JUL 2015 11:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2015.2.15)  14 AUG 2015 12:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -22,7 +22,7 @@ File: bk10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/home/simon/Downloads/R-devel/share/texmf/tex/latex/Rd.sty
+(/usr/local/lib64/R/share/texmf/tex/latex/Rd.sty
 Package: Rd 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
@@ -1252,7 +1252,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3123.
  ) 
 Here is how much of TeX's memory you used:
  6967 strings out of 495035
- 105309 string characters out of 6181702
+ 105276 string characters out of 6181702
  169559 words of memory out of 5000000
  9459 multiletter control sequences out of 15000+600000
  44177 words of font info for 53 fonts, out of 8000000 for 9000
@@ -1333,7 +1333,7 @@ t/fonts/type1/public/inconsolata/Inconsolata.pfb></usr/share/texlive/texmf-dist
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (53 pages, 189839 bytes).
+Output written on Rd2.pdf (53 pages, 189843 bytes).
 PDF statistics:
  1372 PDF objects out of 1440 (max. 8388607)
  1297 compressed objects within 13 object streams

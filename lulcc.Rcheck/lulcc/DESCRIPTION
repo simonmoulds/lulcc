@@ -29,4 +29,4 @@ Collate: 'class-CategoryLabel.R' 'class-PredictiveModelList.R'
         'predict.R' 'resample.R' 'show.R' 'subset.R' 'summary.R'
         'total.R'
 Packaged: 2015-07-30 09:29:23 UTC; simon
-Built: R 3.3.0; x86_64-pc-linux-gnu; 2015-07-30 10:10:24 UTC; unix
+Built: R 3.1.2; x86_64-unknown-linux-gnu; 2015-08-14 11:21:26 UTC; unix
