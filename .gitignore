@@ -1,2 +1,5 @@
 lulccR.Rcheck/
-examples.R
+.Rhistory
+.Rd2pdf*
+lulcc.pdf
+lulcc_*.tar.gz

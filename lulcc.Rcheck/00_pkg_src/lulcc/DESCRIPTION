@@ -1,0 +1,31 @@
+Package: lulcc
+Title: Land Use Change Modelling in R
+Version: 1.0.0
+Author: Simon Moulds <simon.moulds10@imperial.ac.uk>
+Maintainer: Simon Moulds <simon.moulds10@imperial.ac.uk>
+Description: Classes and methods for spatially explicit land use change
+    modelling in R.
+Depends: methods, raster, R (>= 3.1.0)
+License: GPL (>= 2)
+LazyData: true
+Imports: ROCR, lattice, rasterVis
+Suggests: caret, rpart, randomForest, gsubfn, Hmisc, plyr,
+        RColorBrewer,
+Collate: 'class-CategoryLabel.R' 'class-PredictiveModelList.R'
+        'class-ObsLulcRasterStack.R' 'class-NeighbRasterStack.R'
+        'class-ExpVarRasterList.R' 'class-Model.R'
+        'class-ThreeMapComparison.R' 'AgreementBudget.R'
+        'ExpVarRasterList.R' 'FigureOfMerit.R' 'Model.R'
+        'NeighbRasterStack.R' 'ObsLulcRasterStack.R'
+        'class-PerformanceList.R' 'PerformanceList.R'
+        'class-PredictionList.R' 'PredictionList.R'
+        'ThreeMapComparison.R' 'allocate.R' 'allow.R' 'allowNeighb.R'
+        'approxExtrapDemand.R' 'as.data.frame.R'
+        'c.PredictiveModelList.R' 'index.R' 'coerce.R' 'compareAUC.R'
+        'crossTabulate.R' 'data.R' 'getPredictiveModelInputData.R'
+        'length.R' 'lulcc-package.R' 'models.R' 'names.R' 'partition.R'
+        'performance.rocr.R' 'plot.AgreementBudget.R'
+        'plot.FigureOfMerit.R' 'plot.Performance.R' 'plot.R'
+        'predict.R' 'resample.R' 'show.R' 'subset.R' 'summary.R'
+        'total.R'
+Packaged: 2015-07-30 09:29:23 UTC; simon

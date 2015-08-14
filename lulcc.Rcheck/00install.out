@@ -1,0 +1,19 @@
+* installing *source* package ‘lulcc’ ...
+** libs
+gcc -std=gnu99 -I/home/simon/Downloads/R-devel/include -DNDEBUG  -I/usr/local/include    -fpic  -g -O2  -c allocateclues.c -o allocateclues.o
+gcc -std=gnu99 -I/home/simon/Downloads/R-devel/include -DNDEBUG  -I/usr/local/include    -fpic  -g -O2  -c allow.c -o allow.o
+gcc -std=gnu99 -I/home/simon/Downloads/R-devel/include -DNDEBUG  -I/usr/local/include    -fpic  -g -O2  -c autoconvert.c -o autoconvert.o
+gcc -std=gnu99 -I/home/simon/Downloads/R-devel/include -DNDEBUG  -I/usr/local/include    -fpic  -g -O2  -c total.c -o total.o
+gcc -std=gnu99 -I/home/simon/Downloads/R-devel/include -DNDEBUG  -I/usr/local/include    -fpic  -g -O2  -c updatehist.c -o updatehist.o
+gcc -std=gnu99 -shared -L/usr/local/lib64 -o lulcc.so allocateclues.o allow.o autoconvert.o total.o updatehist.o
+installing to /home/simon/projects/r_lulcc/lulcc.Rcheck/lulcc/libs
+** R
+** data
+*** moving datasets to lazyload DB
+** demo
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (lulcc)

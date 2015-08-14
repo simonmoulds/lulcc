@@ -1,0 +1,1283 @@
+
+R Under development (unstable) (2015-07-25 r68745) -- "Unsuffered Consequences"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "lulcc"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> base::assign(".ExTimings", "lulcc-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
+> library('lulcc')
+Loading required package: raster
+Loading required package: sp
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("AgreementBudget")
+> ### * AgreementBudget
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: AgreementBudget
+> ### Title: Create an AgreementBudget object
+> ### Aliases: AgreementBudget AgreementBudget,RasterLayer-method
+> ###   AgreementBudget,ThreeMapComparison-method
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("AgreementBudget", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("CluesModel")
+> ### * CluesModel
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: CluesModel
+> ### Title: Create a CluesModel object
+> ### Aliases: CluesModel
+> ###   CluesModel,ObsLulcRasterStack,ExpVarRasterList,PredictiveModelList-method
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("CluesModel", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("ExpVarRasterList")
+> ### * ExpVarRasterList
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: ExpVarRasterList
+> ### Title: Create an ExpVarRasterList object
+> ### Aliases: ExpVarRasterList ExpVarRasterList,RasterStack,character-method
+> ###   ExpVarRasterList,RasterStack-method
+> ###   ExpVarRasterList,character,character-method
+> ###   ExpVarRasterList,character-method
+> ###   ExpVarRasterList,list,character-method ExpVarRasterList,list-method
+> ###   ExpVarRasterList,missing,character-method
+> ###   ExpVarRasterList,missing-method
+> 
+> ### ** Examples
+> 
+> ## Plum Island Ecosystems
+> ef <- ExpVarRasterList(x=pie, pattern="ef")
+> 
+> ## Sibuyan
+> ef <- ExpVarRasterList(x=sibuyan$maps, pattern="ef")
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ExpVarRasterList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("FigureOfMerit")
+> ### * FigureOfMerit
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: FigureOfMerit
+> ### Title: Create a FigureOfMerit object
+> ### Aliases: FigureOfMerit FigureOfMerit,RasterLayer-method
+> ###   FigureOfMerit,ThreeMapComparison-method
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("FigureOfMerit", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("Model-fitting")
+> ### * Model-fitting
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: Model fitting
+> ### Title: Fit predictive models
+> ### Aliases: 'Model fitting' glmModels randomForestModels rpartModels
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Model-fitting", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("NeighbRasterStack")
+> ### * NeighbRasterStack
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: NeighbRasterStack
+> ### Title: Create a NeighbRasterStack object
+> ### Aliases: NeighbRasterStack
+> ###   NeighbRasterStack,RasterLayer,ANY,NeighbRasterStack-method
+> ###   NeighbRasterStack,RasterLayer,list,ANY-method
+> ###   NeighbRasterStack,RasterLayer,matrix,ANY-method
+> 
+> ### ** Examples
+> 
+> ## Plum Island Ecosystems
+> 
+> ## observed data
+> obs <- ObsLulcRasterStack(x=pie,
++                     pattern="lu",
++                     categories=c(1,2,3),
++                     labels=c("forest","built","other"),
++                     t=c(0,6,14))
+> 
+> ## create a NeighbRasterStack object for 1985 land use map
+> w1 <- matrix(data=1, nrow=3, ncol=3, byrow=TRUE)
+> w2 <- w1
+> w3 <- w1
+> 
+> nb1 <- NeighbRasterStack(x=obs[[1]],
++                  categories=c(1,2,3),
++                  weights=list(w1,w2,w3))
+> 
+> ## update nb2 for 1991
+> nb2 <- NeighbRasterStack(x=obs[[2]],
++                   neighb=nb1)
+> 
+> ## plot neighbourhood map for forest
+> plot(nb2[[1]])
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NeighbRasterStack", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("ObsLulcRasterStack")
+> ### * ObsLulcRasterStack
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: ObsLulcRasterStack
+> ### Title: Create an ObsLulcRasterStack object
+> ### Aliases: ObsLulcRasterStack ObsLulcRasterStack,RasterLayer,ANY-method
+> ###   ObsLulcRasterStack,RasterStack,ANY-method
+> ###   ObsLulcRasterStack,character,character-method
+> ###   ObsLulcRasterStack,list,character-method
+> ###   ObsLulcRasterStack,missing,character-method
+> 
+> ### ** Examples
+> 
+> ## Plum Island Ecosystems
+> obs <- ObsLulcRasterStack(x=pie,
++                    pattern="lu",
++                    categories=c(1,2,3),
++                    labels=c("forest","built","other"),
++                    t=c(0,6,14))
+> 
+> ## Sibuyan Island
+> obs <- ObsLulcRasterStack(x=sibuyan$maps,
++                    pattern="lu",
++                    categories=c(1,2,3,4,5),
++                    labels=c("forest","coconut","grass","rice","other"),
++                    t=c(0,14))
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ObsLulcRasterStack", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("OrderedModel")
+> ### * OrderedModel
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: OrderedModel
+> ### Title: Create an OrderedModel object
+> ### Aliases: OrderedModel
+> ###   OrderedModel,ObsLulcRasterStack,ExpVarRasterList,PredictiveModelList-method
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("OrderedModel", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("PerformanceList")
+> ### * PerformanceList
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: PerformanceList
+> ### Title: Create a PerformanceList object
+> ### Aliases: PerformanceList
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("PerformanceList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("PredictionList")
+> ### * PredictionList
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: PredictionList
+> ### Title: Create a PredictionList object
+> ### Aliases: PredictionList
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("PredictionList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("ThreeMapComparison")
+> ### * ThreeMapComparison
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: ThreeMapComparison
+> ### Title: Evaluate allocation performance with three maps
+> ### Aliases: ThreeMapComparison ThreeMapComparison,Model,ANY,ANY-method
+> ###   ThreeMapComparison,RasterLayer,RasterLayer,RasterLayer-method
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ThreeMapComparison", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("allocate")
+> ### * allocate
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: allocate
+> ### Title: Allocate land use change spatially
+> ### Aliases: allocate allocate,CluesModel-method
+> ###   allocate,OrderedModel-method
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("allocate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("allow")
+> ### * allow
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: allow
+> ### Title: Implement decision rules for land use change
+> ### Aliases: allow
+> 
+> ### ** Examples
+> 
+> ## Plum Island Ecosystems
+> 
+> ## load observed land use data
+> obs <- ObsLulcRasterStack(x=pie,
++                    pattern="lu",
++                    categories=c(1,2,3),
++                    labels=c("forest","built","other"),
++                    t=c(0,6,14))
+> 
+> ## get land use values
+> x <- getValues(obs[[1]])
+> x <- x[!is.na(x)]
+> 
+> ## create vector of arbitrary land use history values
+> hist <- sample(1:10, length(x), replace=TRUE)
+> 
+> ## calculate demand and get change direction for first timestep
+> dmd <- approxExtrapDemand(obs=obs, tout=0:14)
+Warning in total(x = obs) :
+  missing argument 'categories': getting categories from 'x'
+> cd <- dmd[2,] - dmd[1,]
+> 
+> ## create rules matrix, only allowing forest to change if the cell has
+> ## belonged to forest for more than 8 years
+> rules <- matrix(data=c(1,1008,1008,
++                         1,1,1,
++                         1,1,1), nrow=3, ncol=3, byrow=TRUE)
+> 
+> allow <- allow(x=x,
++                hist=hist,
++                categories=obs@categories,
++                cd=cd,
++                rules=rules)
+> 
+> ## create raster showing cells that are allowed to change from forest to built
+> r <- obs[[1]]
+> r[!is.na(r)] <- allow[,2]
+> r[obs[[1]] != 1] <- NA
+> plot(r)
+> 
+> ## NB output is only useful when used within allocation routine
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("allow", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("allowNeighb")
+> ### * allowNeighb
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: allowNeighb
+> ### Title: Implement neighbourhood decision rules
+> ### Aliases: allowNeighb
+> 
+> ### ** Examples
+> 
+> ## Plum Island Ecosystems
+> 
+> ## load observed land use data
+> obs <- ObsLulcRasterStack(x=pie,
++                      pattern="lu",
++                      categories=c(1,2,3),
++                      labels=c("forest","built","other"),
++                      t=c(0,6,14))
+> 
+> ## create a NeighbRasterStack object for forest only
+> w <- matrix(data=1, nrow=3, ncol=3)
+> nb <- NeighbRasterStack(x=obs[[1]], weights=w, categories=1)
+> 
+> ## only allow change to forest within neighbourhood of current forest cells
+> ## note that rules can be any value between zero (less restrictive) and one
+> ## (more restrictive)
+> nb.allow <- allowNeighb(neighb=nb,
++                         x=obs[[1]],
++                         categories=obs@categories,
++                         rules=0.5)
+> 
+> ## create raster showing cells allowed to change to forest
+> r <- obs[[1]]
+> r[!is.na(r)] <- nb.allow[,1]
+> plot(r)
+> 
+> ## NB output is only useful when used within an allocation routine
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("allowNeighb", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("approxExtrapDemand")
+> ### * approxExtrapDemand
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: approxExtrapDemand
+> ### Title: Extrapolate land use area in time
+> ### Aliases: approxExtrapDemand
+> 
+> ### ** Examples
+> 
+> ## Plum Island Ecosystems
+> 
+> ## load observed land use maps
+> obs <- ObsLulcRasterStack(x=pie,
++                    pattern="lu",
++                    categories=c(1,2,3),
++                    labels=c("forest","built","other"),
++                    t=c(0,6,14))
+> 
+> ## obtain demand scenario by interpolating between observed maps
+> dmd <- approxExtrapDemand(obs=obs, tout=c(0:14))
+Warning in total(x = obs) :
+  missing argument 'categories': getting categories from 'x'
+> 
+> ## plot
+> matplot(dmd, type="l", ylab="Demand (no. of cells)", xlab="Time point",
++         lty=1, col=c("Green","Red","Blue"))
+> legend("topleft", legend=obs@labels, col=c("Green","Red","Blue"), lty=1)
+> 
+> ## linear extrapolation is also possible
+> dmd <- approxExtrapDemand(obs=obs, tout=c(0:50))
+> 
+> ## plot
+> matplot(dmd, type="l", ylab="Demand (no. of cells)", xlab="Time point",
++         lty=1, col=c("Green","Red","Blue"))
+> legend("topleft", legend=obs@labels, col=c("Green","Red","Blue"), lty=1)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("approxExtrapDemand", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("as.data.frame")
+> ### * as.data.frame
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: as.data.frame.ExpVarRasterList
+> ### Title: Coerce objects to data.frame
+> ### Aliases: as.data.frame,ExpVarRasterList-method
+> ###   as.data.frame,ObsLulcRasterStack-method
+> ###   as.data.frame.ExpVarRasterList as.data.frame.ObsLulcRasterStack
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D 
+> ##D ## Plum Island Ecosystems
+> ##D 
+> ##D ## observed maps
+> ##D obs <- ObsLulcRasterStack(x=pie,
+> ##D                           pattern="lu",
+> ##D                           categories=c(1,2,3),
+> ##D                           labels=c("Forest","Built","Other"),
+> ##D                           t=c(0,6,14))
+> ##D 
+> ##D ## explanatory variables
+> ##D ef <- ExpVarRasterList(x=pie, pattern="ef")
+> ##D 
+> ##D ## separate data into training and testing partitions
+> ##D part <- partition(x=obs[[1]], size=0.1, spatial=TRUE)
+> ##D df1 <- as.data.frame(x=obs, cells=part[["all"]], t=0)
+> ##D df2 <- as.data.frame(x=ef, cells=part[["all"]], t=0)
+> ##D 
+> ## End(Not run)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("as.data.frame", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("c.PredictiveModelList")
+> ### * c.PredictiveModelList
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: c.PredictiveModelList
+> ### Title: Merge PredictiveModelList objects
+> ### Aliases: c.PredictiveModelList
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D 
+> ##D ## Plum Island Ecosystems
+> ##D 
+> ##D ## load data
+> ##D data(pie)
+> ##D 
+> ##D ## observed maps
+> ##D obs <- ObsLulcRasterStack(x=pie,
+> ##D                    pattern="lu",
+> ##D                    categories=c(1,2,3),
+> ##D                    labels=c("Forest","Built","Other"),
+> ##D                    t=c(0,6,14))
+> ##D 
+> ##D ## explanatory variables
+> ##D ef <- ExpVarRasterList(x=pie, pattern="ef")
+> ##D 
+> ##D part <- partition(x=obs[[1]], size=0.1, spatial=TRUE)
+> ##D train.data <- getPredictiveModelInputData(obs=obs, ef=ef, cells=part[["train"]], t=0)
+> ##D 
+> ##D forms <- list(Built ~ ef_001+ef_002+ef_003,
+> ##D               Forest ~ 1,
+> ##D               Other ~ ef_001+ef_002)
+> ##D 
+> ##D glm.models <- glmModels(formula=forms, family=binomial, data=train.data, obs=obs)
+> ##D glm.models
+> ##D 
+> ##D ## separate glm.models into two PredictiveModelList objects
+> ##D mod1 <- glm.models[[1]]
+> ##D mod2 <- glm.models[[2:3]]
+> ##D 
+> ##D ## put them back together again
+> ##D glm.models <- c(mod1, mod2)
+> ##D glm.models
+> ##D 
+> ## End(Not run)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("c.PredictiveModelList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("compareAUC")
+> ### * compareAUC
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: compareAUC
+> ### Title: Calculate the area under the ROC curve (AUC)
+> ### Aliases: compareAUC compareAUC,PredictionList-method
+> ###   compareAUC,list-method
+> 
+> ### ** Examples
+> 
+> ## see PredictiveModelList examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("compareAUC", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("crossTabulate")
+> ### * crossTabulate
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: crossTabulate
+> ### Title: Cross tabulate land use transitions
+> ### Aliases: crossTabulate crossTabulate,ObsLulcRasterStack,ANY-method
+> ###   crossTabulate,RasterLayer,RasterLayer-method
+> 
+> ### ** Examples
+> 
+> ## Plum Island Ecosystems
+> 
+> ## Load observed land use maps
+> obs <- ObsLulcRasterStack(x=pie,
++                    pattern="lu",
++                    categories=c(1,2,3),
++                    labels=c("forest","built","other"),
++                    t=c(0,6,14))
+> 
+> crossTabulate(x=obs, times=c(0,14))
+       forest built other
+forest  44107  4250   656
+built      11 36957   154
+other    1259  2248 23921
+> 
+> ## RasterLayer input
+> crossTabulate(x=obs[[1]],
++               y=obs[[3]],
++               categories=c(1,2,3),
++               labels=c("forest","built","other"))
+       forest built other
+forest  44107  4250   656
+built      11 36957   154
+other    1259  2248 23921
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("crossTabulate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("extractIndex")
+> ### * extractIndex
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: Extract by index
+> ### Title: Extract by index
+> ### Aliases: 'Extract by index' [[,CategoryLabel,ANY,ANY-method
+> ###   [[,ExpVarRasterList,ANY,ANY-method
+> 
+> ### ** Examples
+> 
+> ## Plum Island Ecosystems
+> 
+> ## Load observed land use maps
+> obs <- ObsLulcRasterStack(x=pie,
++                    pattern="lu",
++                    categories=c(1,2,3),
++                    labels=c("forest","built","other"),
++                    t=c(0,6,14))
+> 
+> summary(obs[[1]])
+        lu_pie_1985
+Min.              1
+1st Qu.           1
+Median            2
+3rd Qu.           2
+Max.              3
+NA's         102135
+> summary(obs[[1:2]])
+        lu_pie_1985 lu_pie_1991
+Min.              1           1
+1st Qu.           1           1
+Median            2           2
+3rd Qu.           2           2
+Max.              3           3
+NA's         102135      102135
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("extractIndex", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("getPredictiveModelInputData")
+> ### * getPredictiveModelInputData
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: getPredictiveModelInputData
+> ### Title: Extract data to fit predictive models
+> ### Aliases: getPredictiveModelInputData
+> 
+> ### ** Examples
+> 
+> ## TODO
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("getPredictiveModelInputData", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("lulcc-package")
+> ### * lulcc-package
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: lulcc-package
+> ### Title: lulcc: land use change modelling in R
+> ### Aliases: lulcc-package
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D 
+> ##D ## Plum Island Ecosystems
+> ##D 
+> ##D ## load data
+> ##D data(pie)
+> ##D 
+> ##D ## observed maps
+> ##D obs <- ObsLulcRasterStack(x=pie,
+> ##D                           pattern="lu",
+> ##D                           categories=c(1,2,3),
+> ##D                           labels=c("Forest","Built","Other"),
+> ##D                           t=c(0,6,14))
+> ##D obs
+> ##D 
+> ##D plot(obs)
+> ##D 
+> ##D crossTabulate(obs, times=c(0,14))
+> ##D 
+> ##D ## explanatory variables
+> ##D ef <- ExpVarRasterList(x=pie, pattern="ef")
+> ##D ef
+> ##D 
+> ##D part <- partition(x=obs[[1]], size=0.1, spatial=TRUE)
+> ##D train.data <- getPredictiveModelInputData(obs=obs, ef=ef, cells=part[["train"]])
+> ##D 
+> ##D forms <- list(Built ~ ef_001+ef_002+ef_003,
+> ##D               Forest ~ ef_001+ef_002,
+> ##D               Other ~ ef_001+ef_002)
+> ##D 
+> ##D glm.models <- glmModels(formula=forms, family=binomial, data=train.data, obs=obs)
+> ##D rpart.models <- rpartModels(formula=forms, data=train.data, obs=obs)
+> ##D rf.models <- randomForestModels(formula=forms, data=train.data, obs=obs)
+> ##D 
+> ##D ## test ability of models to predict allocation of forest, built and other
+> ##D ## land uses in testing partition
+> ##D test.data <- getPredictiveModelInputData(obs=obs, ef=ef, cells=part[["test"]])
+> ##D 
+> ##D glm.pred <- PredictionList(models=glm.models, newdata=test.data)
+> ##D glm.perf <- PerformanceList(pred=glm.pred, measure="rch")
+> ##D 
+> ##D rpart.pred <- PredictionList(models=rpart.models, newdata=test.data)
+> ##D rpart.perf <- PerformanceList(pred=rpart.pred, measure="rch")
+> ##D 
+> ##D rf.pred <- PredictionList(models=rf.models, newdata=test.data)
+> ##D rf.perf <- PerformanceList(pred=rf.pred, measure="rch")
+> ##D 
+> ##D plot(list(glm=glm.perf, rpart=rpart.perf, rf=rf.perf))
+> ##D 
+> ##D ## test ability of models to predict location of urban gain 1985 to 1991
+> ##D part <- rasterToPoints(obs[[1]], fun=function(x) x != 2, spatial=TRUE)
+> ##D test.data <- getPredictiveModelInputData(obs=obs, ef=ef, cells=part, t=6)
+> ##D 
+> ##D glm.pred <- PredictionList(models=glm.models[[2]], newdata=test.data)
+> ##D glm.perf <- PerformanceList(pred=glm.pred, measure="rch")
+> ##D 
+> ##D plot(list(glm=glm.perf))
+> ##D 
+> ##D ## obtain demand scenario
+> ##D dmd <- approxExtrapDemand(obs=obs, tout=0:14)
+> ##D matplot(dmd, type="l", ylab="Demand (no. of cells)", xlab="Time point",
+> ##D         lty=1, col=c("Green","Red","Blue"))
+> ##D legend("topleft", legend=obs@labels, col=c("Green","Red","Blue"), lty=1)
+> ##D 
+> ##D ## get neighbourhood values
+> ##D w <- matrix(data=1, nrow=3, ncol=3)
+> ##D nb <- NeighbRasterStack(x=obs[[1]], weights=w, categories=2)
+> ##D 
+> ##D ## create CLUE-S model object
+> ##D clues.rules <- matrix(data=1, nrow=3, ncol=3, byrow=TRUE)
+> ##D 
+> ##D clues.parms <- list(jitter.f=0.0002,
+> ##D                     scale.f=0.000001,
+> ##D                     max.iter=1000,
+> ##D                     max.diff=50,
+> ##D                     ave.diff=50)
+> ##D 
+> ##D clues.model <- CluesModel(obs=obs,
+> ##D                           ef=ef,
+> ##D                           models=glm.models,
+> ##D                           time=0:14,
+> ##D                           demand=dmd,
+> ##D                           elas=c(0.2,0.2,0.2),
+> ##D                           rules=clues.rules,
+> ##D                           params=clues.parms)
+> ##D 
+> ##D ## Create Ordered model
+> ##D ordered.model <- OrderedModel(obs=obs,
+> ##D                               ef=ef,
+> ##D                               models=glm.models,
+> ##D                               time=0:14,
+> ##D                               demand=dmd,
+> ##D                               order=c(2,1,3))
+> ##D 
+> ##D ## perform allocation
+> ##D clues.model <- allocate(clues.model)
+> ##D ordered.model <- allocate(ordered.model, stochastic=TRUE)
+> ##D 
+> ##D ## pattern validation
+> ##D 
+> ##D ## CLUE-S
+> ##D clues.tabs <- ThreeMapComparison(x=clues.model,
+> ##D                                  factors=2^(1:8),
+> ##D                                  timestep=14)
+> ##D plot(clues.tabs)
+> ##D plot(clues.tabs, category=1, factors=2^(1:8)[c(1,3,5,7)])
+> ##D 
+> ##D ## Ordered
+> ##D ordered.tabs <- ThreeMapComparison(x=ordered.model,
+> ##D                                  factors=2^(1:8),
+> ##D                                  timestep=14)
+> ##D plot(ordered.tabs)
+> ##D plot(ordered.tabs, category=1, factors=2^(1:8)[c(1,3,5,7)])
+> ##D 
+> ##D ## calculate agreement budget and plot
+> ##D 
+> ##D ## CLUE-S
+> ##D clues.agr <- AgreementBudget(x=clues.tabs)
+> ##D plot(clues.agr, from=1, to=2)
+> ##D 
+> ##D ## Ordered
+> ##D ordered.agr <- AgreementBudget(x=ordered.tabs)
+> ##D plot(ordered.agr, from=1, to=2)
+> ##D 
+> ##D ## calculate Figure of Merit and plot
+> ##D 
+> ##D ## CLUE-S
+> ##D clues.fom <- FigureOfMerit(x=clues.tabs)
+> ##D p1 <- plot(clues.fom, from=1, to=2)
+> ##D 
+> ##D ## Ordered
+> ##D ordered.fom <- FigureOfMerit(x=ordered.tabs)
+> ##D p2 <- plot(ordered.fom, from=1, to=2)
+> ##D 
+> ## End(Not run)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("lulcc-package", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("partition")
+> ### * partition
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: partition
+> ### Title: Partition raster data
+> ### Aliases: partition
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D 
+> ##D ## Plum Island Ecosystems
+> ##D 
+> ##D ## Load observed land use maps
+> ##D obs <- ObsLulcRasterStack(x=pie,
+> ##D                    pattern="lu",
+> ##D                    categories=c(1,2,3),
+> ##D                    labels=c("forest","built","other"),
+> ##D                    t=c(0,6,14))
+> ##D 
+> ##D ## create equally sized training and testing partitions
+> ##D part <- partition(x=obs[[1]], size=0.1, spatial=FALSE)
+> ##D names(part)
+> ##D 
+> ## End(Not run)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("partition", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("pie")
+> ### * pie
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: pie
+> ### Title: Land use change dataset for Plum Island Ecosystem
+> ### Aliases: pie
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(pie)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("pie", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("plot.AgreementBudget")
+> ### * plot.AgreementBudget
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plot.AgreementBudget
+> ### Title: Plot method for AgreementBudget objects
+> ### Aliases: plot,AgreementBudget,ANY-method plot.AgreementBudget
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("plot.AgreementBudget", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("plot.FigureOfMerit")
+> ### * plot.FigureOfMerit
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plot.FigureOfMerit
+> ### Title: Plot method for FigureOfMerit objects
+> ### Aliases: plot,FigureOfMerit,ANY-method plot.FigureOfMerit
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("plot.FigureOfMerit", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("plot.PerformanceList")
+> ### * plot.PerformanceList
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plot.PerformanceList
+> ### Title: Plot method for PerformanceList objects
+> ### Aliases: plot,list,ANY-method plot.PerformanceList
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("plot.PerformanceList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("plot")
+> ### * plot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plot
+> ### Title: Plot method for objects based on Raster* data
+> ### Aliases: plot plot,Model,ANY-method plot,ObsLulcRasterStack,ANY-method
+> ###   plot,ThreeMapComparison,ANY-method plot.Model plot.ObsLulcRasterStack
+> ###   plot.ThreeMapComparison
+> 
+> ### ** Examples
+> 
+> ## see lulcc-package examples
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("plot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("predict")
+> ### * predict
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: predict.PredictiveModelList
+> ### Title: Predict location suitability
+> ### Aliases: predict,PredictiveModelList-method predict.PredictiveModelList
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D 
+> ##D ## Sibuyan Island
+> ##D 
+> ##D ## load observed land use data
+> ##D obs <- ObsLulcRasterStack(x=sibuyan$maps,
+> ##D                     pattern="lu",
+> ##D                     categories=c(1,2,3,4,5),
+> ##D                     labels=c("Forest","Coconut","Grass","Rice","Other"),
+> ##D                     t=c(0,14))
+> ##D 
+> ##D ## load explanatory variables
+> ##D ef <- ExpVarRasterList(x=sibuyan$maps, pattern="ef")
+> ##D 
+> ##D ## separate data into training and testing partitions
+> ##D part <- partition(x=obs[[1]], size=0.1, spatial=TRUE)
+> ##D train.data <- getPredictiveModelInputData(obs=obs, ef=ef, cells=part[["train"]])
+> ##D all.data <- getPredictiveModelInputData(obs=obs, ef=ef, cells=part[["all"]])
+> ##D 
+> ##D ## get glm.models from data
+> ##D forms <- list(Forest ~ ef_001+ef_002+ef_003+ef_004+ef_005+ef_006+ef_007+ef_008+ef_010+ef_012,
+> ##D               Coconut ~ ef_001+ef_002+ef_005+ef_007+ef_008+ef_009+ef_010+ef_011+ef_012,
+> ##D               Grass~ef_001+ef_002+ef_004+ef_005+ef_007+ef_008+ef_009+ef_010+ef_011+ef_012+ef_013,
+> ##D               Rice~ef_009+ef_010+ef_011,
+> ##D               Other~1)
+> ##D 
+> ##D glm.models <- glmModels(formula=forms, family=binomial, data=train.data, obs=obs)
+> ##D 
+> ##D ## create suitability maps
+> ##D suitability.maps <- predict(object=glm.models, newdata=all.data, data.frame=TRUE)
+> ##D points <- rasterToPoints(obs[[1]], spatial=TRUE)
+> ##D suitability.maps <- SpatialPointsDataFrame(coords=points, data=suitability.maps)
+> ##D r <- stack(rasterize(x=suitability.maps, y=obs[[1]], field=names(suitability.maps)))
+> ##D plot(r)
+> ##D 
+> ##D ## library(rasterVis)
+> ##D ## levelplot(r)
+> ##D 
+> ## End(Not run)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("predict", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("resample")
+> ### * resample
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: resample,ExpVarRasterList,Raster-method
+> ### Title: Resample maps in ExpVarRasterList object or list
+> ### Aliases: resample,ExpVarRasterList,Raster-method
+> ###   resample,list,Raster-method
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D 
+> ##D ## Plum Island Ecosystems
+> ##D 
+> ##D ## observed data
+> ##D obs <- ObsLulcRasterStack(x=pie,
+> ##D                     pattern="lu",
+> ##D                     categories=c(1,2,3),
+> ##D                     labels=c("forest","built","other"),
+> ##D                     t=c(0,6,14))
+> ##D 
+> ##D ## explanatory variables
+> ##D ef <- ExpVarRasterList(x=pie, pattern="ef")
+> ##D 
+> ##D ## resample to ensure maps have same characteristics as observed maps
+> ##D ef <- resample(x=ef, y=obs, method="ngb")
+> ##D 
+> ## End(Not run)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("resample", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("roundSum")
+> ### * roundSum
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: roundSum
+> ### Title: Round elements in matrix or data.frame rows
+> ### Aliases: roundSum
+> 
+> ### ** Examples
+> 
+> ## Sibuyan Island
+> 
+> ## load observed land use data and create demand scenario
+> obs <- ObsLulcRasterStack(x=sibuyan$maps,
++                     pattern="lu",
++                     categories=c(1,2,3,4,5),
++                     labels=c("Forest","Coconut","Grass","Rice","Other"),
++                     t=c(0,14))
+> 
+> dmd <- approxExtrapDemand(obs, tout=0:14)
+Warning in total(x = obs) :
+  missing argument 'categories': getting categories from 'x'
+> apply(dmd, 1, sum)
+ [1] 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226
+> 
+> ## artificially perturb for illustration purposes
+> dmd <- dmd * runif(1)
+> apply(dmd, 1, sum)
+ [1] 1918.566 1918.566 1918.566 1918.566 1918.566 1918.566 1918.566 1918.566
+ [9] 1918.566 1918.566 1918.566 1918.566 1918.566 1918.566 1918.566
+> 
+> ## use roundSum to correct demand scenario
+> ncell <- length(which(!is.na(getValues(sibuyan$maps$lu_sib_1997))))
+> ncell
+[1] 7226
+> dmd <- roundSum(dmd, ncell=ncell)
+> apply(dmd, 1, sum)
+ [1] 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226 7226
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("roundSum", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("sibuyan")
+> ### * sibuyan
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: sibuyan
+> ### Title: Land use change dataset for Sibuyan Island
+> ### Aliases: sibuyan
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(sibuyan)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("sibuyan", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("subset-methods")
+> ### * subset-methods
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: subset,ExpVarRasterList-method
+> ### Title: Subset
+> ### Aliases: subset,ExpVarRasterList-method subset,PerformanceList-method
+> ###   subset,PredictionList-method subset,PredictiveModelList-method
+> 
+> ### ** Examples
+> 
+> ## Sibuyan Island
+> 
+> ## load observed land use data
+> obs <- ObsLulcRasterStack(x=sibuyan$maps,
++                     pattern="lu",
++                     categories=c(1,2,3,4,5),
++                     labels=c("Forest","Coconut","Grass","Rice","Other"),
++                     t=c(0,14))
+> 
+> summary(obs)
+        lu_sib_1997 lu_sib_2011
+Min.              1           1
+1st Qu.           1           1
+Median            1           1
+3rd Qu.           2           2
+Max.              5           5
+NA's           6598        6598
+> obs <- subset(obs, subset=names(obs)[1])
+> summary(obs)
+        lu_sib_1997
+Min.              1
+1st Qu.           1
+Median            1
+3rd Qu.           2
+Max.              5
+NA's           6598
+> 
+> ## load explanatory variables
+> ef <- ExpVarRasterList(x=sibuyan$maps, pattern="ef")
+> 
+> summary(ef)
+          ef_001   ef_002 ef_003 ef_004 ef_005 ef_006 ef_007     ef_008
+Min.       0.000    0.000      0      0      0      0      0    0.00000
+1st Qu. 1250.000    0.000      0      0      0      0      0   75.00079
+Median  2795.085   67.772      0      0      0      0      0  246.70270
+3rd Qu. 4697.074  236.874      0      1      1      0      0  549.13528
+Max.    8325.413 4353.485      1      1      1      1      1 1785.78601
+NA's    6598.000 6598.000   6598   6598   6598   6598   6598 6598.00000
+            ef_009     ef_010   ef_011    ef_012   ef_013
+Min.       0.00000   -1.00000    0.000     0.000    0.000
+1st Qu.    5.41651   76.67271  559.017  4000.000    0.000
+Median    12.13853  178.86974 1600.781  6439.612  250.000
+3rd Qu.   19.52580  269.09116 3250.000  9100.138  559.017
+Max.      54.20626  359.99020 7458.217 12732.830 2304.886
+NA's    6598.00000 6598.00000 6598.000  6598.000 6598.000
+> ef <- subset(ef, subset=1:5)
+> summary(ef)
+          ef_001   ef_002 ef_003 ef_004 ef_005
+Min.       0.000    0.000      0      0      0
+1st Qu. 1250.000    0.000      0      0      0
+Median  2795.085   67.772      0      0      0
+3rd Qu. 4697.074  236.874      0      1      1
+Max.    8325.413 4353.485      1      1      1
+NA's    6598.000 6598.000   6598   6598   6598
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("subset-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("total")
+> ### * total
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: total
+> ### Title: Total number of cells in a categorical Raster* object
+> ### Aliases: total
+> 
+> ### ** Examples
+> 
+> ## Sibuyan Island
+> 
+> ## load observed land use data
+> obs <- ObsLulcRasterStack(x=sibuyan$maps,
++                     pattern="lu",
++                     categories=c(1,2,3,4,5),
++                     labels=c("Forest","Coconut","Grass","Rice","Other"),
++                     t=c(0,14))
+> 
+> total(x=obs)
+Warning in total(x = obs) :
+  missing argument 'categories': getting categories from 'x'
+$total
+     [,1] [,2] [,3] [,4] [,5]
+[1,] 4723 1158  839  224  282
+[2,] 4160 1404 1090  288  284
+
+$categories
+[1] 1 2 3 4 5
+
+> total(x=obs[[1]])
+Warning in total(x = obs[[1]]) :
+  missing argument 'categories': getting categories from 'x'
+$total
+     [,1] [,2] [,3] [,4] [,5]
+[1,] 4723 1158  839  224  282
+
+$categories
+[1] 1 2 3 4 5
+
+> total(x=obs[[2]])
+Warning in total(x = obs[[2]]) :
+  missing argument 'categories': getting categories from 'x'
+$total
+     [,1] [,2] [,3] [,4] [,5]
+[1,] 4160 1404 1090  288  284
+
+$categories
+[1] 1 2 3 4 5
+
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("total", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> ### * <FOOTER>
+> ###
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  8.833 0.213 9.165 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

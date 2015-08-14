@@ -1,0 +1,64 @@
+AgreementBudget         Create an AgreementBudget object
+AgreementBudget-class   Class AgreementBudget
+CategoryLabel-class     Virtual class CategoryLabel
+CluesModel              Create a CluesModel object
+CluesModel-class        Class CluesModel
+ExpVarRasterList        Create an ExpVarRasterList object
+ExpVarRasterList-class
+                        Class ExpVarRasterList
+Extract by index        Extract by index
+FigureOfMerit           Create a FigureOfMerit object
+FigureOfMerit-class     Class FigureOfMerit
+Model fitting           Fit predictive models
+Model-class             Virtual class Model
+NeighbRasterStack       Create a NeighbRasterStack object
+NeighbRasterStack-class
+                        Class NeighbRasterStack
+ObsLulcRasterStack      Create an ObsLulcRasterStack object
+ObsLulcRasterStack-class
+                        Class ObsLulcRasterStack
+OrderedModel            Create an OrderedModel object
+OrderedModel-class      Class OrderedModel
+PerformanceList         Create a PerformanceList object
+PerformanceList-class   Class PerformanceList
+PredictionList          Create a PredictionList object
+PredictionList-class    Class PredictionList
+PredictiveModelList-class
+                        Class PredictiveModelList
+ThreeMapComparison      Evaluate allocation performance with three maps
+ThreeMapComparison-class
+                        Class ThreeMapComparison
+allocate                Allocate land use change spatially
+allow                   Implement decision rules for land use change
+allowNeighb             Implement neighbourhood decision rules
+approxExtrapDemand      Extrapolate land use area in time
+as.data.frame.ExpVarRasterList
+                        Coerce objects to data.frame
+c.PredictiveModelList   Merge PredictiveModelList objects
+compareAUC              Calculate the area under the ROC curve (AUC)
+crossTabulate           Cross tabulate land use transitions
+getPredictiveModelInputData
+                        Extract data to fit predictive models
+lulcc-package           lulcc: land use change modelling in R
+partition               Partition raster data
+performance             Create ROCR performance objects
+pie                     Land use change dataset for Plum Island
+                        Ecosystem
+plot                    Plot method for objects based on Raster* data
+plot.AgreementBudget    Plot method for AgreementBudget objects
+plot.FigureOfMerit      Plot method for FigureOfMerit objects
+plot.PerformanceList    Plot method for PerformanceList objects
+predict.PredictiveModelList
+                        Predict location suitability
+resample,ExpVarRasterList,Raster-method
+                        Resample maps in ExpVarRasterList object or
+                        list
+roundSum                Round elements in matrix or data.frame rows
+show,ExpVarRasterList-method
+                        Show
+sibuyan                 Land use change dataset for Sibuyan Island
+subset,ExpVarRasterList-method
+                        Subset
+summary                 Summary
+total                   Total number of cells in a categorical Raster*
+                        object
