@@ -13,8 +13,8 @@ SEXP total(SEXP v, SEXP c) {
 
     R_len_t i, j;
 
-    int *total, code, lu;
-    double *lu_vals, *lu_codes;
+    int *total;
+    double *lu_vals, *lu_codes, lu, code;
 
     PROTECT(v = coerceVector(v, REALSXP)); 
     lu_vals = REAL(v);

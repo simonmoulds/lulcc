@@ -15,8 +15,8 @@
 SEXP allocateclues(SEXP p, SEXP lu, SEXP d, SEXP c, SEXP jf, SEXP sf, SEXP mi, SEXP md, SEXP ad) {
 
     R_len_t i, j;
-    int *landuse, *alloc, count, ix, lu1, lu1_ix;
-    double *prob, *pprob, *demand, *iter, *total, *diff, *codes, code, tprob, absdiff, maxp, maxd, aved;
+    int *alloc, count, ix, lu1_ix;
+    double *prob, *pprob, *demand, *iter, *landuse, *total, *diff, *codes, lu1, tprob, absdiff, maxp, maxd, aved;
 
     //SEXP dim = getAttrib(p, R_DimSymbol);
     //int ncell = INTEGER(dim)[0];   
@@ -27,8 +27,8 @@ SEXP allocateclues(SEXP p, SEXP lu, SEXP d, SEXP c, SEXP jf, SEXP sf, SEXP mi, S
     PROTECT(p = coerceVector(p, REALSXP)); 
     prob = REAL(p);
 
-    PROTECT(lu = coerceVector(lu, INTSXP));
-    landuse = INTEGER(lu);
+    PROTECT(lu = coerceVector(lu, REALSXP));
+    landuse = REAL(lu);
    
     PROTECT(d = coerceVector(d, REALSXP));
     demand = REAL(d);

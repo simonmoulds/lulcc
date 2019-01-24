@@ -53,7 +53,7 @@ setMethod("allocate", signature(model = "CluesModel"),
 
                    ## 1. update land use suitability matrix if dynamic factors exist
                    if (model@ef@dynamic && i > 1) {
-                       newdata <- .update.data.frame(x=newdata, y=model@ef, map=map0, cells=cells, t=(i-1))
+                       newdata <- .update.data.frame(x=newdata, y=model@ef, map=map0, cells=cells, timestep=(i-1))
                        prob <- predict(object=model@models, newdata=newdata)
                    }
                    tprob <- prob
@@ -113,7 +113,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
 
                    ## 1. update land use suitability matrix if dynamic factors exist
                    if (model@ef@dynamic && i > 1) {
-                       newdata <- .update.data.frame(x=newdata, y=model@ef, map=map0, cells=cells, t=(i-1))
+                       newdata <- .update.data.frame(x=newdata, y=model@ef, map=map0, cells=cells, timestep=(i-1))
                        prob <- predict(object=model@models, newdata=newdata)
                    }
                    tprob <- prob

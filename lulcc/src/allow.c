@@ -51,7 +51,6 @@ SEXP allow(SEXP lu, SEXP h, SEXP c, SEXP cd, SEXP r) {
       
     for (i = 0; i < ncell; i++) {
 
-        //if (! R_IsNA(landuse[i])) {
         if (!ISNA(landuse[i])) {
         
             lu0 = landuse[i];
