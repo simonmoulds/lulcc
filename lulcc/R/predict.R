@@ -81,6 +81,9 @@ predict.PredictiveModelList <- function(object, newdata, data.frame=FALSE, ...) 
             out[[i]] <- predict(object=mod, newdata=newdata, type="response")#, ...)
         }
         ## out[[i]] <- predict(object=object@models[[i]], newdata=newdata, ...)
+        if (inherits(mod, "brmsfit")) {
+            out[[i]] <- predict(object=mod, newdata=newdata)#, ...)
+        }
     }
 
     names(out) <- object@labels

@@ -98,6 +98,30 @@ rpartModels <- function(formula, ..., obs, categories=NA, labels=NA) {
                labels=labels)
 }
 
+brmModels <- function(formula, 
+                      family=binomial,
+                      obs, categories=NA, labels=NA,
+                      ...) {
+  
+  brm.models <- list()
+  
+  if (!missing(obs)) {
+    categories <- obs@categories
+    labels <- obs@labels
+  }
+  
+  formula <- .checkFormula(formula, categories, labels)
+  
+  for (i in 1:length(formula)) {
+    form <- formula[[i]]
+    brm.models[[i]] <- brms::brm(form, family = family, ...)
+  }
+  
+  out <- new("PredictiveModelList",
+             models=brm.models,
+             categories=categories,
+             labels=labels)
+}
 
 .checkFormula <- function(formula, categories, labels) {
     dep <- sapply(formula, function(x) as.character(x)[2])
