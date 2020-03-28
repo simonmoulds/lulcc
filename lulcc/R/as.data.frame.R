@@ -78,6 +78,7 @@ as.data.frame.ObsLulcRasterStack <- function(x, row.names=NULL, optional=FALSE, 
     
     if (!t %in% x@t) {
         warning("Invalid t: no land use map for this time. Using setting t = 0 instead.")
+        warning(paste("Valid timesteps are:", paste0(x@t, collapse = ", ")))
         t <- 0
     }
     
