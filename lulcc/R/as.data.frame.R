@@ -76,13 +76,13 @@ as.data.frame.ExpVarRasterList <- function(x, row.names=NULL, optional=FALSE, ce
 #' @export
 as.data.frame.ObsLulcRasterStack <- function(x, row.names=NULL, optional=FALSE, cells, t=0, ...) {
     
-    if (!t %in% x@t) {
-        warning("Invalid t: no land use map for this time. Using setting t = 0 instead.")
-        warning(paste("Valid timesteps are:", paste0(x@t, collapse = ", ")))
-        t <- 0
+    if (t %in% x@t) {
+        ix <- which(x@t %in% t)
+    } else {
+        warning("Invalid timestep: no land use map for this time. Using setting t = 0 instead.", call. = F)
+        warning(paste("Valid timesteps are:", paste0(x@t, collapse = ", ")), call. = F)
+        ix <- 1
     }
-    
-    ix <- which(x@t %in% t)
     
     br <- raster::layerize(x[[ix]])
     names(br) <- x@labels
@@ -100,8 +100,8 @@ setMethod("as.data.frame","ExpVarRasterList",as.data.frame.ExpVarRasterList)
 setMethod("as.data.frame","ObsLulcRasterStack",as.data.frame.ObsLulcRasterStack)
 
 
-
 .update.data.frame <- function(x, y, map, cells, t, ...) {
+    
     ## hidden function to update a data.frame containing dynamic explanatory variables
     ##
     ## Args:
@@ -134,15 +134,22 @@ setMethod("as.data.frame","ObsLulcRasterStack",as.data.frame.ObsLulcRasterStack)
     for (i in 1:length(maps)) {
         s <- maps[[i]]
         n <- raster::nlayers(s)
-        if (n == 1) {
-            maps[[i]] <- s[[1]]
-        } else if (length(index) == 1) {
-            maps[[i]] <- s[[index]] 
-        } else {
-            warning("Invalid t: dynamic variables present, but no data for this time. Using setting t = 0 instead.")
+        if (length(index) == 1){
+            if (n == 1) {
+                maps[[i]] <- s[[1]]
+            } else if (index <= n) {
+                maps[[i]] <- s[[index]] 
+            } else {
+                warning(paste0("< For dynamic variables: ", paste(names(maps[[i]]), collapse=", ")," >",
+                               " Invalid timestep: no data for t = ", t, "\n",
+                               " Using closest timestep t = ", obs@t[n]," instead."), call. = F)
+                maps[[i]] <- s[[obs@t[n]]]
+            }
+        } else{
+            warning(paste0("< For variables: ", paste(names(maps[[i]]), collapse=", ")," >", "\n",
+                           "Invalid timestep: no variable for this time. Using setting t = 0 instead."), call. = F)
             maps[[i]] <- s[[1]]
         }
     }
     maps
 }
-
