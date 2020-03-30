@@ -27,7 +27,7 @@ NULL
 
 getPredictiveModelInputData <- function(obs, ef, cells, ...) {
     obsdf <- as.data.frame(obs, cells=cells, ...)
-    efdf  <- as.data.frame(ef, cells=cells, ...)
+    efdf  <- as.data.frame(ef, cells=cells, obs=obs, ...)
     df    <- cbind(obsdf, efdf)
     df
 }
