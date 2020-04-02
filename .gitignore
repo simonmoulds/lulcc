@@ -3,3 +3,5 @@ lulcc.Rcheck/
 .Rd2pdf*
 lulcc.pdf
 lulcc_*.tar.gz
+.Rproj.user
+*.Rproj
