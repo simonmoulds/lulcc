@@ -1,7 +1,10 @@
+# Package related
 lulcc.Rcheck/
-.Rhistory
-.Rd2pdf*
 lulcc.pdf
 lulcc_*.tar.gz
-.Rproj.user
+
+# R related
+*.Rhistory
+*.Rd2pdf*
+*.Rproj.user
 *.Rproj
