@@ -1,3 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
+^_pkgdown\.yml$
+^pkgdown$
+^\.travis\.yml$
+^codecov\.yml$
+^\.github/workflows/R\.yaml$
