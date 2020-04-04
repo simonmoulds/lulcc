@@ -1,16 +1,17 @@
 Package: lulcc
 Title: Land Use Change Modelling in R
 Version: 1.0.2
-Author: Simon Moulds <sim.moulds@gmail.com>
-Maintainer: Simon Moulds <sim.moulds@gmail.com>
+Authors@R: c(
+    person("Simon", "Moulds", email = "sim.moulds@gmail.com", role = c("cre", "aut")),
+    person("Valentin", "Lucet", email = "valentin.lucet@gmail.com", role = "aut"))
 Description: Classes and methods for spatially explicit land use change
     modelling in R.
 Depends: methods, raster, R (>= 3.1.0)
-License: GPL (>= 2)
+License: GPL-3 | file LICENSE
 LazyData: true
 Imports: ROCR, lattice, rasterVis
 Suggests: caret, rpart, randomForest, gsubfn, Hmisc, plyr,
-        RColorBrewer,
+        RColorBrewer, brms
 Collate: 'class-CategoryLabel.R' 'class-ObsLulcRasterStack.R'
         'class-PredictiveModelList.R' 'class-ExpVarRasterList.R'
         'class-NeighbRasterStack.R' 'class-Model.R'
@@ -32,4 +33,4 @@ Packaged: 2017-03-27 13:11:40 UTC; simon
 NeedsCompilation: yes
 Repository: CRAN
 Date/Publication: 2017-03-27 14:28:10 UTC
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.0
