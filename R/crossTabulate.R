@@ -32,7 +32,7 @@ NULL
 #' Agriculture, Ecosystems & Environment 101(2):251-268.
 #'
 #' @examples
-#'
+#' \dontrun{
 #' ## Plum Island Ecosystems 
 #' 
 #' ## Load observed land use maps
@@ -49,7 +49,7 @@ NULL
 #'               y=obs[[3]],
 #'               categories=c(1,2,3),
 #'               labels=c("forest","built","other"))
-#' 
+#' }
 
 setGeneric("crossTabulate", function(x, y, ...)
            standardGeneric("crossTabulate"))
@@ -59,13 +59,13 @@ setGeneric("crossTabulate", function(x, y, ...)
 setMethod("crossTabulate", signature(x = "RasterLayer", y = "RasterLayer"),
           function(x, y, categories, labels=as.character(categories), ...) {
 
-              ct <- raster::crosstab(x, y, ...)
+              ct <- raster::crosstab(x, y, long=T, ...)
               m <- as.data.frame(matrix(data=NA, nrow=length(categories), ncol=length(categories)))
               for (i in 1:length(categories)) {
                   cat1 <- categories[i]
                   for (j in 1:length(categories)) {
                       cat2 <- categories[j]
-                      ix <- which(ct$Var1 == cat1 & ct$Var2 == cat2)
+                      ix <- which(ct[[1]] == cat1 & ct[[2]] == cat2)
                       if (length(ix) == 1) {
                           m[i,j] <- ct$Freq[ix]
                       } else {

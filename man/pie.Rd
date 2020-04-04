@@ -4,7 +4,8 @@
 \name{pie}
 \alias{pie}
 \title{Land use change dataset for Plum Island Ecosystem}
-\format{A list containing the following elements:
+\format{
+A list containing the following elements:
 \describe{
   \item{lu_pie_1985}{RasterLayer showing land use in 1985 (forest, built,
   other)}
@@ -13,7 +14,8 @@
   \item{ef_001}{RasterLayer showing elevation}
   \item{ef_002}{RasterLayer showing slope}
   \item{ef_003}{RasterLayer showing distance to built land in 1985}
-}}
+}
+}
 \usage{
 pie
 }

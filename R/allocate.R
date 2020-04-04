@@ -44,7 +44,7 @@ setMethod("allocate", signature(model = "CluesModel"),
               map0.vals <- raster::extract(map0, cells)
               if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
               if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
-              newdata <- as.data.frame(x=model@ef, cells=cells)
+              newdata <- as.data.frame(x=model@ef, obs=model@obs, cells=cells)
               prob <- predict(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
 
@@ -103,7 +103,7 @@ setMethod("allocate", signature(model = "OrderedModel"),
               map0.vals <- raster::extract(map0, cells)
               if (!is.null(model@hist)) hist.vals <- raster::extract(model@hist, cells) else NULL
               if (!is.null(model@mask)) mask.vals <- raster::extract(model@mask, cells) else NULL
-              newdata <- as.data.frame(x=model@ef, cells=cells)
+              newdata <- as.data.frame(x=model@ef, obs=model@obs, cells=cells)
               prob <- predict(object=model@models, newdata=newdata)
               maps <- raster::stack(map0)
 

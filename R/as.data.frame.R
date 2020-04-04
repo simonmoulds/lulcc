@@ -19,6 +19,7 @@ NULL
 #' @param cells index of cells to be extracted, which may be a
 #'   \code{SpatialPoints*} object or a numeric vector representing cell numbers
 #'   (see \code{raster::\link[raster]{extract}})
+#' @param obs the corresponding ObsLulcRasterStack object
 #' @param t numeric indicating the time under consideration
 #' @param \dots additional arguments (none)
 #'
@@ -49,7 +50,7 @@ NULL
 #' ## separate data into training and testing partitions
 #' part <- partition(x=obs[[1]], size=0.1, spatial=TRUE)
 #' df1 <- as.data.frame(x=obs, cells=part[["all"]], t=0)
-#' df2 <- as.data.frame(x=ef, cells=part[["all"]], t=0)
+#' df2 <- as.data.frame(x=ef, obs=obs, cells=part[["all"]], t=0)
 #'
 #' }
 
