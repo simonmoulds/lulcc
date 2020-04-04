@@ -4,7 +4,8 @@
 \name{sibuyan}
 \alias{sibuyan}
 \title{Land use change dataset for Sibuyan Island}
-\format{A list containing the following components:
+\format{
+A list containing the following components:
 \describe{
   \item{maps}{list containing the following RasterLayers:}
   \describe{
@@ -35,7 +36,8 @@
     \item{demand3}{data.frame with demand scenario representing land use
     change primarily for food production}
   }
-}}
+}
+}
 \usage{
 sibuyan
 }

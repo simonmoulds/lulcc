@@ -32,7 +32,7 @@ NULL
 #' Agriculture, Ecosystems & Environment 101(2):251-268.
 #'
 #' @examples
-#'
+#' \dontrun{
 #' ## Plum Island Ecosystems 
 #' 
 #' ## Load observed land use maps
@@ -49,7 +49,7 @@ NULL
 #'               y=obs[[3]],
 #'               categories=c(1,2,3),
 #'               labels=c("forest","built","other"))
-#' 
+#' }
 
 setGeneric("crossTabulate", function(x, y, ...)
            standardGeneric("crossTabulate"))

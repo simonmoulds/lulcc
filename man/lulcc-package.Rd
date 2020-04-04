@@ -44,7 +44,7 @@ provided by base R (\code{glm}), recursive partitioning and regression trees,
 provided by package \code{rpart} and random forest, provided by package
 \code{randomForest}. To a large extent the success of the allocation routine
 depends on the strength of the predictive models: this is one reason why an R
-package for land use change modelling is attractive.
+package for land use change modelling is attractive. 
 
 To validate model output lulcc includes a method developed by Pontius et al.
 (2011) that simultaneously compares a reference map for time 1, a reference

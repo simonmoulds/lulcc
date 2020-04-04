@@ -7,8 +7,15 @@
 \alias{rpartModels}
 \title{Fit predictive models}
 \usage{
-glmModels(formula, family = binomial, model = FALSE, ..., obs,
-  categories = NA, labels = NA)
+glmModels(
+  formula,
+  family = binomial,
+  model = FALSE,
+  ...,
+  obs,
+  categories = NA,
+  labels = NA
+)
 
 randomForestModels(formula, ..., obs, categories = NA, labels = NA)
 
