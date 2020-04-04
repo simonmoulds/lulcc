@@ -9,3 +9,7 @@ lulcc_*.tar.gz
 *.Rproj.user
 *.Rproj
 *.Rproj.user
+.Rproj.user
+
+# readme figures
+man/figures
