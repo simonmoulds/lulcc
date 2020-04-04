@@ -158,7 +158,7 @@ probmaps <- rasterize(x=probmaps, y=obs[[1]],
 rasterVis::levelplot(probmaps)
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-ProbabilityMaps-1.png" width="100%" />
 
 Model performance is assessed using the receiver operator characteristic
 provided by the
@@ -186,7 +186,7 @@ plot(list(glm=glm.perf,
           rf=rf.perf))
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-Performances-1.png" width="100%" />
 
 Another use of ROC analysis is to assess how well the models predict the
 cells in which gain occurs between two time points. This is only
@@ -212,7 +212,7 @@ glm.perf <- PerformanceList(pred=glm.pred,
 plot(list(glm=glm.perf))
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
+<img src="man/figures/README-PerformancesTest-1.png" width="100%" />
 
 ### 3\. Allocation
 
@@ -299,11 +299,11 @@ clues.agr <- AgreementBudget(x=clues.tabs)
 plot(clues.agr, from=1, to=2)
 ```
 
-<img src="man/figures/README-unnamed-chunk-16-1.png" width="100%" />
+<img src="man/figures/README-AgreementBudget-1.png" width="100%" />
 
 ``` r
 clues.fom <- FigureOfMerit(x=clues.agr)
 plot(clues.fom, from=1, to=2)
 ```
 
-<img src="man/figures/README-unnamed-chunk-17-1.png" width="100%" />
+<img src="man/figures/README-FigureOfMerit-1.png" width="100%" />

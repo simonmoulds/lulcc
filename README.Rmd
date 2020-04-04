@@ -45,7 +45,7 @@ The package includes two example datasets: one for Sibuyan Island in the Phillip
 
 Land use change modelling requires a large amount of input data. The most important input is at least one map of observed land use. In lulcc, this data is represented by the `ObsLulcRasterStack` class:
 
-```{r}
+```{r LoadAndPrep}
 library(lulcc)
 data(pie)
 obs <- ObsLulcRasterStack(x=pie,
@@ -57,7 +57,7 @@ obs <- ObsLulcRasterStack(x=pie,
 
 A useful starting point in land use change modelling is to obtain a transition matrix for two observed land use maps to identify the main transitions. This can be achieved with the `crossTabulate` function:
 
-```{r, echo=TRUE}
+```{r CrossTab, echo=TRUE}
 # obtain a transition matrix from land use maps for 1985 and 1991
 crossTabulate(obs, times=c(0,6))
 ```
@@ -66,7 +66,7 @@ For the Plum Island Ecosystem site this reveals that the main transition was fro
 
 The next stage is to relate observed land use or observed land use transitions to spatially explicit biophysical or socioeconomic explanatory variables. These are loaded as follows:
 
-```{r}
+```{r PrepVars}
 ef <- ExpVarRasterList(x=pie, pattern="ef")
 ```
 
@@ -74,14 +74,14 @@ ef <- ExpVarRasterList(x=pie, pattern="ef")
 
 To fit predictive models we first divide the study region into training and testing partitions. The `partition` function returns a list with cell numbers for each partition:
 
-```{r}
+```{r Partition}
 part <- partition(x=obs[[1]],
                   size=0.1, spatial=TRUE)
 ```
 
 We then extract cell values for the training and testing partitions.
 
-```{r}
+```{r TrainTest}
 # extract training data
 train.data <- getPredictiveModelInputData(obs=obs,
                                           ef=ef,
@@ -95,7 +95,7 @@ test.data <- getPredictiveModelInputData(obs=obs,
 
 Predictive models are represented by the `PredictiveModelList` class. For comparison, we create a `PredictiveModelList` object for each type of predictive model:
 
-```{r}
+```{r Modelling}
 # fit models (note that a predictive model is required for each land use category)
 forms <- list(Built~ef_001+ef_002+ef_003,
               Forest~ef_001+ef_002,
@@ -119,7 +119,7 @@ rf.models <- randomForestModels(formula=forms,
 
 We can then use the fitted models to predict over the full data set and produce the probability surfaces for each fitted model:
 
-```{r, echo = TRUE}
+```{r ProbabilityMaps, echo = TRUE}
 all.data <- as.data.frame(x=ef, cells=part[["all"]])
 
 # GLM
@@ -135,7 +135,7 @@ rasterVis::levelplot(probmaps)
 
 Model performance is assessed using the receiver operator characteristic provided by the [ROCR](http://cran.r-project.org/web/packages/ROCR/index.html) package. lulcc includes classes `Prediction` and `Performance` which extend the native ROCR classes to contain multiple `prediction` and `performance` objects. The procedure to obtain these objects and assess performance is as follows:
 
-```{r, echo = TRUE}
+```{r Performances, echo = TRUE}
 glm.pred <- PredictionList(models=glm.models,
                            newdata=test.data)
 glm.perf <- PerformanceList(pred=glm.pred,
@@ -155,7 +155,7 @@ plot(list(glm=glm.perf,
 
 Another use of ROC analysis is to assess how well the models predict the cells in which gain occurs between two time points. This is only possible if a second observed land use map is available for a subsequent time point. Here we perform this type of analysis for the gain of built between 1985 and 1991. First, we create a data partition in which cells not candidate for gain (cells belonging to built in 1985) are eliminated. We then assess the ability of the various predictive models to predict the gain of built in this partition:
 
-```{r}
+```{r PerformancesTest}
 part <- rasterToPoints (obs[[1]],
                         fun=function(x) x != 2,
                         spatial=TRUE)
@@ -174,14 +174,14 @@ plot(list(glm=glm.perf))
 
 Spatially explicit land use change models are usually driven by non-spatial estimates of land use area for each timestep in the simulation. While many complex methods have been devised, in lulcc we simply provide a method for linear extrapolation of land use change, which relies on there being at least two observed land use maps:
 
-```{r}
+```{r Demand}
 # obtain demand scenario
 dmd <- approxExtrapDemand(obs=obs, tout=0:14)
 ```
 
 We then use a filter defined as a matrix within the `NeighbRasterStack` function to gather neighbor data from the land use change data.
 
-```{r}
+```{r Neigh}
 w <- matrix(data=1, nrow=3, ncol=3)
 nb <- NeighbRasterStack(x=obs[[1]], weights=w,
                         categories=c(1,2,3))
@@ -189,7 +189,7 @@ nb <- NeighbRasterStack(x=obs[[1]], weights=w,
 
 The culmination of the modelling process is to simulate the location of land use change. lulcc provides a routine based on the CLUE-S model (Verburg et al., 2002) and a novel stochastic allocation procedure (with option for using the ordered method). The first step is to combine the various model inputs to ensure they are compatible:
 
-```{r}
+```{r CLUES}
 clues.rules <- matrix(data=1, nrow=3, ncol=3)
 clues.parms <- list(jitter.f=0.0002,
                     scale.f=0.000001,
@@ -214,7 +214,7 @@ ordered.model <- OrderedModel(obs=obs,
 
 Then, finally, we can perform allocation:
 
-```{r}
+```{r Allocation}
 clues.model <- allocate(clues.model)
 ordered.model <- allocate(ordered.model, stochastic=TRUE)
 ```
@@ -223,7 +223,7 @@ ordered.model <- allocate(ordered.model, stochastic=TRUE)
 
 An important yet frequently overlooked aspect of land use change modelling is model validation. lulcc provides a recent validation method developed by Pontius et al. (2011), which simultaneously compares a reference (observed) map for time 1, a reference map for time 2 and a simulated map for time 2. The first step in this method is to calculate three dimensional contingency tables:
 
-```{r}
+```{r Threemap}
 # evaluate CLUE-S model output
 clues.tabs <- ThreeMapComparison(x=clues.model,
                                    factors=2^(1:8),
@@ -232,11 +232,11 @@ clues.tabs <- ThreeMapComparison(x=clues.model,
 
 From these tables we can easily extract information about different types of agreement and disagreement as well as compute summary statistics such as the figure of merit:
 
-```{r, echo=TRUE}
+```{r AgreementBudget, echo=TRUE}
 clues.agr <- AgreementBudget(x=clues.tabs)
 plot(clues.agr, from=1, to=2)
 ```
-```{r, echo=TRUE}
+```{r FigureOfMerit, echo=TRUE}
 clues.fom <- FigureOfMerit(x=clues.agr)
 plot(clues.fom, from=1, to=2)
 ```
