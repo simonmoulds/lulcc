@@ -10,6 +10,3 @@ lulcc_*.tar.gz
 *.Rproj
 *.Rproj.user
 .Rproj.user
-
-# readme figures
-man/figures
