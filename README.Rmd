@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# lulcc
+# lulcc <img src="inst/images/lulcc_sticker.png" align="right" width=140/>
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/lulcc)](https://CRAN.R-project.org/package=lulcc)
@@ -120,7 +120,7 @@ rf.models <- randomForestModels(formula=forms,
 We can then use the fitted models to predict over the full data set and produce the probability surfaces for each fitted model:
 
 ```{r ProbabilityMaps, echo = TRUE}
-all.data <- as.data.frame(x=ef, cells=part[["all"]])
+all.data <- as.data.frame(x=ef, obs=obs, cells=part[["all"]])
 
 # GLM
 probmaps <- predict(object=glm.models,

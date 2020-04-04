@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# lulcc
+# lulcc <img src="inst/images/lulcc_sticker.png" align="right" width=140/>
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
@@ -123,17 +123,24 @@ glm.models <- glmModels(formula=forms,
                         family=binomial,
                         data=train.data,
                         obs=obs)
+#> Warning in if (is.na(categories) | is.na(labels)) {: the condition has length >
+#> 1 and only the first element will be used
 #> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 # recursive partitioning and regression tree models
 rpart.models <- rpartModels(formula=forms,
                             data=train.data,
                             obs=obs)
+#> Warning in if (is.na(categories) | is.na(labels)) {: the condition has length >
+#> 1 and only the first element will be used
 # random forest models (WARNING: takes a long time!)
 rf.models <- randomForestModels(formula=forms,
                                 data=train.data,
                                 obs=obs)
+#> Warning in if (is.na(categories) | is.na(labels)) {: the condition has length >
+#> 1 and only the first element will be used
 #> Warning in randomForest.default(m, y, ...): The response has five or fewer
 #> unique values. Are you sure you want to do regression?
+
 #> Warning in randomForest.default(m, y, ...): The response has five or fewer
 #> unique values. Are you sure you want to do regression?
 
@@ -145,7 +152,7 @@ We can then use the fitted models to predict over the full data set and
 produce the probability surfaces for each fitted model:
 
 ``` r
-all.data <- as.data.frame(x=ef, cells=part[["all"]])
+all.data <- as.data.frame(x=ef, obs=obs, cells=part[["all"]])
 
 # GLM
 probmaps <- predict(object=glm.models,
