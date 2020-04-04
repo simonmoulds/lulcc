@@ -41,7 +41,7 @@ further research into the processes driving the most important transitions in
 the study region (Pontius et al., 2004).
 }
 \examples{
-
+\dontrun{
 ## Plum Island Ecosystems 
 
 ## Load observed land use maps
@@ -58,7 +58,7 @@ crossTabulate(x=obs[[1]],
               y=obs[[3]],
               categories=c(1,2,3),
               labels=c("forest","built","other"))
-
+}
 }
 \references{
 Pontius Jr, R.G., Shusas, E., McEachern, M. (2004). Detecting
