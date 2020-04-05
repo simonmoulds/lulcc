@@ -62,7 +62,7 @@ rpart.models <- rpartModels(formula=forms, data=train.data, obs=obs)
 rf.models <- randomForestModels(formula=forms, data=train.data, obs=obs)
 
 ## create suitability maps
-all.data <- as.data.frame(x=ef, cells=part[['all']])
+all.data <- as.data.frame(x=ef, obs=obs, cells=part[['all']])
 probmaps <- predict(object=glm.models, newdata=all.data, data.frame=TRUE)
 points <- rasterToPoints(obs[[1]], spatial=TRUE)
 probmaps <- SpatialPointsDataFrame(points, probmaps)
@@ -76,7 +76,7 @@ p <- rasterVis::levelplot(r,
                           par.settings=list(axis.line=list(col="black"),
                             strip.background=list(col="lightgrey")),
                           between=list(x=0,y=0),
-                          col.regions=colorRampPalette(brewer.pal(9, "YlGnBu")),
+                          #col.regions=colorRampPalette(brewer.pal(9, "YlGnBu")),
                           at=seq(0,1,length=100),
                           scales=list(cex=0.6),
                           colorkey=list(space="bottom",labels=list(cex=0.6),width=0.5))
