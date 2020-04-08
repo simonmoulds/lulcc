@@ -30,12 +30,12 @@ And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("simonmoulds/r_lulcc")
+devtools::install_github("simonmoulds/lulcc")
 ```
 
 ## The lulcc workflow
 
-\_Adapted from <https://www.geosci-model-dev.net/8/3215/2015/_>
+*Adapted from <https://www.geosci-model-dev.net/8/3215/2015/>*
 
 The package includes two example datasets: one for Sibuyan Island in the
 Phillipines and one for the Plum Island Ecosystem in Massachusetts,
