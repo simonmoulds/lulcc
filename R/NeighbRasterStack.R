@@ -130,7 +130,7 @@ setMethod("NeighbRasterStack", signature(x = "RasterLayer", weights = "ANY", nei
                   r <- (x == categories[i])
                   cl <- neighb@calls[[i]]
                   cl$x <- r
-                  maps <- eval(cl)
+                  maps[[i]] <- eval(cl)
                   cl$x <- NA  ## set this to NA to save space
                   calls[[i]] <- cl
               }
