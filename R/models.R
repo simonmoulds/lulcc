@@ -126,7 +126,7 @@ brmModels <- function(formula,
 .checkFormula <- function(formula, categories, labels) {
     dep <- sapply(formula, function(x) as.character(x)[2])
 
-    if (is.na(categories) | is.na(labels)) {
+    if (any(is.na(categories), is.na(labels))) {
         stop("'categories' and 'labels' must be supplied if 'obs' is missing")
     } 
 
