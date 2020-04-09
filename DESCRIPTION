@@ -1,6 +1,6 @@
 Package: lulcc
 Title: Land Use Change Modelling in R
-Version: 1.0.2
+Version: 1.0.5
 Authors@R: c(
     person("Simon", "Moulds", email = "sim.moulds@gmail.com", role = c("cre", "aut")),
     person("Valentin", "Lucet", email = "valentin.lucet@gmail.com", role = "aut"))
