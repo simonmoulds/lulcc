@@ -32,7 +32,7 @@ NULL
 #'   a path) or Raster* objects (if \code{x} is a list) matching the regular
 #'   expression will be returned. See \cr
 #'   \code{raster::\link[raster]{raster}} for more information about supported
-#'   filetypes
+#'   file types
 #' @param \dots additional arguments to \code{raster::\link[raster]{stack}}
 #'
 #' @seealso \code{raster::\link[raster]{stack}}

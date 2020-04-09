@@ -8,7 +8,7 @@ NULL
 #' time 2 to provide meaningful information about the performance of land use
 #' change simulations.
 #'
-#' The types of agreement and disagreement considered are those descibed in
+#' The types of agreement and disagreement considered are those described in
 #' Pontius et al. (2011):
 #'
 #' \enumerate{
