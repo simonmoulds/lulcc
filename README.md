@@ -42,7 +42,7 @@ Phillipines and one for the Plum Island Ecosystem in Massachusetts,
 United States. Here we present a complete working example for the Plum
 Island Ecosystem dataset.
 
-### 1\. Raster data preparaion
+### 1\. Raster data preparation
 
 Land use change modelling requires a large amount of input data. The
 most important input is at least one map of observed land use. In lulcc,

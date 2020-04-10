@@ -56,7 +56,7 @@ represented by the class \code{AgreementBudget}, which can then be plotted. The
 results of the comparison are conveniently summarised by the figure of merit,
 represented by the class\code{FigureOfMerit}.
 
-In addition to the core functionality described above, lulcc inludes several
+In addition to the core functionality described above, lulcc includes several
 utility functions to assist with the model building process. Two example
 datasets are also included.
 }
@@ -205,7 +205,7 @@ high-resolution and harmonized model approach for reconstructing and analysing
 historic land changes in Europe, Biogeosciences, 10:1543-1559.
 
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
-Comparison of three maps at multiple resol utions: a case study of land change
+Comparison of three maps at multiple resolutions: a case study of land change
 simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 

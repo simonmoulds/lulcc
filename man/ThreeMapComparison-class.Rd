@@ -27,7 +27,7 @@ resolutions}
 
 \references{
 Pontius Jr, R.G., Peethambaram, S., Castella, J.C. (2011).
-Comparison of three maps at multiple resol utions: a case study of land change
+Comparison of three maps at multiple resolutions: a case study of land change
 simulation in Cho Don District, Vietnam. Annals of the Association of American
 Geographers 101(1): 45-62.
 }

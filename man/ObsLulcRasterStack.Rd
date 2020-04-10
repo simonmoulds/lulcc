@@ -28,7 +28,7 @@ behaviour is to search for files in the working directory}
 \item{pattern}{regular expression (character). Only filenames (if \code{x} is
 a path) or Raster* objects (if \code{x} is a list) matching the regular
 expression will be returned. See \cr
-\code{raster::\link[raster]{raster}} for more information about supported filetypes}
+\code{raster::\link[raster]{raster}} for more information about supported file types}
 
 \item{\dots}{additional arguments to \code{raster::\link[raster]{stack}}}
 

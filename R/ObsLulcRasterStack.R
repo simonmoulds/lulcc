@@ -15,7 +15,7 @@ NULL
 #' @param pattern regular expression (character). Only filenames (if \code{x} is
 #'   a path) or Raster* objects (if \code{x} is a list) matching the regular
 #'   expression will be returned. See \cr
-#'   \code{raster::\link[raster]{raster}} for more information about supported filetypes
+#'   \code{raster::\link[raster]{raster}} for more information about supported file types
 #' @param categories numeric vector of land use categories in observed maps
 #' @param labels character vector (optional) with labels corresponding to
 #'   \code{categories}
