@@ -8,7 +8,7 @@ test_that("ObsLulcRasterStack construction works with pie data", {
   expect_identical(length(obs@t), length(obs@layers))
 })
 
-test_that("ObsLulcRasterStack construction works with stacked rastesr", {
+test_that("ObsLulcRasterStack construction works with stacked raster", {
   expect_is(ObsLulcRasterStack(x=stack(pie$lu_pie_1985, pie$lu_pie_1991, pie$lu_pie_1999),
                                categories=c(1,2,3),
                                labels=c("forest","built","other"),
