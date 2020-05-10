@@ -49,6 +49,7 @@ jobs:
         run: |
           brew install gdal 
           brew install qpdf
+          brew cask install xquartz
           
       # From r-lib/actions
       - name: Cache R packages
