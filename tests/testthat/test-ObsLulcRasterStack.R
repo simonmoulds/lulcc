@@ -8,7 +8,7 @@ test_that("ObsLulcRasterStack construction works with pie data", {
   expect_identical(length(obs@t), length(obs@layers))
 })
 
-test_that("ObsLulcRasterStack construction works with stacked raster", {
+test_that("ObsLulcRasterStack construction works with stacked rasters", {
   expect_is(ObsLulcRasterStack(x=stack(pie$lu_pie_1985, pie$lu_pie_1991, pie$lu_pie_1999),
                                categories=c(1,2,3),
                                labels=c("forest","built","other"),
@@ -35,7 +35,7 @@ test_that("ObsLulcRasterStack construction works with list of rasters", {
             "ObsLulcRasterStack")
 })
 
-test_that("ObsLulcRasterStack construction fails when lists are nor named", {
+test_that("ObsLulcRasterStack construction fails when lists are not named", {
   expect_error(ObsLulcRasterStack(x=list(pie$lu_pie_1985, 
                                          pie$lu_pie_1991, 
                                          pie$lu_pie_1999),
@@ -43,7 +43,8 @@ test_that("ObsLulcRasterStack construction fails when lists are nor named", {
                                   categories=c(1,2,3),
                                   labels=c("forest","built","other"),
                                   t=c(0,6,14)), 
-               "list elements must be named") 
+               "list elements must be named")
+  
   expect_error(ObsLulcRasterStack(x=c(pie$lu_pie_1985, 
                                       pie$lu_pie_1991, 
                                       pie$lu_pie_1999),
