@@ -10,8 +10,16 @@ Depends: methods, raster, R (>= 3.1.0)
 License: GPL-3 | file LICENSE
 LazyData: true
 Imports: ROCR, lattice, rasterVis
-Suggests: caret, rpart, randomForest, gsubfn, Hmisc, plyr,
-        RColorBrewer, brms
+Suggests: 
+    caret,
+    rpart,
+    randomForest,
+    gsubfn,
+    Hmisc,
+    plyr,
+    RColorBrewer,
+    brms,
+    testthat (>= 2.1.0)
 Collate: 'class-CategoryLabel.R' 'class-ObsLulcRasterStack.R'
         'class-PredictiveModelList.R' 'class-ExpVarRasterList.R'
         'class-NeighbRasterStack.R' 'class-Model.R'
